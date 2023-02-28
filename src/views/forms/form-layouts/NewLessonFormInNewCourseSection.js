@@ -1,0 +1,151 @@
+// ** React Imports
+import { useState } from 'react'
+
+// ** MUI Imports
+import Box from '@mui/material/Box'
+import Card from '@mui/material/Card'
+import Grid from '@mui/material/Grid'
+import Link from '@mui/material/Link'
+import Button from '@mui/material/Button'
+import TextField from '@mui/material/TextField'
+import CardHeader from '@mui/material/CardHeader'
+import InputLabel from '@mui/material/InputLabel'
+import IconButton from '@mui/material/IconButton'
+import Typography from '@mui/material/Typography'
+import CardContent from '@mui/material/CardContent'
+import FormControl from '@mui/material/FormControl'
+import OutlinedInput from '@mui/material/OutlinedInput'
+import InputAdornment from '@mui/material/InputAdornment'
+import FormHelperText from '@mui/material/FormHelperText'
+
+// ** Icon Imports
+import Icon from 'src/@core/components/icon'
+import Select from '@mui/material/Select'
+import MenuItem from '@mui/material/MenuItem'
+import EditorControlled from 'src/views/forms/form-elements/editor/new-course-form-description-editor'
+import CardSnippet from 'src/@core/components/card-snippet'
+import SwitchesCustomized from 'src/views/forms/form-elements/switch/SwitchesCustomized'
+import * as source from 'src/views/forms/form-elements/editor/EditorSourceCode'
+
+
+
+
+const NewLesson = () => {
+  const [LessonList, setLessonList] = useState([]);
+  const [language, setLanguage] = useState('')
+  const [Description, setDescription] = useState('')
+  const [title, setTitle] = useState('')
+  const [video, setVideo] = useState('')
+  const onAddBtnClick = event => {
+    setLessonList(LessonList.concat(<Input key={LessonList.length} />));
+  };
+  const Input = () => {
+    return <Grid item xs={12} sm={12} margin={3}>
+      <Accordion sx={{ borderStyle: 'groove' }}>
+        <AccordionSummary
+          id='panel-header-1'
+          aria-controls='panel-content-1'
+          expandIcon={
+            <Icon icon='mdi:chevron-down' />}
+        >
+          <Typography>{title}</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <FormLayoutsBasic />
+        </AccordionDetails>
+      </Accordion>
+    </Grid>;
+  };
+  return (
+
+    <form onSubmit={e => e.preventDefault()}>
+      <Grid container spacing={5}>
+        <Grid item xs={12} >
+          <FormControl fullWidth>
+            <InputLabel id='demo-simple-select-outlined-label'>Language</InputLabel>
+            <Select
+              value={language}
+              onChange={e => setLanguage(e.target.value)}
+              label='Language'
+              id='demo-simple-select-outlined'
+              labelId='demo-simple-select-outlined-label'
+            >
+              <MenuItem value={10}>English</MenuItem>
+              <MenuItem value={20}>Hindi</MenuItem>
+              <MenuItem value={30}>Gujarati</MenuItem>
+              {/* <MenuItem value={30}>12th</MenuItem> */}
+            </Select>
+          </FormControl>
+        </Grid>
+        <Grid item xs={12}>
+          <TextField
+            fullWidth
+            value={title}
+            label='Title'
+            placeholder='Add title of the lesson'
+            onChange={e => setTitle(e.target.value)}
+          />
+        </Grid>
+        <Grid item xs={12}>
+          Upload Video File
+          <TextField
+            fullWidth
+            type='file'
+            value={video}
+            placeholder='Add title of the lesson'
+            onChange={e => setVideo(e.target.value)}
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <CardSnippet
+            sx={{ overflow: 'visible' }}
+            title='Description of the Lesson'
+            code={{
+              tsx: null,
+              jsx: source.EditorControlledJSXCode
+            }}
+          >
+            <EditorControlled value={Description} onChange={e => setDescription(e.target.value)} />
+          </CardSnippet>
+
+        </Grid>
+        <Grid item sm={12} xs={12}>
+          <SwitchesCustomized />
+        </Grid>
+        <Grid item xs={2}>
+          <Box
+            sx={{
+              gap: 5,
+              display: 'flex',
+              flexWrap: 'wrap',
+              alignItems: 'center',
+              justifyContent: 'space-between'
+            }}
+          >
+            <Button type='submit' onClick={onAddBtnClick} variant='contained' size='large'>
+              Save
+            </Button>
+          </Box>
+        </Grid>
+        <Grid item xs={2}>
+          <Box
+            sx={{
+              gap: 5,
+              display: 'flex',
+              flexWrap: 'wrap',
+              alignItems: 'center',
+              justifyContent: 'space-between'
+            }}
+          >
+            <Button color='error' variant='contained' size='large'>
+              Discard
+            </Button>
+          </Box>
+        </Grid>
+      </Grid>
+    </form>
+  )
+}
+
+
+export default NewLesson;
