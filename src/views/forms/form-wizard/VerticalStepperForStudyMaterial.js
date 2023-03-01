@@ -1,29 +1,18 @@
 // ** React Imports
-
-// ** MUI Imports
-import Box from '@mui/material/Box'
 import Card from '@mui/material/Card'
 import Step from '@mui/material/Step'
-import Button from '@mui/material/Button'
 import Stepper from '@mui/material/Stepper'
 import StepLabel from '@mui/material/StepLabel'
 import CardHeader from '@mui/material/CardHeader'
 import Typography from '@mui/material/Typography'
 import CardContent from '@mui/material/CardContent'
 import StepContent from '@mui/material/StepContent'
-
-// ** Third Party Imports
-
-// ** Custom Components Imports
 import StepperCustomDot from './StepperCustomDot'
-
-// ** Styled Component
 import StepperWrapper from 'src/@core/styles/mui/stepper'
-
-
-//*Extras
+import Accordion from '@mui/material/Accordion'
+import AccordionSummary from '@mui/material/AccordionSummary'
+import AccordionDetails from '@mui/material/AccordionDetails'
 import { Fragment, useState } from 'react'
-// ** MUI Imports
 import Grid from '@mui/material/Grid'
 import MenuItem from '@mui/material/MenuItem'
 import TextField from '@mui/material/TextField'
@@ -32,22 +21,11 @@ import FormControl from '@mui/material/FormControl'
 import OutlinedInput from '@mui/material/OutlinedInput'
 import Select from '@mui/material/Select'
 import FileUploaderRestrictions from 'src/views/forms/form-elements/file-uploader/NewCourseThumbnail'
-// ** Icon Imports
-// ** Custom Components Imports
-// ** Third Party Imports
 import toast from 'react-hot-toast'
-// ** Styled Component
-import Chip from '@mui/material/Chip'
-import EditorControlled from 'src/views/forms/form-elements/editor/new-course-form-description-editor'
-import CardSnippet from 'src/@core/components/card-snippet'
 import AddIconMenu from 'src/views/components/menu/AddIconInCourseMenu'
 import IconButton from '@mui/material/IconButton'
-
-// ** Source code imports
 import * as source from 'src/views/forms/form-elements/editor/EditorSourceCode'
 import Collapse from '@mui/material/Collapse'
-
-// ** Styles
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
 import clsx from 'clsx'
 import Icon from 'src/@core/components/icon'
@@ -56,121 +34,193 @@ import DialogTitle from '@mui/material/DialogTitle'
 import DialogContent from '@mui/material/DialogContent'
 import DialogActions from '@mui/material/DialogActions'
 import SwitchesCustomized from 'src/views/forms/form-elements/switch/SwitchesCustomized'
+import Menu from '@mui/material/Menu'
+import Button from '@mui/material/Button'
+import Box from '@mui/material/Box'
+import NewLesson from 'src/views/forms/form-layouts/NewLessonFormInNewCourseSection'
+import NewText from 'src/views/forms/form-layouts/NewTextLessonInCourseSection'
+import NewQuiz from 'src/views/forms/form-layouts/NewQuizInCourseSection'
+import NewAssignment from 'src/views/forms/form-layouts/NewAssignmentInCourseSection'
+import NewQandA from '../form-layouts/NewQandAFormInStudyMaterial'
+import AddNewMCQInStudyMaterial from 'src/views/components/dialogs/AddNewMCQinStudyMaterial'
+import AddNewTFInStudyMaterial from 'src/views/components/dialogs/AddNewTFinStudyMaterial'
+import CardActions from '@mui/material/CardActions'
 
-const Input = () => {
-  return (<Card sx={{ position: 'relative', marginBottom: '10px', borderStyle: 'groove' }}>
-  <CardHeader
-    title='sample'
-    action={
-      <Box sx={{ display: 'flex', alignItems: 'center' }}>
-        <AddIconMenu />
-        <IconButton
-          size='small'
-          aria-label='edit'
-          sx={{ mr: 2, color: 'text.secondary' }}
-          onClick={handleClickEditSection}
-        >
-          <Icon icon="material-symbols:edit" />
-        </IconButton>
-        <Dialog open={EditSection} fullWidth onClose={handleCloseEditSection}>
-          <DialogContent>
-            <Grid container spacing={6}>
-              <Grid item sm={12} xs={12}>
-                <FormControl fullWidth>
-                  <InputLabel id='demo-simple-select-outlined-label'>Language</InputLabel>
-                  <Select
-                    value={language}
-                    onChange={e => setLanguage(e.target.value)}
-                    label='Language'
-                    id='demo-simple-select-outlined'
-                    labelId='demo-simple-select-outlined-label'
-                  >
-                    <MenuItem value={10}>English</MenuItem>
-                    <MenuItem value={20}>Hindi</MenuItem>
-                    <MenuItem value={30}>Gujarati</MenuItem>
-                    {/* <MenuItem value={30}>12th</MenuItem> */}
-                  </Select>
-                </FormControl>
-              </Grid>
-              <Grid item sm={12} xs={12}>
-                <TextField id='name' value={title} onChange={e => setTitle(e.target.value)} autoFocus fullWidth label='Section Title' />
-              </Grid>
-              <Grid item sm={12} xs={12}>
-                <SwitchesCustomized />
-              </Grid>
-            </Grid>
-          </DialogContent>
-        </Dialog>
-        <IconButton
-          size='small'
-          aria-label='delete'
-          sx={{ mr: 2, color: 'text.secondary' }}
-        // onClick={() => setCollapsed(!collapsed)}
-        >
-          <Icon icon="material-symbols:delete-sharp" />
-        </IconButton>
-        <IconButton
-          size='small'
-          aria-label='cursor'
-          sx={{ mr: 2, color: 'text.secondary' }}
-        // onClick={() => setCollapsed(!collapsed)}
-        >
-          <Icon icon="mdi:cursor-move" />
-        </IconButton>
-        <IconButton
-          size='small'
-          aria-label='collapse'
-          sx={{ mr: 2, color: 'text.secondary' }}
-          onClick={() => setCollapsed(!collapsed)}
-        >
-          <Icon fontSize={20} icon={!collapsed ? 'mdi:chevron-down' : 'mdi:chevron-up'} />
-        </IconButton>
-      </Box>
-    }
-  />
-  <Collapse in={collapsed}>
-    <CardContent>
-      <div>
 
-      </div>
-    </CardContent>
-  </Collapse>
-</Card>)
-};
 
 const AddSection = () => {
   const handleNewSectionDialog = () => setOpenDialog(true)
   const handleCloseNewSectionDialog = () => setOpenDialog(false)
   const [openDialog, setOpenDialog] = useState(false)
+  const [sectionList, setSectionList] = useState([]);
+  const [title, setTitle] = useState('')
   const [language, setLanguage] = useState('')
-  const onAddSectionClick = event => {
+  const Input = () => {
+    const [EditedTitle, setEditedTitle] = useState('')
+    const [anchorEl, setAnchorEl] = useState('')
+    const [NewQAList, setNewQAList] = useState([]);
+    const [MCQList, setMCQList] = useState([]);
+    const [TFList, setTFList] = useState([]);
+    const [collapsed, setCollapsed] = useState(false)
+    const [EditSection, setEditSection] = useState(false);
+    const handleClickEditSection = () => setEditSection(true)
+    const handleCloseEditSection = () => setEditSection(false)
+    const handleSaveEditSection = () => {
+      setTitle(EditedTitle)
+      setEditSection(false)
+    }
+    const handleClickNewQA = () => {
+      if(collapsed===false)setCollapsed(!collapsed)
+      setNewQAList(NewQAList.concat(
+        <Grid item xs={12} sm={12} margin={3}>
+          <Accordion sx={{ borderStyle: 'groove' }}>
+            <AccordionDetails>
+              <NewQandA key={NewQAList.length} />
+            </AccordionDetails>
+          </Accordion>
+        </Grid>));
+
+    };
+    const handleClickNewMCQ = () => {
+      if(collapsed===false)setCollapsed(!collapsed)
+      setMCQList(MCQList.concat(
+        <Grid item xs={12} sm={12} margin={3}>
+          <Accordion sx={{ borderStyle: 'groove' }}>
+            <AccordionDetails>
+              <AddNewMCQInStudyMaterial key={MCQList.length} />
+            </AccordionDetails>
+          </Accordion>
+        </Grid>));
+    };
+    const handleClickNewTF = () => {
+      if(collapsed===false)setCollapsed(!collapsed)
+      setTFList(TFList.concat(
+        <Grid item xs={12} sm={12} margin={3}>
+          <Accordion sx={{ borderStyle: 'groove' }}>
+            <AccordionDetails>
+              <AddNewTFInStudyMaterial key={TFList.length} />
+            </AccordionDetails>
+          </Accordion>
+        </Grid>));
+    };
+    const handleCloseAddButton = () => {
+      setAnchorEl(null)
+    }
+    const handleClickMenuAddButton = event => {
+      setAnchorEl(event.currentTarget)
+    }
+    return (<Card sx={{ position: 'relative', marginBottom: '10px', borderStyle: 'groove' }}>
+      <CardHeader
+        title={EditedTitle === '' ? title : EditedTitle}
+        action={
+          <Box sx={{ display: 'flex', alignItems: 'center' }}>
+            <div>
+              <IconButton
+                size='small'
+                aria-label='edit'
+                sx={{ mr: 2, color: 'text.secondary' }}
+                onClick={handleClickMenuAddButton}
+              >
+                <Icon icon="material-symbols:add-circle" />
+              </IconButton>
+              <Menu keepMounted id='simple-menu' anchorEl={anchorEl} onClose={handleCloseAddButton} open={Boolean(anchorEl)}>
+                <MenuItem onClick={handleClickNewQA}>New Q&A</MenuItem>
+                <MenuItem onClick={handleClickNewMCQ}>New MCQ</MenuItem>
+                <MenuItem onClick={handleClickNewTF}>New T&F</MenuItem>
+              </Menu>
+            </div>
+            <IconButton
+              size='small'
+              aria-label='edit'
+              sx={{ mr: 2, color: 'text.secondary' }}
+              onClick={handleClickEditSection}
+            >
+              <Icon icon="material-symbols:edit" />
+            </IconButton>
+            <Dialog open={EditSection} fullWidth onClose={handleCloseEditSection}>
+              <DialogContent>
+                <Grid container spacing={6}>
+                  <Grid item sm={12} xs={12}>
+                    <FormControl fullWidth>
+                      <InputLabel id='demo-simple-select-outlined-label'>Language</InputLabel>
+                      <Select
+                        value={language}
+                        defaultValue={language}
+                        onChange={e => setLanguage(e.target.value)}
+                        label='Language'
+                        id='demo-simple-select-outlined'
+                        labelId='demo-simple-select-outlined-label'
+                      >
+                        <MenuItem value={10}>English</MenuItem>
+                        <MenuItem value={20}>Hindi</MenuItem>
+                        <MenuItem value={30}>Gujarati</MenuItem>
+                        {/* <MenuItem value={30}>12th</MenuItem> */}
+                      </Select>
+                    </FormControl>
+                  </Grid>
+                  <Grid item sm={12} xs={12}>
+                    <TextField defaultValue={EditedTitle === '' ? title : EditedTitle} onChange={e => setEditedTitle(e.target.value)} autoFocus fullWidth label='Section Title' />
+                  </Grid>
+                  <Grid item sm={12} xs={12}>
+                    <SwitchesCustomized />
+                  </Grid>
+                  <Grid item sm={2} xs={3}>
+                    <Button size='large' type='submit' sx={{ mr: 0 }} variant='contained' onClick={handleSaveEditSection}>
+                      Save
+                    </Button>
+                  </Grid>
+                  <Grid item sm={2} xs={3}>
+                    <Button type='reset' size='large' color='secondary' variant='outlined' onClick={handleCloseEditSection}>
+                      Discard
+                    </Button>
+                  </Grid>
+                </Grid>
+              </DialogContent>
+            </Dialog>
+            <IconButton
+              size='small'
+              aria-label='collapse'
+              sx={{ mr: 2, color: 'text.secondary' }}
+              onClick={() => setCollapsed(!collapsed)}
+            >
+              <Icon fontSize={20} icon={!collapsed ? 'mdi:chevron-down' : 'mdi:chevron-up'} />
+            </IconButton>
+          </Box>
+        }
+      />
+      <Collapse in={collapsed}>
+        <CardContent>
+          <div>
+            {NewQAList}
+            {MCQList}
+            {TFList}
+          </div>
+        </CardContent>
+      </Collapse>
+    </Card>)
+  };
+  const onAddSectionClick = () => {
     setSectionList(sectionList.concat(<Input key={sectionList.length} />));
     setOpenDialog(false)
   };
-  const handleClickEditSection = () => setEditSection(true)
-  const handleCloseEditSection = () => setEditSection(false)
-  const [sectionList, setSectionList] = useState([<Card sx={{ position: 'relative', marginBottom: '10px', borderStyle: 'groove' }}>
-    <CardHeader
-      title='sample'
-      action={
-        <Box sx={{ display: 'flex', alignItems: 'center' }}>
-          <AddIconMenu />
-          <IconButton
-            size='small'
-            aria-label='edit'
-            sx={{ mr: 2, color: 'text.secondary' }}
-            onClick={handleClickEditSection}
-          >
-            <Icon icon="material-symbols:edit" />
-          </IconButton>
-          <Dialog open={EditSection} fullWidth onClose={handleCloseEditSection}>
+
+  return (
+    <Grid container spacing={5}>
+      <Grid item xs={12}>
+        <Fragment>
+          <Button variant='contained' onClick={handleNewSectionDialog}>
+            Add New Chapter
+          </Button>
+          <Dialog open={openDialog} fullWidth onClose={handleCloseNewSectionDialog} aria-labelledby='form-dialog-title'>
+            <DialogTitle id='form-dialog-title'>
+              New Chapter
+            </DialogTitle>
             <DialogContent>
               <Grid container spacing={6}>
                 <Grid item sm={12} xs={12}>
-                  <FormControl fullWidth>
+                  <FormControl fullWidth style={{ marginTop: '5px' }}>
                     <InputLabel id='demo-simple-select-outlined-label'>Language</InputLabel>
                     <Select
-                      value={language}
                       onChange={e => setLanguage(e.target.value)}
                       label='Language'
                       id='demo-simple-select-outlined'
@@ -179,105 +229,28 @@ const AddSection = () => {
                       <MenuItem value={10}>English</MenuItem>
                       <MenuItem value={20}>Hindi</MenuItem>
                       <MenuItem value={30}>Gujarati</MenuItem>
-                      {/* <MenuItem value={30}>12th</MenuItem> */}
                     </Select>
                   </FormControl>
                 </Grid>
                 <Grid item sm={12} xs={12}>
-                  <TextField id='name' value={title} onChange={e => setTitle(e.target.value)} autoFocus fullWidth label='Section Title' />
+                  <TextField id='name' required onChange={e => setTitle(e.target.value)} autoFocus fullWidth label='Section Title' />
                 </Grid>
                 <Grid item sm={12} xs={12}>
                   <SwitchesCustomized />
                 </Grid>
               </Grid>
             </DialogContent>
+            <DialogActions className='dialog-actions-dense'>
+              <Button onClick={onAddSectionClick} variant='contained'>Save</Button>
+              <Button color='error' variant='contained' onClick={handleCloseNewSectionDialog}>Discard</Button>
+            </DialogActions>
           </Dialog>
-          <IconButton
-            size='small'
-            aria-label='delete'
-            sx={{ mr: 2, color: 'text.secondary' }}
-          // onClick={() => setCollapsed(!collapsed)}
-          >
-            <Icon icon="material-symbols:delete-sharp" />
-          </IconButton>
-          <IconButton
-            size='small'
-            aria-label='cursor'
-            sx={{ mr: 2, color: 'text.secondary' }}
-          // onClick={() => setCollapsed(!collapsed)}
-          >
-            <Icon icon="mdi:cursor-move" />
-          </IconButton>
-          <IconButton
-            size='small'
-            aria-label='collapse'
-            sx={{ mr: 2, color: 'text.secondary' }}
-            onClick={() => setCollapsed(!collapsed)}
-          >
-            <Icon fontSize={20} icon={!collapsed ? 'mdi:chevron-down' : 'mdi:chevron-up'} />
-          </IconButton>
-        </Box>
-      }
-    />
-    <Collapse in={collapsed}>
-      <CardContent>
-        <div>
-
-        </div>
-      </CardContent>
-    </Collapse>
-  </Card>,
-  ]);
-  
-  return (
-  <Grid container spacing={5}>
-    <Grid item xs={12}>
-      <Fragment>
-        <Button variant='contained' onClick={handleNewSectionDialog}>
-          Add New Section
-        </Button>
-        <Dialog open={openDialog} fullWidth onClose={handleCloseNewSectionDialog} aria-labelledby='form-dialog-title'>
-          <DialogTitle id='form-dialog-title'>
-            New Section
-          </DialogTitle>
-          <DialogContent>
-            <Grid container spacing={6}>
-              <Grid item sm={12} xs={12}>
-                <FormControl fullWidth style={{ marginTop: '5px' }}>
-                  <InputLabel id='demo-simple-select-outlined-label'>Language</InputLabel>
-                  <Select
-                    value={language}
-                    onChange={e => setLanguage(e.target.value)}
-                    label='Language'
-                    id='demo-simple-select-outlined'
-                    labelId='demo-simple-select-outlined-label'
-                  >
-                    <MenuItem value={10}>English</MenuItem>
-                    <MenuItem value={20}>Hindi</MenuItem>
-                    <MenuItem value={30}>Gujarati</MenuItem>
-                    {/* <MenuItem value={30}>12th</MenuItem> */}
-                  </Select>
-                </FormControl>
-              </Grid>
-              <Grid item sm={12} xs={12}>
-                <TextField id='name' value={title} onChange={e => setTitle(e.target.value)} autoFocus fullWidth label='Section Title' />
-              </Grid>
-              <Grid item sm={12} xs={12}>
-                <SwitchesCustomized />
-              </Grid>
-            </Grid>
-          </DialogContent>
-          <DialogActions className='dialog-actions-dense'>
-            <Button onClick={onAddSectionClick} variant='contained'>Save</Button>
-            <Button color='error' variant='contained' onClick={handleCloseNewSectionDialog}>Discard</Button>
-          </DialogActions>
-        </Dialog>
-      </Fragment>
-    </Grid>
-    <Grid item xs={12} >
-      {sectionList}
-    </Grid>
-  </Grid>)
+        </Fragment>
+      </Grid>
+      <Grid item xs={12} >
+        {sectionList}
+      </Grid>
+    </Grid>)
 }
 
 const BasicInfo = () => {
@@ -381,40 +354,6 @@ const BasicInfo = () => {
           </Select>
         </FormControl>
       </Grid>
-      <Grid item xs={12} sm={6}>
-        <FormControl fullWidth >
-          <InputLabel id='demo-simple-select-outlined-label'>Chapter</InputLabel>
-          <Select
-            value={chapter}
-            onChange={e => setChapter(e.target.value)}
-            label='Chapter'
-            id='demo-simple-select-outlined'
-            labelId='demo-simple-select-outlined-label'
-          >
-            <MenuItem value={10}>Optics</MenuItem>
-            <MenuItem value={20}>Light</MenuItem>
-            <MenuItem value={30}>Semiconductors</MenuItem>
-            {/* <MenuItem value={30}>12th</MenuItem> */}
-          </Select>
-        </FormControl>
-      </Grid>
-      <Grid item xs={12} sm={6}>
-        <FormControl fullWidth >
-          <InputLabel id='demo-simple-select-outlined-label'>Exercise</InputLabel>
-          <Select
-            value={exercise}
-            onChange={e => setExercise(e.target.value)}
-            label='Exercise'
-            id='demo-simple-select-outlined'
-            labelId='demo-simple-select-outlined-label'
-          >
-            <MenuItem value={10}>Q.1 </MenuItem>
-            <MenuItem value={20}>Q.2 </MenuItem>
-            <MenuItem value={30}>Q.3 </MenuItem>
-            {/* <MenuItem value={30}>12th</MenuItem> */}
-          </Select>
-        </FormControl>
-      </Grid>
     </Grid>
   </Fragment>)
 }
@@ -423,18 +362,12 @@ const steps = [
   {
     title: 'Basic information',
     subtitle: 'Enter basic details of the study material',
-    component: <BasicInfo />
+    component: <Card sx={{ padding: '30px' }}><BasicInfo /></Card>
   },
   {
     title: 'Add Section',
     subtitle: 'Add Study Material',
-    // component: <AddSection />
-  },
-  {
-    title: 'Social Links',
-    subtitle: 'Add Social Links',
-    description:
-      'Jelly lollipop halvah bear claw jujubes macaroon candy canes. Soufflé halvah lollipop liquorice macaroon powder. Cookie topping pastry oat cake caramels bonbon. Sesame snaps sweet cookie macaroon soufflé pudding. Chocolate donut macaroon muffin donut biscuit marzipan halvah. Bear claw biscuit chocolate cake chupa chups oat cake bear claw cupcake tiramisu apple pie. Carrot cake bear claw marshmallow sweet pudding toffee.'
+    component: <Card sx={{ padding: '30px' }}><AddSection /></Card>
   }
 ]
 

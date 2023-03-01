@@ -64,15 +64,6 @@ const navigation = () => {
           title: 'New Course',
           path: '/apps/courses/new-course'
         },
-  
-        {
-          title: 'Syllabus',
-          path: '/apps/courses/syllabus'
-        },
-        {
-          title: 'Notes',
-          path: '/apps/courses/notes'
-        },
         {
           title: 'New',
           path: '/apps/courses/new'

@@ -61,14 +61,14 @@ const AnswerOption = () => {
   </>)
 }
 
-const DialogForm = () => {
+const AddNewMCQ = () => {
   // ** State
   const [open, setOpen] = useState(false)
   const handleClickOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
   const [language, setLanguage] = useState([])
   const [answerOptionList, setAnswerOptionList] = useState([]);
-  const onAddBtnClick = event => {
+  const onAddBtnClick = () => {
     setAnswerOptionList(answerOptionList.concat(<AnswerOption key={answerOptionList.length} />));
   }
 
@@ -148,4 +148,4 @@ const DialogForm = () => {
   )
 }
 
-export default DialogForm
+export default AddNewMCQ

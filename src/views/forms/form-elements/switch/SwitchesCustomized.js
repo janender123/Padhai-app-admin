@@ -36,6 +36,6 @@ const FormControlLabel = styled(MuiFormControlLabel)(({ theme }) => ({
     }
   }
 }))
-const SwitchesCustomized = () => <FormControlLabel  control={<Switch defaultChecked />} label='Status'/>
+const SwitchesCustomizedStatus = () => <FormControlLabel  control={<Switch defaultChecked />} label='Status'/>
 
-export default SwitchesCustomized
+export default SwitchesCustomizedStatus

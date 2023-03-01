@@ -1,9 +1,5 @@
 // ** React Imports
 import { Fragment, useState } from 'react'
-
-// ** MUI Imports
-import Button from '@mui/material/Button'
-import Dialog from '@mui/material/Dialog'
 import TextField from '@mui/material/TextField'
 import DialogTitle from '@mui/material/DialogTitle'
 import DialogContent from '@mui/material/DialogContent'
@@ -18,7 +14,7 @@ import Grid from '@mui/material/Grid'
 import Divider from '@mui/material/Divider'
 import AddNewMCQDialog from 'src/views/components/dialogs/AddNewMCQDialog'
 
-const DialogForm = () => {
+const EditQuiz = () => {
   // ** State
   const [open, setOpen] = useState(false)
   const handleClickOpen = () => setOpen(true)
@@ -79,4 +75,4 @@ const DialogForm = () => {
   )
 }
 
-export default DialogForm
+export default EditQuiz
