@@ -14,6 +14,8 @@ import EditorControlled from 'src/views/forms/form-elements/editor/new-course-fo
 import CardSnippet from 'src/@core/components/card-snippet'
 import SwitchesCustomized from 'src/views/forms/form-elements/switch/SwitchesCustomized'
 import * as source from 'src/views/forms/form-elements/editor/EditorSourceCode'
+import CardHeader from '@mui/material/CardHeader'
+import Divider from '@mui/material/Divider'
 
 const FormLayoutsBasic = () => {
   const [language, setLanguage] = useState('')
@@ -23,6 +25,8 @@ const FormLayoutsBasic = () => {
   const [passMarks, setPassMarks] = useState('')
   return (
     <form onSubmit={e => e.preventDefault()}>
+      <CardHeader title='New Quiz Form' />
+      <Divider sx={{ m: '0 !important' }} />
       <Grid container spacing={5}>
         <Grid item xs={12} >
           <FormControl fullWidth>
@@ -51,7 +55,7 @@ const FormLayoutsBasic = () => {
           <TextField id='Attempts' type='number' value={attempts} onChange={e => setAttempts(e.target.value)} autoFocus fullWidth label='Number of attempts' placeholder='leave it blank for unlimited' />
         </Grid>
         <Grid item sm={12} xs={12}>
-          <TextField id='pass' type='number' value={passMarks} onChange={e => setPassMarks(e.target.value)}  autoFocus fullWidth label='Pass mark' required />
+          <TextField id='pass' type='number' value={passMarks} onChange={e => setPassMarks(e.target.value)} autoFocus fullWidth label='Pass mark' required />
         </Grid>
         <Grid item sm={12} xs={12}>
           <SwitchesCustomized />

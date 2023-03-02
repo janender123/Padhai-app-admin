@@ -46,8 +46,6 @@ import AddNewMCQInStudyMaterial from 'src/views/components/dialogs/AddNewMCQinSt
 import AddNewTFInStudyMaterial from 'src/views/components/dialogs/AddNewTFinStudyMaterial'
 import CardActions from '@mui/material/CardActions'
 
-
-
 const AddSection = () => {
   const handleNewSectionDialog = () => setOpenDialog(true)
   const handleCloseNewSectionDialog = () => setOpenDialog(false)
@@ -70,7 +68,7 @@ const AddSection = () => {
       setEditSection(false)
     }
     const handleClickNewQA = () => {
-      if(collapsed===false)setCollapsed(!collapsed)
+      if (collapsed === false) setCollapsed(!collapsed)
       setNewQAList(NewQAList.concat(
         <Grid item xs={12} sm={12} margin={3}>
           <Accordion sx={{ borderStyle: 'groove' }}>
@@ -79,10 +77,11 @@ const AddSection = () => {
             </AccordionDetails>
           </Accordion>
         </Grid>));
+      setAnchorEl(null)
 
     };
     const handleClickNewMCQ = () => {
-      if(collapsed===false)setCollapsed(!collapsed)
+      if (collapsed === false) setCollapsed(!collapsed)
       setMCQList(MCQList.concat(
         <Grid item xs={12} sm={12} margin={3}>
           <Accordion sx={{ borderStyle: 'groove' }}>
@@ -91,9 +90,10 @@ const AddSection = () => {
             </AccordionDetails>
           </Accordion>
         </Grid>));
+      setAnchorEl(null)
     };
     const handleClickNewTF = () => {
-      if(collapsed===false)setCollapsed(!collapsed)
+      if (collapsed === false) setCollapsed(!collapsed)
       setTFList(TFList.concat(
         <Grid item xs={12} sm={12} margin={3}>
           <Accordion sx={{ borderStyle: 'groove' }}>
@@ -102,6 +102,7 @@ const AddSection = () => {
             </AccordionDetails>
           </Accordion>
         </Grid>));
+      setAnchorEl(null)
     };
     const handleCloseAddButton = () => {
       setAnchorEl(null)
@@ -346,7 +347,6 @@ const BasicInfo = () => {
             labelId='demo-simple-select-outlined-label'
             onChange={e => setBook(e.target.value)}
           >
-
             <MenuItem value={10}>RD Sharma</MenuItem>
             <MenuItem value={20}>IE Irodov</MenuItem>
             <MenuItem value={30}>HC Verma</MenuItem>

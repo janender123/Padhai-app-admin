@@ -57,6 +57,13 @@ import NewText from 'src/views/forms/form-layouts/NewTextLessonInCourseSection'
 import NewQuiz from 'src/views/forms/form-layouts/NewQuizInCourseSection'
 import NewAssignment from 'src/views/forms/form-layouts/NewAssignmentInCourseSection'
 import { LessonList } from 'src/views/forms/form-layouts/NewLessonFormInNewCourseSection'
+import Reorder, {
+  reorder,
+  reorderImmutable,
+  reorderFromTo,
+  reorderFromToImmutable
+} from 'react-reorder'
+import move from 'lodash-move'
 
 const steps = [
   {
@@ -76,6 +83,284 @@ const steps = [
     subtitle: 'Add Quiz for the course'
   }
 ]
+
+const AddSection = () => {
+  const handleNewSectionDialog = () => setOpenDialog(true)
+  const handleCloseNewSectionDialog = () => setOpenDialog(false)
+  const [openDialog, setOpenDialog] = useState(false)
+  const [sectionList, setSectionList] = useState([]);
+  const [title, setTitle] = useState('')
+  const [language, setLanguage] = useState('')
+
+  const Input = () => {
+    const [EditedTitle, setEditedTitle] = useState('')
+    const [anchorEl, setAnchorEl] = useState('')
+    const [LessonList, setLessonList] = useState([]);
+    const [TextList, setTextList] = useState([]);
+    const [QuizList, setQuizList] = useState([]);
+    const [AssignmentList, setAssignmentList] = useState([]);
+    const [collapsed, setCollapsed] = useState(false)
+    const handleCloseAddButton = () => {
+      setAnchorEl(null)
+    }
+    const handleClickMenuAddButton = event => {
+      setAnchorEl(event.currentTarget)
+    }
+    const handleClickNewLesson = () => {
+      setLessonList(LessonList.concat(
+        <Grid item xs={12} sm={12} margin={3}>
+          <Accordion sx={{ borderStyle: 'groove' }}>
+            <AccordionDetails>
+              <NewLesson key={LessonList.length} />
+            </AccordionDetails>
+          </Accordion>
+        </Grid>));
+      if (collapsed === false) setCollapsed(!collapsed)
+      setAnchorEl(null)
+    };
+    const handleClickNewText = () => {
+      setTextList(TextList.concat(
+        <Grid item xs={12} sm={12} margin={3}>
+          <Accordion sx={{ borderStyle: 'groove' }}>
+            <AccordionDetails>
+              <NewText key={TextList.length} />
+            </AccordionDetails>
+          </Accordion>
+        </Grid>));
+      if (collapsed === false) setCollapsed(!collapsed)
+      setAnchorEl(null)
+    };
+    const handleClickNewQuiz = () => {
+      setQuizList(QuizList.concat(
+        <Grid item xs={12} sm={12} margin={3}>
+          <Accordion sx={{ borderStyle: 'groove' }}>
+            <AccordionDetails>
+              <NewQuiz key={QuizList.length} />
+            </AccordionDetails>
+          </Accordion>
+        </Grid>));
+      if (collapsed === false) setCollapsed(!collapsed)
+      setAnchorEl(null)
+    };
+    const handleClickNewAssignment = () => {
+      setAssignmentList(AssignmentList.concat(
+        <Grid item xs={12} sm={12} margin={3}>
+          <Accordion sx={{ borderStyle: 'groove' }}>
+            <AccordionDetails>
+              <NewAssignment key={AssignmentList.length} />
+            </AccordionDetails>
+          </Accordion>
+        </Grid>));
+      if (collapsed === false) setCollapsed(!collapsed)
+      setAnchorEl(null)
+    };
+
+    const [EditSection, setEditSection] = useState(false);
+    const handleClickEditSection = () => setEditSection(true)
+    const handleCloseEditSection = () => setEditSection(false)
+    const handleSaveEditSection = () => {
+      setTitle(EditedTitle)
+      setEditSection(false)
+    }
+    const [visible, setVisible] = useState(true);
+    const removeSection = () => {
+      setVisible((prev) => !prev);
+    };
+
+    return (<>
+      {visible && (<Card draggable sx={{ position: 'relative', marginBottom: '10px', borderStyle: 'groove' }}>
+        <CardHeader
+          draggable
+          title={EditedTitle === '' ? title : EditedTitle}
+          action={
+            <Box sx={{ display: 'flex', alignItems: 'center' }}>
+              <div>
+                <IconButton
+                  size='small'
+                  aria-label='edit'
+                  sx={{ mr: 2, color: 'text.secondary' }}
+                  onClick={handleClickMenuAddButton}
+                >
+                  <Icon icon="material-symbols:add-circle" />
+                </IconButton>
+                <Menu keepMounted id='simple-menu' anchorEl={anchorEl} onClose={handleCloseAddButton} open={Boolean(anchorEl)}>
+                  <MenuItem onClick={handleClickNewLesson}>New Lesson</MenuItem>
+                  <MenuItem onClick={handleClickNewText}>New Text</MenuItem>
+                  <MenuItem onClick={handleClickNewQuiz}>New Quiz</MenuItem>
+                  <MenuItem onClick={handleClickNewAssignment}>New Assignment </MenuItem>
+                </Menu>
+              </div>
+              <IconButton
+                size='small'
+                aria-label='edit'
+                sx={{ mr: 2, color: 'text.secondary' }}
+                onClick={handleClickEditSection}
+              >
+                <Icon icon="material-symbols:edit" />
+              </IconButton>
+              <Dialog open={EditSection} fullWidth onClose={handleCloseEditSection}>
+                <DialogContent>
+                  <Grid container spacing={6}>
+                    <Grid item sm={12} xs={12}>
+                      <FormControl fullWidth>
+                        <InputLabel id='demo-simple-select-outlined-label'>Language</InputLabel>
+                        <Select
+                          value={language}
+                          defaultValue={language}
+                          onChange={e => setLanguage(e.target.value)}
+                          label='Language'
+                          id='demo-simple-select-outlined'
+                          labelId='demo-simple-select-outlined-label'
+                        >
+                          <MenuItem value={10}>English</MenuItem>
+                          <MenuItem value={20}>Hindi</MenuItem>
+                          <MenuItem value={30}>Gujarati</MenuItem>
+                          {/* <MenuItem value={30}>12th</MenuItem> */}
+                        </Select>
+                      </FormControl>
+                    </Grid>
+                    <Grid item sm={12} xs={12}>
+                      <TextField defaultValue={EditedTitle === '' ? title : EditedTitle} onChange={e => setEditedTitle(e.target.value)} autoFocus fullWidth label='Section Title' />
+                    </Grid>
+                    <Grid item sm={12} xs={12}>
+                      <SwitchesCustomized />
+                    </Grid>
+                    <Grid item sm={2} xs={3}>
+                      <Button size='large' type='submit' sx={{ mr: 0 }} variant='contained' onClick={handleSaveEditSection}>
+                        Save
+                      </Button>
+                    </Grid>
+                    <Grid item sm={2} xs={3}>
+                      <Button type='reset' size='large' color='secondary' variant='outlined' onClick={handleCloseEditSection}>
+                        Discard
+                      </Button>
+                    </Grid>
+                  </Grid>
+                </DialogContent>
+              </Dialog>
+              <IconButton
+                size='small'
+                aria-label='delete'
+                sx={{ mr: 2, color: 'text.secondary' }}
+                onClick={removeSection}
+              >
+                <Icon icon="material-symbols:delete-sharp" />
+              </IconButton>
+              <IconButton
+                size='small'
+                aria-label='cursor'
+                sx={{ mr: 2, color: 'text.secondary' }}
+              >
+                <Icon icon="mdi:cursor-move" />
+              </IconButton>
+              <IconButton
+                size='small'
+                aria-label='collapse'
+                sx={{ mr: 2, color: 'text.secondary' }}
+                onClick={() => setCollapsed(!collapsed)}
+              >
+                <Icon fontSize={20} icon={!collapsed ? 'mdi:chevron-down' : 'mdi:chevron-up'} />
+              </IconButton>
+            </Box>
+          }
+        />
+        <Collapse in={collapsed}>
+          <CardContent>
+            <div>
+              {LessonList}
+              {QuizList}
+              {AssignmentList}
+              {TextList}
+            </div>
+          </CardContent>
+        </Collapse>
+      </Card>)}</>)
+  };
+
+  const onReorder = (e, from, to) => {
+    setSectionList(move(sectionList, from, to));
+  };
+
+  const onAddSectionClick = () => {
+    setSectionList(sectionList.concat(<Input key={sectionList.length} />));
+    setOpenDialog(false)
+  };
+
+  return (
+    <Grid container spacing={5}>
+      <Grid item xs={12}>
+        <Fragment>
+          <Button variant='contained' onClick={handleNewSectionDialog}>
+            Add New Section
+          </Button>
+          <Dialog open={openDialog} fullWidth onClose={handleCloseNewSectionDialog} aria-labelledby='form-dialog-title'>
+            <DialogTitle id='form-dialog-title'>
+              New Section
+            </DialogTitle>
+            <DialogContent>
+              <Grid container spacing={6}>
+                <Grid item sm={12} xs={12}>
+                  <FormControl fullWidth style={{ marginTop: '5px' }}>
+                    <InputLabel id='demo-simple-select-outlined-label'>Language</InputLabel>
+                    <Select
+                      onChange={e => setLanguage(e.target.value)}
+                      label='Language'
+                      id='demo-simple-select-outlined'
+                      labelId='demo-simple-select-outlined-label'
+                    >
+                      <MenuItem value={10}>English</MenuItem>
+                      <MenuItem value={20}>Hindi</MenuItem>
+                      <MenuItem value={30}>Gujarati</MenuItem>
+                    </Select>
+                  </FormControl>
+                </Grid>
+                <Grid item sm={12} xs={12}>
+                  <TextField id='name' onChange={e => setTitle(e.target.value)} autoFocus fullWidth label='Section Title' />
+                </Grid>
+                <Grid item sm={12} xs={12}>
+                  <SwitchesCustomized />
+                </Grid>
+              </Grid>
+            </DialogContent>
+            <DialogActions className='dialog-actions-dense'>
+              <Button onClick={onAddSectionClick} variant='contained'>Save</Button>
+              <Button color='error' variant='contained' onClick={handleCloseNewSectionDialog}>Discard</Button>
+            </DialogActions>
+          </Dialog>
+        </Fragment>
+      </Grid>
+
+      <Grid item xs={12} >
+        <Reorder
+          reorderId="my-list" // Unique ID that is used internally to track this list (required)
+          reorderGroup="reorder-group" // A group ID that allows items to be dragged between lists of the same group (optional)
+          // getRef={this.storeRef.bind(this)} // Function that is passed a reference to the root node when mounted (optional)
+          component="div" // Tag name or Component to be used for the wrapping element (optional), defaults to 'div'
+          placeholderClassName="placeholder" // Class name to be applied to placeholder elements (optional), defaults to 'placeholder'
+          draggedClassName="dragged" // Class name to be applied to dragged elements (optional), defaults to 'dragged'
+          lock="horizontal" // Lock the dragging direction (optional): vertical, horizontal (do not use with groups)
+          holdTime={500} // Default hold time before dragging begins (mouse & touch) (optional), defaults to 0
+          touchHoldTime={500} // Hold time before dragging begins on touch devices (optional), defaults to holdTime
+          mouseHoldTime={200} // Hold time before dragging begins with mouse (optional), defaults to holdTime
+          onReorder={onReorder} // Callback when an item is dropped (you will need this to update your state)
+          autoScroll={true} // Enable auto-scrolling when the pointer is close to the edge of the Reorder component (optional), defaults to true
+          disabled={false} // Disable reordering (optional), defaults to false
+          disableContextMenus={true} // Disable context menus when holding on touch devices (optional), defaults to true
+          placeholder={
+            <div className="custom-placeholder" /> // Custom placeholder element (optional), defaults to clone of dragged element
+          }
+        >
+          {
+            sectionList.map((section) => (
+              <div>
+                {section}
+              </div>
+            ))
+          }
+        </Reorder>
+      </Grid>
+    </Grid >)
+}
 
 const NewCourseBundleForm = () => {
   // ** States
@@ -609,52 +894,7 @@ const NewCourseBundleForm = () => {
         return (
           <Fragment key={step}>
             <Grid item xs={12}>
-              <Fragment>
-                <Button variant='contained' onClick={handleClickOpen}>
-                  Add New Section
-                </Button>
-                <Dialog open={open} fullWidth onClose={handleClose} aria-labelledby='form-dialog-title'>
-                  <DialogTitle id='form-dialog-title'>
-                    New Section
-                  </DialogTitle>
-                  <DialogContent>
-                    <Grid container spacing={6}>
-                      <Grid item sm={12} xs={12}>
-                        <FormControl fullWidth style={{ marginTop: '5px' }}>
-                          <InputLabel id='demo-simple-select-outlined-label'>Language</InputLabel>
-                          <Select
-                            value={language}
-                            onChange={e => setLanguage(e.target.value)}
-                            label='Language'
-                            id='demo-simple-select-outlined'
-                            labelId='demo-simple-select-outlined-label'
-                          >
-                            <MenuItem value={10}>English</MenuItem>
-                            <MenuItem value={20}>Hindi</MenuItem>
-                            <MenuItem value={30}>Gujarati</MenuItem>
-                            {/* <MenuItem value={30}>12th</MenuItem> */}
-                          </Select>
-                        </FormControl>
-                      </Grid>
-                      <Grid item sm={12} xs={12}>
-                        <TextField id='name' value={title} onChange={e => setTitle(e.target.value)} autoFocus fullWidth label='Section Title' />
-                      </Grid>
-                      <Grid item sm={12} xs={12}>
-                        <SwitchesCustomized />
-                      </Grid>
-                    </Grid>
-                  </DialogContent>
-                  <DialogActions className='dialog-actions-dense'>
-                    <Button onClick={onAddSectionClick} variant='contained'>Save</Button>
-                    <Button color='error' variant='contained' onClick={handleClose}>Discard</Button>
-                  </DialogActions>
-                </Dialog>
-              </Fragment>
-            </Grid>
-            <Grid item xs={12} >
-              {sectionList}
-              {/* <CardActionAll/> */}
-              {/* {LessonList} */}
+              <AddSection />
             </Grid>
           </Fragment>
         )

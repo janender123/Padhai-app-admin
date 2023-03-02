@@ -26,39 +26,18 @@ import EditorControlled from 'src/views/forms/form-elements/editor/new-course-fo
 import CardSnippet from 'src/@core/components/card-snippet'
 import SwitchesCustomized from 'src/views/forms/form-elements/switch/SwitchesCustomized'
 import * as source from 'src/views/forms/form-elements/editor/EditorSourceCode'
-
-
+import Divider from '@mui/material/Divider'
 
 
 const NewLesson = () => {
-  const [LessonList, setLessonList] = useState([]);
   const [language, setLanguage] = useState('')
   const [Description, setDescription] = useState('')
   const [title, setTitle] = useState('')
   const [video, setVideo] = useState('')
-  const onAddBtnClick = event => {
-    setLessonList(LessonList.concat(<Input key={LessonList.length} />));
-  };
-  const Input = () => {
-    return <Grid item xs={12} sm={12} margin={3}>
-      <Accordion sx={{ borderStyle: 'groove' }}>
-        <AccordionSummary
-          id='panel-header-1'
-          aria-controls='panel-content-1'
-          expandIcon={
-            <Icon icon='mdi:chevron-down' />}
-        >
-          <Typography>{title}</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <FormLayoutsBasic />
-        </AccordionDetails>
-      </Accordion>
-    </Grid>;
-  };
   return (
-
     <form onSubmit={e => e.preventDefault()}>
+      <CardHeader title='New Lesson Form' />
+      <Divider sx={{ m: '0 !important' }} />
       <Grid container spacing={5}>
         <Grid item xs={12} >
           <FormControl fullWidth>
@@ -73,7 +52,6 @@ const NewLesson = () => {
               <MenuItem value={10}>English</MenuItem>
               <MenuItem value={20}>Hindi</MenuItem>
               <MenuItem value={30}>Gujarati</MenuItem>
-              {/* <MenuItem value={30}>12th</MenuItem> */}
             </Select>
           </FormControl>
         </Grid>
@@ -122,7 +100,7 @@ const NewLesson = () => {
               justifyContent: 'space-between'
             }}
           >
-            <Button type='submit' onClick={onAddBtnClick} variant='contained' size='large'>
+            <Button type='submit' variant='contained' size='large'>
               Save
             </Button>
           </Box>

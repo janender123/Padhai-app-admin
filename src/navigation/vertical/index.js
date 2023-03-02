@@ -52,7 +52,7 @@ const navigation = () => {
           path: '/apps/categories/language'
         }
       ]
-    },{
+    }, {
       title: 'Courses',
       icon: 'mdi:file-document-outline',
       children: [
@@ -63,13 +63,9 @@ const navigation = () => {
         {
           title: 'New Course',
           path: '/apps/courses/new-course'
-        },
-        {
-          title: 'New',
-          path: '/apps/courses/new'
         }
       ]
-    },{
+    }, {
       title: 'Live Classes',
       icon: 'mdi:file-document-outline',
       children: [
@@ -83,7 +79,7 @@ const navigation = () => {
         }
 
       ]
-    },{
+    }, {
       title: 'Course Bundle',
       icon: 'mdi:file-document-outline',
       children: [
@@ -98,16 +94,33 @@ const navigation = () => {
       ]
     },
     {
-      title: 'Quiz',
+      title: 'Quiz and Contests',
       icon: 'mdi:file-document-outline',
       children: [
         {
-          title: 'List',
-          // path: '/apps/invoice/list'
+          title: 'New Question',
+          path: '/apps/quiz-and-contests/new-question'
         },
         {
-          title: 'New',
-          // path: '/apps/invoice/preview'
+          title: 'Questions List',
+          path: '/apps/quiz-and-contests/questions-list'
+        },
+        {
+          title: 'Daily Quiz',
+          path: '/apps/quiz-and-contests/daily-quiz'
+        },
+        {
+          title: 'Contests',
+          children: [
+            {
+              title: 'Manage Contest',
+              path: '/apps/quiz-and-contests/contests/manage-contest'
+            },
+            {
+              title: 'Manage Questions',
+              path: '/apps/quiz-and-contests/contests/manage-questions'
+            }
+          ]
         }
       ]
     },

@@ -14,6 +14,8 @@ import EditorControlled from 'src/views/forms/form-elements/editor/new-course-fo
 import CardSnippet from 'src/@core/components/card-snippet'
 import SwitchesCustomized from 'src/views/forms/form-elements/switch/SwitchesCustomized'
 import * as source from 'src/views/forms/form-elements/editor/EditorSourceCode'
+import CardHeader from '@mui/material/CardHeader'
+import Divider from '@mui/material/Divider'
 
 const FormLayoutsBasic = () => {
   const [language, setLanguage] = useState('')
@@ -25,6 +27,8 @@ const FormLayoutsBasic = () => {
 
   return (
     <form onSubmit={e => e.preventDefault()}>
+      <CardHeader title='New Assigment Form' />
+      <Divider sx={{ m: '0 !important' }} />
       <Grid container spacing={5}>
         <Grid item xs={12} >
           <FormControl fullWidth>

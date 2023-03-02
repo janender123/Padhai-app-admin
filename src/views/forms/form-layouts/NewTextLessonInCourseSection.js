@@ -14,6 +14,8 @@ import EditorControlled from 'src/views/forms/form-elements/editor/new-course-fo
 import CardSnippet from 'src/@core/components/card-snippet'
 import SwitchesCustomized from 'src/views/forms/form-elements/switch/SwitchesCustomized'
 import * as source from 'src/views/forms/form-elements/editor/EditorSourceCode'
+import CardHeader from '@mui/material/CardHeader'
+import Divider from '@mui/material/Divider'
 
 const FormLayoutsBasic = () => {
   const [language, setLanguage] = useState('')
@@ -23,6 +25,8 @@ const FormLayoutsBasic = () => {
   const [Description, setDescription] = useState('')
   return (
     <form onSubmit={e => e.preventDefault()}>
+      <CardHeader title='New Text Form' />
+      <Divider sx={{ m: '0 !important' }} />
       <Grid container spacing={5}>
         <Grid item xs={12} >
           <FormControl fullWidth>
@@ -47,7 +51,7 @@ const FormLayoutsBasic = () => {
             value={title}
             label='Title'
             placeholder='Add title of the lesson'
-            onChange={e=>setTitle(e.target.value)}
+            onChange={e => setTitle(e.target.value)}
           />
         </Grid>
         <Grid item xs={12}>
@@ -57,7 +61,7 @@ const FormLayoutsBasic = () => {
             type='number'
             value={time}
             placeholder='Minimum time to read'
-            onChange={e=> setTime(e.target.value)}
+            onChange={e => setTime(e.target.value)}
           />
         </Grid>
         <Grid item xs={12}>
@@ -67,7 +71,7 @@ const FormLayoutsBasic = () => {
             type='file'
             value={attachment}
             placeholder='Choose related files as lesson attachments'
-            onChange={e=> setAttachment(e.target.value)}
+            onChange={e => setAttachment(e.target.value)}
           />
         </Grid>
         <Grid item xs={12}>
