@@ -101,7 +101,7 @@ const schema = yup.object().shape({
 
 const defaultValues = {
   password: 'admin',
-  email: 'admin@materialize.com'
+  email: 'admin@padhai.com'
 }
 
 const LoginPage = () => {
@@ -206,7 +206,7 @@ const LoginPage = () => {
                       onBlur={onBlur}
                       onChange={onChange}
                       error={Boolean(errors.email)}
-                      placeholder='admin@materialize.com'
+                      placeholder='admin@padhai.com'
                     />
                   )}
                 />

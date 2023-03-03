@@ -8,7 +8,6 @@ import DialogEditUserInfo from 'src/views/pages/dialog-examples/Add-Language-Dia
 import Icon from 'src/@core/components/icon'
 import Select from '@mui/material/Select'
 import MenuItem from '@mui/material/MenuItem'
-import AddLanguageDialog from 'src/views/pages/dialog-examples/Add-Language-Dialog'
 
 const QuickSearchToolbar = props => {
   const { value, selectedRows, handleFilter } = props
@@ -68,7 +67,7 @@ const QuickSearchToolbar = props => {
           }
         }}
       />
-      <AddLanguageDialog/>
+      {/* <DialogEditUserInfo/> */}
     </Box>
   )
 }

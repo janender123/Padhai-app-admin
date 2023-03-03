@@ -27,7 +27,6 @@ import { styled } from '@mui/material/styles'
 
 // ** Icon Imports
 
-
 // ** MUI Imports
 import List from '@mui/material/List'
 import ListItem from '@mui/material/ListItem'
@@ -39,14 +38,11 @@ import ListItemSecondaryAction from '@mui/material/ListItemSecondaryAction'
 // ** Icon Imports
 import Icon from 'src/@core/components/icon'
 
-
-
-
 const Transition = forwardRef(function Transition(props, ref) {
   return <Fade ref={ref} {...props} />
 })
 
-const DialogEditUserInfo = () => {
+const AddLanguageDialog = () => {
   // ** States
   const [show, setShow] = useState(false)
   const [languages, setLanguages] = useState([])
@@ -92,7 +88,6 @@ const DialogEditUserInfo = () => {
       <Button  variant='contained' onClick={() => setShow(true)}>
         Create a Language
       </Button>
-
       <Dialog
         fullWidth
         open={show}
@@ -145,7 +140,6 @@ const DialogEditUserInfo = () => {
               <SwitchesCustomized />
             </Grid>
 
-
           </Grid>
         </DialogContent>
         <DialogActions sx={{ pb: { xs: 8, sm: 12.5 }, justifyContent: 'center' }}>
@@ -161,4 +155,4 @@ const DialogEditUserInfo = () => {
   )
 }
 
-export default DialogEditUserInfo
+export default AddLanguageDialog

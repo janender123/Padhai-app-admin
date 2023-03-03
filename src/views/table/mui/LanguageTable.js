@@ -34,10 +34,7 @@ const renderClient = params => {
 
 const statusObj = {
   1: { title: 'Active', color: 'primary' },
-  2: { title: 'In Progress', color: 'success' },
-  3: { title: 'rejected', color: 'error' },
-  4: { title: 'resigned', color: 'warning' },
-  5: { title: 'applied', color: 'info' }
+  2: { title: 'Inactive', color: 'error' }
 }
 
 const escapeRegExp = value => {
@@ -48,7 +45,7 @@ const columns = [
   {
     flex: 0.275,
     minWidth: 290,
-    field: 'full_name',
+    field: 'language_name',
     headerName: 'Language Name',
     renderCell: params => {
       const { row } = params
@@ -57,9 +54,8 @@ const columns = [
           {renderClient(params)}
           <Box sx={{ display: 'flex', flexDirection: 'column' }}>
             <Typography noWrap variant='body2' sx={{ color: 'text.primary', fontWeight: 600 }}>
-              {row.full_name}
+              {row.language_name}
             </Typography>
-
           </Box>
         </Box>
       )
@@ -104,7 +100,7 @@ const columns = [
     renderCell: ({ row }) => (
       <Box sx={{ display: 'flex', alignItems: 'center' }}>
         <Tooltip title='Delete Invoice'>
-          <IconButton size='small' sx={{ mr: 0.5 }} onClick={() => dispatch(deleteInvoice(row.id))}>
+          <IconButton size='small' sx={{ mr: 0.5 }} onClick={() => ''}>
             <Icon icon='mdi:delete-outline' />
           </IconButton>
         </Tooltip>
@@ -129,7 +125,7 @@ const columns = [
   }
 ]
 
-const TableColumns = () => {
+const LanguageTable = () => {
   // ** States
   const [data] = useState(rows)
   const [pageSize, setPageSize] = useState(7)
@@ -180,4 +176,4 @@ const TableColumns = () => {
   )
 }
 
-export default TableColumns
+export default LanguageTable
