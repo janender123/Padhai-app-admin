@@ -361,7 +361,7 @@ const AddSection = () => {
 }
 
 const NewCourseForm = () => {
-  
+
   // ** States
 
   const [activeStep, setActiveStep] = useState(0)
@@ -414,7 +414,7 @@ const NewCourseForm = () => {
               </FormControl>
             </Grid>
             <Grid item xs={12} sm={6}>
-             
+
               <FormControl fullWidth>
                 <InputLabel id='demo-simple-select-outlined-label'>Class</InputLabel>
                 <Select
@@ -434,7 +434,7 @@ const NewCourseForm = () => {
               </FormControl>
             </Grid>
             <Grid item xs={12} sm={6}>
-    
+
               <FormControl fullWidth>
                 <InputLabel id='demo-simple-select-outlined-label'>Stream</InputLabel>
                 <Select
@@ -453,13 +453,6 @@ const NewCourseForm = () => {
               </FormControl>
             </Grid>
             <Grid item xs={12} sm={6}>
-              {/* <TextField
-                fullWidth
-                label='Instructor'
-                value={instructor}
-                placeholder='Instructor'
-                onChange={e => setInstructor(e.target.value)}
-              /> */}
               <FormControl fullWidth >
                 <InputLabel id='demo-simple-select-outlined-label'>Instructor</InputLabel>
                 <Select
@@ -478,13 +471,6 @@ const NewCourseForm = () => {
               </FormControl>
             </Grid>
             <Grid item xs={12} sm={6}>
-              {/* <TextField
-                fullWidth
-                label='Also in which category'
-                value={alsoIn}
-                placeholder='Other categories where the course is in...'
-                onChange={e => setAlsoIn(e.target.value)}
-              /> */}
               <FormControl fullWidth>
                 <InputLabel id='demo-simple-select-outlined-label'>Also in which category</InputLabel>
                 <Select
@@ -502,13 +488,6 @@ const NewCourseForm = () => {
               </FormControl>
             </Grid>
             <Grid item xs={12} sm={6}>
-              {/* <TextField
-                fullWidth
-                label='Language'
-                value={language}
-                placeholder='Language'
-                onChange={e => setLanguage(e.target.value)}
-              /> */}
               <FormControl fullWidth>
                 <InputLabel id='demo-simple-select-outlined-label'>Language</InputLabel>
                 <Select

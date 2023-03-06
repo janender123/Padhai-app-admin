@@ -24,7 +24,7 @@ const QuickSearchToolbarDestinationDailyQuiz = props => {
       }}
     >
       <div>
-        <TextField fullWidth label='Add Title for the quiz' sx={{marginTop:'12px'}}  />
+        <TextField fullWidth label='Add Title for the quiz' sx={{ marginTop: '12px' }} />
       </div>
       <div>
         Select Date
