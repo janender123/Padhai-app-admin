@@ -34,7 +34,7 @@ export const rows = [
   {
     id: 3,
     avatar: '',
-    contest_name: 'Maths Quiz',
+    contest_name: 'Mat hs Quiz',
     language_name: 'Hindi',
     board: 'UP Board',
     class: '9th',

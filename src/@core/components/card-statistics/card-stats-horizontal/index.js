@@ -33,9 +33,9 @@ const CardStatsHorizontal = props => {
             <Box sx={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center' }}>
               <Typography variant='h6'>{stats}</Typography>
               <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                <Box sx={{ display: 'inline-flex', color: trend === 'positive' ? 'success.main' : 'error.main' }}>
+                {/* <Box sx={{ display: 'inline-flex', color: trend === 'positive' ? 'success.main' : 'error.main' }}>
                   <Icon icon={trend === 'positive' ? 'mdi:chevron-up' : 'mdi:chevron-down'} />
-                </Box>
+                </Box> */}
                 <Typography variant='caption' sx={{ color: trend === 'positive' ? 'success.main' : 'error.main' }}>
                   {trendNumber}
                 </Typography>

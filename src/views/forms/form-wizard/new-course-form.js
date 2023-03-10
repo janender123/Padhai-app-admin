@@ -1,7 +1,6 @@
 // ** React Imports
 import { Fragment, useState } from 'react'
 // ** MUI Imports
-import Box from '@mui/material/Box'
 import Card from '@mui/material/Card'
 import Step from '@mui/material/Step'
 import Grid from '@mui/material/Grid'
@@ -9,7 +8,6 @@ import Button from '@mui/material/Button'
 import Stepper from '@mui/material/Stepper'
 import MenuItem from '@mui/material/MenuItem'
 import StepLabel from '@mui/material/StepLabel'
-import TextField from '@mui/material/TextField'
 import Typography from '@mui/material/Typography'
 import InputLabel from '@mui/material/InputLabel'
 import CardContent from '@mui/material/CardContent'
@@ -63,6 +61,13 @@ import Reorder, {
   reorderFromToImmutable
 } from 'react-reorder'
 import move from 'lodash-move'
+import Box from '@mui/material/Box'
+import TextField from '@mui/material/TextField'
+import Autocomplete from '@mui/material/Autocomplete'
+
+// ** Data
+import { courseTags } from 'src/@fake-db/autocomplete'
+import { EditorWrapper } from 'src/@core/styles/libs/react-draft-wysiwyg'
 
 const steps = [
   {
@@ -78,7 +83,7 @@ const steps = [
     subtitle: 'Add Chapters of the course'
   },
   {
-    title: 'Quiz and Certification',
+    title: 'Quiz ',
     subtitle: 'Add Quiz for the course'
   }
 ]
@@ -101,54 +106,87 @@ const AddSection = () => {
     const handleCloseAddButton = () => {
       setAnchorEl(null)
     }
+
+    const combinedList = [
+      ...LessonList.map((item) => ({ ...item, type: 'Lesson' })),
+      ...AssignmentList.map((item) => ({ ...item, type: 'Assignment' })),
+      ...TextList.map((item) => ({ ...item, type: 'Text' })),
+      ...QuizList.map((item) => ({ ...item, type: 'Quiz' })),
+    ];
+    const sortedList = combinedList.sort((a, b) => b.timestamp - a.timestamp);
+
     const handleClickMenuAddButton = event => {
       setAnchorEl(event.currentTarget)
     }
     const handleClickNewLesson = () => {
-      setLessonList(LessonList.concat(
-        <Grid item xs={12} sm={12} margin={3}>
-          <Accordion sx={{ borderStyle: 'groove' }}>
-            <AccordionDetails>
-              <NewLesson key={LessonList.length} />
-            </AccordionDetails>
-          </Accordion>
-        </Grid>));
+      const newLesson = {
+        type: 'Lesson',
+        component: (
+          <Grid item xs={12} sm={12} margin={3}>
+            <Accordion sx={{ borderStyle: 'groove' }}>
+              <AccordionDetails>
+                <NewLesson />
+              </AccordionDetails>
+            </Accordion>
+          </Grid>
+        ),
+        timestamp: new Date().getTime(),
+      };
+      setLessonList([newLesson, ...LessonList]);
       if (collapsed === false) setCollapsed(!collapsed)
       setAnchorEl(null)
     };
     const handleClickNewText = () => {
-      setTextList(TextList.concat(
-        <Grid item xs={12} sm={12} margin={3}>
-          <Accordion sx={{ borderStyle: 'groove' }}>
-            <AccordionDetails>
-              <NewText key={TextList.length} />
-            </AccordionDetails>
-          </Accordion>
-        </Grid>));
+      const newText = {
+        type: 'Text',
+        component: (
+          <Grid item xs={12} sm={12} margin={3}>
+            <Accordion sx={{ borderStyle: 'groove' }}>
+              <AccordionDetails>
+                <NewText />
+              </AccordionDetails>
+            </Accordion>
+          </Grid>
+        ),
+        timestamp: new Date().getTime(),
+      };
+      setTextList([newText, ...TextList]);
       if (collapsed === false) setCollapsed(!collapsed)
       setAnchorEl(null)
     };
     const handleClickNewQuiz = () => {
-      setQuizList(QuizList.concat(
-        <Grid item xs={12} sm={12} margin={3}>
-          <Accordion sx={{ borderStyle: 'groove' }}>
-            <AccordionDetails>
-              <NewQuiz key={QuizList.length} />
-            </AccordionDetails>
-          </Accordion>
-        </Grid>));
+      const newQuiz = {
+        type: 'Quiz',
+        component: (
+          <Grid item xs={12} sm={12} margin={3}>
+            <Accordion sx={{ borderStyle: 'groove' }}>
+              <AccordionDetails>
+                <NewQuiz />
+              </AccordionDetails>
+            </Accordion>
+          </Grid>
+        ),
+        timestamp: new Date().getTime(),
+      };
+      setQuizList([newQuiz, ...QuizList]);
       if (collapsed === false) setCollapsed(!collapsed)
       setAnchorEl(null)
     };
     const handleClickNewAssignment = () => {
-      setAssignmentList(AssignmentList.concat(
-        <Grid item xs={12} sm={12} margin={3}>
-          <Accordion sx={{ borderStyle: 'groove' }}>
-            <AccordionDetails>
-              <NewAssignment key={AssignmentList.length} />
-            </AccordionDetails>
-          </Accordion>
-        </Grid>));
+      const newAssignment = {
+        type: 'Quiz',
+        component: (
+          <Grid item xs={12} sm={12} margin={3}>
+            <Accordion sx={{ borderStyle: 'groove' }}>
+              <AccordionDetails>
+                <NewAssignment />
+              </AccordionDetails>
+            </Accordion>
+          </Grid>
+        ),
+        timestamp: new Date().getTime(),
+      };
+      setAssignmentList([newAssignment, ...AssignmentList]);
       if (collapsed === false) setCollapsed(!collapsed)
       setAnchorEl(null)
     };
@@ -213,7 +251,6 @@ const AddSection = () => {
                           <MenuItem value={10}>English</MenuItem>
                           <MenuItem value={20}>Hindi</MenuItem>
                           <MenuItem value={30}>Gujarati</MenuItem>
-                          {/* <MenuItem value={30}>12th</MenuItem> */}
                         </Select>
                       </FormControl>
                     </Grid>
@@ -265,10 +302,11 @@ const AddSection = () => {
         <Collapse in={collapsed}>
           <CardContent>
             <div>
-              {LessonList}
-              {QuizList}
-              {AssignmentList}
-              {TextList}
+              {sortedList.map((item) => (
+                <div>
+                { item.component }
+                </div>
+              ))}
             </div>
           </CardContent>
         </Collapse>
@@ -434,7 +472,6 @@ const NewCourseForm = () => {
               </FormControl>
             </Grid>
             <Grid item xs={12} sm={6}>
-
               <FormControl fullWidth>
                 <InputLabel id='demo-simple-select-outlined-label'>Stream</InputLabel>
                 <Select
@@ -500,7 +537,6 @@ const NewCourseForm = () => {
                   <MenuItem value={10}>English</MenuItem>
                   <MenuItem value={20}>Hindi</MenuItem>
                   <MenuItem value={30}>Gujarati</MenuItem>
-                  {/* <MenuItem value={30}>12th</MenuItem> */}
                 </Select>
               </FormControl>
             </Grid>
@@ -522,7 +558,7 @@ const NewCourseForm = () => {
                 onChange={e => setSlug(e.target.value)}
               />
             </Grid>
-            <Grid item xs={12}>
+            <EditorWrapper>
               <CardSnippet
                 sx={{ overflow: 'visible' }}
                 title='Description of the course'
@@ -533,30 +569,26 @@ const NewCourseForm = () => {
               >
                 <EditorControlled value={Description} onChange={e => setDescription(e.target.value)} />
               </CardSnippet>
-            </Grid>
+            </EditorWrapper>
           </Fragment>
         )
       case 1:
         return (
           <Fragment key={step}>
-            <Grid item xs={12} sm={12}>
-              <FormControl fullWidth>
-                <InputLabel id='demo-simple-select-outlined-label'>Course Tags</InputLabel>
-                <Select
-                  value={courseTag}
-                  label='Course Tags'
-                  defaultValue=''
-                  id='demo-simple-select-outlined'
-                  labelId='demo-simple-select-outlined-label'
-                  onChange={e => setCourseTag(e.target.value)}
-                >
-
-                  <MenuItem value={10}>Science</MenuItem>
-                  <MenuItem value={20}>Maths</MenuItem>
-                  <MenuItem value={30}>Chemistry</MenuItem>
-                  <MenuItem value={30}>Physics</MenuItem>
-                </Select>
-              </FormControl>
+            <Grid item xs={12} sm={6}>
+              <Autocomplete
+                freeSolo
+                multiple
+                id='autocomplete-multiple-filled'
+                defaultValue={[courseTags[11].title]}
+                options={courseTags.map(option => option.title)}
+                renderInput={params => <TextField {...params} label='Course Tags' placeholder='Add course tags...' />}
+                renderTags={(value, getTagProps) =>
+                  value.map((option, index) => (
+                    <Chip variant='outlined' label={option} {...getTagProps({ index })} key={index} />
+                  ))
+                }
+              />
             </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
@@ -566,15 +598,6 @@ const NewCourseForm = () => {
                 // placeholder='Duration of the course'
                 value={duration}
                 onChange={e => setDuration(e.target.value)}
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                fullWidth
-                label='Drip Content '
-                // placeholder='Duration of the course'
-                value={drip}
-                onChange={e => setDrip(e.target.value)}
               />
             </Grid>
 

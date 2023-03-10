@@ -47,11 +47,11 @@ const AnswerOption = () => {
             tsx: null,
           }}>
           <Grid item sm={12} xs={12}>
-            <TextField id='name' autoFocus required fullWidth label='Answer Title' />
+            <TextField id='name' required fullWidth label='Answer Title' />
           </Grid>
           <Grid item mt={3} sm={12} xs={12}>
             Answer Image (optional)
-            <TextField id='name' type='file' autoFocus fullWidth />
+            <TextField id='name' type='file' fullWidth />
           </Grid>
           <Grid item mt={3} sm={12} xs={12}>
             <SwitchesCustomized />
@@ -63,87 +63,127 @@ const AnswerOption = () => {
 
 const AddNewMCQ = () => {
   // ** State
-  const [open, setOpen] = useState(false)
-  const handleClickOpen = () => setOpen(true)
-  const handleClose = () => setOpen(false)
+  const [showDialog, setShowDialog] = useState(false);
   const [language, setLanguage] = useState([])
-  const [answerOptionList, setAnswerOptionList] = useState([]);
-  const onAddBtnClick = () => {
-    setAnswerOptionList(answerOptionList.concat(<AnswerOption key={answerOptionList.length} />));
+
+  const [QuestionList, setQuestionList] = useState([]);
+
+  const handleSave = () => {
+    // Handle save logic here
+    setShowDialog(false);
+  };
+
+  const handleDiscard = () => {
+    // Handle discard logic here
+    setShowDialog(false);
+  };
+  const [answerOptionList, setAnswerOptionList] = useState([
+    <Grid item sm={12} xs={12}>
+      <CardSnippet
+        title=''
+        code={{
+          tsx: null,
+        }}
+      >
+        <Grid item sm={12} xs={12}>
+          <TextField id='name' required fullWidth label='Answer Title' />
+        </Grid>
+        <Grid item mt={3} sm={12} xs={12}>
+          Answer Image (optional)
+          <TextField id='name' type='file' fullWidth />
+        </Grid>
+        <Grid item mt={3} sm={12} xs={12}>
+          <SwitchesCustomized />
+        </Grid>
+      </CardSnippet>
+    </Grid>,
+    <Grid item sm={12} xs={12}>
+      <CardSnippet
+        title=''
+        code={{
+          tsx: null,
+        }}
+      >
+        <Grid item sm={12} xs={12}>
+          <TextField id='name' required fullWidth label='Answer Title' />
+        </Grid>
+        <Grid item mt={3} sm={12} xs={12}>
+          Answer Image (optional)
+          <TextField id='name' type='file' fullWidth />
+        </Grid>
+        <Grid item mt={3} sm={12} xs={12}>
+          <SwitchesCustomized />
+        </Grid>
+      </CardSnippet>
+    </Grid>
+  ]);
+  const onAddQuestion = () => {
+    const onAddBtnClick = () => {
+      setAnswerOptionList(prevAnswerOptionList => [
+        ...prevAnswerOptionList,
+        <AnswerOption key={prevAnswerOptionList.length} />
+      ]);
+    }
+
+    setQuestionList(QuestionList.concat(
+      <div key={`question-${QuestionList.length}`} style={{ marginTop: '10px' }}>
+        <Grid container spacing={6}>
+          <Grid item sm={12} xs={12} mt={3}>
+            <FormControl fullWidth>
+              <InputLabel id='demo-simple-select-outlined-label'>Language</InputLabel>
+              <Select
+                value={language}
+                onChange={(e) => setLanguage(e.target.value)}
+                label='Language'
+                id='demo-simple-select-outlined'
+                labelId='demo-simple-select-outlined-label'
+              >
+                <MenuItem value={10}>English</MenuItem>
+                <MenuItem value={20}>Hindi</MenuItem>
+                <MenuItem value={30}>Gujarati</MenuItem>
+              </Select>
+            </FormControl>
+          </Grid>
+          <Grid item sm={6} xs={6}>
+            <TextField id='name' fullWidth label='Question Title' required />
+          </Grid>
+          <Grid item sm={6} xs={6}>
+            <TextField id='name' fullWidth label='Grade' required />
+          </Grid>
+          <Grid item sm={12} xs={12}>
+            Image (Optional)
+            <TextField type='file' id='image' fullWidth />
+          </Grid>
+          <Grid item sm={12} xs={12}>
+            <Divider textAlign='left'>Answers</Divider>
+          </Grid>
+          <Grid item sm={12} xs={12}>
+            <Button variant='contained' onClick={onAddBtnClick}>
+              Add Answer
+            </Button>
+          </Grid>
+          {answerOptionList}
+        </Grid>
+        <div className='dialog-actions-dense'>
+          <Button onClick={handleSave} variant='contained' sx={{ margin: '10px' }}>
+            Save
+          </Button>
+          <Button color='error' variant='contained' onClick={handleDiscard} sx={{ margin: '10px' }}>
+            Discard
+          </Button>
+        </div>
+      </div>
+    ))
   }
 
   return (
     <Fragment>
-      <Button variant='contained' onClick={handleClickOpen}>
+      <Button variant='contained' onClick={onAddQuestion} >
         Add New Question
       </Button>
-      <Dialog open={open} fullWidth onClose={handleClose} aria-labelledby='form-dialog-title'>
-        <DialogTitle id='form-dialog-title'>New Quiz</DialogTitle>
-        <DialogContent>
-          <Grid container spacing={6}>
-            <Grid item sm={12} xs={12} mt={3}>
-              <FormControl fullWidth>
-                <InputLabel id='demo-simple-select-outlined-label'>Language</InputLabel>
-                <Select
-                  value={language}
-                  onChange={e => setLanguage(e.target.value)}
-                  label='Language'
-                  id='demo-simple-select-outlined'
-                  labelId='demo-simple-select-outlined-label'
-                >
-                  <MenuItem value={10}>English</MenuItem>
-                  <MenuItem value={20}>Hindi</MenuItem>
-                  <MenuItem value={30}>Gujarati</MenuItem>
-                  {/* <MenuItem value={30}>12th</MenuItem> */}
-                </Select>
-              </FormControl>
-            </Grid>
-            <Grid item sm={6} xs={6}>
-              <TextField id='name' autoFocus fullWidth label='Question Title' required />
-            </Grid>
-            <Grid item sm={6} xs={6}>
-              <TextField id='name' autoFocus fullWidth label='Grade' required />
-            </Grid>
-            <Grid item sm={12} xs={12}>
-              Image (Optional)
-              <TextField type='file' id='image' autoFocus fullWidth />
-            </Grid>
-            <Grid item sm={12} xs={12}>
-              <Divider textAlign='left'>
-                Answers
-              </Divider>
-            </Grid>
-            <Grid item sm={12} xs={12}>
-              <Button variant='contained' onClick={onAddBtnClick}>
-                Add Answer
-              </Button>
-            </Grid>
-            <Grid item sm={12} xs={12}>
-              <CardSnippet
-                title=''
-                code={{
-                  tsx: null,
-                }}>
-                <Grid item sm={12} xs={12}>
-                  <TextField id='name' autoFocus required fullWidth label='Answer Title' />
-                </Grid>
-                <Grid item mt={3} sm={12} xs={12}>
-                  Answer Image (optional)
-                  <TextField id='name' type='file' autoFocus fullWidth />
-                </Grid>
-                <Grid item mt={3} sm={12} xs={12}>
-                  <SwitchesCustomized />
-                </Grid>
-              </CardSnippet>
-            </Grid>
-            {answerOptionList}
-          </Grid>
-        </DialogContent>
-        <DialogActions className='dialog-actions-dense'>
-          <Button onClick={handleClose} variant='contained'>Save</Button>
-          <Button color='error' variant='contained' onClick={handleClose}>Discard</Button>
-        </DialogActions>
-      </Dialog>
+      <div>
+        {QuestionList}
+      </div>
     </Fragment>
   )
 }

@@ -64,13 +64,6 @@ const EditQuiz = () => {
         <AddNewMCQDialog />
       </Grid>
 
-
-      {/* 
-      <DialogActions className='dialog-actions-dense'>
-        <Button onClick={handleClose} variant='contained'>Save</Button>
-        <Button color='error' variant='contained' onClick={handleClose}>Discard</Button>
-      </DialogActions> */}
-
     </Fragment>
   )
 }

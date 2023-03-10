@@ -356,5 +356,20 @@ export const countries = [
   { code: 'ZW', label: 'Zimbabwe', phone: '263' }
 ]
 
+export const courseTags = [
+  {title: 'light'},
+  {title: 'semiconductors'},
+  {title: 'chemistry'},
+  {title: 'physics'},
+  {title: 'biology'},
+  {title: 'maths'},
+  {title: 'trigonometry'},
+  {title: 'probability'},
+  {title: 'geometry'},
+  {title: 'sst'},
+  {title: 'politics'},
+  {title: 'optics'}
+]
+
 // ** Get Data
 mock.onGet('/forms/autocomplete').reply(() => [200, top100Films])

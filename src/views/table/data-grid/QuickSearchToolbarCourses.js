@@ -9,14 +9,14 @@ import Icon from 'src/@core/components/icon'
 import Select from '@mui/material/Select'
 import MenuItem from '@mui/material/MenuItem'
 
-const QuickSearchToolbar = props => {
+const QuickSearchToolbarCourses = props => {
   const { value, selectedRows, handleFilter } = props
   return (
     
     <Box
       sx={{
         gap: 2,
-        display: 'flex',
+        // display: 'flex',
         flexWrap: 'wrap',
         alignItems: 'center',
         justifyContent: 'space-between',
@@ -35,13 +35,14 @@ const QuickSearchToolbar = props => {
         <MenuItem value='Delete'>Delete</MenuItem>
         <MenuItem value='Edit'>Edit</MenuItem>
       </Select>
-      {/* <GridToolbarFilterButton /> */}
+      <GridToolbarFilterButton placement='top-start' sx={{float:'right', mt:'3px'}}/>
 
       <TextField
         size='small'
         value={props.value}
         onChange={props.onChange}
         placeholder='Search…'
+        
         InputProps={{
           startAdornment: (
             <Box sx={{ mr: 2, display: 'flex' }}>
@@ -55,8 +56,9 @@ const QuickSearchToolbar = props => {
           )
         }}   
         sx={{
+          float:'right' ,
           // display: 'flex',flexWrap: 'wrap', alignItems: 'center',
-          mr:0,
+          mr:5,
           width: {
             xs: 1,
             sm: 'auto'
@@ -71,4 +73,4 @@ const QuickSearchToolbar = props => {
   )
 }
 
-export default QuickSearchToolbar
+export default QuickSearchToolbarCourses

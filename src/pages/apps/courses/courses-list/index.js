@@ -45,6 +45,8 @@ import TableHeader from 'src/views/apps/invoice/list/TableHeader'
 import DatePickerWrapper from 'src/@core/styles/libs/react-datepicker'
 
 import CardStatisticsHorizontal from 'src/@core/components/card-statistics/card-stats-horizontal'
+import CoursesTABLE from 'src/views/table/mui/CoursesTABLE'
+import CoursesTable from 'src/views/table/mui/CoursesTABLE'
 
 // ** Styled component for the link in the dataTable
 const StyledLink = styled(Link)(({ theme }) => ({
@@ -90,7 +92,7 @@ const CustomInput = forwardRef((props, ref) => {
 })
 
 /* eslint-enable */
-const InvoiceList = () => {
+const CoursesList = () => {
   // ** State
   const [dates, setDates] = useState([])
   const [value, setValue] = useState('')
@@ -179,16 +181,29 @@ const InvoiceList = () => {
       <Grid container spacing={6}>
         <Grid item xs={6}>
           <CardStatisticsHorizontal
-            stats='No. of courses'
+            stats='Total courses'
             title='8'
-            icon={<Icon icon='mdi:account-outline' />}
-
+            icon={<Icon icon="material-symbols:video-camera-front" />}
+          />
+        </Grid>
+        <Grid item xs={6}>
+          <CardStatisticsHorizontal
+            stats='Pending courses'
+            title='0'
+            icon={<Icon icon='ph:eye-bold' />}
+          />
+        </Grid>
+        <Grid item xs={6}>
+          <CardStatisticsHorizontal
+            stats='Total duration'
+            title='12:55 hours'
+            icon={<Icon icon="ic:sharp-access-time" />}
           />
         </Grid>
         <Grid item xs={12}>
           <Card>
             <CardHeader title='List of Courses approved' />
-            <TableBoards />
+            <CoursesTable />
           </Card>
         </Grid>
       </Grid>
@@ -196,4 +211,4 @@ const InvoiceList = () => {
   )
 }
 
-export default InvoiceList
+export default CoursesList

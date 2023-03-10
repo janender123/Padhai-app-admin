@@ -15,13 +15,15 @@ import Select from '@mui/material/Select'
 import MenuItem from '@mui/material/MenuItem'
 import SwitchesCustomized from 'src/views/forms/form-elements/switch/SwitchesCustomized'
 import Grid from '@mui/material/Grid'
+import Divider from '@mui/material/Divider'
+import AddNewMCQDialog from 'src/views/components/dialogs/AddNewMCQDialog'
 
 const DialogForm = () => {
   // ** State
   const [open, setOpen] = useState(false)
   const handleClickOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
-  const [language, setLanguage] = useState([])
+  const [language, setLanguage] = useState('')
 
   return (
     <Fragment>
@@ -32,7 +34,7 @@ const DialogForm = () => {
         <DialogTitle id='form-dialog-title'>New Quiz</DialogTitle>
         <DialogContent>
           <Grid container spacing={6}>
-            <Grid item sm={12} xs={12}>
+            <Grid item sm={12} xs={12} mt={3}>
               <FormControl fullWidth>
                 <InputLabel id='demo-simple-select-outlined-label'>Language</InputLabel>
                 <Select
@@ -50,7 +52,7 @@ const DialogForm = () => {
               </FormControl>
             </Grid>
             <Grid item sm={12} xs={12}>
-              <TextField id='name' autoFocus fullWidth label='Quiz Title' required/>
+              <TextField id='name' autoFocus fullWidth label='Quiz Title' required />
             </Grid>
             <Grid item sm={12} xs={12}>
               <TextField type='number' id='time' autoFocus fullWidth label='Time (in minutes)' placeholder='leave it blank for unlimited' />
@@ -64,7 +66,15 @@ const DialogForm = () => {
             <Grid item sm={12} xs={12}>
               <SwitchesCustomized />
             </Grid>
+           
           </Grid>
+          <Divider textAlign='left'>
+              Questions
+            </Divider>
+            <Grid item sm={12} xs={12}>
+              <AddNewMCQDialog />
+            </Grid>
+
         </DialogContent>
         <DialogActions className='dialog-actions-dense'>
           <Button onClick={handleClose} variant='contained'>Save</Button>

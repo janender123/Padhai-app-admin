@@ -33,11 +33,9 @@ const renderClient = params => {
 }
 
 const statusObj = {
-  1: { title: 'Active', color: 'primary' },
+  1: { title: 'Published', color: 'primary' },
   2: { title: 'In Progress', color: 'success' },
-  3: { title: 'rejected', color: 'error' },
-  4: { title: 'resigned', color: 'warning' },
-  5: { title: 'applied', color: 'info' }
+  3: { title: 'Rejected', color: 'error' }
 }
 
 const escapeRegExp = value => {
@@ -47,28 +45,51 @@ const escapeRegExp = value => {
 const columns = [
   {
     flex: 0.275,
-    minWidth: 290,
+    minWidth: 100,
+    field: 'id',
+    headerName: 'Course ID',
+    renderCell: params => {
+      const { row } = params
+      return (
+        <Typography noWrap variant='body2' sx={{ color: 'text.primary', fontWeight: 600 }}>
+          {row.id}
+        </Typography>
+      )
+    }
+  },
+  {
+    flex: 0.275,
+    minWidth: 150,
     field: 'full_name',
     headerName: 'Course Name',
     renderCell: params => {
       const { row } = params
 
       return (
-        <Box sx={{ display: 'flex', alignItems: 'center' }}>
-          {renderClient(params)}
-          <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-            <Typography noWrap variant='body2' sx={{ color: 'text.primary', fontWeight: 600 }}>
-              {row.full_name}
-            </Typography>
-          </Box>
-        </Box>
+        <Typography noWrap variant='body2' sx={{ color: 'text.primary', fontWeight: 600 }}>
+          {row.full_name}
+        </Typography>
+      )
+    }
+  },
+  {
+    flex: 0.275,
+    minWidth: 200,
+    field: 'instructor',
+    headerName: 'Instructor',
+    renderCell: params => {
+      const { row } = params
+      return (
+        <Typography noWrap variant='body2' sx={{ color: 'text.primary', fontWeight: 600 }}>
+          {row.instructor}
+        </Typography>
       )
     }
   },
   {
     flex: 0.125,
     field: 'class',
-    minWidth: 80,
+    minWidth: 120,
     headerName: 'Class',
     renderCell: params => (
       <Typography variant='body2' sx={{ color: 'text.primary' }}>
@@ -79,7 +100,7 @@ const columns = [
   {
     flex: 0.125,
     field: 'board',
-    minWidth: 80,
+    minWidth: 120,
     headerName: 'board',
     renderCell: params => (
       <Typography variant='body2' sx={{ color: 'text.primary' }}>
@@ -88,21 +109,31 @@ const columns = [
     )
   },
   {
+    flex: 0.275,
+    minWidth: 150,
+    field: 'created_date',
+    headerName: 'created date',
+    renderCell: params => {
+      const { row } = params
+      return (
+        <Typography noWrap variant='body2' sx={{ color: 'text.primary', fontWeight: 600 }}>
+          {row.created_date}
+        </Typography>
+      )
+    }
+  },
+  {
     flex: 0.175,
     minWidth: 140,
     field: 'status',
     headerName: 'Status',
     renderCell: params => {
-      const status = statusObj[params.row.status]
+      const { row } = params
 
       return (
-        <CustomChip
-          size='small'
-          skin='light'
-          color={status.color}
-          label={status.title}
-          sx={{ '& .MuiChip-label': { textTransform: 'capitalize' } }}
-        />
+        <Typography noWrap variant='body2' color={row.status_color} sx={{ fontWeight: 600 }}>
+          {row.status}
+        </Typography>
       )
     }
   },
@@ -140,7 +171,7 @@ const columns = [
   }
 ]
 
-const TableColumns = () => {
+const CoursesTable = () => {
   // ** States
   const [data] = useState(rows)
   const [pageSize, setPageSize] = useState(7)
@@ -191,4 +222,4 @@ const TableColumns = () => {
   )
 }
 
-export default TableColumns
+export default CoursesTable
