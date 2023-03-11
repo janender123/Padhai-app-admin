@@ -3,30 +3,41 @@ import { useState } from 'react'
 
 // ** MUI Imports
 import Box from '@mui/material/Box'
+import Card from '@mui/material/Card'
 import Grid from '@mui/material/Grid'
+import Link from '@mui/material/Link'
 import Button from '@mui/material/Button'
 import TextField from '@mui/material/TextField'
+import CardHeader from '@mui/material/CardHeader'
 import InputLabel from '@mui/material/InputLabel'
+import IconButton from '@mui/material/IconButton'
+import Typography from '@mui/material/Typography'
+import CardContent from '@mui/material/CardContent'
 import FormControl from '@mui/material/FormControl'
+import OutlinedInput from '@mui/material/OutlinedInput'
+import InputAdornment from '@mui/material/InputAdornment'
+import FormHelperText from '@mui/material/FormHelperText'
+
+// ** Icon Imports
+import Icon from 'src/@core/components/icon'
 import Select from '@mui/material/Select'
 import MenuItem from '@mui/material/MenuItem'
 import EditorControlled from 'src/views/forms/form-elements/editor/new-course-form-description-editor'
 import CardSnippet from 'src/@core/components/card-snippet'
 import SwitchesCustomized from 'src/views/forms/form-elements/switch/SwitchesCustomized'
 import * as source from 'src/views/forms/form-elements/editor/EditorSourceCode'
-import CardHeader from '@mui/material/CardHeader'
 import Divider from '@mui/material/Divider'
 import { EditorWrapper } from 'src/@core/styles/libs/react-draft-wysiwyg'
 
-const NewTextLessonInCourseSection = () => {
+
+const NewLessonFormInLiveClass = () => {
   const [language, setLanguage] = useState('')
-  const [title, setTitle] = useState('')
-  const [time, setTime] = useState('')
-  const [attachment, setAttachment] = useState('')
   const [Description, setDescription] = useState('')
+  const [title, setTitle] = useState('')
+  const [dateandtime, setdateandtime] = useState('')
   return (
     <form onSubmit={e => e.preventDefault()}>
-      <CardHeader title='New Text Form' />
+      <CardHeader title='New Lesson Form' />
       <Divider sx={{ m: '0 !important' }} />
       <Grid container spacing={5}>
         <Grid item xs={12} >
@@ -42,7 +53,6 @@ const NewTextLessonInCourseSection = () => {
               <MenuItem value={10}>English</MenuItem>
               <MenuItem value={20}>Hindi</MenuItem>
               <MenuItem value={30}>Gujarati</MenuItem>
-              {/* <MenuItem value={30}>12th</MenuItem> */}
             </Select>
           </FormControl>
         </Grid>
@@ -56,30 +66,20 @@ const NewTextLessonInCourseSection = () => {
           />
         </Grid>
         <Grid item xs={12}>
-          Study Time (Min)
+          Start Date and time of the lesson
           <TextField
             fullWidth
-            type='number'
-            value={time}
-            placeholder='Minimum time to read'
-            onChange={e => setTime(e.target.value)}
-          />
-        </Grid>
-        <Grid item xs={12}>
-          Attachments
-          <TextField
-            fullWidth
-            type='file'
-            value={attachment}
-            placeholder='Choose related files as lesson attachments'
-            onChange={e => setAttachment(e.target.value)}
+            type='datetime-local'
+            value={dateandtime}
+            placeholder='Add title of the lesson'
+            onChange={e => setdateandtime(e.target.value)}
           />
         </Grid>
         <Grid item xs={12}>
           <EditorWrapper>
             <CardSnippet
               sx={{ overflow: 'visible' }}
-              title='Description of the Text Lesson'
+              title='Description of the Lesson'
               code={{
                 tsx: null,
                 jsx: source.EditorControlledJSXCode
@@ -108,13 +108,25 @@ const NewTextLessonInCourseSection = () => {
           </Box>
         </Grid>
         <Grid item xs={2}>
-          <Button color='error' variant='contained' size='large'>
-            Discard
-          </Button>
+          <Box
+            sx={{
+              gap: 5,
+              display: 'flex',
+              flexWrap: 'wrap',
+              alignItems: 'center',
+              justifyContent: 'space-between'
+            }}
+          >
+            <Button color='error' variant='contained' size='large'>
+              Discard
+            </Button>
+          </Box>
         </Grid>
       </Grid>
     </form>
   )
+
 }
 
-export default NewTextLessonInCourseSection
+
+export default NewLessonFormInLiveClass;

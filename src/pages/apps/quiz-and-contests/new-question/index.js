@@ -32,6 +32,7 @@ import SwitchesCustomizedStatus from 'src/views/forms/form-elements/switch/Switc
 import SwitchesCustomized from 'src/views/forms/form-elements/switch/CorrectAnswer'
 import EditorControlled from 'src/views/forms/form-elements/editor/new-course-form-description-editor'
 import * as source from 'src/views/forms/form-elements/editor/EditorSourceCode'
+import { EditorWrapper } from 'src/@core/styles/libs/react-draft-wysiwyg'
 
 const AnswerOption = () => {
   const [visible, setVisible] = useState(true);
@@ -214,16 +215,18 @@ const AddNewQuestionInStudyMaterial = () => {
                 </Divider>
               </Grid>
               <Grid item sm={12} xs={12}>
-                <CardSnippet
-                  sx={{ overflow: 'visible' }}
-                  title='Solution '
-                  code={{
-                    tsx: null,
-                    jsx: source.EditorControlledJSXCode
-                  }}
-                >
-                  <EditorControlled value={Description} onChange={e => setDescription(e.target.value)} />
-                </CardSnippet>
+                <EditorWrapper>
+                  <CardSnippet
+                    sx={{ overflow: 'visible' }}
+                    title='Solution '
+                    code={{
+                      tsx: null,
+                      jsx: source.EditorControlledJSXCode
+                    }}
+                  >
+                    <EditorControlled value={Description} onChange={e => setDescription(e.target.value)} />
+                  </CardSnippet>
+                </EditorWrapper>
               </Grid>
               <CardActions>
                 <Button size='large' type='submit' sx={{ mr: 2 }} variant='contained'>

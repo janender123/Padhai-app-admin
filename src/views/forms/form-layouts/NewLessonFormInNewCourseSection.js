@@ -27,6 +27,7 @@ import CardSnippet from 'src/@core/components/card-snippet'
 import SwitchesCustomized from 'src/views/forms/form-elements/switch/SwitchesCustomized'
 import * as source from 'src/views/forms/form-elements/editor/EditorSourceCode'
 import Divider from '@mui/material/Divider'
+import { EditorWrapper } from 'src/@core/styles/libs/react-draft-wysiwyg'
 
 
 const NewLesson = () => {
@@ -75,17 +76,18 @@ const NewLesson = () => {
           />
         </Grid>
         <Grid item xs={12}>
-          <CardSnippet
-            sx={{ overflow: 'visible' }}
-            title='Description of the Lesson'
-            code={{
-              tsx: null,
-              jsx: source.EditorControlledJSXCode
-            }}
-          >
-            <EditorControlled value={Description} onChange={e => setDescription(e.target.value)} />
-          </CardSnippet>
-
+          <EditorWrapper>
+            <CardSnippet
+              sx={{ overflow: 'visible' }}
+              title='Description of the Lesson'
+              code={{
+                tsx: null,
+                jsx: source.EditorControlledJSXCode
+              }}
+            >
+              <EditorControlled value={Description} onChange={e => setDescription(e.target.value)} />
+            </CardSnippet>
+          </EditorWrapper>
         </Grid>
         <Grid item sm={12} xs={12}>
           <SwitchesCustomized />

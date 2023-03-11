@@ -19,7 +19,7 @@ import Divider from '@mui/material/Divider'
 import AddNewMCQ from 'src/views/components/dialogs/AddNewMCQDialog'
 import { Typography } from '@mui/material'
 
-const NewQuizInCourseSection = () => {
+const NewQuizInLiveClasses = () => {
   const [language, setLanguage] = useState('')
   const [title, setTitle] = useState('')
   const [time, setTime] = useState('')
@@ -27,7 +27,7 @@ const NewQuizInCourseSection = () => {
   const [passMarks, setPassMarks] = useState('')
   return (
     <form >
-       <CardHeader title='New Quiz Form' />
+      <CardHeader title='New Quiz Form' />
       <Grid container spacing={6} >
         <Grid item sm={12} xs={12} mt={3}>
           <FormControl fullWidth>
@@ -70,11 +70,11 @@ const NewQuizInCourseSection = () => {
 
       <div className='dialog-actions-dense'>
         <Button type='submit' variant='contained' sx={{ margin: '10px' }}>Save</Button>
-        <Button color='error' variant='contained'sx={{ margin: '10px' }}>Discard</Button>
+        <Button color='error' variant='contained' sx={{ margin: '10px' }}>Discard</Button>
       </div>
     </form>
 
   )
 }
 
-export default NewQuizInCourseSection
+export default NewQuizInLiveClasses

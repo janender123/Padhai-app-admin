@@ -16,6 +16,7 @@ import SwitchesCustomized from 'src/views/forms/form-elements/switch/SwitchesCus
 import * as source from 'src/views/forms/form-elements/editor/EditorSourceCode'
 import CardHeader from '@mui/material/CardHeader'
 import Divider from '@mui/material/Divider'
+import { EditorWrapper } from 'src/@core/styles/libs/react-draft-wysiwyg'
 
 const FormLayoutsBasic = () => {
   const [language, setLanguage] = useState('')
@@ -50,7 +51,7 @@ const FormLayoutsBasic = () => {
         <Grid item sm={12} xs={12}>
           <TextField id='name' autoFocus value={title} onChange={e => setTitle(e.target.value)} fullWidth label='Assignment Title' required />
         </Grid>
-        <Grid item xs={12}>
+        <EditorWrapper>
           <CardSnippet
             sx={{ overflow: 'visible' }}
             title='Description of the Assignment'
@@ -61,16 +62,16 @@ const FormLayoutsBasic = () => {
           >
             <EditorControlled value={Description} onChange={e => setDescription(e.target.value)} />
           </CardSnippet>
+        </EditorWrapper>
+        <Grid item sm={12} xs={12}>
+          <TextField id='grade' type='number' value={grade} onChange={e => setGrade(e.target.value)} autoFocus fullWidth label='Grade' />
         </Grid>
         <Grid item sm={12} xs={12}>
-          <TextField id='grade' type='number' value={grade} onChange={e => setGrade(e.target.value)} autoFocus fullWidth label='Grade'  />
-        </Grid>
-        <Grid item sm={12} xs={12}>
-          <TextField id='pass' type='number' value={passMarks} onChange={e => setPassMarks(e.target.value)}  autoFocus fullWidth label='Pass Grade' required />
+          <TextField id='pass' type='number' value={passMarks} onChange={e => setPassMarks(e.target.value)} autoFocus fullWidth label='Pass Grade' required />
         </Grid>
         <Grid item sm={12} xs={12}>
           Deadline
-          <TextField id='deadline' type='date' value={deadline} onChange={e => setDeadline(e.target.value)}  autoFocus fullWidth   />
+          <TextField id='deadline' type='date' value={deadline} onChange={e => setDeadline(e.target.value)} autoFocus fullWidth />
         </Grid>
         <Grid item sm={12} xs={12}>
           <SwitchesCustomized />

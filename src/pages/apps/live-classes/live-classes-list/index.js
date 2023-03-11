@@ -49,65 +49,34 @@ import LiveClassesTable from 'src/views/table/mui/LiveClassesTable'
 
 /* eslint-enable */
 const LiveClassesList = () => {
- 
-  const columns = [
-    {
-      flex: 0.1,
-      minWidth: 130,
-      sortable: false,
-      field: 'actions',
-      headerName: 'Actions',
-      renderCell: ({ row }) => (
-        <Box sx={{ display: 'flex', alignItems: 'center' }}>
-          <Tooltip title='Delete Invoice'>
-            <IconButton size='small' sx={{ mr: 0.5 }} onClick={() => dispatch(deleteInvoice(row.id))}>
-              <Icon icon='mdi:delete-outline' />
-            </IconButton>
-          </Tooltip>
-          <Tooltip title='View'>
-            <IconButton size='small' component={Link} sx={{ mr: 0.5 }} href={`/apps/invoice/preview/${row.id}`}>
-              <Icon icon='mdi:eye-outline' />
-            </IconButton>
-          </Tooltip>
-          <OptionsMenu
-            iconProps={{ fontSize: 20 }}
-            iconButtonProps={{ size: 'small' }}
-            menuProps={{ sx: { '& .MuiMenuItem-root svg': { mr: 2 } } }}
-            options={[
-              {
-                text: 'Download',
-                icon: <Icon icon='mdi:download' fontSize={20} />
-              },
-              {
-                text: 'Edit',
-                href: `/apps/invoice/edit/${row.id}`,
-                icon: <Icon icon='mdi:pencil-outline' fontSize={20} />
-              },
-              {
-                text: 'Duplicate',
-                icon: <Icon icon='mdi:content-copy' fontSize={20} />
-              }
-            ]}
-          />
-        </Box>
-      )
-    }
-  ]
-
   return (
     <DatePickerWrapper>
       <Grid container spacing={6}>
         <Grid item xs={6}>
           <CardStatisticsHorizontal
-            stats='No. of Live Classes'
+            stats='Total Live Classes'
             title='8'
-            icon={<Icon icon='mdi:account-outline' />}
+            icon={<Icon icon="material-symbols:video-camera-front" />}
+          />
+        </Grid>
+        <Grid item xs={6}>
+          <CardStatisticsHorizontal
+            stats='Pending live classes'
+            title='0'
+            icon={<Icon icon='ph:eye-bold' />}
+          />
+        </Grid>
+        <Grid item xs={6}>
+          <CardStatisticsHorizontal
+            stats='Inprogress live classes'
+            title='3'
+            icon={<Icon icon="ic:sharp-access-time" />}
           />
         </Grid>
         <Grid item xs={12}>
           <Card>
             <CardHeader title='List of Live Classes approved' />
-            <LiveClassesTable/>
+            <LiveClassesTable />
           </Card>
         </Grid>
       </Grid>

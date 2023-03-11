@@ -61,22 +61,9 @@ const AnswerOption = () => {
   </>)
 }
 
-const AddNewMCQ = () => {
-  // ** State
+const Question = () => {
   const [showDialog, setShowDialog] = useState(false);
-  const [language, setLanguage] = useState([])
-
-  const [QuestionList, setQuestionList] = useState([]);
-
-  const handleSave = () => {
-    // Handle save logic here
-    setShowDialog(false);
-  };
-
-  const handleDiscard = () => {
-    // Handle discard logic here
-    setShowDialog(false);
-  };
+  const [language, setLanguage] = useState('')
   const [answerOptionList, setAnswerOptionList] = useState([
     <Grid item sm={12} xs={12}>
       <CardSnippet
@@ -117,64 +104,86 @@ const AddNewMCQ = () => {
       </CardSnippet>
     </Grid>
   ]);
-  const onAddQuestion = () => {
-    const onAddBtnClick = () => {
-      setAnswerOptionList(prevAnswerOptionList => [
-        ...prevAnswerOptionList,
-        <AnswerOption key={prevAnswerOptionList.length} />
-      ]);
-    }
+  const handleSave = () => {
+    // Handle save logic here
+    setShowDialog(false);
+  };
+  const handleDiscard = () => {
+    // Handle discard logic here
+    setShowDialog(false);
+  };
 
-    setQuestionList(QuestionList.concat(
-      <div key={`question-${QuestionList.length}`} style={{ marginTop: '10px' }}>
-        <Grid container spacing={6}>
-          <Grid item sm={12} xs={12} mt={3}>
-            <FormControl fullWidth>
-              <InputLabel id='demo-simple-select-outlined-label'>Language</InputLabel>
-              <Select
-                value={language}
-                onChange={(e) => setLanguage(e.target.value)}
-                label='Language'
-                id='demo-simple-select-outlined'
-                labelId='demo-simple-select-outlined-label'
-              >
-                <MenuItem value={10}>English</MenuItem>
-                <MenuItem value={20}>Hindi</MenuItem>
-                <MenuItem value={30}>Gujarati</MenuItem>
-              </Select>
-            </FormControl>
-          </Grid>
-          <Grid item sm={6} xs={6}>
-            <TextField id='name' fullWidth label='Question Title' required />
-          </Grid>
-          <Grid item sm={6} xs={6}>
-            <TextField id='name' fullWidth label='Grade' required />
-          </Grid>
-          <Grid item sm={12} xs={12}>
-            Image (Optional)
-            <TextField type='file' id='image' fullWidth />
-          </Grid>
-          <Grid item sm={12} xs={12}>
-            <Divider textAlign='left'>Answers</Divider>
-          </Grid>
-          <Grid item sm={12} xs={12}>
-            <Button variant='contained' onClick={onAddBtnClick}>
-              Add Answer
-            </Button>
-          </Grid>
-          {answerOptionList}
+  const onAddBtnClick = () => {
+    const newOptionId = `option-${Date.now()}`;
+    setAnswerOptionList((prevAnswerOptionList) => [
+      ...prevAnswerOptionList,
+      <AnswerOption key={newOptionId} optionId={newOptionId} />
+    ]);
+  };
+  return (<div style={{ marginTop: '10px' }}>
+    <Card>
+      <Grid container spacing={6}>
+        <CardHeader title='Add a question' sx={{ margin: '10px' }} />
+        <Grid item sm={12} xs={12}>
+          <FormControl fullWidth>
+            <InputLabel id='demo-simple-select-outlined-label'>Language</InputLabel>
+            <Select
+              value={language}
+              onChange={(e) => setLanguage(e.target.value)}
+              label='Language'
+              id='demo-simple-select-outlined'
+              labelId='demo-simple-select-outlined-label'
+            >
+              <MenuItem value={10}>English</MenuItem>
+              <MenuItem value={20}>Hindi</MenuItem>
+              <MenuItem value={30}>Gujarati</MenuItem>
+            </Select>
+          </FormControl>
         </Grid>
-        <div className='dialog-actions-dense'>
-          <Button onClick={handleSave} variant='contained' sx={{ margin: '10px' }}>
-            Save
+        <Grid item sm={6} xs={6}>
+          <TextField id='name' fullWidth label='Question Title' required />
+        </Grid>
+        <Grid item sm={6} xs={6}>
+          <TextField id='name' fullWidth label='Grade' required />
+        </Grid>
+        <Grid item sm={12} xs={12}>
+          Image (Optional)
+          <TextField type='file' id='image' fullWidth />
+        </Grid>
+        <Grid item sm={12} xs={12}>
+          <Divider textAlign='left'>Answers</Divider>
+        </Grid>
+        <Grid item sm={12} xs={12} m={5}>
+          <Button variant='contained' onClick={onAddBtnClick}>
+            Add Answer
           </Button>
-          <Button color='error' variant='contained' onClick={handleDiscard} sx={{ margin: '10px' }}>
-            Discard
-          </Button>
-        </div>
-      </div>
-    ))
-  }
+        </Grid>
+        {answerOptionList}
+      </Grid>
+
+    </Card>
+    <div className='dialog-actions-dense'>
+      <Button onClick={handleSave} variant='contained' sx={{ margin: '10px' }}>
+        Save
+      </Button>
+      <Button color='error' variant='contained' onClick={handleDiscard} sx={{ margin: '10px' }}>
+        Discard
+      </Button>
+    </div>
+  </div>)
+}
+
+const AddNewMCQ = () => {
+  const [questionList, setQuestionList] = useState([]);
+
+  const onAddQuestion = () => {
+    const newQuestionId = `question-${Date.now()}`;
+    setQuestionList((prevQuestionList) => [
+      ...prevQuestionList,
+      { id: newQuestionId, timestamp: Date.now() }
+    ]);
+  };
+  const sortedQuestions = [...questionList].sort((a, b) => b.timestamp - a.timestamp);
 
   return (
     <Fragment>
@@ -182,7 +191,9 @@ const AddNewMCQ = () => {
         Add New Question
       </Button>
       <div>
-        {QuestionList}
+        {sortedQuestions.map((question) => (
+          <Question key={question.id} questionId={question.id} />
+        ))}
       </div>
     </Fragment>
   )

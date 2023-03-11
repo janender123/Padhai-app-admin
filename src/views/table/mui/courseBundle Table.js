@@ -42,6 +42,20 @@ const escapeRegExp = value => {
 const columns = [
   {
     flex: 0.275,
+    minWidth: 100,
+    field: 'id',
+    headerName: 'ID',
+    renderCell: params => {
+      const { row } = params
+      return (
+        <Typography noWrap variant='body2' sx={{ color: 'text.primary', fontWeight: 600 }}>
+          {row.id}
+        </Typography>
+      )
+    }
+  },
+  {
+    flex: 0.275,
     minWidth: 290,
     field: 'full_name',
     headerName: 'Course Bundle Name',
@@ -56,6 +70,20 @@ const columns = [
             </Typography>
           </Box>
         </Box>
+      )
+    }
+  },
+  {
+    flex: 0.275,
+    minWidth: 200,
+    field: 'instructor',
+    headerName: 'Instructor',
+    renderCell: params => {
+      const { row } = params
+      return (
+        <Typography noWrap variant='body2' sx={{ color: 'text.primary', fontWeight: 600 }}>
+          {row.instructor}
+        </Typography>
       )
     }
   },
@@ -82,20 +110,31 @@ const columns = [
     )
   },
   {
+    flex: 0.275,
+    minWidth: 150,
+    field: 'created_date',
+    headerName: 'created date',
+    renderCell: params => {
+      const { row } = params
+      return (
+        <Typography noWrap variant='body2' sx={{ color: 'text.primary', fontWeight: 600 }}>
+          {row.created_date}
+        </Typography>
+      )
+    }
+  },
+  {
     flex: 0.175,
     minWidth: 140,
     field: 'status',
     headerName: 'Status',
     renderCell: params => {
-      const status = statusObj[params.row.status]
+      const { row } = params
+
       return (
-        <CustomChip
-          size='small'
-          skin='light'
-          color={status.color}
-          label={status.title}
-          sx={{ '& .MuiChip-label': { textTransform: 'capitalize' } }}
-        />
+        <Typography noWrap variant='body2' color={row.status_color} sx={{ fontWeight: 600 }}>
+          {row.status}
+        </Typography>
       )
     }
   },

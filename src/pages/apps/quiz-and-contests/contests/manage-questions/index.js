@@ -33,6 +33,7 @@ import SwitchesCustomized from 'src/views/forms/form-elements/switch/CorrectAnsw
 import EditorControlled from 'src/views/forms/form-elements/editor/EditorControlled'
 import * as source from 'src/views/forms/form-elements/editor/EditorSourceCode'
 import QuestionsTableForContests from 'src/views/table/mui/QuestionsTableForContests'
+import { EditorWrapper } from 'src/@core/styles/libs/react-draft-wysiwyg'
 
 const AnswerOption = () => {
   const [visible, setVisible] = useState(true);
@@ -231,17 +232,19 @@ const QuestionForContest = () => {
                   Solution
                 </Divider>
               </Grid>
-              <Grid item sm={12} xs={12}>
-                <CardSnippet
-                  sx={{ overflow: 'visible' }}
-                  title='Solution '
-                  code={{
-                    tsx: null,
-                    jsx: source.EditorControlledJSXCode
-                  }}
-                >
-                  <EditorControlled value={Description} onChange={e => setDescription(e.target.value)} />
-                </CardSnippet>
+              <Grid item xs={12} sm={12}>
+                <EditorWrapper>
+                  <CardSnippet
+                    sx={{ overflow: 'visible' }}
+                    title='Solution '
+                    code={{
+                      tsx: null,
+                      jsx: source.EditorControlledJSXCode
+                    }}
+                  >
+                    <EditorControlled value={Description} onChange={e => setDescription(e.target.value)} />
+                  </CardSnippet>
+                </EditorWrapper>
               </Grid>
               <CardActions>
                 <Button size='large' type='submit' sx={{ mr: 2 }} variant='contained'>

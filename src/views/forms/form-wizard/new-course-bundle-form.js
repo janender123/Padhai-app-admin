@@ -64,6 +64,10 @@ import Reorder, {
   reorderFromToImmutable
 } from 'react-reorder'
 import move from 'lodash-move'
+import { EditorWrapper } from 'src/@core/styles/libs/react-draft-wysiwyg'
+import { Autocomplete } from '@mui/material'
+import { courseTags } from 'src/@fake-db/autocomplete'
+
 
 const steps = [
   {
@@ -84,6 +88,7 @@ const steps = [
   }
 ]
 
+
 const AddSection = () => {
   const handleNewSectionDialog = () => setOpenDialog(true)
   const handleCloseNewSectionDialog = () => setOpenDialog(false)
@@ -103,54 +108,87 @@ const AddSection = () => {
     const handleCloseAddButton = () => {
       setAnchorEl(null)
     }
+
+    const combinedList = [
+      ...LessonList.map((item) => ({ ...item, type: 'Lesson' })),
+      ...AssignmentList.map((item) => ({ ...item, type: 'Assignment' })),
+      ...TextList.map((item) => ({ ...item, type: 'Text' })),
+      ...QuizList.map((item) => ({ ...item, type: 'Quiz' })),
+    ];
+    const sortedList = combinedList.sort((a, b) => b.timestamp - a.timestamp);
+
     const handleClickMenuAddButton = event => {
       setAnchorEl(event.currentTarget)
     }
     const handleClickNewLesson = () => {
-      setLessonList(LessonList.concat(
-        <Grid item xs={12} sm={12} margin={3}>
-          <Accordion sx={{ borderStyle: 'groove' }}>
-            <AccordionDetails>
-              <NewLesson key={LessonList.length} />
-            </AccordionDetails>
-          </Accordion>
-        </Grid>));
+      const newLesson = {
+        type: 'Lesson',
+        component: (
+          <Grid item xs={12} sm={12} margin={3}>
+            <Accordion sx={{ borderStyle: 'groove' }}>
+              <AccordionDetails>
+                <NewLesson />
+              </AccordionDetails>
+            </Accordion>
+          </Grid>
+        ),
+        timestamp: new Date().getTime(),
+      };
+      setLessonList([newLesson, ...LessonList]);
       if (collapsed === false) setCollapsed(!collapsed)
       setAnchorEl(null)
     };
     const handleClickNewText = () => {
-      setTextList(TextList.concat(
-        <Grid item xs={12} sm={12} margin={3}>
-          <Accordion sx={{ borderStyle: 'groove' }}>
-            <AccordionDetails>
-              <NewText key={TextList.length} />
-            </AccordionDetails>
-          </Accordion>
-        </Grid>));
+      const newText = {
+        type: 'Text',
+        component: (
+          <Grid item xs={12} sm={12} margin={3}>
+            <Accordion sx={{ borderStyle: 'groove' }}>
+              <AccordionDetails>
+                <NewText />
+              </AccordionDetails>
+            </Accordion>
+          </Grid>
+        ),
+        timestamp: new Date().getTime(),
+      };
+      setTextList([newText, ...TextList]);
       if (collapsed === false) setCollapsed(!collapsed)
       setAnchorEl(null)
     };
     const handleClickNewQuiz = () => {
-      setQuizList(QuizList.concat(
-        <Grid item xs={12} sm={12} margin={3}>
-          <Accordion sx={{ borderStyle: 'groove' }}>
-            <AccordionDetails>
-              <NewQuiz key={QuizList.length} />
-            </AccordionDetails>
-          </Accordion>
-        </Grid>));
+      const newQuiz = {
+        type: 'Quiz',
+        component: (
+          <Grid item xs={12} sm={12} margin={3}>
+            <Accordion sx={{ borderStyle: 'groove' }}>
+              <AccordionDetails>
+                <NewQuiz />
+              </AccordionDetails>
+            </Accordion>
+          </Grid>
+        ),
+        timestamp: new Date().getTime(),
+      };
+      setQuizList([newQuiz, ...QuizList]);
       if (collapsed === false) setCollapsed(!collapsed)
       setAnchorEl(null)
     };
     const handleClickNewAssignment = () => {
-      setAssignmentList(AssignmentList.concat(
-        <Grid item xs={12} sm={12} margin={3}>
-          <Accordion sx={{ borderStyle: 'groove' }}>
-            <AccordionDetails>
-              <NewAssignment key={AssignmentList.length} />
-            </AccordionDetails>
-          </Accordion>
-        </Grid>));
+      const newAssignment = {
+        type: 'Quiz',
+        component: (
+          <Grid item xs={12} sm={12} margin={3}>
+            <Accordion sx={{ borderStyle: 'groove' }}>
+              <AccordionDetails>
+                <NewAssignment />
+              </AccordionDetails>
+            </Accordion>
+          </Grid>
+        ),
+        timestamp: new Date().getTime(),
+      };
+      setAssignmentList([newAssignment, ...AssignmentList]);
       if (collapsed === false) setCollapsed(!collapsed)
       setAnchorEl(null)
     };
@@ -159,7 +197,6 @@ const AddSection = () => {
     const handleClickEditSection = () => setEditSection(true)
     const handleCloseEditSection = () => setEditSection(false)
     const handleSaveEditSection = () => {
-      setTitle(EditedTitle)
       setEditSection(false)
     }
     const [visible, setVisible] = useState(true);
@@ -215,7 +252,6 @@ const AddSection = () => {
                           <MenuItem value={10}>English</MenuItem>
                           <MenuItem value={20}>Hindi</MenuItem>
                           <MenuItem value={30}>Gujarati</MenuItem>
-                          {/* <MenuItem value={30}>12th</MenuItem> */}
                         </Select>
                       </FormControl>
                     </Grid>
@@ -267,10 +303,11 @@ const AddSection = () => {
         <Collapse in={collapsed}>
           <CardContent>
             <div>
-              {LessonList}
-              {QuizList}
-              {AssignmentList}
-              {TextList}
+              {sortedList.map((item) => (
+                <div>
+                  {item.component}
+                </div>
+              ))}
             </div>
           </CardContent>
         </Collapse>
@@ -793,59 +830,50 @@ const NewCourseBundleForm = () => {
               />
             </Grid>
             <Grid item xs={12}>
-              <CardSnippet
-                sx={{ overflow: 'visible' }}
-                title='Description of the course bundle'
-                code={{
-                  tsx: null,
-                  jsx: source.EditorControlledJSXCode
-                }}
-              >
-                <EditorControlled value={Description} onChange={e => setDescription(e.target.value)} />
-              </CardSnippet>
+              <EditorWrapper>
+                <CardSnippet
+                  sx={{ overflow: 'visible' }}
+                  title='Description of the course bundle'
+                  code={{
+                    tsx: null,
+                    jsx: source.EditorControlledJSXCode
+                  }}
+                >
+                  <EditorControlled value={Description} onChange={e => setDescription(e.target.value)} />
+                </CardSnippet>
+              </EditorWrapper>
             </Grid>
           </Fragment>
         )
       case 1:
         return (
           <Fragment key={step}>
-            <Grid item xs={12} sm={12}>
-              <FormControl fullWidth>
-                <InputLabel id='demo-simple-select-outlined-label'>Course Tags</InputLabel>
-                <Select
-                  value={courseTag}
-                  label='Course Tags'
-                  defaultValue=''
-                  id='demo-simple-select-outlined'
-                  labelId='demo-simple-select-outlined-label'
-                  onChange={e => setCourseTag(e.target.value)}
-                >
-
-                  <MenuItem value={10}>Science</MenuItem>
-                  <MenuItem value={20}>Maths</MenuItem>
-                  <MenuItem value={30}>Chemistry</MenuItem>
-                  <MenuItem value={30}>Physics</MenuItem>
-                </Select>
-              </FormControl>
+            <Grid item xs={12} sm={6}>
+              Course Bundle Tags
+              <Autocomplete
+                freeSolo
+                multiple
+                id='autocomplete-multiple-filled'
+                defaultValue={[courseTags[11].title]}
+                options={courseTags.map(option => option.title)}
+                renderInput={params => <TextField {...params} placeholder='Add course bundle tags...' />}
+                renderTags={(value, getTagProps) =>
+                  value.map((option, index) => (
+                    <Chip variant='outlined' label={option} {...getTagProps({ index })} key={index} />
+                  ))
+                }
+              />
             </Grid>
             <Grid item xs={12} sm={6}>
-              Enter start date of the live class(optional)
+              start date and time of the course bundle(optional)
               <TextField
                 fullWidth
-                type='date'
+                type='datetime-local'
                 value={startDate}
                 onChange={e => setStartDate(e.target.value)}
               />
             </Grid>
-            <Grid item xs={12} sm={6}>
-              Enter start time of the live class(optional)
-              <TextField
-                fullWidth
-                type='time'
-                value={startTime}
-                onChange={e => setStartTime(e.target.value)}
-              />
-            </Grid>
+
             <Grid item xs={12} sm={12}>
               <TextField
                 fullWidth
@@ -903,20 +931,6 @@ const NewCourseBundleForm = () => {
           <Fragment key={step}>
             <Grid item xs={12}>
               <AddNewQuizDialog></AddNewQuizDialog>
-            </Grid>
-            <Grid item xs={12} >
-              <Accordion style={{ borderStyle: 'groove' }}>
-                <AccordionSummary
-                  id='panel-header-1'
-                  aria-controls='panel-content-1'
-                  expandIcon={<Icon icon='mdi:chevron-down' />}
-                >
-                  <Typography>Optics Quiz</Typography>
-                </AccordionSummary>
-                <AccordionDetails>
-                  <EditQuiz />
-                </AccordionDetails>
-              </Accordion>
             </Grid>
           </Fragment>
         )

@@ -195,7 +195,6 @@ const AddSection = () => {
     const handleClickEditSection = () => setEditSection(true)
     const handleCloseEditSection = () => setEditSection(false)
     const handleSaveEditSection = () => {
-      setTitle(EditedTitle)
       setEditSection(false)
     }
     const [visible, setVisible] = useState(true);
@@ -304,7 +303,7 @@ const AddSection = () => {
             <div>
               {sortedList.map((item) => (
                 <div>
-                { item.component }
+                  {item.component}
                 </div>
               ))}
             </div>
@@ -399,9 +398,6 @@ const AddSection = () => {
 }
 
 const NewCourseForm = () => {
-
-  // ** States
-
   const [activeStep, setActiveStep] = useState(0)
   const [childCategory, setChildCategory] = useState('')
   const [instructor, setInstructor] = useState('')
@@ -558,18 +554,20 @@ const NewCourseForm = () => {
                 onChange={e => setSlug(e.target.value)}
               />
             </Grid>
-            <EditorWrapper>
-              <CardSnippet
-                sx={{ overflow: 'visible' }}
-                title='Description of the course'
-                code={{
-                  tsx: null,
-                  jsx: source.EditorControlledJSXCode
-                }}
-              >
-                <EditorControlled value={Description} onChange={e => setDescription(e.target.value)} />
-              </CardSnippet>
-            </EditorWrapper>
+            <Grid item xs={12} sm={12}>
+              <EditorWrapper>
+                <CardSnippet
+                  sx={{ overflow: 'visible' }}
+                  title='Description of the course'
+                  code={{
+                    tsx: null,
+                    jsx: source.EditorControlledJSXCode
+                  }}
+                >
+                  <EditorControlled value={Description} onChange={e => setDescription(e.target.value)} />
+                </CardSnippet>
+              </EditorWrapper>
+            </Grid>
           </Fragment>
         )
       case 1:
@@ -626,21 +624,7 @@ const NewCourseForm = () => {
         return (
           <Fragment key={step}>
             <Grid item xs={12}>
-              <AddNewQuizDialog></AddNewQuizDialog>
-            </Grid>
-            <Grid item xs={12} >
-              <Accordion style={{ borderStyle: 'groove' }}>
-                <AccordionSummary
-                  id='panel-header-1'
-                  aria-controls='panel-content-1'
-                  expandIcon={<Icon icon='mdi:chevron-down' />}
-                >
-                  <Typography>Optics Quiz</Typography>
-                </AccordionSummary>
-                <AccordionDetails>
-                  <EditQuiz />
-                </AccordionDetails>
-              </Accordion>
+              <AddNewQuizDialog />
             </Grid>
           </Fragment>
         )

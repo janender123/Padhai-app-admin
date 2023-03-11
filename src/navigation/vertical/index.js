@@ -127,12 +127,26 @@ const navigation = () => {
     {
       title: 'Assignments',
       icon: 'mdi:file-document-outline',
-      path: '/apps/email'
+      path: '/apps/assignments'
     },
     {
       title: 'Study Material',
       icon: 'mdi:file-document-outline',
       path: '/apps/study-material'
+    },
+    {
+      title: 'Course Notices',
+      icon: 'mdi:file-document-outline',
+      children: [
+        {
+          title: 'List',
+          path: '/apps/course-notices/list'
+        },
+        {
+          title: 'New',
+          path: '/apps/course-notices/new'
+        }
+      ]
     },
     {
       title: 'User',

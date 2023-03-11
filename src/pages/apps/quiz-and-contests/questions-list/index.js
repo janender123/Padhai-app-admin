@@ -17,13 +17,13 @@ const QuestionsList = () => {
           <CardStatisticsHorizontal
             stats='No. of Questions'
             title='250'
-            icon={<Icon icon='mdi:account-outline' />}
+            icon={<Icon icon="mdi:file-document" />}
           />
         </Grid>
         <Grid item xs={12}>
           <Card>
             <CardHeader title='List of Questions approved' />
-            <QuestionsTable/>
+            <QuestionsTable />
           </Card>
         </Grid>
       </Grid>

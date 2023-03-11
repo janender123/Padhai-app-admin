@@ -18,7 +18,7 @@ import Grid from '@mui/material/Grid'
 import Divider from '@mui/material/Divider'
 import AddNewMCQDialog from 'src/views/components/dialogs/AddNewMCQDialog'
 
-const DialogForm = () => {
+const NewQuizDialog = () => {
   // ** State
   const [open, setOpen] = useState(false)
   const handleClickOpen = () => setOpen(true)
@@ -85,4 +85,4 @@ const DialogForm = () => {
   )
 }
 
-export default DialogForm
+export default NewQuizDialog

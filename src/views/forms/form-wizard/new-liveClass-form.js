@@ -31,6 +31,7 @@ import CardHeader from '@mui/material/CardHeader'
 import AddIconMenu from 'src/views/components/menu/AddIconInCourseMenu'
 import IconButton from '@mui/material/IconButton'
 
+import { courseTags } from 'src/@fake-db/autocomplete'
 // ** Source code imports
 import * as source from 'src/views/forms/form-elements/editor/EditorSourceCode'
 import Collapse from '@mui/material/Collapse'
@@ -56,7 +57,19 @@ import NewLesson from 'src/views/forms/form-layouts/NewLessonFormInNewCourseSect
 import NewText from 'src/views/forms/form-layouts/NewTextLessonInCourseSection'
 import NewQuiz from 'src/views/forms/form-layouts/NewQuizInCourseSection'
 import NewAssignment from 'src/views/forms/form-layouts/NewAssignmentInCourseSection'
-import {LessonList} from 'src/views/forms/form-layouts/NewLessonFormInNewCourseSection'
+import { LessonList } from 'src/views/forms/form-layouts/NewLessonFormInNewCourseSection'
+import { EditorWrapper } from 'src/@core/styles/libs/react-draft-wysiwyg'
+import Reorder, {
+  reorder,
+  reorderImmutable,
+  reorderFromTo,
+  reorderFromToImmutable
+} from 'react-reorder'
+import move from 'lodash-move'
+import { Autocomplete } from '@mui/material'
+import NewLessonFormInLiveClass from '../form-layouts/NewLessonFormInLiveClass'
+import NewQuizInLiveClasses from '../form-layouts/NewQuizInLiveClasses'
+
 
 const steps = [
   {
@@ -72,10 +85,321 @@ const steps = [
     subtitle: 'Add Chapters of the course'
   },
   {
-    title: 'Quiz and Certification',
+    title: 'Quiz',
     subtitle: 'Add Quiz for the course'
   }
 ]
+
+
+const AddSection = () => {
+  const handleNewSectionDialog = () => setOpenDialog(true)
+  const handleCloseNewSectionDialog = () => setOpenDialog(false)
+  const [openDialog, setOpenDialog] = useState(false)
+  const [sectionList, setSectionList] = useState([]);
+  const [title, setTitle] = useState('')
+  const [language, setLanguage] = useState('')
+
+  const Input = () => {
+    const [EditedTitle, setEditedTitle] = useState('')
+    const [anchorEl, setAnchorEl] = useState('')
+    const [LessonList, setLessonList] = useState([]);
+    const [TextList, setTextList] = useState([]);
+    const [QuizList, setQuizList] = useState([]);
+    const [AssignmentList, setAssignmentList] = useState([]);
+    const [collapsed, setCollapsed] = useState(false)
+    const handleCloseAddButton = () => {
+      setAnchorEl(null)
+    }
+
+    const combinedList = [
+      ...LessonList.map((item) => ({ ...item, type: 'Lesson' })),
+      ...AssignmentList.map((item) => ({ ...item, type: 'Assignment' })),
+      ...TextList.map((item) => ({ ...item, type: 'Text' })),
+      ...QuizList.map((item) => ({ ...item, type: 'Quiz' })),
+    ];
+    const sortedList = combinedList.sort((a, b) => b.timestamp - a.timestamp);
+
+    const handleClickMenuAddButton = event => {
+      setAnchorEl(event.currentTarget)
+    }
+    const handleClickNewLesson = () => {
+      const newLesson = {
+        type: 'Lesson',
+        component: (
+          <Grid item xs={12} sm={12} margin={3}>
+            <Accordion sx={{ borderStyle: 'groove' }}>
+              <AccordionDetails>
+                <NewLessonFormInLiveClass />
+              </AccordionDetails>
+            </Accordion>
+          </Grid>
+        ),
+        timestamp: new Date().getTime(),
+      };
+      setLessonList([newLesson, ...LessonList]);
+      if (collapsed === false) setCollapsed(!collapsed)
+      setAnchorEl(null)
+    };
+    const handleClickNewText = () => {
+      const newText = {
+        type: 'Text',
+        component: (
+          <Grid item xs={12} sm={12} margin={3}>
+            <Accordion sx={{ borderStyle: 'groove' }}>
+              <AccordionDetails>
+                <NewText />
+              </AccordionDetails>
+            </Accordion>
+          </Grid>
+        ),
+        timestamp: new Date().getTime(),
+      };
+      setTextList([newText, ...TextList]);
+      if (collapsed === false) setCollapsed(!collapsed)
+      setAnchorEl(null)
+    };
+    const handleClickNewQuiz = () => {
+      const newQuiz = {
+        type: 'Quiz',
+        component: (
+          <Grid item xs={12} sm={12} margin={3}>
+            <Accordion sx={{ borderStyle: 'groove' }}>
+              <AccordionDetails>
+                <NewQuizInLiveClasses />
+              </AccordionDetails>
+            </Accordion>
+          </Grid>
+        ),
+        timestamp: new Date().getTime(),
+      };
+      setQuizList([newQuiz, ...QuizList]);
+      if (collapsed === false) setCollapsed(!collapsed)
+      setAnchorEl(null)
+    };
+    const handleClickNewAssignment = () => {
+      const newAssignment = {
+        type: 'Quiz',
+        component: (
+          <Grid item xs={12} sm={12} margin={3}>
+            <Accordion sx={{ borderStyle: 'groove' }}>
+              <AccordionDetails>
+                <NewAssignment />
+              </AccordionDetails>
+            </Accordion>
+          </Grid>
+        ),
+        timestamp: new Date().getTime(),
+      };
+      setAssignmentList([newAssignment, ...AssignmentList]);
+      if (collapsed === false) setCollapsed(!collapsed)
+      setAnchorEl(null)
+    };
+
+    const [EditSection, setEditSection] = useState(false);
+    const handleClickEditSection = () => setEditSection(true)
+    const handleCloseEditSection = () => setEditSection(false)
+    const handleSaveEditSection = () => {
+      setEditSection(false)
+    }
+    const [visible, setVisible] = useState(true);
+    const removeSection = () => {
+      setVisible((prev) => !prev);
+    };
+
+    return (<>
+      {visible && (<Card draggable sx={{ position: 'relative', marginBottom: '10px', borderStyle: 'groove' }}>
+        <CardHeader
+          draggable
+          title={EditedTitle === '' ? title : EditedTitle}
+          action={
+            <Box sx={{ display: 'flex', alignItems: 'center' }}>
+              <div>
+                <IconButton
+                  size='small'
+                  aria-label='edit'
+                  sx={{ mr: 2, color: 'text.secondary' }}
+                  onClick={handleClickMenuAddButton}
+                >
+                  <Icon icon="material-symbols:add-circle" />
+                </IconButton>
+                <Menu keepMounted id='simple-menu' anchorEl={anchorEl} onClose={handleCloseAddButton} open={Boolean(anchorEl)}>
+                  <MenuItem onClick={handleClickNewLesson}>New Lesson</MenuItem>
+                  <MenuItem onClick={handleClickNewText}>New Text</MenuItem>
+                  <MenuItem onClick={handleClickNewQuiz}>New Quiz</MenuItem>
+                  <MenuItem onClick={handleClickNewAssignment}>New Assignment </MenuItem>
+                </Menu>
+              </div>
+              <IconButton
+                size='small'
+                aria-label='edit'
+                sx={{ mr: 2, color: 'text.secondary' }}
+                onClick={handleClickEditSection}
+              >
+                <Icon icon="material-symbols:edit" />
+              </IconButton>
+              <Dialog open={EditSection} fullWidth onClose={handleCloseEditSection}>
+                <DialogContent>
+                  <Grid container spacing={6}>
+                    <Grid item sm={12} xs={12}>
+                      <FormControl fullWidth>
+                        <InputLabel id='demo-simple-select-outlined-label'>Language</InputLabel>
+                        <Select
+                          value={language}
+                          defaultValue={language}
+                          onChange={e => setLanguage(e.target.value)}
+                          label='Language'
+                          id='demo-simple-select-outlined'
+                          labelId='demo-simple-select-outlined-label'
+                        >
+                          <MenuItem value={10}>English</MenuItem>
+                          <MenuItem value={20}>Hindi</MenuItem>
+                          <MenuItem value={30}>Gujarati</MenuItem>
+                        </Select>
+                      </FormControl>
+                    </Grid>
+                    <Grid item sm={12} xs={12}>
+                      <TextField defaultValue={EditedTitle === '' ? title : EditedTitle} onChange={e => setEditedTitle(e.target.value)} autoFocus fullWidth label='Section Title' />
+                    </Grid>
+                    <Grid item sm={12} xs={12}>
+                      <SwitchesCustomized />
+                    </Grid>
+                    <Grid item sm={2} xs={3}>
+                      <Button size='large' type='submit' sx={{ mr: 0 }} variant='contained' onClick={handleSaveEditSection}>
+                        Save
+                      </Button>
+                    </Grid>
+                    <Grid item sm={2} xs={3}>
+                      <Button type='reset' size='large' color='secondary' variant='outlined' onClick={handleCloseEditSection}>
+                        Discard
+                      </Button>
+                    </Grid>
+                  </Grid>
+                </DialogContent>
+              </Dialog>
+              <IconButton
+                size='small'
+                aria-label='delete'
+                sx={{ mr: 2, color: 'text.secondary' }}
+                onClick={removeSection}
+              >
+                <Icon icon="material-symbols:delete-sharp" />
+              </IconButton>
+              <IconButton
+                size='small'
+                aria-label='cursor'
+                sx={{ mr: 2, color: 'text.secondary' }}
+              >
+                <Icon icon="mdi:cursor-move" />
+              </IconButton>
+              <IconButton
+                size='small'
+                aria-label='collapse'
+                sx={{ mr: 2, color: 'text.secondary' }}
+                onClick={() => setCollapsed(!collapsed)}
+              >
+                <Icon fontSize={20} icon={!collapsed ? 'mdi:chevron-down' : 'mdi:chevron-up'} />
+              </IconButton>
+            </Box>
+          }
+        />
+        <Collapse in={collapsed}>
+          <CardContent>
+            <div>
+              {sortedList.map((item) => (
+                <div>
+                  {item.component}
+                </div>
+              ))}
+            </div>
+          </CardContent>
+        </Collapse>
+      </Card>)}</>)
+  };
+
+  const onReorder = (e, from, to) => {
+    setSectionList(move(sectionList, from, to));
+  };
+
+  const onAddSectionClick = () => {
+    setSectionList(sectionList.concat(<Input key={sectionList.length} />));
+    setOpenDialog(false)
+  };
+
+  return (
+    <Grid container spacing={5}>
+      <Grid item xs={12}>
+        <Fragment>
+          <Button variant='contained' onClick={handleNewSectionDialog}>
+            Add New Section
+          </Button>
+          <Dialog open={openDialog} fullWidth onClose={handleCloseNewSectionDialog} aria-labelledby='form-dialog-title'>
+            <DialogTitle id='form-dialog-title'>
+              New Section
+            </DialogTitle>
+            <DialogContent>
+              <Grid container spacing={6}>
+                <Grid item sm={12} xs={12}>
+                  <FormControl fullWidth style={{ marginTop: '5px' }}>
+                    <InputLabel id='demo-simple-select-outlined-label'>Language</InputLabel>
+                    <Select
+                      onChange={e => setLanguage(e.target.value)}
+                      label='Language'
+                      id='demo-simple-select-outlined'
+                      labelId='demo-simple-select-outlined-label'
+                    >
+                      <MenuItem value={10}>English</MenuItem>
+                      <MenuItem value={20}>Hindi</MenuItem>
+                      <MenuItem value={30}>Gujarati</MenuItem>
+                    </Select>
+                  </FormControl>
+                </Grid>
+                <Grid item sm={12} xs={12}>
+                  <TextField id='name' onChange={e => setTitle(e.target.value)} autoFocus fullWidth label='Section Title' />
+                </Grid>
+                <Grid item sm={12} xs={12}>
+                  <SwitchesCustomized />
+                </Grid>
+              </Grid>
+            </DialogContent>
+            <DialogActions className='dialog-actions-dense'>
+              <Button onClick={onAddSectionClick} variant='contained'>Save</Button>
+              <Button color='error' variant='contained' onClick={handleCloseNewSectionDialog}>Discard</Button>
+            </DialogActions>
+          </Dialog>
+        </Fragment>
+      </Grid>
+
+      <Grid item xs={12} >
+        <Reorder
+          reorderId="my-list" // Unique ID that is used internally to track this list (required)
+          reorderGroup="reorder-group" // A group ID that allows items to be dragged between lists of the same group (optional)
+          // getRef={this.storeRef.bind(this)} // Function that is passed a reference to the root node when mounted (optional)
+          component="div" // Tag name or Component to be used for the wrapping element (optional), defaults to 'div'
+          placeholderClassName="placeholder" // Class name to be applied to placeholder elements (optional), defaults to 'placeholder'
+          draggedClassName="dragged" // Class name to be applied to dragged elements (optional), defaults to 'dragged'
+          lock="horizontal" // Lock the dragging direction (optional): vertical, horizontal (do not use with groups)
+          holdTime={500} // Default hold time before dragging begins (mouse & touch) (optional), defaults to 0
+          touchHoldTime={500} // Hold time before dragging begins on touch devices (optional), defaults to holdTime
+          mouseHoldTime={200} // Hold time before dragging begins with mouse (optional), defaults to holdTime
+          onReorder={onReorder} // Callback when an item is dropped (you will need this to update your state)
+          autoScroll={true} // Enable auto-scrolling when the pointer is close to the edge of the Reorder component (optional), defaults to true
+          disabled={false} // Disable reordering (optional), defaults to false
+          disableContextMenus={true} // Disable context menus when holding on touch devices (optional), defaults to true
+          placeholder={
+            <div className="custom-placeholder" /> // Custom placeholder element (optional), defaults to clone of dragged element
+          }
+        >
+          {
+            sectionList.map((section) => (
+              <div>
+                {section}
+              </div>
+            ))
+          }
+        </Reorder>
+      </Grid>
+    </Grid >)
+}
 
 const NewLiveClassForm = () => {
   // ** States
@@ -93,8 +417,8 @@ const NewLiveClassForm = () => {
   const [thumbnail, setThumbnail] = useState([])
   const [language, setLanguage] = useState('')
   const [assignment, setAssignment] = useState([])
-  const [startDate,setStartDate] = useState('');
-  const [startTime,setStartTime] = useState('');
+  const [startDate, setStartDate] = useState('');
+  const [startTime, setStartTime] = useState('');
   const [drip, setDrip] = useState([])
   const handleBack = () => {
     setActiveStep(prevActiveStep => prevActiveStep - 1)
@@ -258,7 +582,7 @@ const NewLiveClassForm = () => {
       title='sample'
       action={
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
-         <AddIconMenu/>
+          <AddIconMenu />
           <IconButton
             size='small'
             aria-label='edit'
@@ -363,13 +687,6 @@ const NewLiveClassForm = () => {
               </FormControl>
             </Grid>
             <Grid item xs={12} sm={6}>
-              {/* <TextField
-                fullWidth
-                label='Sub-Category'
-                value={subCategory}
-                placeholder='Class'
-                onChange={e => setSubCategory(e.target.value)}
-              /> */}
               <FormControl fullWidth>
                 <InputLabel id='demo-simple-select-outlined-label'>Class</InputLabel>
                 <Select
@@ -389,13 +706,6 @@ const NewLiveClassForm = () => {
               </FormControl>
             </Grid>
             <Grid item xs={12} sm={6}>
-              {/* <TextField
-                fullWidth
-                label='Child-Category'
-                value={childCategory}
-                placeholder='Stream'
-                onChange={e => setChildCategory(e.target.value)}
-              /> */}
               <FormControl fullWidth>
                 <InputLabel id='demo-simple-select-outlined-label'>Stream</InputLabel>
                 <Select
@@ -414,13 +724,6 @@ const NewLiveClassForm = () => {
               </FormControl>
             </Grid>
             <Grid item xs={12} sm={6}>
-              {/* <TextField
-                fullWidth
-                label='Instructor'
-                value={instructor}
-                placeholder='Instructor'
-                onChange={e => setInstructor(e.target.value)}
-              /> */}
               <FormControl fullWidth >
                 <InputLabel id='demo-simple-select-outlined-label'>Instructor</InputLabel>
                 <Select
@@ -434,18 +737,10 @@ const NewLiveClassForm = () => {
                   <MenuItem value={10}>Mr. Pradeep Sharma</MenuItem>
                   <MenuItem value={20}>Mr. Deepak Kumar</MenuItem>
                   <MenuItem value={30}>Mr. Yogesh</MenuItem>
-                  {/* <MenuItem value={30}>12th</MenuItem> */}
                 </Select>
               </FormControl>
             </Grid>
             <Grid item xs={12} sm={6}>
-              {/* <TextField
-                fullWidth
-                label='Also in which category'
-                value={alsoIn}
-                placeholder='Other categories where the course is in...'
-                onChange={e => setAlsoIn(e.target.value)}
-              /> */}
               <FormControl fullWidth>
                 <InputLabel id='demo-simple-select-outlined-label'>Also in which category</InputLabel>
                 <Select
@@ -458,18 +753,10 @@ const NewLiveClassForm = () => {
                   <MenuItem value={10}>Science CBSE 6th</MenuItem>
                   <MenuItem value={20}>Science ICSE 6th</MenuItem>
                   <MenuItem value={30}>Maths CBSE 6th</MenuItem>
-                  {/* <MenuItem value={30}>12th</MenuItem> */}
                 </Select>
               </FormControl>
             </Grid>
             <Grid item xs={12} sm={6}>
-              {/* <TextField
-                fullWidth
-                label='Language'
-                value={language}
-                placeholder='Language'
-                onChange={e => setLanguage(e.target.value)}
-              /> */}
               <FormControl fullWidth>
                 <InputLabel id='demo-simple-select-outlined-label'>Language</InputLabel>
                 <Select
@@ -482,7 +769,6 @@ const NewLiveClassForm = () => {
                   <MenuItem value={10}>English</MenuItem>
                   <MenuItem value={20}>Hindi</MenuItem>
                   <MenuItem value={30}>Gujarati</MenuItem>
-                  {/* <MenuItem value={30}>12th</MenuItem> */}
                 </Select>
               </FormControl>
             </Grid>
@@ -504,17 +790,19 @@ const NewLiveClassForm = () => {
                 onChange={e => setSlug(e.target.value)}
               />
             </Grid>
-            <Grid item xs={12}>
-              <CardSnippet
-                sx={{ overflow: 'visible' }}
-                title='Description of the live class'
-                code={{
-                  tsx: null,
-                  jsx: source.EditorControlledJSXCode
-                }}
-              >
-                <EditorControlled value={Description} onChange={e => setDescription(e.target.value)} />
-              </CardSnippet>
+            <Grid item xs={12} sm={12}>
+              <EditorWrapper>
+                <CardSnippet
+                  sx={{ overflow: 'visible' }}
+                  title='Description of the live class'
+                  code={{
+                    tsx: null,
+                    jsx: source.EditorControlledJSXCode
+                  }}
+                >
+                  <EditorControlled value={Description} onChange={e => setDescription(e.target.value)} />
+                </CardSnippet>
+              </EditorWrapper>
             </Grid>
           </Fragment>
         )
@@ -522,23 +810,20 @@ const NewLiveClassForm = () => {
         return (
           <Fragment key={step}>
             <Grid item xs={12} sm={12}>
-              <FormControl fullWidth>
-                <InputLabel id='demo-simple-select-outlined-label'>Live Class Tags</InputLabel>
-                <Select
-                  value={classTag}
-                  label='Live Class Tags'
-                  defaultValue=''
-                  id='demo-simple-select-outlined'
-                  labelId='demo-simple-select-outlined-label'
-                  onChange={e => setClasstag(e.target.value)}
-                >
-
-                  <MenuItem value={10}>Science</MenuItem>
-                  <MenuItem value={20}>Maths</MenuItem>
-                  <MenuItem value={30}>Chemistry</MenuItem>
-                  <MenuItem value={30}>Physics</MenuItem>
-                </Select>
-              </FormControl>
+              Live Class Tags
+              <Autocomplete
+                freeSolo
+                multiple
+                id='autocomplete-multiple-filled'
+                defaultValue={[courseTags[11].title]}
+                options={courseTags.map(option => option.title)}
+                renderInput={params => <TextField {...params} placeholder='Add live class tags...' />}
+                renderTags={(value, getTagProps) =>
+                  value.map((option, index) => (
+                    <Chip variant='outlined' label={option} {...getTagProps({ index })} key={index} />
+                  ))
+                }
+              />
             </Grid>
             <Grid item xs={12} sm={6}>
               Enter start date of the live class
@@ -559,26 +844,18 @@ const NewLiveClassForm = () => {
               />
             </Grid>
             <Grid item xs={12} sm={6}>
+              Duration of the live class (in minutes)
               <TextField
                 fullWidth
                 type='number'
-                label='Duration of the live class (in minutes) '
-                // placeholder='Duration of the course'
+
+                placeholder='Duration of the  live class'
                 value={duration}
                 onChange={e => setDuration(e.target.value)}
               />
             </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                fullWidth
-                label='Drip Content '
-                // placeholder='Duration of the course'
-                value={drip}
-                onChange={e => setDrip(e.target.value)}
-              />
-            </Grid>
 
-            <Grid item xs={12} >
+            <Grid item xs={12} sm={6} >
               Image/Thumbnail for the live class
               <TextField
                 fullWidth
@@ -595,52 +872,7 @@ const NewLiveClassForm = () => {
         return (
           <Fragment key={step}>
             <Grid item xs={12}>
-              <Fragment>
-                <Button variant='contained' onClick={handleClickOpen}>
-                  Add New Section
-                </Button>
-                <Dialog open={open} fullWidth onClose={handleClose} aria-labelledby='form-dialog-title'>
-                  <DialogTitle id='form-dialog-title'>
-                    New Section
-                  </DialogTitle>
-                  <DialogContent>
-                    <Grid container spacing={6}>
-                      <Grid item sm={12} xs={12}>
-                        <FormControl fullWidth style={{ marginTop: '5px' }}>
-                          <InputLabel id='demo-simple-select-outlined-label'>Language</InputLabel>
-                          <Select
-                            value={language}
-                            onChange={e => setLanguage(e.target.value)}
-                            label='Language'
-                            id='demo-simple-select-outlined'
-                            labelId='demo-simple-select-outlined-label'
-                          >
-                            <MenuItem value={10}>English</MenuItem>
-                            <MenuItem value={20}>Hindi</MenuItem>
-                            <MenuItem value={30}>Gujarati</MenuItem>
-                            {/* <MenuItem value={30}>12th</MenuItem> */}
-                          </Select>
-                        </FormControl>
-                      </Grid>
-                      <Grid item sm={12} xs={12}>
-                        <TextField id='name' value={title} onChange={e => setTitle(e.target.value)} autoFocus fullWidth label='Section Title' />
-                      </Grid>
-                      <Grid item sm={12} xs={12}>
-                        <SwitchesCustomized />
-                      </Grid>
-                    </Grid>
-                  </DialogContent>
-                  <DialogActions className='dialog-actions-dense'>
-                    <Button onClick={onAddSectionClick} variant='contained'>Save</Button>
-                    <Button color='error' variant='contained' onClick={handleClose}>Discard</Button>
-                  </DialogActions>
-                </Dialog>
-              </Fragment>
-            </Grid>
-            <Grid item xs={12} >
-              {sectionList}
-              {/* <CardActionAll/> */}
-              {/* {LessonList} */}
+              <AddSection />
             </Grid>
           </Fragment>
         )
@@ -650,20 +882,7 @@ const NewLiveClassForm = () => {
             <Grid item xs={12}>
               <AddNewQuizDialog></AddNewQuizDialog>
             </Grid>
-            <Grid item xs={12} >
-              <Accordion style={{ borderStyle: 'groove' }}>
-                <AccordionSummary
-                  id='panel-header-1'
-                  aria-controls='panel-content-1'
-                  expandIcon={<Icon icon='mdi:chevron-down' />}
-                >
-                  <Typography>Optics Quiz</Typography>
-                </AccordionSummary>
-                <AccordionDetails>
-                  <EditQuiz />
-                </AccordionDetails>
-              </Accordion>
-            </Grid>
+
           </Fragment>
         )
       default:
