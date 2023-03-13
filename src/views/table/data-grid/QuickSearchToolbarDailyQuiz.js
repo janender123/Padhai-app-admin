@@ -3,17 +3,16 @@ import Box from '@mui/material/Box'
 import TextField from '@mui/material/TextField'
 import IconButton from '@mui/material/IconButton'
 import { GridToolbarFilterButton } from '@mui/x-data-grid'
-import DialogEditUserInfo from 'src/views/pages/dialog-examples/Add-Board-Dialog'
+import DialogEditUserInfo from 'src/views/pages/dialog-examples/Add-Language-Dialog'
 // ** Icon Imports
 import Icon from 'src/@core/components/icon'
 import Select from '@mui/material/Select'
 import MenuItem from '@mui/material/MenuItem'
-import AddBoardDialog from 'src/views/pages/dialog-examples/Add-Board-Dialog'
+import { Button } from '@mui/material'
 
-const QuickSearchToolbarBoard = props => {
+const QuickSearchToolbar = props => {
   const { value, selectedRows, handleFilter } = props
   return (
-    
     <Box
       sx={{
         gap: 2,
@@ -36,8 +35,6 @@ const QuickSearchToolbarBoard = props => {
         <MenuItem value='Delete'>Delete</MenuItem>
         <MenuItem value='Edit'>Edit</MenuItem>
       </Select>
-      {/* <GridToolbarFilterButton /> */}
-
       <TextField
         size='small'
         value={props.value}
@@ -55,23 +52,17 @@ const QuickSearchToolbarBoard = props => {
             </IconButton>
           )
         }}
-        
         sx={{
-          // display: 'flex',flexWrap: 'wrap', alignItems: 'center',
-          mr:0,
-          width: {
-            xs: 1,
-            sm: 'auto'
-          },
+          display: 'flex',
+          width: '200px',
+          mr: 0,
           '& .MuiInputBase-root > svg': {
             mr: 2
           }
         }}
       />
-      <AddBoardDialog/>
     </Box>
   )
 }
 
-export default QuickSearchToolbarBoard
-
+export default QuickSearchToolbar

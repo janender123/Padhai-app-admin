@@ -513,7 +513,6 @@ const QuestionsTable = () => {
           }
         }}
       />
-
     </Card>
   )
 }

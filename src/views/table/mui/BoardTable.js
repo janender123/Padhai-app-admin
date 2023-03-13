@@ -139,7 +139,7 @@ const columns = [
   }
 ]
 
-const TableColumns = () => {
+const TableBoards = () => {
   // ** States
   const [data] = useState(rows)
   const [pageSize, setPageSize] = useState(7)
@@ -190,4 +190,4 @@ const TableColumns = () => {
   )
 }
 
-export default TableColumns
+export default TableBoards

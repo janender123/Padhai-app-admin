@@ -15,7 +15,7 @@ import InputLabel from '@mui/material/InputLabel'
 import Button from '@mui/material/Button'
 import { rows } from 'src/@fake-db/table/Questions-data'
 import { DataGrid } from '@mui/x-data-grid'
-import QuickSearchToolbar from 'src/views/table/data-grid/QuickSearchToolbarQuestionsList'
+import QuickSearchToolbar from 'src/views/table/data-grid/QuickSearchToolbarDailyQuiz'
 import QuickSearchToolbarDestinationDailyQuiz from 'src/views/table/data-grid/QuickSearchToolbarDestinationDailyQuiz'
 
 import Typography from '@mui/material/Typography'

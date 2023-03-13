@@ -197,91 +197,7 @@ const CustomInput = forwardRef((props, ref) => {
 })
 
 /* eslint-enable */
-const InvoiceList = () => {
-  // ** State
-  const [dates, setDates] = useState([])
-  const [value, setValue] = useState('')
-  const [pageSize, setPageSize] = useState(10)
-  const [statusValue, setStatusValue] = useState('')
-  const [endDateRange, setEndDateRange] = useState(null)
-  const [selectedRows, setSelectedRows] = useState([])
-  const [startDateRange, setStartDateRange] = useState(null)
-
-  // ** Hooks
-  const dispatch = useDispatch()
-  const store = useSelector(state => state.invoice)
-  useEffect(() => {
-    dispatch(
-      fetchData({
-        dates,
-        q: value,
-        status: statusValue
-      })
-    )
-  }, [dispatch, statusValue, value, dates])
-
-  const handleFilter = val => {
-    setValue(val)
-  }
-
-  const handleStatusValue = e => {
-    setStatusValue(e.target.value)
-  }
-
-  const handleOnChangeRange = dates => {
-    const [start, end] = dates
-    if (start !== null && end !== null) {
-      setDates(dates)
-    }
-    setStartDateRange(start)
-    setEndDateRange(end)
-  }
-
-  const columns = [
-    ...defaultColumns,
-    {
-      flex: 0.1,
-      minWidth: 130,
-      sortable: false,
-      field: 'actions',
-      headerName: 'Actions',
-      renderCell: ({ row }) => (
-        <Box sx={{ display: 'flex', alignItems: 'center' }}>
-          <Tooltip title='Delete Invoice'>
-            <IconButton size='small' sx={{ mr: 0.5 }} onClick={() => dispatch(deleteInvoice(row.id))}>
-              <Icon icon='mdi:delete-outline' />
-            </IconButton>
-          </Tooltip>
-          <Tooltip title='View'>
-            <IconButton size='small' component={Link} sx={{ mr: 0.5 }} href={`/apps/invoice/preview/${row.id}`}>
-              <Icon icon='mdi:eye-outline' />
-            </IconButton>
-          </Tooltip>
-          <OptionsMenu
-            iconProps={{ fontSize: 20 }}
-            iconButtonProps={{ size: 'small' }}
-            menuProps={{ sx: { '& .MuiMenuItem-root svg': { mr: 2 } } }}
-            options={[
-              {
-                text: 'Download',
-                icon: <Icon icon='mdi:download' fontSize={20} />
-              },
-              {
-                text: 'Edit',
-                href: `/apps/invoice/edit/${row.id}`,
-                icon: <Icon icon='mdi:pencil-outline' fontSize={20} />
-              },
-              {
-                text: 'Duplicate',
-                icon: <Icon icon='mdi:content-copy' fontSize={20} />
-              }
-            ]}
-          />
-        </Box>
-      )
-    }
-  ]
-
+const BoardsList = () => {
   return (
     <DatePickerWrapper>
       <Grid container spacing={6}>
@@ -307,26 +223,9 @@ const InvoiceList = () => {
             <TableBoards />
           </Card>
         </Grid>
-        {/* <Grid item xs={12}>
-          <Card>
-            <TableHeader value={value} selectedRows={selectedRows} handleFilter={handleFilter} />
-            <DataGrid
-              autoHeight
-              pagination
-              rows={store.data}
-              columns={columns}
-              checkboxSelection
-              disableSelectionOnClick
-              pageSize={Number(pageSize)}
-              rowsPerPageOptions={[10, 25, 50]}
-              onSelectionModelChange={rows => setSelectedRows(rows)}
-              onPageSizeChange={newPageSize => setPageSize(newPageSize)}
-            />
-          </Card>
-        </Grid> */}
       </Grid>
     </DatePickerWrapper>
   )
 }
 
-export default InvoiceList
+export default BoardsList

@@ -21,7 +21,7 @@ import MenuItem from '@mui/material/MenuItem'
 import CorrectAnswer from 'src/views/forms/form-elements/switch/CorrectAnswer'
 import CardHeader from '@mui/material/CardHeader'
 import Grid from '@mui/material/Grid'
-import { Card, Divider } from '@mui/material'
+import { Card, Divider, FormControlLabel, Switch } from '@mui/material'
 import CardSnippet from 'src/@core/components/card-snippet-quiz-answers'
 import IconButton from '@mui/material/IconButton'
 import Icon from 'src/@core/components/icon'
@@ -33,6 +33,8 @@ import SwitchesCustomized from 'src/views/forms/form-elements/switch/CorrectAnsw
 import EditorControlled from 'src/views/forms/form-elements/editor/new-course-form-description-editor'
 import * as source from 'src/views/forms/form-elements/editor/EditorSourceCode'
 import { EditorWrapper } from 'src/@core/styles/libs/react-draft-wysiwyg'
+import { number } from 'yup/lib/locale'
+import { flexbox } from '@mui/system'
 
 const AnswerOption = () => {
   const [visible, setVisible] = useState(true);
@@ -82,7 +84,11 @@ const AddNewQuestionInStudyMaterial = () => {
   const [category, setCategory] = useState('')
   const [subCategory, setSubCategory] = useState('')
   const [Description, setDescription] = useState('')
+  const [invisible, setInvisible] = useState(false)
 
+  const handleVideoSol = () => {
+    setInvisible(!invisible)
+  }
   return (
 
     <Card sx={{ mt: 4 }}>
@@ -165,12 +171,37 @@ const AddNewQuestionInStudyMaterial = () => {
                   </Select>
                 </FormControl>
               </Grid>
-              <Grid item sm={12} xs={6} mt={3}>
+              <Grid item sm={12} xs={6} >
                 <TextField id='name' fullWidth label='Write your question here...' required />
               </Grid>
-              <Grid item sm={12} xs={12}>
+              <Grid item sm={6} xs={12}>
                 Image (Optional)
                 <TextField type='file' id='image' fullWidth />
+              </Grid>
+              <Grid item sm={6} xs={12} mt={5.5}>
+                <FormControl fullWidth>
+                  <InputLabel id='demo-simple-select-outlined-label'>Difficulty</InputLabel>
+                  <Select
+                    // value={language}
+                    // onChange={e => setLanguage(e.target.value)}
+                    label='Language'
+                    id='demo-simple-select-outlined'
+                    labelId='demo-simple-select-outlined-label'
+                  >
+                    <MenuItem value={10}>Easy</MenuItem>
+                    <MenuItem value={20}>Medium</MenuItem>
+                    <MenuItem value={30}>Hard</MenuItem>
+                    {/* <MenuItem value={30}>12th</MenuItem> */}
+                  </Select>
+                </FormControl>
+              </Grid>
+              <Grid item sm={6} xs={12}>
+
+                <TextField label='Default Marks' type={number} id='default_marks' fullWidth />
+              </Grid>
+              <Grid item sm={6} xs={12}>
+
+                <TextField label='Default time to solve' type={number} id='default_time' fullWidth />
               </Grid>
               <Grid item sm={12} xs={12}>
                 <Divider textAlign='left'>
@@ -214,11 +245,43 @@ const AddNewQuestionInStudyMaterial = () => {
                   Solution
                 </Divider>
               </Grid>
-              <Grid item sm={12} xs={12}>
+              <Grid item xs={12} sm={12}>
                 <EditorWrapper>
                   <CardSnippet
                     sx={{ overflow: 'visible' }}
-                    title='Solution '
+                    title='Solution'
+                    code={{
+                      tsx: null,
+                      jsx: source.EditorControlledJSXCode
+                    }}
+                  >
+                    <EditorControlled value={Description} onChange={e => setDescription(e.target.value)} />
+                  </CardSnippet>
+                </EditorWrapper>
+              </Grid>
+              <Grid display='inherit' item xs={12} sm={12}>
+                <Typography variant='h5' >
+                  Video Solution
+                </Typography>
+                <FormControlLabel
+                  control={<Switch color='primary'
+                    sx={{ float: 'right', ml: '50%' }} checked={!invisible} onChange={handleVideoSol} />}
+                />
+              </Grid>
+              { !invisible && (<Grid item mt={3} sm={12} xs={12}>
+                Upload Video 
+                <TextField id='video' type='file' fullWidth />
+              </Grid>)}
+              <Grid item sm={12} xs={12}>
+                <Divider textAlign='left'>
+                  Hint
+                </Divider>
+              </Grid>
+              <Grid item xs={12} sm={12}>
+                <EditorWrapper>
+                  <CardSnippet
+                    sx={{ overflow: 'visible' }}
+                    title='Hint'
                     code={{
                       tsx: null,
                       jsx: source.EditorControlledJSXCode

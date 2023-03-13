@@ -160,7 +160,6 @@ const Question = () => {
         </Grid>
         {answerOptionList}
       </Grid>
-
     </Card>
     <div className='dialog-actions-dense'>
       <Button onClick={handleSave} variant='contained' sx={{ margin: '10px' }}>
@@ -175,7 +174,9 @@ const Question = () => {
 
 const AddNewMCQ = () => {
   const [questionList, setQuestionList] = useState([]);
-
+  const handleButtonClick = () => {
+    window.location.href = '/apps/import-questions/';
+  };
   const onAddQuestion = () => {
     const newQuestionId = `question-${Date.now()}`;
     setQuestionList((prevQuestionList) => [
@@ -187,7 +188,10 @@ const AddNewMCQ = () => {
 
   return (
     <Fragment>
-      <Button variant='contained' onClick={onAddQuestion} >
+      <Button variant='contained' onClick={handleButtonClick} sx={{ margin: '5px' }}>
+        Import questions
+      </Button>
+      <Button variant='contained' onClick={onAddQuestion} sx={{ margin: '5px' }} >
         Add New Question
       </Button>
       <div>

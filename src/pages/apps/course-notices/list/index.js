@@ -1,5 +1,5 @@
 // ** React Imports
-import { useState, useEffect, forwardRef } from 'react'
+import { useState, useEffect } from 'react'
 
 // ** Next Import
 import Link from 'next/link'
@@ -46,9 +46,10 @@ import DatePickerWrapper from 'src/@core/styles/libs/react-datepicker'
 
 import CardStatisticsHorizontal from 'src/@core/components/card-statistics/card-stats-horizontal'
 import CourseBundleTable from 'src/views/table/mui/courseBundle Table'
+import CourseNoticesTable from 'src/views/table/mui/courseNoticesTable'
 
 /* eslint-enable */
-const CourseBundleList = () => {
+const CourseNoticesList = () => {
     // ** State
     const [dates, setDates] = useState([])
     const [value, setValue] = useState('')
@@ -57,7 +58,6 @@ const CourseBundleList = () => {
     const [endDateRange, setEndDateRange] = useState(null)
     const [selectedRows, setSelectedRows] = useState([])
     const [startDateRange, setStartDateRange] = useState(null)
-
     // ** Hooks
     const dispatch = useDispatch()
     const store = useSelector(state => state.invoice)
@@ -91,32 +91,16 @@ const CourseBundleList = () => {
     return (
         <DatePickerWrapper>
             <Grid container spacing={6}>
-                <Grid item xs={6}>
+                <Grid item xs={12}>
                     <CardStatisticsHorizontal
-                        stats='Total course bundles'
-                        title='8'
-                        icon={<Icon icon="material-symbols:video-camera-front" />}
+                        stats='Course Notices'
+                        icon={<Icon icon="mdi:notice-board" />}
                     />
                 </Grid>
-                <Grid item xs={6}>
-                    <CardStatisticsHorizontal
-                        stats='Pending course bundles'
-                        title='0'
-                        icon={<Icon icon='ph:eye-bold' />}
-                    />
-                </Grid>
-                <Grid item xs={6}>
-                    <CardStatisticsHorizontal
-                        stats='Total duration'
-                        title='12:55 hours'
-                        icon={<Icon icon="ic:sharp-access-time" />}
-                    />
-                </Grid>
-
                 <Grid item xs={12}>
                     <Card>
-                        <CardHeader title='List of course-bundles approved' />
-                        <CourseBundleTable />
+                        <CardHeader title='List of course notices approved' />
+                        <CourseNoticesTable/>
                     </Card>
                 </Grid>
             </Grid>
@@ -124,4 +108,4 @@ const CourseBundleList = () => {
     )
 }
 
-export default CourseBundleList
+export default CourseNoticesList

@@ -84,7 +84,9 @@ const QuestionForContest = () => {
   const [subCategory, setSubCategory] = useState('')
   const [Description, setDescription] = useState('')
   const [Contest, setContest] = useState('')
-
+  const handleButtonClick = () => {
+    window.location.href = '/apps/import-questions/';
+  };
   return (
     <Card sx={{ mt: 4 }}>
       <CardHeader title='Create a question for contest' />
@@ -254,14 +256,21 @@ const QuestionForContest = () => {
                   Discard
                 </Button>
               </CardActions>
+
+            </Grid>
+            <Divider textAlign='left'>
+              Or
+            </Divider>
+            <Grid item xs={12} sm={12}>
+              <Button variant='contained' onClick={handleButtonClick} sx={{ margin: '5px' }}>
+                Import questions
+              </Button>
             </Grid>
           </form >
-          <Grid item xs={12}>
-            <Card>
-              <CardHeader title='List of Questions approved' />
-              <QuestionsTableForContests />
-            </Card>
-          </Grid>
+          <Card sx={{m: '5px'}}>
+            <CardHeader title='List of Questions approved' />
+            <QuestionsTableForContests />
+          </Card>
         </CardContent>
       </Fragment>
     </Card>
