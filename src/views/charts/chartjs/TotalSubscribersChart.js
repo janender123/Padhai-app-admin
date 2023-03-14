@@ -10,19 +10,15 @@ import InputAdornment from '@mui/material/InputAdornment'
 
 // ** Third Party Imports
 import format from 'date-fns/format'
-import { Bar } from 'react-chartjs-2'
+import { Line } from 'react-chartjs-2'
 import DatePicker from 'react-datepicker'
 
 // ** Icon Imports
 import Icon from 'src/@core/components/icon'
-import Chart from 'chart.js/auto';
 
-// Import the required scales
-import { CategoryScale } from 'chart.js';
-
-const ChartjsBarChart = props => {
+const TotalSubscribersChart = props => {
   // ** Props
-  const { yellow, labelColor, borderColor } = props
+  const { blue, white, blueLight, greyLight, labelColor, borderColor, legendColor } = props
 
   // ** States
   const [endDate, setEndDate] = useState(null)
@@ -31,13 +27,14 @@ const ChartjsBarChart = props => {
   const options = {
     responsive: true,
     maintainAspectRatio: false,
-    animation: { duration: 500 },
+    layout: {
+      padding: { top: -20 }
+    },
     scales: {
       x: {
         grid: {
           borderColor,
-          drawBorder: false,
-          color: borderColor
+          color: 'transparent'
         },
         ticks: { color: labelColor }
       },
@@ -46,8 +43,7 @@ const ChartjsBarChart = props => {
         max: 400,
         grid: {
           borderColor,
-          drawBorder: false,
-          color: borderColor
+          color: 'transparent'
         },
         ticks: {
           stepSize: 100,
@@ -56,7 +52,16 @@ const ChartjsBarChart = props => {
       }
     },
     plugins: {
-      legend: { display: false }
+      legend: {
+        align: 'start',
+        position: 'top',
+        labels: {
+          padding: 25,
+          boxWidth: 9,
+          color: legendColor,
+          usePointStyle: true
+        }
+      }
     }
   }
 
@@ -74,20 +79,30 @@ const ChartjsBarChart = props => {
       '16/12',
       '17/12',
       '18/12',
-      '19/12'
+      '19/12',
+      '20/12',
+      ''
     ],
     datasets: [
       {
-        maxBarThickness: 15,
-        backgroundColor: yellow,
+        fill: true,
+        tension: 0,
+        label: 'Total subscribers in 2022',
+        pointRadius: 0.5,
+        pointHoverRadius: 5,
+        pointStyle: 'circle',
+        backgroundColor: blue,
+        pointHoverBorderWidth: 5,
         borderColor: 'transparent',
-        borderRadius: { topRight: 15, topLeft: 15 },
-        data: [275, 90, 190, 205, 125, 85, 55, 87, 127, 150, 230, 280, 190]
+        pointHoverBorderColor: white,
+        pointBorderColor: 'transparent',
+        pointHoverBackgroundColor: blue,
+        data: [0, 255, 295, 0, 0, 0, 0, 0, 0, 8, 0, 0, 5, 0, 5]
       }
     ]
   }
 
-  const CustomInput = forwardRef(({ ...props }, ref) => {
+  const CustomInput = forwardRef((props, ref) => {
     const startDate = props.start !== null ? format(props.start, 'MM/dd/yyyy') : ''
     const endDate = props.end !== null ? ` - ${format(props.end, 'MM/dd/yyyy')}` : null
     const value = `${startDate}${endDate !== null ? endDate : ''}`
@@ -123,7 +138,7 @@ const ChartjsBarChart = props => {
   return (
     <Card>
       <CardHeader
-        title='Latest Statistics'
+        title='Total Subscriptions'
         sx={{
           flexDirection: ['column', 'row'],
           alignItems: ['flex-start', 'center'],
@@ -133,7 +148,7 @@ const ChartjsBarChart = props => {
         action={
           <DatePicker
             selectsRange
-            id='chartjs-bar'
+            id='chartjs-area'
             endDate={endDate}
             selected={startDate}
             startDate={startDate}
@@ -144,12 +159,10 @@ const ChartjsBarChart = props => {
         }
       />
       <CardContent>
-        <Bar data={data} height={400} options={options} />
+        <Line data={data} height={450} options={options} />
       </CardContent>
     </Card>
   )
 }
 
-Chart.register(CategoryScale);
-
-export default ChartjsBarChart
+export default TotalSubscribersChart

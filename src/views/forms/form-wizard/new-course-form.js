@@ -499,7 +499,6 @@ const NewCourseForm = () => {
                   <MenuItem value={10}>Mr. Pradeep Sharma</MenuItem>
                   <MenuItem value={20}>Mr. Deepak Kumar</MenuItem>
                   <MenuItem value={30}>Mr. Yogesh</MenuItem>
-                  {/* <MenuItem value={30}>12th</MenuItem> */}
                 </Select>
               </FormControl>
             </Grid>
@@ -516,7 +515,6 @@ const NewCourseForm = () => {
                   <MenuItem value={10}>Science CBSE 6th</MenuItem>
                   <MenuItem value={20}>Science ICSE 6th</MenuItem>
                   <MenuItem value={30}>Maths CBSE 6th</MenuItem>
-                  {/* <MenuItem value={30}>12th</MenuItem> */}
                 </Select>
               </FormControl>
             </Grid>

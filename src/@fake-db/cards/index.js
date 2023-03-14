@@ -85,6 +85,23 @@ const cardStatsData = {
       chipText: 'Last One Year'
     }
   ],
+  statsDashboard: [
+    {
+      stats: '687',
+      title: 'Users',
+      src: '/images/cards/card-stats-img-4.png'
+    },
+    {
+      stats: '116',
+      title: 'Teachers',
+      src: '/images/cards/card-stats-img-1.png'
+    },
+    {
+      stats: '56',
+      title: 'Admin',
+      src: '/images/cards/card-stats-img-3.png'
+    }
+  ],
   statsCharacter: [
     {
       stats: '8.14k',

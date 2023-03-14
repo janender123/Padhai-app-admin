@@ -6,12 +6,12 @@ const navigation = () => {
       children: [
         {
           title: 'Home',
-          path: '/dashboards/crm'
+          path: '/dashboards/home'
         },
-        // {
-        //   title: 'Analytics',
-        //   path: '/dashboards/analytics'
-        // },
+        {
+          title: 'Home ref',
+          path: '/dashboards/homeref'
+        },
         {
           title: 'Marketing',
           path: '/dashboards/ecommerce'
@@ -54,7 +54,7 @@ const navigation = () => {
       ]
     }, {
       title: 'Courses',
-      icon: 'mdi:file-document-outline',
+      icon: "fluent-mdl2:publish-course",
       children: [
         {
           title: 'Courses List',
@@ -67,7 +67,7 @@ const navigation = () => {
       ]
     }, {
       title: 'Live Classes',
-      icon: 'mdi:file-document-outline',
+      icon: 'material-symbols:video-camera-back-outline-sharp',
       children: [
         {
           title: 'Live Classes List',
@@ -81,7 +81,7 @@ const navigation = () => {
       ]
     }, {
       title: 'Course Bundle',
-      icon: 'mdi:file-document-outline',
+      icon: 'academicons:coursera',
       children: [
         {
           title: 'List',
@@ -95,7 +95,7 @@ const navigation = () => {
     },
     {
       title: 'Quiz and Contests',
-      icon: 'mdi:file-document-outline',
+      icon: 'material-symbols:quiz-outline-rounded',
       children: [
         {
           title: 'New Question',
@@ -126,17 +126,26 @@ const navigation = () => {
     },
     {
       title: 'Assignments',
-      icon: 'mdi:file-document-outline',
+      icon: 'material-symbols:assignment-add-outline',
       path: '/apps/assignments'
     },
     {
       title: 'Study Material',
-      icon: 'mdi:file-document-outline',
-      path: '/apps/study-material'
+      icon: 'cil:education',
+      children: [
+        {
+          title: 'List',
+          path: '/apps/study-material/list'
+        },
+        {
+          title: 'New',
+          path: '/apps/study-material/new'
+        }
+      ]
     },
     {
       title: 'Course Notices',
-      icon: 'mdi:file-document-outline',
+      icon: 'fe:notice-active',
       children: [
         {
           title: 'List',

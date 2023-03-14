@@ -118,7 +118,11 @@ const ChartJS = () => {
           />
         </Grid>
         <Grid item xs={12} md={6}>
-          <ChartjsBarChart yellow={barChartYellow} labelColor={labelColor} borderColor={borderColor} />
+          <ChartjsBarChart
+            yellow={barChartYellow}
+            labelColor={labelColor}
+            borderColor={borderColor}
+          />
         </Grid>
         <Grid item xs={12} md={6}>
           <ChartjsHorizontalBarChart

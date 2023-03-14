@@ -45,6 +45,7 @@ import NewQandA from '../form-layouts/NewQandAFormInStudyMaterial'
 import AddNewMCQInStudyMaterial from 'src/views/components/dialogs/AddNewMCQinStudyMaterial'
 import AddNewTFInStudyMaterial from 'src/views/components/dialogs/AddNewTFinStudyMaterial'
 import CardActions from '@mui/material/CardActions'
+import AddNewMCQ from 'src/views/components/dialogs/AddNewMCQDialog'
 
 const AddSection = () => {
   const handleNewSectionDialog = () => setOpenDialog(true)
@@ -68,42 +69,68 @@ const AddSection = () => {
       setEditSection(false)
     }
     const handleClickNewQA = () => {
+      const newQA = {
+        type: 'newQA',
+        component: (
+          <Grid item xs={12} sm={12} margin={3}>
+            <Accordion sx={{ borderStyle: 'groove' }}>
+              <AccordionDetails>
+                <NewQandA />
+              </AccordionDetails>
+            </Accordion>
+          </Grid>
+        ),
+        timestamp: new Date().getTime(),
+      };
+      setNewQAList([newQA, ...NewQAList]);
       if (collapsed === false) setCollapsed(!collapsed)
-      setNewQAList(NewQAList.concat(
-        <Grid item xs={12} sm={12} margin={3}>
-          <Accordion sx={{ borderStyle: 'groove' }}>
-            <AccordionDetails>
-              <NewQandA key={NewQAList.length} />
-            </AccordionDetails>
-          </Accordion>
-        </Grid>));
       setAnchorEl(null)
-
     };
+
     const handleClickNewMCQ = () => {
+      const newQA = {
+        type: 'newQA',
+        component: (
+          <Grid item xs={12} sm={12} margin={3}>
+            <Accordion sx={{ borderStyle: 'groove' }}>
+              <AccordionDetails>
+                <AddNewMCQ />
+              </AccordionDetails>
+            </Accordion>
+          </Grid>
+        ),
+        timestamp: new Date().getTime(),
+      };
+      setMCQList([newQA, ...MCQList]);
       if (collapsed === false) setCollapsed(!collapsed)
-      setMCQList(MCQList.concat(
-        <Grid item xs={12} sm={12} margin={3}>
-          <Accordion sx={{ borderStyle: 'groove' }}>
-            <AccordionDetails>
-              <AddNewMCQInStudyMaterial key={MCQList.length} />
-            </AccordionDetails>
-          </Accordion>
-        </Grid>));
       setAnchorEl(null)
     };
     const handleClickNewTF = () => {
+      const newQA = {
+        type: 'newQA',
+        component: (
+          <Grid item xs={12} sm={12} margin={3}>
+            <Accordion sx={{ borderStyle: 'groove' }}>
+              <AccordionDetails>
+                <AddNewTFInStudyMaterial />
+              </AccordionDetails>
+            </Accordion>
+          </Grid>
+        ),
+        timestamp: new Date().getTime(),
+      };
+      setTFList([newQA, ...TFList]);
       if (collapsed === false) setCollapsed(!collapsed)
-      setTFList(TFList.concat(
-        <Grid item xs={12} sm={12} margin={3}>
-          <Accordion sx={{ borderStyle: 'groove' }}>
-            <AccordionDetails>
-              <AddNewTFInStudyMaterial key={TFList.length} />
-            </AccordionDetails>
-          </Accordion>
-        </Grid>));
       setAnchorEl(null)
     };
+
+    const combinedList = [
+      ...MCQList.map((item) => ({ ...item, type: 'MCQ' })),
+      ...TFList.map((item) => ({ ...item, type: 'TF' })),
+      ...NewQAList.map((item) => ({ ...item, type: 'NewQA' })),
+    ];
+    const sortedList = combinedList.sort((a, b) => b.timestamp - a.timestamp);
+
     const handleCloseAddButton = () => {
       setAnchorEl(null)
     }
@@ -192,9 +219,11 @@ const AddSection = () => {
       <Collapse in={collapsed}>
         <CardContent>
           <div>
-            {NewQAList}
-            {MCQList}
-            {TFList}
+            {sortedList.map((item) => (
+              <div>
+                {item.component}
+              </div>
+            ))}
           </div>
         </CardContent>
       </Collapse>
@@ -393,7 +422,7 @@ const VerticalStepperForStudyMaterial = () => {
 
   return (
     <Card>
-      <CardHeader title='Vertical Stepper with Numbers' />
+      <CardHeader title='Add Study Material' />
       <CardContent>
         <StepperWrapper>
           <Stepper activeStep={activeStep} orientation='vertical'>

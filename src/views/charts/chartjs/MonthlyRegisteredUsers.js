@@ -20,7 +20,7 @@ import Chart from 'chart.js/auto';
 // Import the required scales
 import { CategoryScale } from 'chart.js';
 
-const ChartjsBarChart = props => {
+const MonthlyRegisteredUsers = props => {
   // ** Props
   const { yellow, labelColor, borderColor } = props
 
@@ -123,7 +123,8 @@ const ChartjsBarChart = props => {
   return (
     <Card>
       <CardHeader
-        title='Latest Statistics'
+        title='Monthly Registred Users in 2022
+        '
         sx={{
           flexDirection: ['column', 'row'],
           alignItems: ['flex-start', 'center'],
@@ -152,4 +153,4 @@ const ChartjsBarChart = props => {
 
 Chart.register(CategoryScale);
 
-export default ChartjsBarChart
+export default MonthlyRegisteredUsers

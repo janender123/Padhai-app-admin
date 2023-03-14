@@ -8,7 +8,7 @@ import CardContent from '@mui/material/CardContent'
 // ** Custom Components Imports
 import CustomChip from 'src/@core/components/mui/chip'
 
-const CardStatsCharacter = ({ data }) => {
+const CardStatsForDashboard = ({ data }) => {
   // ** Vars
   const { title, chipText, src, stats, trendNumber, trend = 'positive', chipColor } = data
 
@@ -17,7 +17,7 @@ const CardStatsCharacter = ({ data }) => {
       <CardContent sx={{ pb: '0 !important' }}>
         <Grid container>
           <Grid item xs={6}>
-            <Typography sx={{ mb: 1.5, fontWeight: 600, whiteSpace: 'nowrap' }}>{title}</Typography>
+            <Typography sx={{ mb: 1.5 ,fontSize:'2.5rem',fontWeight: 400, whiteSpace: 'nowrap' }}>{title}</Typography>
             {chipColor && (
               <CustomChip
                 skin='light'
@@ -45,4 +45,4 @@ const CardStatsCharacter = ({ data }) => {
   )
 }
 
-export default CardStatsCharacter
+export default CardStatsForDashboard
