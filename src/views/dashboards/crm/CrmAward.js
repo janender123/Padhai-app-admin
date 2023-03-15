@@ -5,6 +5,7 @@ import Button from '@mui/material/Button'
 import { styled } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
 import CardContent from '@mui/material/CardContent'
+import Grid from '@mui/material/Grid'
 
 // Styled component for the trophy image
 const TrophyImg = styled('img')(({ theme }) => ({
@@ -46,4 +47,28 @@ const CrmAward = () => {
   )
 }
 
-export default CrmAward
+const WelcomeAdmin = () => {
+  return (
+    <Card sx={{ overflow: 'visible', height: '250px', width: '810px', padding: '32px', backgroundColor: '#3c65c4' }}>
+      <CardContent sx={{ pb: '0 !important'}}>
+        <Grid container>
+        <Grid item xs={6}>
+          <Typography sx={{ mb: 1.5, fontSize: '2.5rem', fontWeight: 400, whiteSpace: 'nowrap', color: 'white' }}>
+            Welcome {' '}
+            <Box component='span' sx={{ fontWeight: 'bold' }}>
+              Admin
+            </Box>
+            !
+          </Typography>
+          </Grid>
+          <Grid item xs={6} sx={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'flex-end' }}>
+            <img src='/images/cards/trophy.png' height={134} />
+          </Grid>
+        </Grid>
+      </CardContent>
+    </Card>
+  )
+}
+
+export default CrmAward;
+export { WelcomeAdmin }

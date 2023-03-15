@@ -11,10 +11,108 @@ const donutColors = {
   series1: '#fdd835',
   series2: '#00d4bd',
   series3: '#826bf8',
-  series4: '#40CDFA',
+  series4: 'orange',
   series5: '#ffa1a1'
 }
 
+const CourseNoticeChart = () => {
+  // ** Hook
+  const theme = useTheme()
+
+  const options = {
+    stroke: { width: 0 },
+    labels: ['Courses', 'Live Classes', 'Course Bundle', 'Daily Quiz', 'Contest'],
+    colors: [donutColors.series1, donutColors.series5, donutColors.series3, donutColors.series2, donutColors.series4],
+    dataLabels: {
+      enabled: true,
+      formatter: val => `${parseInt(val, 10)}%`
+    },
+    legend: {
+      position: 'bottom',
+      markers: { offsetX: -3 },
+      labels: { colors: theme.palette.text.secondary },
+      itemMargin: {
+        vertical: 3,
+        horizontal: 10
+      }
+    },
+    plotOptions: {
+      pie: {
+        donut: {
+          labels: {
+            show: true,
+            name: {
+              fontSize: '1.2rem'
+            },
+            value: {
+              fontSize: '1.2rem',
+              color: theme.palette.text.secondary,
+              formatter: val => `${parseInt(val, 10)}`
+            },
+            total: {
+              show: true,
+              fontSize: '1.2rem',
+              formatter: value => `${value.globals.seriesTotals.reduce((total, num) => total + num)}`,
+              color: theme.palette.text.primary
+            }
+          }
+        }
+      }
+    },
+    responsive: [
+      {
+        breakpoint: 992,
+        options: {
+          chart: {
+            height: 380
+          },
+          legend: {
+            position: 'bottom'
+          }
+        }
+      },
+      {
+        breakpoint: 576,
+        options: {
+          chart: {
+            height: 320
+          },
+          plotOptions: {
+            pie: {
+              donut: {
+                labels: {
+                  show: true,
+                  name: {
+                    fontSize: '1rem'
+                  },
+                  value: {
+                    fontSize: '1rem'
+                  },
+                  total: {
+                    fontSize: '1rem'
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+
+  return (
+    <Card>
+      <CardHeader
+        title='Content Distribution'
+        subheader='Various categories of content'
+        subheaderTypographyProps={{ sx: { color: theme => `${theme.palette.text.disabled} !important` } }}
+      />
+      <CardContent>
+        <ReactApexcharts type='donut' height={280} options={options} series={[85, 116, 27, 97, 67]} />
+      </CardContent>
+    </Card>
+  )
+}
 const ApexDonutChart = () => {
   // ** Hook
   const theme = useTheme()
@@ -115,4 +213,7 @@ const ApexDonutChart = () => {
   )
 }
 
-export default ApexDonutChart
+
+
+export default ApexDonutChart;
+export { CourseNoticeChart }

@@ -32,6 +32,9 @@ const MonthlyRegisteredUsers = props => {
     responsive: true,
     maintainAspectRatio: false,
     animation: { duration: 500 },
+    layout: {
+      padding: { top: -20 }
+    },
     scales: {
       x: {
         grid: {
@@ -123,7 +126,7 @@ const MonthlyRegisteredUsers = props => {
   return (
     <Card>
       <CardHeader
-        title='Monthly Registred Users in 2022
+        title='Monthly Registered Users
         '
         sx={{
           flexDirection: ['column', 'row'],
@@ -145,7 +148,7 @@ const MonthlyRegisteredUsers = props => {
         }
       />
       <CardContent>
-        <Bar data={data} height={400} options={options} />
+        <Bar data={data} height={450} options={options} />
       </CardContent>
     </Card>
   )

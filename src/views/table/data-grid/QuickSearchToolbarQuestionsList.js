@@ -35,7 +35,7 @@ const QuickSearchToolbar = props => {
         <MenuItem value='Delete'>Delete</MenuItem>
         <MenuItem value='Edit'>Edit</MenuItem>
       </Select>
-      {/* <GridToolbarFilterButton /> */}
+      
 
       <TextField
         size='small'
@@ -67,6 +67,7 @@ const QuickSearchToolbar = props => {
           }
         }}
       />
+      <GridToolbarFilterButton />
       {/* <DialogEditUserInfo/> */}
     </Box>
   )

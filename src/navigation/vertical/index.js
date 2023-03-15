@@ -21,16 +21,6 @@ const navigation = () => {
     {
       sectionTitle: 'Education'
     },
-    // {
-    //   title: 'Chat',
-    //   icon: 'mdi:message-outline',
-    //   path: '/apps/chat'
-    // },
-    // {
-    //   title: 'Calendar',
-    //   icon: 'mdi:calendar-blank-outline',
-    //   path: '/apps/calendar'
-    // },
     {
       title: 'Categories',
       icon: 'mdi:file-document-outline',
@@ -125,11 +115,6 @@ const navigation = () => {
       ]
     },
     {
-      title: 'Assignments',
-      icon: 'material-symbols:assignment-add-outline',
-      path: '/apps/assignments'
-    },
-    {
       title: 'Study Material',
       icon: 'cil:education',
       children: [
@@ -158,7 +143,33 @@ const navigation = () => {
       ]
     },
     {
+      title: 'Assignments',
+      icon: 'material-symbols:assignment-add-outline',
+      path: '/apps/assignments'
+    },
+    {
+      sectionTitle: 'User Section'
+    },
+    {
       title: 'User',
+      icon: 'mdi:account-outline',
+      children: [
+        {
+          title: 'Instructor',
+          path: '/user/instructor'
+        },
+        {
+          title: 'User',
+          path: '/user/user'
+        },
+        {
+          title: 'New',
+          path: '/user/new'
+        },
+      ]
+    },
+    {
+      title: 'User ref',
       icon: 'mdi:account-outline',
       children: [
         {
