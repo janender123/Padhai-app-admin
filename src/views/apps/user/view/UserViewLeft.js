@@ -40,25 +40,24 @@ import { getInitials } from 'src/@core/utils/get-initials'
 
 const data = {
   id: 1,
-  role: 'admin',
+  role: 'user',
   status: 'active',
-  username: 'gslixby0',
   avatarColor: 'primary',
-  country: 'El Salvador',
-  company: 'Yotz PVT LTD',
-  contact: '(479) 232-9151',
+  state: 'Delhi',
+  contact: '12345678',
   currentPlan: 'enterprise',
-  fullName: 'Daisy Patterson',
-  email: 'gslixby0@abc.net.au',
-  avatar: '/images/avatars/4.png'
+  fullName: 'Shyam Mukherjee',
+  email: 'shyam@gmail.com',
+  board: 'cbse',
+  class: '12',
+  stream: 'Science',
+  avatar: '/images/avatars/5.png'
 }
 
 const roleColors = {
   admin: 'error',
-  editor: 'info',
-  author: 'warning',
-  maintainer: 'success',
-  subscriber: 'primary'
+  instructor: 'success',
+  user: 'primary'
 }
 
 const statusColors = {
@@ -140,26 +139,26 @@ const UserViewLeft = () => {
 
             <CardContent sx={{ my: 1 }}>
               <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <Box sx={{ mr: 8, display: 'flex', alignItems: 'center' }}>
+                <Box sx={{ mr: 12, display: 'flex', alignItems: 'center' }}>
                   <CustomAvatar skin='light' variant='rounded' sx={{ mr: 3 }}>
-                    <Icon icon='mdi:check' />
+                    <Icon icon='ic:round-access-time' />
                   </CustomAvatar>
                   <div>
                     <Typography variant='h6' sx={{ lineHeight: 1.3 }}>
-                      1.23k
+                      18 Hours
                     </Typography>
-                    <Typography variant='body2'>Task Done</Typography>
+                    <Typography variant='body2'>Watch Time</Typography>
                   </div>
                 </Box>
                 <Box sx={{ display: 'flex', alignItems: 'center' }}>
                   <CustomAvatar skin='light' variant='rounded' sx={{ mr: 3 }}>
-                    <Icon icon='mdi:briefcase-variant-outline' />
+                    <Icon icon='material-symbols:quiz-outline-rounded' />
                   </CustomAvatar>
                   <div>
                     <Typography variant='h6' sx={{ lineHeight: 1.3 }}>
-                      568
+                      56
                     </Typography>
-                    <Typography variant='body2'>Project Done</Typography>
+                    <Typography variant='body2'>Contests</Typography>
                   </div>
                 </Box>
               </Box>
@@ -171,15 +170,39 @@ const UserViewLeft = () => {
               <Box sx={{ pt: 2, pb: 1 }}>
                 <Box sx={{ display: 'flex', mb: 2.7 }}>
                   <Typography variant='subtitle2' sx={{ mr: 2, color: 'text.primary' }}>
-                    Username:
-                  </Typography>
-                  <Typography variant='body2'>@{data.username}</Typography>
-                </Box>
-                <Box sx={{ display: 'flex', mb: 2.7 }}>
-                  <Typography variant='subtitle2' sx={{ mr: 2, color: 'text.primary' }}>
-                    Billing Email:
+                    Email:
                   </Typography>
                   <Typography variant='body2'>{data.email}</Typography>
+                </Box>
+                <Box sx={{ display: 'flex', mb: 2.7 }}>
+                  <Typography sx={{ mr: 2, fontWeight: 500, fontSize: '0.875rem' }}>Contact:</Typography>
+                  <Typography variant='body2'>+91 {data.contact}</Typography>
+                </Box>
+                <Box sx={{ display: 'flex', mb: 2.7 }}>
+                  <Typography sx={{ mr: 2, fontWeight: 500, fontSize: '0.875rem' }}>Role:</Typography>
+                  <Typography variant='body2' sx={{ textTransform: 'capitalize' }}>
+                    {data.role}
+                  </Typography>
+                </Box>
+                <Box sx={{ display: 'flex', mb: 2.7 }}>
+                  <Typography sx={{ mr: 2, fontWeight: 500, fontSize: '0.875rem' }}>Language:</Typography>
+                  <Typography variant='body2'>English</Typography>
+                </Box>
+                <Box sx={{ display: 'flex', mb: 2.7 }}>
+                  <Typography sx={{ mr: 2, fontWeight: 500, fontSize: '0.875rem' }}>Board:</Typography>
+                  <Typography variant='body2' textTransform='uppercase'>{data.board}</Typography>
+                </Box>
+                <Box sx={{ display: 'flex', mb: 2.7 }}>
+                  <Typography sx={{ mr: 2, fontWeight: 500, fontSize: '0.875rem' }}>Class:</Typography>
+                  <Typography variant='body2'>{data.class}th</Typography>
+                </Box>
+                <Box sx={{ display: 'flex', mb: 2.7 }}>
+                  <Typography sx={{ mr: 2, fontWeight: 500, fontSize: '0.875rem' }}>Stream:</Typography>
+                  <Typography variant='body2' textTransform='capitalize'>{data.stream}</Typography>
+                </Box>
+                <Box sx={{ display: 'flex', mb: 2.7 }}>
+                  <Typography sx={{ mr: 2, fontWeight: 500, fontSize: '0.875rem' }}>State:</Typography>
+                  <Typography variant='body2' textTransform='capitalize'>{data.state}</Typography>
                 </Box>
                 <Box sx={{ display: 'flex', mb: 2.7 }}>
                   <Typography variant='subtitle2' sx={{ mr: 2, color: 'text.primary' }}>
@@ -199,31 +222,8 @@ const UserViewLeft = () => {
                     }}
                   />
                 </Box>
-                <Box sx={{ display: 'flex', mb: 2.7 }}>
-                  <Typography sx={{ mr: 2, fontWeight: 500, fontSize: '0.875rem' }}>Role:</Typography>
-                  <Typography variant='body2' sx={{ textTransform: 'capitalize' }}>
-                    {data.role}
-                  </Typography>
-                </Box>
-                <Box sx={{ display: 'flex', mb: 2.7 }}>
-                  <Typography sx={{ mr: 2, fontWeight: 500, fontSize: '0.875rem' }}>Tax ID:</Typography>
-                  <Typography variant='body2'>Tax-8894</Typography>
-                </Box>
-                <Box sx={{ display: 'flex', mb: 2.7 }}>
-                  <Typography sx={{ mr: 2, fontWeight: 500, fontSize: '0.875rem' }}>Contact:</Typography>
-                  <Typography variant='body2'>+1 {data.contact}</Typography>
-                </Box>
-                <Box sx={{ display: 'flex', mb: 2.7 }}>
-                  <Typography sx={{ mr: 2, fontWeight: 500, fontSize: '0.875rem' }}>Language:</Typography>
-                  <Typography variant='body2'>English</Typography>
-                </Box>
-                <Box sx={{ display: 'flex' }}>
-                  <Typography sx={{ mr: 2, fontWeight: 500, fontSize: '0.875rem' }}>Country:</Typography>
-                  <Typography variant='body2'>{data.country}</Typography>
-                </Box>
               </Box>
             </CardContent>
-
             <CardActions sx={{ display: 'flex', justifyContent: 'center' }}>
               <Button variant='contained' sx={{ mr: 2 }} onClick={handleEditClickOpen}>
                 Edit
@@ -253,15 +253,14 @@ const UserViewLeft = () => {
                       <TextField fullWidth label='Full Name' defaultValue={data.fullName} />
                     </Grid>
                     <Grid item xs={12} sm={6}>
-                      <TextField
-                        fullWidth
-                        label='Username'
-                        defaultValue={data.username}
-                        InputProps={{ startAdornment: <InputAdornment position='start'>@</InputAdornment> }}
-                      />
+                      <TextField fullWidth type='email' label=' Email' defaultValue={data.email} />
                     </Grid>
                     <Grid item xs={12} sm={6}>
-                      <TextField fullWidth type='email' label='Billing Email' defaultValue={data.email} />
+                      <TextField
+                        fullWidth
+                        label='Contact'
+                        defaultValue={`+91-${data.contact}`}
+                      />
                     </Grid>
                     <Grid item xs={12} sm={6}>
                       <FormControl fullWidth>
@@ -279,10 +278,13 @@ const UserViewLeft = () => {
                       </FormControl>
                     </Grid>
                     <Grid item xs={12} sm={6}>
-                      <TextField fullWidth label='TAX ID' defaultValue='Tax-8894' />
+                      <TextField fullWidth label='Board' defaultValue='CBSE' />
                     </Grid>
                     <Grid item xs={12} sm={6}>
-                      <TextField fullWidth label='Contact' defaultValue={`+1 ${data.contact}`} />
+                      <TextField fullWidth label='Class' defaultValue={`${data.class}th`} />
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                      <TextField fullWidth label='Stream' defaultValue='Science' />
                     </Grid>
                     <Grid item xs={12} sm={6}>
                       <FormControl fullWidth>
@@ -294,38 +296,43 @@ const UserViewLeft = () => {
                           labelId='user-view-language-label'
                         >
                           <MenuItem value='English'>English</MenuItem>
-                          <MenuItem value='Spanish'>Spanish</MenuItem>
-                          <MenuItem value='Portuguese'>Portuguese</MenuItem>
-                          <MenuItem value='Russian'>Russian</MenuItem>
-                          <MenuItem value='French'>French</MenuItem>
-                          <MenuItem value='German'>German</MenuItem>
+                          <MenuItem value='Hindi'>Hindi</MenuItem>
+                          <MenuItem value='Gujarati'>Gujarati</MenuItem>
                         </Select>
                       </FormControl>
                     </Grid>
                     <Grid item xs={12} sm={6}>
                       <FormControl fullWidth>
-                        <InputLabel id='user-view-country-label'>Country</InputLabel>
+                        <InputLabel id='user-view-state-label'>State</InputLabel>
                         <Select
-                          label='Country'
-                          defaultValue='USA'
-                          id='user-view-country'
-                          labelId='user-view-country-label'
+                          label='State'
+                          defaultValue='Delhi'
+                          id='user-view-delhi'
+                          labelId='user-view-delhi-label'
                         >
-                          <MenuItem value='USA'>USA</MenuItem>
-                          <MenuItem value='UK'>UK</MenuItem>
-                          <MenuItem value='Spain'>Spain</MenuItem>
-                          <MenuItem value='Russia'>Russia</MenuItem>
-                          <MenuItem value='France'>France</MenuItem>
-                          <MenuItem value='Germany'>Germany</MenuItem>
+                          <MenuItem value='Delhi'>Delhi</MenuItem>
+                          <MenuItem value='UP'>Uttar Pradesh</MenuItem>
+                          <MenuItem value='UK'>Uttarakhand</MenuItem>
+                          <MenuItem value='Punjab'>Punjab</MenuItem>
+                          <MenuItem value='Assam'>Assam</MenuItem>
+                          <MenuItem value='Haryana'>Haryana</MenuItem>
                         </Select>
                       </FormControl>
                     </Grid>
-                    <Grid item xs={12}>
-                      <FormControlLabel
-                        label='Use as a billing address?'
-                        control={<Switch defaultChecked />}
-                        sx={{ '& .MuiTypography-root': { fontWeight: 500 } }}
-                      />
+                    <Grid item xs={12} sm={6}>
+                      <FormControl fullWidth>
+                        <InputLabel id='user-view-status-label'>Role</InputLabel>
+                        <Select
+                          label='Status'
+                          defaultValue={data.status}
+                          id='user-view-status'
+                          labelId='user-view-status-label'
+                        >
+                          <MenuItem value='pending'>User</MenuItem>
+                          <MenuItem value='active'>Instructor</MenuItem>
+                          <MenuItem value='inactive'>Admin</MenuItem>
+                        </Select>
+                      </FormControl>
                     </Grid>
                   </Grid>
                 </form>
@@ -358,7 +365,7 @@ const UserViewLeft = () => {
                 sx={{ fontSize: '0.75rem', borderRadius: '4px' }}
               />
               <Box sx={{ display: 'flex', position: 'relative' }}>
-                <Sup>$</Sup>
+                <Sub sx={{mr:'4px'}}>₹ </Sub>
                 <Typography
                   variant='h3'
                   sx={{
@@ -383,20 +390,7 @@ const UserViewLeft = () => {
                     10 Users
                   </Typography>
                 </Box>
-                <Box
-                  sx={{
-                    mt: 2.5,
-                    display: 'flex',
-                    mb: 2.5,
-                    alignItems: 'center',
-                    '& svg': { mr: 2, color: 'text.secondary' }
-                  }}
-                >
-                  <Icon icon='mdi:circle' fontSize='0.625rem' />
-                  <Typography component='span' sx={{ fontSize: '0.875rem' }}>
-                    Up to 10GB storage
-                  </Typography>
-                </Box>
+                
                 <Box
                   sx={{
                     mt: 2.5,
@@ -465,10 +459,10 @@ const UserViewLeft = () => {
                     id='user-view-plans-select'
                     labelId='user-view-plans-select-label'
                   >
-                    <MenuItem value='Basic'>Basic - $0/month</MenuItem>
-                    <MenuItem value='Standard'>Standard - $99/month</MenuItem>
-                    <MenuItem value='Enterprise'>Enterprise - $499/month</MenuItem>
-                    <MenuItem value='Company'>Company - $999/month</MenuItem>
+                    <MenuItem value='Basic'>Monthly - ₹ 0/month</MenuItem>
+                    <MenuItem value='Standard'>Quarterly - ₹ 99/month</MenuItem>
+                    <MenuItem value='Enterprise'>Half Yearly - ₹ 499/month</MenuItem>
+                    <MenuItem value='Company'>Yearly - ₹ 999/month</MenuItem>
                   </Select>
                 </FormControl>
                 <Button variant='contained' sx={{ minWidth: ['100%', 0] }}>
@@ -491,7 +485,7 @@ const UserViewLeft = () => {
                   }}
                 >
                   <Box sx={{ mr: 3, display: 'flex', ml: 2.4, position: 'relative' }}>
-                    <Sup>$</Sup>
+                    <Sub>₹ </Sub>
                     <Typography
                       variant='h3'
                       sx={{

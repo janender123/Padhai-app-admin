@@ -35,24 +35,24 @@ import Icon from 'src/@core/components/icon'
 const data = [
   {
     device: 'Dell XPS 15',
-    location: 'United States',
+    location: 'Delhi, India',
     browser: 'Chrome on Windows',
     recentActivity: '10, Jan 2020 20:07'
   },
   {
-    location: 'Ghana',
+    location: 'UP, India',
     device: 'Google Pixel 3a',
     browser: 'Chrome on Android',
     recentActivity: '11, Jan 2020 10:16'
   },
   {
-    location: 'Mayotte',
+    location: 'UK, India',
     device: 'Apple iMac',
     browser: 'Chrome on MacOS',
     recentActivity: '11, Jan 2020 12:10'
   },
   {
-    location: 'Mauritania',
+    location: 'Rajasthan, India',
     device: 'Apple iPhone XR',
     browser: 'Chrome on iPhone',
     recentActivity: '12, Jan 2020 8:29'
@@ -61,7 +61,7 @@ const data = [
 
 const UserViewSecurity = () => {
   // ** States
-  const [defaultValues, setDefaultValues] = useState({ mobile: '+1(968) 819-2547' })
+  const [defaultValues, setDefaultValues] = useState({ mobile: '+91-12345678' })
   const [mobileNumber, setMobileNumber] = useState(defaultValues.mobile)
   const [openEditMobileNumber, setOpenEditMobileNumber] = useState(false)
 

@@ -674,16 +674,14 @@ const data = {
   ]
 }
 
-const projectListData = [
+const coursesListData = [
   {
     id: 1,
     hours: '18:42',
     progressValue: 78,
-    totalTask: '122/240',
     progressColor: 'success',
-    projectType: 'React Project',
-    projectTitle: 'BGC eCommerce App',
-    img: '/images/icons/project-icons/react.png'
+    projectTitle: 'Chemistry',
+    img: '/images/icons/courses-icons/chemistry-icon.png'
   },
   {
     id: 2,
@@ -691,9 +689,8 @@ const projectListData = [
     progressValue: 18,
     totalTask: '9/56',
     progressColor: 'error',
-    projectType: 'Figma Project',
-    projectTitle: 'Falcon Logo Design',
-    img: '/images/icons/project-icons/figma.png'
+    projectTitle: 'Biology',
+    img: '/images/icons/courses-icons/biology-icon.png'
   },
   {
     id: 3,
@@ -701,9 +698,8 @@ const projectListData = [
     progressValue: 62,
     totalTask: '290/320',
     progressColor: 'primary',
-    projectType: 'VueJs Project',
-    projectTitle: 'Dashboard Design',
-    img: '/images/icons/project-icons/vue.png'
+    projectTitle: 'Physics',
+    img: '/images/icons/courses-icons/physics-icon.png'
   },
   {
     id: 4,
@@ -711,9 +707,8 @@ const projectListData = [
     progressValue: 8,
     totalTask: '7/63',
     progressColor: 'error',
-    projectType: 'Xamarin Project',
-    projectTitle: 'Foodista Mobile App',
-    img: '/images/icons/project-icons/xamarin.png'
+    projectTitle: 'Maths',
+    img: '/images/icons/courses-icons/maths-icon.png'
   },
   {
     id: 5,
@@ -721,9 +716,8 @@ const projectListData = [
     progressValue: 49,
     totalTask: '120/186',
     progressColor: 'warning',
-    projectType: 'Python Project',
-    projectTitle: 'Dojo React Project',
-    img: '/images/icons/project-icons/python.png'
+    projectTitle: 'English',
+    img: '/images/icons/courses-icons/english-icon.png'
   },
   {
     id: 6,
@@ -731,9 +725,8 @@ const projectListData = [
     progressValue: 92,
     totalTask: '99/109',
     progressColor: 'success',
-    projectType: 'Sketch Project',
-    projectTitle: 'Blockchain Website',
-    img: '/images/icons/project-icons/sketch.png'
+    projectTitle: 'Maths+Physics',
+    img: '/images/icons/courses-icons/maths-icon.png'
   },
   {
     id: 7,
@@ -741,9 +734,8 @@ const projectListData = [
     progressValue: 88,
     totalTask: '98/110',
     progressColor: 'success',
-    projectType: 'HTML Project',
-    projectTitle: 'Hoffman Website',
-    img: '/images/icons/project-icons/html5.png'
+    projectTitle: 'Chemistry+Biology',
+    img: '/images/icons/courses-icons/chemistry-icon.png'
   }
 ]
 
@@ -802,11 +794,11 @@ mock.onDelete('/apps/users/delete').reply(config => {
 })
 
 // GET: DATA
-mock.onGet('/apps/users/project-list').reply(config => {
+mock.onGet('/apps/users/courses-list').reply(config => {
   const { q = '' } = config.params ?? ''
   const queryLowered = q.toLowerCase()
 
-  const filteredData = projectListData.filter(
+  const filteredData = coursesListData.filter(
     user =>
       user.projectTitle.toLowerCase().includes(queryLowered) ||
       user.projectType.toLowerCase().includes(queryLowered) ||

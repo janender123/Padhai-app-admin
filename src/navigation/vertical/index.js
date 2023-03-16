@@ -9,10 +9,6 @@ const navigation = () => {
           path: '/dashboards/home'
         },
         {
-          title: 'Home ref',
-          path: '/dashboards/homeref'
-        },
-        {
           title: 'Marketing',
           path: '/dashboards/ecommerce'
         }
@@ -177,7 +173,7 @@ const navigation = () => {
           path: '/apps/user/list'
         },
         {
-          title: 'View',
+          title: 'View User',
           children: [
             {
               title: 'Overview',
@@ -198,6 +194,31 @@ const navigation = () => {
             {
               title: 'Connection',
               path: '/apps/user/view/connection'
+            }
+          ]
+        },
+        {
+          title: 'View Teacher',
+          children: [
+            {
+              title: 'Overview',
+              path: '/apps/teaher/view/overview'
+            },
+            {
+              title: 'Security',
+              path: '/apps/teacher/view/security'
+            },
+            {
+              title: 'Billing & Plans',
+              path: '/apps/teacher/view/billing-plan'
+            },
+            {
+              title: 'Notifications',
+              path: '/apps/teacher/view/notification'
+            },
+            {
+              title: 'Connection',
+              path: '/apps/teacher/view/connection'
             }
           ]
         }

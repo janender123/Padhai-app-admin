@@ -42,13 +42,6 @@ const columns = [
   },
   {
     flex: 0.15,
-    minWidth: 100,
-    field: 'totalTask',
-    headerName: 'Total Tasks',
-    renderCell: ({ row }) => <Typography variant='body2'>{row.totalTask}</Typography>
-  },
-  {
-    flex: 0.15,
     minWidth: 200,
     headerName: 'Progress',
     field: 'progressValue',
@@ -80,7 +73,7 @@ const InvoiceListTable = () => {
   const [data, setData] = useState([])
   useEffect(() => {
     axios
-      .get('/apps/users/project-list', {
+      .get('/apps/users/courses-list', {
         params: {
           q: value
         }
@@ -90,13 +83,13 @@ const InvoiceListTable = () => {
 
   return (
     <Card>
-      <CardHeader title="User's Projects List" />
+      <CardHeader title="User's Courses List" />
       <CardContent>
         <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}>
           <Typography variant='body2' sx={{ mr: 2 }}>
             Search:
           </Typography>
-          <TextField size='small' placeholder='Search Project' value={value} onChange={e => setValue(e.target.value)} />
+          <TextField size='small' placeholder='Search Course' value={value} onChange={e => setValue(e.target.value)} />
         </Box>
       </CardContent>
       <DataGrid

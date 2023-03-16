@@ -88,7 +88,7 @@ const columns = [
     minWidth: 90,
     field: 'total',
     headerName: 'Total',
-    renderCell: ({ row }) => <Typography variant='body2'>${row.total || 0}</Typography>
+    renderCell: ({ row }) => <Typography variant='body2'> ₹{row.total || 0}</Typography>
   },
   {
     flex: 0.3,

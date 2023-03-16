@@ -30,18 +30,6 @@ const connectedAccountsArr = [
     title: 'Github',
     logo: '/images/logos/github.png',
     subtitle: 'Manage your Git repositories'
-  },
-  {
-    checked: true,
-    title: 'Mailchimp',
-    subtitle: 'Email marketing service',
-    logo: '/images/logos/mail-chimp.png'
-  },
-  {
-    title: 'Asana',
-    checked: false,
-    subtitle: 'Communication',
-    logo: '/images/logos/asana.png'
   }
 ]
 
@@ -54,24 +42,14 @@ const socialAccountsArr = [
   {
     title: 'Twitter',
     isConnected: true,
-    username: '@ThemeSelection',
+    username: '@padhaiapp',
     logo: '/images/logos/twitter.png'
   },
   {
     title: 'Instagram',
     isConnected: true,
-    username: '@ThemeSelection',
+    username: '@padhaiapp',
     logo: '/images/logos/instagram.png'
-  },
-  {
-    title: 'Dribbble',
-    isConnected: false,
-    logo: '/images/logos/dribbble.png'
-  },
-  {
-    title: 'Behance',
-    isConnected: false,
-    logo: '/images/logos/behance.png'
   }
 ]
 
