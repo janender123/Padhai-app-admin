@@ -67,12 +67,12 @@ const ActivityTimeline = () => {
                   Today
                 </Typography>
               </Box>
-              <Typography sx={{ mb: 2, color: 'text.secondary' }}>Project meeting with john @10:15am</Typography>
+              <Typography sx={{ mb: 2, color: 'text.secondary' }}>Project meeting with Keshav @10:15am</Typography>
               <Box sx={{ display: 'flex', alignItems: 'center' }}>
                 <Avatar src='/images/avatars/2.png' sx={{ mr: 4, width: 38, height: 38 }} />
                 <div>
-                  <Typography sx={{ fontWeight: 500 }}>Lester McCarthy (Client)</Typography>
-                  <Typography sx={{ color: 'text.secondary' }}>CEO of Infibeam</Typography>
+                  <Typography sx={{ fontWeight: 500 }}>Himanshu Singh(Client)</Typography>
+                  <Typography sx={{ color: 'text.secondary' }}>CEO of Echiofy</Typography>
                 </div>
               </Box>
             </TimelineContent>
@@ -121,7 +121,7 @@ const ActivityTimeline = () => {
                 </Typography>
               </Box>
               <Box sx={{ mb: 2.5, display: 'flex', alignItems: 'center' }}>
-                <Typography sx={{ color: 'text.secondary' }}>Sent by Mollie Dixon</Typography>
+                <Typography sx={{ color: 'text.secondary' }}>Sent by Aryan Sharma</Typography>
                 <Avatar src='/images/avatars/3.png' sx={{ ml: 5, width: 20, height: 20 }} />
               </Box>
               <Box sx={{ display: 'flex', alignItems: 'center' }}>

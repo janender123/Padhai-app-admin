@@ -18,7 +18,7 @@ import CardHeader from '@mui/material/CardHeader'
 import Divider from '@mui/material/Divider'
 import { EditorWrapper } from 'src/@core/styles/libs/react-draft-wysiwyg'
 
-const FormLayoutsBasic = () => {
+const NewAssignmentInCourseSection = () => {
   const [language, setLanguage] = useState('')
   const [title, setTitle] = useState('')
   const [deadline, setDeadline] = useState('')
@@ -101,4 +101,4 @@ const FormLayoutsBasic = () => {
   )
 }
 
-export default FormLayoutsBasic
+export default NewAssignmentInCourseSection

@@ -23,7 +23,7 @@ const data = {
     },
     {
       id: 4,
-      name: 'Project Planning',
+      name: 'Add & Remove Instructor',
       createdDate: '14 Oct 2022, 10:20 AM',
       assignedTo: ['administrator', 'users', 'support']
     },
@@ -35,7 +35,7 @@ const data = {
     },
     {
       id: 6,
-      name: 'Client Communication',
+      name: 'User Communication',
       createdDate: '15 Apr 2022, 11:30 AM',
       assignedTo: ['administrator', 'manager']
     },

@@ -17,6 +17,8 @@ import MuiTimeline from '@mui/lab/Timeline'
 // ** Demo Component Imports
 import UsersInvoiceListTable from 'src/views/apps/user/view/UsersInvoiceListTable'
 import UsersProjectListTable from 'src/views/apps/user/view/UserCoursesListTable'
+import TeacherCoursesListTable from './TeacherCoursesListTable'
+import TeachersInvoiceListTable from './TeachersInvoiceListTable'
 
 // Styled Timeline component
 const Timeline = styled(MuiTimeline)(({ theme }) => ({
@@ -33,17 +35,17 @@ const Timeline = styled(MuiTimeline)(({ theme }) => ({
   }
 }))
 
-const UserViewOverview = ({ invoiceData }) => {
+const TeacherViewOverview = ({ invoiceData }) => {
   return (
     <Grid container spacing={6}>
       <Grid item xs={12}>
-        <UsersProjectListTable />
+        <TeacherCoursesListTable />
       </Grid>
       <Grid item xs={12}>
-        <UsersInvoiceListTable invoiceData={invoiceData} />
+        <TeachersInvoiceListTable invoiceData={invoiceData} />
       </Grid>
     </Grid>
   )
 }
 
-export default UserViewOverview
+export default TeacherViewOverview

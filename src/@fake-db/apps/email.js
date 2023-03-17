@@ -6,21 +6,21 @@ const data = {
     {
       id: 1,
       from: {
-        email: 'tommys@mail.com',
-        name: 'Tommy Sicilia',
+        email: 'aryan@mail.com',
+        name: 'Aryan Sharma',
         avatar: '/images/avatars/1.png'
       },
       to: [
         {
           name: 'me',
-          email: 'johndoe@mail.com'
+          email: 'jan0707@mail.com'
         }
       ],
       subject: 'How to Succeed with Your Shopify Store',
       cc: [],
       bcc: [],
       message:
-        '<p>Hi John,</p><p>How to Choose the Perfect Shopify Theme and Build Your Online Store Fast! (keywords: how to create a shopify store, how to start selling on shopify)</p><p>Shopify Tutorials That Will Save You 5 Hours of Time and $150 A Month!</p><p>Can I Start My Own ECommerce Business Without Knowing How To Code?</p><p>The One Thing All Shopify Entrepreneurs Have in Common</p><p>Regrads,</p><p>Tommy Sicilia</p>',
+        '<p>Hi Manas,</p><p>How to Choose the Perfect Shopify Theme and Build Your Online Store Fast! (keywords: how to create a shopify store, how to start selling on shopify)</p><p>Shopify Tutorials That Will Save You 5 Hours of Time and Rs. 150 A Month!</p><p>Can I Start My Own ECommerce Business Without Knowing How To Code?</p><p>The One Thing All Shopify Entrepreneurs Have in Common</p><p>Regards,</p><p>Aryan Sharma</p>',
       attachments: [
         {
           fileName: 'log.txt',
@@ -45,14 +45,14 @@ const data = {
     {
       id: 2,
       from: {
-        email: 'tressag@mail.com',
-        name: 'Tressa Gass',
+        email: 'areyp@mail.com',
+        name: 'Areesha Parveen',
         avatar: '/images/avatars/6.png'
       },
       to: [
         {
           name: 'me',
-          email: 'johndoe@mail.com'
+          email: 'jan0707@mail.com'
         }
       ],
       subject: 'Please find attached the latest Company Report',
@@ -76,42 +76,16 @@ const data = {
       isRead: true
     },
     {
-      id: 3,
-      from: {
-        email: 'hettiem@mail.com',
-        name: 'Hettie Mcerlean',
-        avatar: '/images/avatars/3.png'
-      },
-      to: [
-        {
-          name: 'me',
-          email: 'johndoe@mail.com'
-        }
-      ],
-      subject: 'Your order has been delivered',
-      cc: [],
-      bcc: [],
-      message:
-        '<p>Hello John,</p><p>Your order has just been delivered. Here is the delivery confirmation number: #569443</p><p>Regrads</p><p>If you have any questions, please feel free to reach out to our customer service team at customerService@email.com</p><p>Hettie Mcerlean</p>',
-      attachments: [],
-      isStarred: false,
-      labels: ['company'],
-      time: 'Mon Dec 10 2018 08:35:00 GMT+0000 (GMT)',
-      replies: [],
-      folder: 'spam',
-      isRead: true
-    },
-    {
       id: 4,
       from: {
-        email: 'louettae@mail.com',
-        name: 'Louetta Esses',
+        email: 'ayu@mail.com',
+        name: 'Ayushi Gupta',
         avatar: '/images/avatars/4.png'
       },
       to: [
         {
           name: 'me',
-          email: 'johndoe@mail.com'
+          email: 'jan0707@mail.com'
         }
       ],
       subject: 'Update Can Change Your Personal Life',
@@ -138,13 +112,13 @@ const data = {
       id: 5,
       from: {
         email: 'bposvner0@zdnet.com',
-        name: 'Bobbie Posvner',
+        name: '',
         avatar: '/images/avatars/8.png'
       },
       to: [
         {
           name: 'me',
-          email: 'johndoe@dot.gov'
+          email: 'jan0707@dot.gov'
         }
       ],
       subject: 'Your opinion matters to us. Tell us how you feel!',
@@ -164,13 +138,13 @@ const data = {
       id: 6,
       from: {
         email: 'rgilder1@illinois.edu',
-        name: 'Rebecca Gilder',
+        name: 'Madhu Sharma',
         avatar: '/images/avatars/6.png'
       },
       to: [
         {
           name: 'me',
-          email: 'johndoe@google.co.uk'
+          email: 'jan0707@google.co.uk'
         }
       ],
       subject: 'World Tourism Day Event Invitation',
@@ -190,20 +164,20 @@ const data = {
       id: 7,
       from: {
         email: 'swilby2@yandex.ru',
-        name: 'Shawn Wilby',
+        name: 'Ayush Thapar',
         avatar: '/images/avatars/1.png'
       },
       to: [
         {
           name: 'me',
-          email: 'johndoe@altervista.org'
+          email: 'jan0707@altervista.org'
         }
       ],
       subject: 'Delivery Note',
       cc: [],
       bcc: [],
       message:
-        '<p>Hello John, </p><p>Shipping Details:</p><p>Order Number: 82080</p><p>Delivered-to: <strong>John Doe</strong></p><p>Email: <strong>johndoe@altervista.org</strong></p><p>Address: <strong>99 El ABCD San Francisco, CA. United States </strong></p><p>Thank You for being with Us!</p><p>Regards</p><p>Shawn Wilby</p>',
+        '<p>Hello John, </p><p>Shipping Details:</p><p>Order Number: 82080</p><p>Delivered-to: <strong>John Doe</strong></p><p>Email: <strong>jan0707@altervista.org</strong></p><p>Address: <strong>99 El ABCD San Francisco, CA. United States </strong></p><p>Thank You for being with Us!</p><p>Regards</p><p>Ayush Thapar</p>',
       attachments: [],
       isStarred: false,
       labels: ['company'],
@@ -215,14 +189,14 @@ const data = {
     {
       id: 8,
       from: {
-        email: 'wmannering3@mozilla.org',
-        name: 'Waldemar Mannering',
+        email: 'deep09@mozilla.org',
+        name: 'Deepanshu Kamrawal;',
         avatar: '/images/avatars/5.png'
       },
       to: [
         {
           name: 'me',
-          email: 'johndoe@sciencedaily.com'
+          email: 'jan0707@sciencedaily.com'
         }
       ],
       subject: 'Refer friends. Get rewards.',
@@ -242,13 +216,13 @@ const data = {
       id: 9,
       from: {
         email: 'hfrostdyke4@scientificamerican.com',
-        name: 'Heath Frostdyke',
+        name: 'Madhav Gupta',
         avatar: '/images/avatars/1.png'
       },
       to: [
         {
           name: 'me',
-          email: 'johndoe@weibo.com'
+          email: 'jan0707@weibo.com'
         }
       ],
       subject: 'Good Hair Day!',
@@ -268,20 +242,20 @@ const data = {
       id: 10,
       from: {
         email: 'pjentzsch5@tamu.edu',
-        name: 'Paulita Jentzsch',
+        name: 'Ishan Jain',
         avatar: '/images/avatars/7.png'
       },
       to: [
         {
           name: 'me',
-          email: 'johndoe@skype.com'
+          email: 'jan0707@skype.com'
         }
       ],
       subject: 'Travel to Europe',
       cc: [],
       bcc: [],
       message:
-        '<p>Hello John, </p><p>Use code WILD_TRAVELER to get 25% off on flight bookings to Europe.</p><p>Offer only valid till the weekends.</p><p>Regards</p><p>Paulita Jentzsch</p>',
+        '<p>Hello John, </p><p>Use code WILD_TRAVELER to get 25% off on flight bookings to Europe.</p><p>Offer only valid till the weekends.</p><p>Regards</p><p>Ishan Jain</p>',
       attachments: [],
       isStarred: true,
       labels: ['important'],
@@ -294,13 +268,13 @@ const data = {
       id: 11,
       from: {
         email: 'lminghetti6@yale.edu',
-        name: 'Lowell Minghetti',
+        name: 'Jyotsna Verma',
         avatar: '/images/avatars/4.png'
       },
       to: [
         {
           name: 'me',
-          email: 'johndoe@fda.gov'
+          email: 'jan0707@fda.gov'
         }
       ],
       subject: 'Cyber Monday Sale!',
@@ -327,20 +301,20 @@ const data = {
       id: 12,
       from: {
         email: 'efinessy7@sbwire.com',
-        name: 'Eugenie Finessy',
+        name: 'Ayushi Gupta',
         avatar: '/images/avatars/2.png'
       },
       to: [
         {
           name: 'me',
-          email: 'johndoe@odnoklassniki.ru'
+          email: 'jan0707@odnoklassniki.ru'
         }
       ],
       subject: "BOOK LOVER'S DAY",
       cc: [],
       bcc: [],
       message:
-        '<p>Hello John, </p><p>Whenever you read a good book, you are making efforts to open a new door to let more light come in.</p><p>May you are blessed with more and more books. Happy National Book Lover’s Day to you.</p><p>Regards</p><p>Eugenie Finessy</p>',
+        '<p>Hello John, </p><p>Whenever you read a good book, you are making efforts to open a new door to let more light come in.</p><p>May you are blessed with more and more books. Happy National Book Lover’s Day to you.</p><p>Regards</p><p>Ayushi Gupta</p>',
       attachments: [],
       isStarred: false,
       labels: ['personal'],
@@ -353,20 +327,20 @@ const data = {
       id: 13,
       from: {
         email: 'tmckeurton8@163.com',
-        name: 'Tadio McKeurton',
+        name: 'Bipin Singh',
         avatar: '/images/avatars/3.png'
       },
       to: [
         {
           name: 'me',
-          email: 'johndoe@nifty.com'
+          email: 'jan0707@nifty.com'
         }
       ],
       subject: 'Handmade Goods',
       cc: [],
       bcc: [],
       message:
-        '<p>Hey John, </p><p>Painted wood blocks, stackable wood blocks</p> <p>Fall is almost here and these little blocks are the perfect décor to begin your fall decorating! These stacked blocks say Count Your Blessings and are in beautiful fall colors.</p><p>Regards</p><p>Tadio McKeurton</p>',
+        '<p>Hey John, </p><p>Painted wood blocks, stackable wood blocks</p> <p>Fall is almost here and these little blocks are the perfect décor to begin your fall decorating! These stacked blocks say Count Your Blessings and are in beautiful fall colors.</p><p>Regards</p><p>Bipin Singh</p>',
       attachments: [],
       isStarred: false,
       labels: ['important'],
@@ -378,14 +352,14 @@ const data = {
     {
       id: 14,
       from: {
-        email: 'ebegg9@wikia.com',
-        name: 'Eb Begg',
+        email: 'manas909@wikia.com',
+        name: 'Manas Sisodia',
         avatar: '/images/avatars/8.png'
       },
       to: [
         {
           name: 'me',
-          email: 'johndoe@51.la'
+          email: 'jan0707@51.la'
         }
       ],
       subject: 'App Update',
@@ -404,14 +378,14 @@ const data = {
     {
       id: 15,
       from: {
-        email: 'mspata@sina.com.cn',
-        name: 'Modestine Spat',
+        email: 'atish@sina.com.cn',
+        name: 'Aatish Ghosh',
         avatar: '/images/avatars/3.png'
       },
       to: [
         {
           name: 'me',
-          email: 'johndoe@oracle.com'
+          email: 'jan0707@oracle.com'
         }
       ],
       subject: 'Password Reset',
@@ -431,20 +405,20 @@ const data = {
       id: 16,
       from: {
         email: 'cprandob@rambler.ru',
-        name: 'Chase Prando',
+        name: 'Megha Sharma',
         avatar: '/images/avatars/4.png'
       },
       to: [
         {
           name: 'me',
-          email: 'johndoe@vistaprint.com'
+          email: 'jan0707@vistaprint.com'
         }
       ],
       subject: 'Course Update',
       cc: [],
       bcc: [],
       message:
-        '<p>Hey John, </p><p>You have completed more than 68% of the course</p><p>We noticed that you have not attended or advanced the course for over a week.</p><p>It is very important for us that you finish your studies, as regular classes are a guarantee of knowledge and successful completion!</p><p>For help, we have allocated a free opportunity to contact the course teacher within 2 days</p><p>Regards</p><p>Chase Prando</p>',
+        '<p>Hey John, </p><p>You have completed more than 68% of the course</p><p>We noticed that you have not attended or advanced the course for over a week.</p><p>It is very important for us that you finish your studies, as regular classes are a guarantee of knowledge and successful completion!</p><p>For help, we have allocated a free opportunity to contact the course teacher within 2 days</p><p>Regards</p><p>Megha Sharma</p>',
       attachments: [],
       isStarred: false,
       labels: ['company'],
@@ -457,20 +431,20 @@ const data = {
       id: 17,
       from: {
         email: 'nbartlesc@merriam-webster.com',
-        name: 'Normand Bartles',
+        name: 'Jahnavi Mehra',
         avatar: '/images/avatars/8.png'
       },
       to: [
         {
           name: 'me',
-          email: 'johndoe@si.edu'
+          email: 'jan0707@si.edu'
         }
       ],
       subject: 'Earth Hour',
       cc: [],
       bcc: [],
       message:
-        '<p>Hey John, </p><p>Earth Hour has always drawn its power from the people - and this year was no exception. We showed that despite the physical distance, we were still able to unite digitally to speak up for nature louder than ever.</p><p>You can still take part in the earth hour virtual spotlight.</p><p>Regards</p><p>Normand Bartles</p>',
+        '<p>Hey John, </p><p>Earth Hour has always drawn its power from the people - and this year was no exception. We showed that despite the physical distance, we were still able to unite digitally to speak up for nature louder than ever.</p><p>You can still take part in the earth hour virtual spotlight.</p><p>Regards</p><p>Jahnavi Mehra</p>',
       attachments: [],
       isStarred: false,
       labels: ['personal'],
@@ -483,20 +457,20 @@ const data = {
       id: 18,
       from: {
         email: 'rgennd@dedecms.com',
-        name: 'Robin Genn',
+        name: 'Robin ',
         avatar: '/images/avatars/6.png'
       },
       to: [
         {
           name: 'me',
-          email: 'johndoe@about.com'
+          email: 'jan0707@about.com'
         }
       ],
       subject: "Happy Teacher's Day!",
       cc: [],
       bcc: [],
       message:
-        "<p>Happy Teacher's Day John, </p><p>Teachers have to lead by example, and you have always been an excellent example to follow. As a student, I feel very grateful to have such a great mentor in my life. Happy Teacher’s Day!</p><p>Especially for Teacher's Day, we held a postcard competition for students. We invite you to enjoy this creativity. The kids tried very hard!</p><p>Regards</p><p>Robin Genn</p>",
+        "<p>Happy Teacher's Day John, </p><p>Teachers have to lead by example, and you have always been an excellent example to follow. As a student, I feel very grateful to have such a great mentor in my life. Happy Teacher’s Day!</p><p>Especially for Teacher's Day, we held a postcard competition for students. We invite you to enjoy this creativity. The kids tried very hard!</p><p>Regards</p><p>Robin </p>",
       attachments: [],
       isStarred: true,
       labels: ['personal'],
@@ -509,20 +483,20 @@ const data = {
       id: 19,
       from: {
         email: 'eramelote@webeden.co.uk',
-        name: 'Emmalynn Ramelot',
+        name: 'Ishita Goel',
         avatar: '/images/avatars/8.png'
       },
       to: [
         {
           name: 'me',
-          email: 'johndoe@tinypic.com'
+          email: 'jan0707@tinypic.com'
         }
       ],
       subject: 'Newly Improved Product',
       cc: [],
       bcc: [],
       message:
-        '<p>Hey John, </p><p>The Newly Improved Product is Here!</p><p>What is New in Finance?</p><p>1. Dual Authentication</p><p>2. Transparent System</p><p>3. Beta Test </p><p>Regards</p><p>Emmalynn Ramelot</p>',
+        '<p>Hey John, </p><p>The Newly Improved Product is Here!</p><p>What is New in Finance?</p><p>1. Dual Authentication</p><p>2. Transparent System</p><p>3. Beta Test </p><p>Regards</p><p>Ishita Goel</p>',
       attachments: [],
       isStarred: true,
       labels: ['personal'],
@@ -534,21 +508,21 @@ const data = {
     {
       id: 20,
       from: {
-        email: 'pcuzenf@mediafire.com',
-        name: 'Penni Cuzen',
+        email: 'amit@mediafire.com',
+        name: 'Amit Trivedi',
         avatar: '/images/avatars/8.png'
       },
       to: [
         {
           name: 'me',
-          email: 'johndoe@google.es'
+          email: 'jan0707@google.es'
         }
       ],
       subject: 'Meet your new banker.',
       cc: [],
       bcc: [],
       message:
-        "<p>Hey John, </p><p>Having a direct human contact that understands the finance industry can take your project to the next level.</p><p>Amelia is that person for you. She's happy to help with any of your project needs.</p><p>Regards</p><p>Penni Cuzen</p>",
+        "<p>Hey John, </p><p>Having a direct human contact that understands the finance industry can take your project to the next level.</p><p>Amelia is that person for you. She's happy to help with any of your project needs.</p><p>Regards</p><p>Amit Trvedi</p>",
       attachments: [
         {
           fileName: 'bank-statement.pdf',
@@ -564,7 +538,7 @@ const data = {
         {
           id: 40,
           from: {
-            email: 'johndoe@mail.com',
+            email: 'jan0707@mail.com',
             name: 'John Doe',
             avatar: '/images/avatars/6.png'
           },
@@ -597,7 +571,7 @@ const data = {
           to: [
             {
               name: 'me',
-              email: 'johndoe@mail.com'
+              email: 'jan0707@mail.com'
             }
           ],
           subject: 'I’m a living furnace.',
@@ -620,21 +594,21 @@ const data = {
     {
       id: 21,
       from: {
-        email: 'abaldersong@utexas.edu',
-        name: 'Ardis Balderson',
+        email: 'ishan@utexas.edu',
+        name: 'Ishan Jain',
         avatar: '/images/avatars/2.png'
       },
       to: [
         {
           name: 'me',
-          email: 'johndoe@ow.ly'
+          email: 'jan0707@ow.ly'
         }
       ],
       subject: 'Bank transfer initiated.',
       cc: [],
       bcc: [],
       message:
-        '<p>Hey John, </p><p>Bank transfers initiated before 7 PM ET on business days will typically be available in your bank account the next business day. Business days are Mon-Fri, excluding bank holidays.</p><p>Transfers are reviewed which may result in delays or funds being frozen or removed from your account. Learn more</p><p>Regards</p><p>Ardis Balderson</p>',
+        '<p>Hey John, </p><p>Bank transfers initiated before 7 PM ET on business days will typically be available in your bank account the next business day. Business days are Mon-Fri, excluding bank holidays.</p><p>Transfers are reviewed which may result in delays or funds being frozen or removed from your account. Learn more</p><p>Regards</p><p>Ishan Jain</p>',
       attachments: [],
       isStarred: true,
       labels: ['company'],
@@ -647,20 +621,20 @@ const data = {
       id: 22,
       from: {
         email: 'dmallallh@ask.com',
-        name: 'Dagmar Mallall',
+        name: 'Akshita ',
         avatar: '/images/avatars/8.png'
       },
       to: [
         {
           name: 'me',
-          email: 'johndoe@furl.net'
+          email: 'jan0707@furl.net'
         }
       ],
       subject: 'Accounting software',
       cc: [],
       bcc: [],
       message:
-        '<p>Hey John, </p><p>Take on the market with our powerful platforms.</p><p>Log in online anytime, anywhere on your Mac, PC, tablet or phone and see up-to-date financials. Accounting software with all the time-saving tools you need to grow your business.</p><p>Regards</p><p>Dagmar Mallall</p>',
+        '<p>Hey John, </p><p>Take on the market with our powerful platforms.</p><p>Log in online anytime, anywhere on your Mac, PC, tablet or phone and see up-to-date financials. Accounting software with all the time-saving tools you need to grow your business.</p><p>Regards</p><p>Akshita </p>',
       attachments: [],
       isStarred: false,
       labels: ['company'],
@@ -673,13 +647,13 @@ const data = {
       id: 23,
       from: {
         email: 'nmacgaughyi@aol.com',
-        name: 'Nada MacGaughy',
+        name: 'Tarun Chaudhary',
         avatar: '/images/avatars/3.png'
       },
       to: [
         {
           name: 'me',
-          email: 'johndoe@cnet.com'
+          email: 'jan0707@cnet.com'
         }
       ],
       subject: 'Labor Day Sale',
@@ -698,21 +672,21 @@ const data = {
     {
       id: 24,
       from: {
-        email: 'douldcottj@yellowpages.com',
-        name: 'Dalila Ouldcott',
+        email: 'komal@yellowpages.com',
+        name: 'Komal Lamba',
         avatar: '/images/avatars/1.png'
       },
       to: [
         {
           name: 'me',
-          email: 'johndoe@github.io'
+          email: 'jan0707@github.io'
         }
       ],
       subject: 'Order Feedback',
       cc: [],
       bcc: [],
       message:
-        "<p>Hey John, </p><p>What did you think o your recent purchase?</p><p> We'd love to hear your feedback on your recent order. Please share your experience in a review to help other pet parents just like you.</p><p>Regards</p><p>Dalila Ouldcott</p>",
+        "<p>Hey John, </p><p>What did you think o your recent purchase?</p><p> We'd love to hear your feedback on your recent order. Please share your experience in a review to help other pet parents just like you.</p><p>Regards</p><p>Komal Lamba</p>",
       attachments: [
         {
           fileName: 'example.doc',
@@ -728,7 +702,7 @@ const data = {
         {
           id: 25,
           from: {
-            email: 'johndoe@mail.com',
+            email: 'jan0707@mail.com',
             name: 'John Doe',
             avatar: '/images/avatars/1.png'
           },
@@ -761,7 +735,7 @@ const data = {
           to: [
             {
               name: 'me',
-              email: 'johndoe@mail.com'
+              email: 'jan0707@mail.com'
             }
           ],
           subject: 'Profound systemic alliance 🎉 🎊',
@@ -784,21 +758,21 @@ const data = {
     {
       id: 27,
       from: {
-        email: 'lkubicek0@cdbaby.com',
-        name: 'Lockwood Kubicek',
+        email: 'kukku@cdbaby.com',
+        name: 'Kukku Yaduvanshi',
         avatar: '/images/avatars/2.png'
       },
       to: [
         {
           name: 'me',
-          email: 'johndoe@github.io'
+          email: 'jan0707@github.io'
         }
       ],
       subject: 'Finally Start Running',
       cc: [],
       bcc: [],
       message:
-        '<p>Hey John, </p><p>How TO Finally Start Running</p><p>Order an individual training and nutrition program from our specialists! Only now there is a 20% discount! </p><p>Regards</p><p>Lockwood Kubicek</p>',
+        '<p>Hey John, </p><p>How TO Finally Start Running</p><p>Order an individual training and nutrition program from our specialists! Only now there is a 20% discount! </p><p>Regards</p><p>Kukku Yaduvanshi</p>',
       attachments: [],
       isStarred: false,
       labels: ['private'],
@@ -810,21 +784,21 @@ const data = {
     {
       id: 28,
       from: {
-        email: 'mosgarby1@accuweather.com',
-        name: 'Milena Osgarby',
+        email: 'shruti@accuweather.com',
+        name: 'Shruti Sharma',
         avatar: '/images/avatars/3.png'
       },
       to: [
         {
           name: 'me',
-          email: 'johndoe@github.io'
+          email: 'jan0707@github.io'
         }
       ],
       subject: 'Eco Food',
       cc: [],
       bcc: [],
       message:
-        '<p>Hey John, </p><p>Hey! We replenish our assortment with healthy eco food. On this occasion, we really want to play the same game with you! Can you guess what category of new products we are adding?🍯🍓🍵</p><p>Test your intuition, answer the letter!🔮 All members will receive a discount 20% on purchases in the next email!💌</p><p>Regards</p><p>Milena Osgarby</p>',
+        '<p>Hey John, </p><p>Hey! We replenish our assortment with healthy eco food. On this occasion, we really want to play the same game with you! Can you guess what category of new products we are adding?🍯🍓🍵</p><p>Test your intuition, answer the letter!🔮 All members will receive a discount 20% on purchases in the next email!💌</p><p>Regards</p><p>Shruti Sharma</p>',
       attachments: [],
       isStarred: false,
       labels: ['important'],
@@ -833,7 +807,7 @@ const data = {
         {
           id: 50,
           from: {
-            email: 'johndoe@mail.com',
+            email: 'jan0707@mail.com',
             name: 'John Doe',
             avatar: '/images/avatars/6.png'
           },
@@ -866,7 +840,7 @@ const data = {
           to: [
             {
               name: 'me',
-              email: 'johndoe@mail.com'
+              email: 'jan0707@mail.com'
             }
           ],
           subject: 'I’m a living furnace.',
@@ -889,21 +863,21 @@ const data = {
     {
       id: 29,
       from: {
-        email: 'pBuffay@email.com',
-        name: 'Pheoebe Buffay',
+        email: 'vthakur@email.com',
+        name: 'Vaishali Thakur',
         avatar: '/images/avatars/6.png'
       },
       to: [
         {
           name: 'me',
-          email: 'johndoe@github.io'
+          email: 'jan0707@github.io'
         }
       ],
       subject: 'Personal Insurance',
       cc: [],
       bcc: [],
       message:
-        '<p>Hey John, </p><p>Your personal insurance agent</p><p>If you have any problems with questions about your insurance, you can contact your personal agent.</p><p>Regards</p><p>Pheoebe Buffay</p>',
+        '<p>Hey John, </p><p>Your personal insurance agent</p><p>If you have any problems with questions about your insurance, you can contact your personal agent.</p><p>Regards</p><p>Vaishali Thakur</p>',
       attachments: [],
       isStarred: false,
       labels: ['personal'],
@@ -915,21 +889,21 @@ const data = {
     {
       id: 30,
       from: {
-        email: 'gabramow2@elegantthemes.com',
-        name: 'Gabriel Abramow',
+        email: 'preeti@elegantthemes.com',
+        name: 'Preeti',
         avatar: '/images/avatars/4.png'
       },
       to: [
         {
           name: 'me',
-          email: 'johndoe@github.io'
+          email: 'jan0707@github.io'
         }
       ],
       subject: 'Forgot your password?',
       cc: [],
       bcc: [],
       message:
-        '<p>Hey John, </p><p>There was a request to change your password!</p><p>If did not make this request, just ignore this email. Otherwise, please click the button below to change your password:</p><p>Regards</p><p>Gabriel Abramow</p>',
+        '<p>Hey John, </p><p>There was a request to change your password!</p><p>If did not make this request, just ignore this email. Otherwise, please click the button below to change your password:</p><p>Regards</p><p>Preeti</p>',
       attachments: [],
       isStarred: false,
       labels: ['company'],
@@ -941,21 +915,21 @@ const data = {
     {
       id: 31,
       from: {
-        email: 'tolrenshaw3@twitpic.com',
-        name: 'Temple Olrenshaw',
+        email: 'pulkit@twitpic.com',
+        name: 'Pulkit Jaggi',
         avatar: '/images/avatars/5.png'
       },
       to: [
         {
           name: 'me',
-          email: 'johndoe@github.io'
+          email: 'jan0707@github.io'
         }
       ],
       subject: 'April Fools Day Movies',
       cc: [],
       bcc: [],
       message:
-        '<p>Hey John, </p><p>The Best Movies on April Fool’s Day</p><p>Finding any genuine April Fool’s moments in movies is kind of like trying to peek through a wheat field to find individual stalks, but at the very least there are a few movies that seem to have the spirit of April Fool’s Day down when it comes to their sense of humor.</p><p>So instead of finding individual scenes about the day in question it seems like more fun to go ahead and treat the reader to a few films that might be great to watch this coming Sunday when the day of fools is upon us.</p><p>Regards</p><p>Temple Olrenshaw</p>',
+        '<p>Hey John, </p><p>The Best Movies on April Fool’s Day</p><p>Finding any genuine April Fool’s moments in movies is kind of like trying to peek through a wheat field to find individual stalks, but at the very least there are a few movies that seem to have the spirit of April Fool’s Day down when it comes to their sense of humor.</p><p>So instead of finding individual scenes about the day in question it seems like more fun to go ahead and treat the reader to a few films that might be great to watch this coming Sunday when the day of fools is upon us.</p><p>Regards</p><p>Pulkit Jaggi</p>',
       attachments: [],
       isStarred: false,
       labels: ['company'],
@@ -964,7 +938,7 @@ const data = {
         {
           id: 32,
           from: {
-            email: 'johndoe@mail.com',
+            email: 'jan0707@mail.com',
             name: 'John Doe',
             avatar: '/images/avatars/1.png'
           },
@@ -997,7 +971,7 @@ const data = {
           to: [
             {
               name: 'me',
-              email: 'johndoe@mail.com'
+              email: 'jan0707@mail.com'
             }
           ],
           subject: 'The truth is that you pay for your lifestyle in hours.',
@@ -1027,7 +1001,7 @@ const data = {
       to: [
         {
           name: 'me',
-          email: 'johndoe@mail.com'
+          email: 'jan0707@mail.com'
         }
       ],
       subject: 'Hidden Mail',

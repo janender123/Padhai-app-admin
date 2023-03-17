@@ -2,7 +2,7 @@ export const rows = [
   {
     id: 1,
     avatar: '3.png',
-    full_name: 'Yogesh Kumar',
+    full_name: 'Akshar Patel',
     email: 'yogesh12@gmail.com',
     phone: '12345678',
     language_name: 'English',

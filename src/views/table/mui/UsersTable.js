@@ -4,8 +4,6 @@ import Tooltip from '@mui/material/Tooltip'
 import IconButton from '@mui/material/IconButton'
 import Icon from 'src/@core/components/icon'
 import Link from 'next/link'
-import OptionsMenu from 'src/@core/components/option-menu'
-
 // ** MUI Imports
 import Box from '@mui/material/Box'
 import Card from '@mui/material/Card'
@@ -17,44 +15,6 @@ import DialogEditUserInfo from 'src/views/pages/dialog-examples/Add-Board-Dialog
 import CustomChip from 'src/@core/components/mui/chip'
 import CustomAvatar from 'src/@core/components/mui/avatar'
 import QuickSearchToolbar from 'src/views/table/data-grid/QuickSearchToolbarQuestionsList'
-
-// ** Utils Import
-
-import SwitchesCustomized from 'src/views/forms/form-elements/switch/SwitchesCustomized'
-
-// ** MUI Imports
-import Chip from '@mui/material/Chip'
-import Grid from '@mui/material/Grid'
-import Switch from '@mui/material/Switch'
-import Dialog from '@mui/material/Dialog'
-import MenuItem from '@mui/material/MenuItem'
-import TextField from '@mui/material/TextField'
-import InputLabel from '@mui/material/InputLabel'
-import FormControl from '@mui/material/FormControl'
-import Fade from '@mui/material/Fade'
-import DialogContent from '@mui/material/DialogContent'
-import DialogActions from '@mui/material/DialogActions'
-import FormControlLabel from '@mui/material/FormControlLabel'
-import { styled } from '@mui/material/styles'
-
-// ** MUI Imports
-import Tab from '@mui/material/Tab'
-import TabList from '@mui/lab/TabList'
-import TabPanel from '@mui/lab/TabPanel'
-import TabContext from '@mui/lab/TabContext'
-// ** React Imports
-import { Fragment } from 'react'
-
-// ** MUI Imports
-import Button from '@mui/material/Button'
-import Select from '@mui/material/Select'
-import CorrectAnswer from 'src/views/forms/form-elements/switch/CorrectAnswer'
-import { Divider } from '@mui/material'
-import CardSnippet from 'src/@core/components/card-snippet-quiz-answers'
-import * as source from 'src/views/forms/form-elements/checkbox/CheckboxesSourceCode'
-import CardContent from '@mui/material/CardContent'
-import CardActions from '@mui/material/CardActions'
-import SwitchesCustomizedStatus from 'src/views/forms/form-elements/switch/SwitchesCustomized'
 
 // ** Data Import
 import { rows } from 'src/@fake-db/table/UsersData'
@@ -109,7 +69,18 @@ const columns = [
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
           {renderClient(params)}
           <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-            <Typography noWrap variant='body2' sx={{ color: 'text.primary', fontWeight: 600 }}>
+          <Typography
+              noWrap
+              component={Link}
+              variant='subtitle2'
+              href='/apps/user/view/overview/'
+              sx={{
+                fontWeight: 600,
+                color: 'text.primary',
+                textDecoration: 'none',
+                '&:hover': { color: 'primary.main' }
+              }}
+            >
               {row.full_name}
             </Typography>
             <Typography noWrap variant='caption'>

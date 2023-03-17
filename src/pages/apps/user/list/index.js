@@ -51,7 +51,9 @@ const userRoleObj = {
   author: { icon: 'mdi:cog-outline', color: 'warning.main' },
   editor: { icon: 'mdi:pencil-outline', color: 'info.main' },
   maintainer: { icon: 'mdi:chart-donut', color: 'success.main' },
-  subscriber: { icon: 'mdi:account-outline', color: 'primary.main' }
+  instructor: { icon: 'mdi:chart-donut', color: 'success.main' },
+  subscriber: { icon: 'mdi:account-outline', color: 'primary.main' },
+  user: { icon: 'mdi:account-outline', color: 'primary.main' }
 }
 
 const userStatusObj = {
@@ -165,9 +167,6 @@ const columns = [
           {renderClient(row)}
           <Box sx={{ display: 'flex', alignItems: 'flex-start', flexDirection: 'column' }}>
             <StyledLink href='/apps/user/view/overview/'>{fullName}</StyledLink>
-            <Typography noWrap variant='caption'>
-              {`@${username}`}
-            </Typography>
           </Box>
         </Box>
       )

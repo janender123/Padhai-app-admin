@@ -7,7 +7,7 @@ const data = {
       imgWidth: 100,
       title: 'Basic',
       imgHeight: 100,
-      monthlyPrice: 0,
+      monthlyPrice: 99,
       currentPlan: true,
       popularPlan: false,
       subtitle: 'A simple start for everyone',
@@ -27,7 +27,7 @@ const data = {
     {
       imgWidth: 100,
       imgHeight: 100,
-      monthlyPrice: 49,
+      monthlyPrice: 299,
       title: 'Standard',
       popularPlan: true,
       currentPlan: false,
@@ -48,7 +48,7 @@ const data = {
     {
       imgWidth: 100,
       imgHeight: 100,
-      monthlyPrice: 99,
+      monthlyPrice: 499,
       popularPlan: false,
       currentPlan: false,
       title: 'Enterprise',
@@ -100,11 +100,11 @@ const data = {
       {
         isPro: true,
         title: 'Pro',
-        subtitle: '$7.5/month'
+        subtitle: ' ₹7.5/month'
       },
       {
         title: 'Enterprise',
-        subtitle: '$16/month'
+        subtitle: ' ₹16/month'
       }
     ],
     rows: [

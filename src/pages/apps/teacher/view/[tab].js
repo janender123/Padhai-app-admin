@@ -5,7 +5,8 @@ import axios from 'axios'
 import TeacherViewPage from 'src/views/apps/user/view/TeacherViewPage'
 
 const TeacherView = ({ tab, invoiceData }) => {
-  return <TeacherViewPage tab={tab} invoiceData={invoiceData} />
+  return <TeacherViewPage
+   tab={tab} invoiceData={invoiceData} />
 }
 
 export const getStaticPaths = () => {
@@ -13,7 +14,7 @@ export const getStaticPaths = () => {
     paths: [
       { params: { tab: 'overview' } },
       { params: { tab: 'security' } },
-      { params: { tab: 'billing-plan' } },
+      { params: { tab: 'financial' } },
       { params: { tab: 'notification' } },
       { params: { tab: 'connection' } }
     ],

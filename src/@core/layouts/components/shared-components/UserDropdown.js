@@ -90,7 +90,7 @@ const UserDropdown = props => {
           alt='John Doe'
           onClick={handleDropdownOpen}
           sx={{ width: 40, height: 40 }}
-          src='/images/avatars/1.png'
+          src='/images/avatars/3.png'
         />
       </Badge>
       <Menu
@@ -111,10 +111,10 @@ const UserDropdown = props => {
                 horizontal: 'right'
               }}
             >
-              <Avatar alt='John Doe' src='/images/avatars/1.png' sx={{ width: '2.5rem', height: '2.5rem' }} />
+              <Avatar alt='John Doe' src='/images/avatars/3.png' sx={{ width: '2.5rem', height: '2.5rem' }} />
             </Badge>
             <Box sx={{ display: 'flex', ml: 3, alignItems: 'flex-start', flexDirection: 'column' }}>
-              <Typography sx={{ fontWeight: 600 }}>John Doe</Typography>
+              <Typography sx={{ fontWeight: 600 }}>Shyam Prasad</Typography>
               <Typography variant='body2' sx={{ fontSize: '0.8rem', color: 'text.disabled' }}>
                 Admin
               </Typography>
@@ -141,24 +141,24 @@ const UserDropdown = props => {
           </Box>
         </MenuItem>
         <Divider />
-        <MenuItem sx={{ p: 0 }} onClick={() => handleDropdownClose('/pages/account-settings/account')}>
+        {/* <MenuItem sx={{ p: 0 }} onClick={() => handleDropdownClose('/pages/account-settings/account')}>
           <Box sx={styles}>
             <Icon icon='mdi:cog-outline' />
             Settings
           </Box>
-        </MenuItem>
+        </MenuItem> */}
         <MenuItem sx={{ p: 0 }} onClick={() => handleDropdownClose('/pages/pricing')}>
           <Box sx={styles}>
-            <Icon icon='mdi:currency-usd' />
+            <Icon icon='mdi:currency-rupee' />
             Pricing
           </Box>
         </MenuItem>
-        <MenuItem sx={{ p: 0 }} onClick={() => handleDropdownClose('/pages/faq')}>
+        {/* <MenuItem sx={{ p: 0 }} onClick={() => handleDropdownClose('/pages/faq')}>
           <Box sx={styles}>
             <Icon icon='mdi:help-circle-outline' />
             FAQ
           </Box>
-        </MenuItem>
+        </MenuItem> */}
         <Divider />
         <MenuItem
           onClick={handleLogout}

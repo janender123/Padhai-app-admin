@@ -87,7 +87,7 @@ const PlanDetails = props => {
         <Box sx={{ my: 7, position: 'relative' }}>
           <Box sx={{ display: 'flex', justifyContent: 'center' }}>
             <Typography variant='body2' sx={{ mt: 1.6, fontWeight: 600, alignSelf: 'flex-start' }}>
-              $
+            ₹
             </Typography>
             <Typography variant='h3' sx={{ fontWeight: 600, color: 'primary.main', lineHeight: 1.17 }}>
               {plan === 'monthly' ? data?.monthlyPrice : data?.yearlyPlan.perMonth}
@@ -100,7 +100,7 @@ const PlanDetails = props => {
             <Typography
               variant='caption'
               sx={{ top: 50, left: '50%', position: 'absolute', transform: 'translateX(-50%)' }}
-            >{`USD ${data?.yearlyPlan.totalAnnual}/year`}</Typography>
+            >{`INR ${data?.yearlyPlan.totalAnnual}/year`}</Typography>
           ) : null}
         </Box>
       </Box>

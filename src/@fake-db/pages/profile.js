@@ -3,26 +3,26 @@ import mock from 'src/@fake-db/mock'
 
 const data = {
   profileHeader: {
-    fullName: 'John Doe',
-    location: 'Vatican City',
+    fullName: 'Shyam Prasad',
+    location: 'New Delhi',
     joiningDate: 'April 2021',
-    designation: 'UX Designer',
-    profileImg: '/images/avatars/1.png',
+    designation: 'Admin',
+    profileImg: '/images/avatars/3.png',
     designationIcon: 'mdi:fountain-pen-tip',
     coverImg: '/images/pages/profile-banner.png'
   },
   profile: {
     about: [
-      { property: 'Full Name', value: 'John Doe', icon: 'mdi:account-outline' },
+      { property: 'Full Name', value: 'Shyam Prasad', icon: 'mdi:account-outline' },
       { property: 'Status', value: 'active', icon: 'mdi:check' },
       { property: 'Role', value: 'Developer', icon: 'mdi:star-outline' },
-      { property: 'Country', value: 'USA', icon: 'mdi:flag-outline' },
+      { property: 'Country', value: 'India', icon: 'mdi:flag-outline' },
       { property: 'Language', value: 'English', icon: 'mdi:translate' }
     ],
     contacts: [
-      { property: 'Contact', value: '(123) 456-7890', icon: 'mdi:phone-outline' },
-      { property: 'Skype', value: 'john.doe', icon: 'mdi:message-outline' },
-      { property: 'Email', value: 'john.doe@example.com', icon: 'mdi:email-outline' }
+      { property: 'Contact', value: '+91-12345678', icon: 'mdi:phone-outline' },
+      { property: 'Skype', value: 'shyam.prasad', icon: 'mdi:message-outline' },
+      { property: 'Email', value: 'shyam.prasad@example.com', icon: 'mdi:email-outline' }
     ],
     teams: [
       { property: 'Backend Developer', value: '(126 Members)', icon: 'mdi:github', color: 'primary' },
@@ -37,31 +37,31 @@ const data = {
       {
         isFriend: false,
         connections: '45',
-        name: 'Cecilia Payne',
+        name: 'Mohini Yadav',
         avatar: '/images/avatars/2.png'
       },
       {
         isFriend: true,
         connections: '1.32k',
-        name: 'Curtis Fletcher',
+        name: 'Prem Kumar',
         avatar: '/images/avatars/3.png'
       },
       {
         isFriend: true,
         connections: '125',
-        name: 'Alice Stone',
+        name: 'Mohan Sharma',
         avatar: '/images/avatars/4.png'
       },
       {
         isFriend: false,
         connections: '456',
-        name: 'Darrell Barnes',
+        name: 'Deepak Verma',
         avatar: '/images/avatars/5.png'
       },
       {
         isFriend: false,
         connections: '1.2k',
-        name: 'Eugenia Moore',
+        name: 'Magan Mohan',
         avatar: '/images/avatars/8.png'
       }
     ],
@@ -109,10 +109,10 @@ const data = {
       title: 'React Developers',
       avatar: '/images/icons/project-icons/react-label.png',
       avatarGroup: [
-        { avatar: '/images/avatars/1.png', name: 'Vinnie Mostowy' },
-        { avatar: '/images/avatars/2.png', name: 'Allen Rieske' },
-        { avatar: '/images/avatars/3.png', name: 'Julee Rossignol' },
-        { avatar: '/images/avatars/4.png', name: 'George Burrill' }
+        { avatar: '/images/avatars/1.png', name: 'Aryan Sharma' },
+        { avatar: '/images/avatars/2.png', name: 'Deepanshu' },
+        { avatar: '/images/avatars/3.png', name: 'Manas Sisodia' },
+        { avatar: '/images/avatars/4.png', name: 'Ishan Jain' }
       ],
       description:
         'We don’t make assumptions about the rest of your technology stack, so you can develop new features in React.',
@@ -132,10 +132,10 @@ const data = {
       title: 'Vue.js Dev Team',
       avatar: '/images/icons/project-icons/vue-label.png',
       avatarGroup: [
-        { avatar: '/images/avatars/5.png', name: "Kaith D'souza" },
-        { avatar: '/images/avatars/6.png', name: 'John Doe' },
+        { avatar: '/images/avatars/5.png', name: "Atul Panchal" },
+        { avatar: '/images/avatars/6.png', name: 'Ayushi Gupta' },
         { avatar: '/images/avatars/7.png', name: 'Alan Walker' },
-        { avatar: '/images/avatars/8.png', name: 'Calvin Middleton' }
+        { avatar: '/images/avatars/8.png', name: 'Ayushee Aggarwal' }
       ],
       description:
         'The development of Vue and its ecosystem is guided by an international team, some of whom have chosen to be featured below.',
@@ -155,10 +155,10 @@ const data = {
       title: 'Creative Designers',
       avatar: '/images/icons/project-icons/xd-label.png',
       avatarGroup: [
-        { avatar: '/images/avatars/1.png', name: 'Jimmy Ressula' },
-        { avatar: '/images/avatars/2.png', name: 'Kristi Lawker' },
-        { avatar: '/images/avatars/3.png', name: 'Danny Paul' },
-        { avatar: '/images/avatars/4.png', name: 'Alicia Littleton' }
+        { avatar: '/images/avatars/1.png', name: 'CHahat Talwar' },
+        { avatar: '/images/avatars/2.png', name: 'Bhavesh' },
+        { avatar: '/images/avatars/3.png', name: 'Yogesh' },
+        { avatar: '/images/avatars/4.png', name: 'Meghna' }
       ],
       description:
         'A design or product team is more than just the people on it. A team includes the people, the roles they play.',
@@ -178,10 +178,10 @@ const data = {
       title: 'Support Team',
       avatar: '/images/icons/project-icons/support-label.png',
       avatarGroup: [
-        { avatar: '/images/avatars/5.png', name: 'Andrew Tye' },
-        { avatar: '/images/avatars/6.png', name: 'Rishi Swaat' },
-        { avatar: '/images/avatars/7.png', name: 'Rossie Kim' },
-        { avatar: '/images/avatars/8.png', name: 'Mary Hunter' }
+        { avatar: '/images/avatars/5.png', name: 'Deepanshu' },
+        { avatar: '/images/avatars/6.png', name: 'Tarun' },
+        { avatar: '/images/avatars/7.png', name: 'Devang' },
+        { avatar: '/images/avatars/8.png', name: 'Chaitanta' }
       ],
       description:
         'Support your team. Your customer support team is fielding the good, the bad, and the ugly day in and day out.',
@@ -197,10 +197,10 @@ const data = {
       title: 'Digital Marketing',
       avatar: '/images/icons/project-icons/social-label.png',
       avatarGroup: [
-        { avatar: '/images/avatars/1.png', name: 'Kim Merchent' },
-        { avatar: '/images/avatars/2.png', name: "Sam D'souza" },
-        { avatar: '/images/avatars/3.png', name: 'Nurvi Karlos' },
-        { avatar: '/images/avatars/4.png', name: 'Margorie Whitmire' }
+        { avatar: '/images/avatars/1.png', name: 'Karan' },
+        { avatar: '/images/avatars/2.png', name: "Shubham" },
+        { avatar: '/images/avatars/3.png', name: 'Tushar' },
+        { avatar: '/images/avatars/4.png', name: 'Vansh Bhatia' }
       ],
       description:
         'Digital marketing refers to advertising delivered through digital channels such as search engines, websites…',
@@ -220,10 +220,10 @@ const data = {
       extraMembers: 55,
       avatar: '/images/icons/project-icons/event-label.png',
       avatarGroup: [
-        { avatar: '/images/avatars/5.png', name: 'Vinnie Mostowy' },
-        { avatar: '/images/avatars/6.png', name: 'Allen Rieske' },
-        { avatar: '/images/avatars/7.png', name: 'Julee Rossignol' },
-        { avatar: '/images/avatars/8.png', name: 'Daniel Long' }
+        { avatar: '/images/avatars/5.png', name: 'Sarthak' },
+        { avatar: '/images/avatars/6.png', name: 'Rishabh' },
+        { avatar: '/images/avatars/7.png', name: 'Deepak' },
+        { avatar: '/images/avatars/8.png', name: 'Daniel' }
       ],
       description:
         'Event is defined as a particular contest which is part of a program of contests. An example of an event is the long…',
@@ -239,10 +239,10 @@ const data = {
       title: 'Figma Resources',
       avatar: '/images/icons/project-icons/figma-label.png',
       avatarGroup: [
-        { avatar: '/images/avatars/1.png', name: 'Andrew Mostowy' },
-        { avatar: '/images/avatars/2.png', name: 'Micky Ressula' },
-        { avatar: '/images/avatars/3.png', name: 'Michel Pal' },
-        { avatar: '/images/avatars/4.png', name: 'Herman Lockard' }
+        { avatar: '/images/avatars/1.png', name: 'Micky' },
+        { avatar: '/images/avatars/2.png', name: 'Rahul Pal' },
+        { avatar: '/images/avatars/3.png', name: 'Himanshu' },
+        { avatar: '/images/avatars/4.png', name: 'Jayant' }
       ],
       description:
         'Explore, install, use, and remix thousands of plugins and files published to the Figma Community by designers and developers.',
@@ -262,10 +262,10 @@ const data = {
       title: 'Only Beginners',
       avatar: '/images/icons/project-icons/html-label.png',
       avatarGroup: [
-        { avatar: '/images/avatars/5.png', name: 'Kim Karlos' },
-        { avatar: '/images/avatars/6.png', name: 'Katy Turner' },
-        { avatar: '/images/avatars/7.png', name: 'Peter Adward' },
-        { avatar: '/images/avatars/8.png', name: 'Leona Miller' }
+        { avatar: '/images/avatars/5.png', name: 'Kanye' },
+        { avatar: '/images/avatars/6.png', name: 'Katy ' },
+        { avatar: '/images/avatars/7.png', name: 'Peter ' },
+        { avatar: '/images/avatars/8.png', name: 'Leon' }
       ],
       description:
         'Learn the basics of how websites work, front-end vs back-end, and using a code editor. Learn basic HTML, CSS, and…',
@@ -288,21 +288,21 @@ const data = {
       totalTask: 344,
       hours: '380/244',
       tasks: '290/344',
-      budget: '$18.2k',
+      budget: '₹18.2k',
       completedTask: 328,
       deadline: '28/2/22',
       chipColor: 'success',
       startDate: '14/2/21',
-      budgetSpent: '$24.8k',
+      budgetSpent: '₹24.8k',
       members: '280 members',
       title: 'Social Banners',
-      client: 'Christian Jimenez',
+      client: 'Vasu Arora',
       avatar: '/images/icons/project-icons/social-label.png',
       description: 'We are Consulting, Software Development and Web Development Services.',
       avatarGroup: [
-        { avatar: '/images/avatars/1.png', name: 'Vinnie Mostowy' },
-        { avatar: '/images/avatars/2.png', name: 'Allen Rieske' },
-        { avatar: '/images/avatars/3.png', name: 'Julee Rossignol' }
+        { avatar: '/images/avatars/1.png', name: 'Atul ' },
+        { avatar: '/images/avatars/2.png', name: 'Aryan ' },
+        { avatar: '/images/avatars/3.png', name: 'Ishan ' }
       ]
     },
     {
@@ -311,44 +311,44 @@ const data = {
       totalTask: 90,
       tasks: '12/90',
       hours: '98/135',
-      budget: '$1.8k',
+      budget: '₹1.8k',
       completedTask: 38,
       deadline: '21/6/22',
-      budgetSpent: '$2.4k',
+      budgetSpent: '₹2.4k',
       chipColor: 'warning',
       startDate: '18/8/21',
       members: '1.1k members',
       title: 'Admin Template',
-      client: 'Jeffrey Phillips',
+      client: 'Vansh Bhatia',
       avatar: '/images/icons/project-icons/react-label.png',
       avatarGroup: [
-        { avatar: '/images/avatars/4.png', name: "Kaith D'souza" },
-        { avatar: '/images/avatars/5.png', name: 'John Doe' },
-        { avatar: '/images/avatars/6.png', name: 'Alan Walker' }
+        { avatar: '/images/avatars/4.png', name: "Manas " },
+        { avatar: '/images/avatars/5.png', name: 'Deepanshu ' },
+        { avatar: '/images/avatars/6.png', name: 'Alan ' }
       ],
       description: "Time is our most valuable asset, that's why we want to help you save it by creating…"
     },
     {
       daysLeft: 45,
       comments: 98,
-      budget: '$420',
+      budget: '₹420',
       totalTask: 140,
       tasks: '22/140',
       hours: '880/421',
       completedTask: 95,
       chipColor: 'error',
-      budgetSpent: '$980',
+      budgetSpent: '₹980',
       deadline: '8/10/21',
       title: 'App Design',
       startDate: '24/7/21',
       members: '458 members',
-      client: 'Ricky McDonald',
+      client: 'Akshat Bhatnagar',
       avatar: '/images/icons/project-icons/vue-label.png',
       description: 'App design combines the user interface (UI) and user experience (UX).',
       avatarGroup: [
-        { avatar: '/images/avatars/7.png', name: 'Jimmy Ressula' },
-        { avatar: '/images/avatars/8.png', name: 'Kristi Lawker' },
-        { avatar: '/images/avatars/1.png', name: 'Danny Paul' }
+        { avatar: '/images/avatars/7.png', name: 'Jimmy ' },
+        { avatar: '/images/avatars/8.png', name: 'Kristi ' },
+        { avatar: '/images/avatars/1.png', name: 'Danny ' }
       ]
     },
     {
@@ -360,18 +360,18 @@ const data = {
       hours: '1.2k/820',
       completedTask: 302,
       deadline: '12/9/22',
-      budgetSpent: '$8.5k',
+      budgetSpent: '₹8.5k',
       chipColor: 'warning',
       startDate: '10/2/19',
       members: '137 members',
-      client: 'Hulda Wright',
+      client: 'Tarun Chaudhary',
       title: 'Create Website',
       avatar: '/images/icons/project-icons/html-label.png',
       description: 'Your domain name should reflect your products or services so that your...',
       avatarGroup: [
-        { avatar: '/images/avatars/2.png', name: 'Andrew Tye' },
-        { avatar: '/images/avatars/3.png', name: 'Rishi Swaat' },
-        { avatar: '/images/avatars/4.png', name: 'Rossie Kim' }
+        { avatar: '/images/avatars/2.png', name: 'Andrew ' },
+        { avatar: '/images/avatars/3.png', name: 'Rishi ' },
+        { avatar: '/images/avatars/4.png', name: 'Rossie ' }
       ]
     },
     {
@@ -386,15 +386,15 @@ const data = {
       deadline: '25/12/21',
       startDate: '12/12/20',
       members: '82 members',
-      budgetSpent: '$52.7k',
-      client: 'Jerry Greene',
+      budgetSpent: '₹52.7k',
+      client: 'Rishabh Seth',
       title: 'Figma Dashboard',
       avatar: '/images/icons/project-icons/figma-label.png',
       description: 'Use this template to organize your design project. Some of the key features are…',
       avatarGroup: [
-        { avatar: '/images/avatars/5.png', name: 'Kim Merchent' },
+        { avatar: '/images/avatars/5.png', name: 'Kim ' },
         { avatar: '/images/avatars/6.png', name: "Sam D'souza" },
-        { avatar: '/images/avatars/7.png', name: 'Nurvi Karlos' }
+        { avatar: '/images/avatars/7.png', name: 'Nurvi ' }
       ]
     },
     {
@@ -405,19 +405,19 @@ const data = {
       tasks: '29/290',
       hours: '580/445',
       completedTask: 290,
-      budgetSpent: '$1.3k',
+      budgetSpent: '₹1.3k',
       chipColor: 'success',
       deadline: '02/11/21',
       startDate: '17/8/21',
       title: 'Logo Design',
       members: '16 members',
-      client: 'Olive Strickland',
+      client: 'Shelly Chauhan',
       avatar: '/images/icons/project-icons/xd-label.png',
       description: 'Premium logo designs created by top logo designers. Create the branding of business.',
       avatarGroup: [
-        { avatar: '/images/avatars/8.png', name: 'Kim Karlos' },
-        { avatar: '/images/avatars/1.png', name: 'Katy Turner' },
-        { avatar: '/images/avatars/2.png', name: 'Peter Adward' }
+        { avatar: '/images/avatars/8.png', name: 'Kim ' },
+        { avatar: '/images/avatars/1.png', name: 'Katy ' },
+        { avatar: '/images/avatars/2.png', name: 'Peter ' }
       ]
     }
   ],
@@ -427,7 +427,7 @@ const data = {
       projects: '18',
       isConnected: true,
       connections: '129',
-      name: 'Mark Gilbert',
+      name: 'Bhavesh Verma',
       designation: 'UI Designer',
       avatar: '/images/avatars/1.png',
       chips: [
@@ -446,7 +446,7 @@ const data = {
       projects: '112',
       isConnected: false,
       connections: '1.28k',
-      name: 'Eugenia Parsons',
+      name: 'Chahat Talwar',
       designation: 'Developer',
       avatar: '/images/avatars/2.png',
       chips: [
@@ -465,7 +465,7 @@ const data = {
       projects: '32',
       isConnected: false,
       connections: '890',
-      name: 'Francis Byrd',
+      name: 'Utkarsh Verma',
       designation: 'Developer',
       avatar: '/images/avatars/3.png',
       chips: [
@@ -484,7 +484,7 @@ const data = {
       projects: '86',
       isConnected: false,
       connections: '890',
-      name: 'Leon Lucas',
+      name: 'Aparna batra',
       designation: 'UI/UX Designer',
       avatar: '/images/avatars/4.png',
       chips: [
@@ -507,7 +507,7 @@ const data = {
       projects: '244',
       isConnected: true,
       connections: '2.14k',
-      name: 'Jayden Rogers',
+      name: 'Ishan Jain',
       designation: 'Full Stack Developer',
       avatar: '/images/avatars/5.png',
       chips: [
@@ -531,7 +531,7 @@ const data = {
       isConnected: false,
       designation: 'SEO',
       connections: '1.27k',
-      name: 'Jeanette Powell',
+      name: 'Ayushi Gupta',
       avatar: '/images/avatars/6.png',
       chips: [
         {
@@ -551,7 +551,7 @@ const projectTable = [
   {
     id: 1,
     status: 38,
-    leader: 'Eileen',
+    leader: 'Deepak',
     name: 'Website SEO',
     date: '10 may 2021',
     avatarColor: 'success',
@@ -560,7 +560,7 @@ const projectTable = [
   {
     id: 2,
     status: 45,
-    leader: 'Owen',
+    leader: 'Ashish',
     date: '03 Jan 2021',
     name: 'Social Banners',
     avatar: '/images/icons/project-icons/social-label.png',
@@ -569,7 +569,7 @@ const projectTable = [
   {
     id: 3,
     status: 92,
-    leader: 'Keith',
+    leader: 'Raman',
     date: '12 Aug 2021',
     name: 'Logo Designs',
     avatar: '/images/icons/project-icons/sketch-label.png',
@@ -578,7 +578,7 @@ const projectTable = [
   {
     id: 4,
     status: 56,
-    leader: 'Merline',
+    leader: 'Jaswant',
     date: '19 Apr 2021',
     name: 'IOS App Design',
     avatar: '/images/icons/project-icons/sketch-label.png',
@@ -587,7 +587,7 @@ const projectTable = [
   {
     id: 5,
     status: 25,
-    leader: 'Harmonia',
+    leader: 'Tarun',
     date: '08 Apr 2021',
     name: 'Figma Dashboards',
     avatar: '/images/icons/project-icons/figma-label.png',
@@ -596,7 +596,7 @@ const projectTable = [
   {
     id: 6,
     status: 36,
-    leader: 'Allyson',
+    leader: 'Mahesh',
     date: '29 Sept 2021',
     name: 'Crypto Admin',
     avatar: '/images/icons/project-icons/html-label.png',
@@ -605,7 +605,7 @@ const projectTable = [
   {
     id: 7,
     status: 72,
-    leader: 'Georgie',
+    leader: 'Ishan',
     date: '20 Mar 2021',
     name: 'Create Website',
     avatar: '/images/icons/project-icons/react-label.png',
@@ -614,7 +614,7 @@ const projectTable = [
   {
     id: 8,
     status: 89,
-    leader: 'Fred',
+    leader: 'Deepali',
     date: '09 Feb 2021',
     name: 'App Design',
     avatar: '/images/icons/project-icons/xd-label.png',
@@ -623,7 +623,7 @@ const projectTable = [
   {
     id: 9,
     status: 77,
-    leader: 'Richardo',
+    leader: 'Manas',
     date: '17 June 2021',
     name: 'Angular APIs',
     avatar: '/images/icons/project-icons/figma-label.png',
@@ -632,7 +632,7 @@ const projectTable = [
   {
     id: 10,
     status: 100,
-    leader: 'Genevra',
+    leader: 'Aryan',
     date: '06 Oct 2021',
     name: 'Admin Template',
     avatar: '/images/icons/project-icons/vue-label.png',

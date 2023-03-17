@@ -7,8 +7,8 @@ const dayBeforePreviousDay = new Date(new Date().getTime() - 24 * 60 * 60 * 1000
 const data = {
   profileUser: {
     id: 11,
-    avatar: '/images/avatars/1.png',
-    fullName: 'John Doe',
+    avatar: '/images/avatars/3.png',
+    fullName: 'Shyam Prasad',
     role: 'admin',
     about:
       'Dessert chocolate cake lemon drops jujubes. Biscuit cupcake ice cream bear claw brownie brownie marshmallow.',
@@ -21,7 +21,7 @@ const data = {
   contacts: [
     {
       id: 1,
-      fullName: 'Felecia Rower',
+      fullName: 'Arshi Khan',
       role: 'Frontend Developer',
       about: 'Cake pie jelly jelly beans. Marzipan lemon drops halvah cake. Pudding cookie lemon drops icing',
       avatar: '/images/avatars/2.png',
@@ -29,7 +29,7 @@ const data = {
     },
     {
       id: 2,
-      fullName: 'Adalberto Granzin',
+      fullName: 'Adarsh Sisodia',
       role: 'UI/UX Designer',
       avatarColor: 'primary',
       about:
@@ -38,7 +38,7 @@ const data = {
     },
     {
       id: 3,
-      fullName: 'Joaquina Weisenborn',
+      fullName: 'Jahnavi Mehra',
       role: 'Town planner',
       about:
         'Soufflé soufflé caramels sweet roll. Jelly lollipop sesame snaps bear claw jelly beans sugar plum sugar plum.',
@@ -47,7 +47,7 @@ const data = {
     },
     {
       id: 4,
-      fullName: 'Verla Morgano',
+      fullName: 'Aman Mishra',
       role: 'Data scientist',
       about:
         'Chupa chups candy canes chocolate bar marshmallow liquorice muffin. Lemon drops oat cake tart liquorice tart cookie. Jelly-o cookie tootsie roll halvah.',
@@ -56,55 +56,11 @@ const data = {
     },
     {
       id: 5,
-      fullName: 'Margot Henschke',
+      fullName: 'Bipin Singh',
       role: 'Dietitian',
       avatarColor: 'success',
       about: 'Cake pie jelly jelly beans. Marzipan lemon drops halvah cake. Pudding cookie lemon drops icing',
       status: 'busy'
-    },
-    {
-      id: 6,
-      fullName: 'Sal Piggee',
-      role: 'Marketing executive',
-      about:
-        'Toffee caramels jelly-o tart gummi bears cake I love ice cream lollipop. Sweet liquorice croissant candy danish dessert icing. Cake macaroon gingerbread toffee sweet.',
-      avatar: '/images/avatars/5.png',
-      status: 'online'
-    },
-    {
-      id: 7,
-      fullName: 'Miguel Guelff',
-      role: 'Special educational needs teacher',
-      about:
-        'Biscuit powder oat cake donut brownie ice cream I love soufflé. I love tootsie roll I love powder tootsie roll.',
-      avatar: '/images/avatars/7.png',
-      status: 'online'
-    },
-    {
-      id: 8,
-      fullName: 'Mauro Elenbaas',
-      role: 'Advertising copywriter',
-      about:
-        'Bear claw ice cream lollipop gingerbread carrot cake. Brownie gummi bears chocolate muffin croissant jelly I love marzipan wafer.',
-      avatar: '/images/avatars/6.png',
-      status: 'away'
-    },
-    {
-      id: 9,
-      avatarColor: 'warning',
-      fullName: 'Bridgett Omohundro',
-      role: 'Designer, television/film set',
-      about:
-        'Gummies gummi bears I love candy icing apple pie I love marzipan bear claw. I love tart biscuit I love candy canes pudding chupa chups liquorice croissant.',
-      status: 'offline'
-    },
-    {
-      id: 10,
-      avatarColor: 'error',
-      fullName: 'Zenia Jacobs',
-      role: 'Building surveyor',
-      about: 'Cake pie jelly jelly beans. Marzipan lemon drops halvah cake. Pudding cookie lemon drops icing',
-      status: 'away'
     }
   ],
   chats: [

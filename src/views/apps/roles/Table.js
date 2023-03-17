@@ -36,8 +36,10 @@ const userRoleObj = {
   admin: { icon: 'mdi:laptop', color: 'error.main' },
   author: { icon: 'mdi:cog-outline', color: 'warning.main' },
   editor: { icon: 'mdi:pencil-outline', color: 'info.main' },
+  instructor: { icon: 'mdi:pencil-outline', color: 'info.main' },
   maintainer: { icon: 'mdi:chart-donut', color: 'success.main' },
-  subscriber: { icon: 'mdi:account-outline', color: 'primary.main' }
+  subscriber: { icon: 'mdi:account-outline', color: 'primary.main' },
+  user: { icon: 'mdi:account-outline', color: 'primary.main' }
 }
 
 const userStatusObj = {
@@ -85,9 +87,6 @@ const columns = [
               }}
             >
               {fullName}
-            </Typography>
-            <Typography noWrap variant='caption'>
-              {`@${username}`}
             </Typography>
           </Box>
         </Box>

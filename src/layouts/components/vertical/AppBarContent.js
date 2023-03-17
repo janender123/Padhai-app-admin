@@ -17,8 +17,8 @@ const notifications = [
   {
     meta: 'Today',
     avatarAlt: 'Flora',
-    title: 'Congratulation Flora! 🎉',
-    avatarImg: '/images/avatars/4.png',
+    title: 'Congratulation Yogesh! 🎉',
+    avatarImg: '/images/avatars/1.png',
     subtitle: 'Won the monthly best seller badge'
   },
   {
@@ -124,7 +124,6 @@ const AppBarContent = props => {
         <Autocomplete hidden={hidden} settings={settings} />
       </Box>
       <Box className='actions-right' sx={{ display: 'flex', alignItems: 'center' }}>
-        <LanguageDropdown settings={settings} saveSettings={saveSettings} />
         <ModeToggler settings={settings} saveSettings={saveSettings} />
         <ShortcutsDropdown settings={settings} shortcuts={shortcuts} />
         <NotificationDropdown settings={settings} notifications={notifications} />

@@ -109,7 +109,18 @@ const columns = [
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
           {renderClient(params)}
           <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-            <Typography noWrap variant='body2' sx={{ color: 'text.primary', fontWeight: 600 }}>
+          <Typography
+              noWrap
+              component={Link}
+              variant='subtitle2'
+              href='/apps/teacher/view/overview/'
+              sx={{
+                fontWeight: 600,
+                color: 'text.primary',
+                textDecoration: 'none',
+                '&:hover': { color: 'primary.main' }
+              }}
+            >
               {row.full_name}
             </Typography>
             <Typography noWrap variant='caption'>

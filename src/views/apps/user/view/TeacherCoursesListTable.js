@@ -27,33 +27,16 @@ const columns = [
     flex: 0.3,
     minWidth: 230,
     field: 'projectTitle',
-    headerName: 'Project',
+    headerName: 'Course',
     renderCell: ({ row }) => (
       <Box sx={{ display: 'flex', alignItems: 'center' }}>
         <Img src={row.img} alt={`project-${row.projectTitle}`} />
         <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-          <Typography sx={{ fontWeight: 500, fontSize: '0.875rem' }}>{row.projectTitle}</Typography>
+          <Typography sx={{ fontWeight: 500, fontSize: '0.875rem' }}>{row.projectTitle} - {row.class} </Typography>
           <Typography variant='caption' sx={{ color: 'text.disabled' }}>
             {row.projectType}
           </Typography>
         </Box>
-      </Box>
-    )
-  },
-  {
-    flex: 0.15,
-    minWidth: 200,
-    headerName: 'Progress',
-    field: 'progressValue',
-    renderCell: ({ row }) => (
-      <Box sx={{ width: '100%' }}>
-        <Typography variant='body2'>{row.progressValue}%</Typography>
-        <LinearProgress
-          variant='determinate'
-          value={row.progressValue}
-          color={row.progressColor}
-          sx={{ height: 6, mt: 1, borderRadius: '5px' }}
-        />
       </Box>
     )
   },
@@ -66,7 +49,7 @@ const columns = [
   }
 ]
 
-const InvoiceListTable = () => {
+const TeacherCoursesListTable = () => {
   // ** State
   const [value, setValue] = useState('')
   const [pageSize, setPageSize] = useState(7)
@@ -83,7 +66,7 @@ const InvoiceListTable = () => {
 
   return (
     <Card>
-      <CardHeader title="User's Courses List" />
+      <CardHeader title="Teacher's Courses List" />
       <CardContent>
         <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}>
           <Typography variant='body2' sx={{ mr: 2 }}>
@@ -105,4 +88,4 @@ const InvoiceListTable = () => {
   )
 }
 
-export default InvoiceListTable
+export default TeacherCoursesListTable
