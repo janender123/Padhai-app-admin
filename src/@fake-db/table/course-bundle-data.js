@@ -40,6 +40,7 @@ export const rows = [
     board: 'CBSE',
   }
 ]
+
 const customDates = [
   new Date("2022-01-01"),
   new Date("2022-02-15"),

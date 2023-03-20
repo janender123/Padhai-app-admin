@@ -13,6 +13,7 @@ import CardHeader from '@mui/material/CardHeader'
 import CardContent from '@mui/material/CardContent'
 import CircularProgress from '@mui/material/CircularProgress'
 import AccordionSimple from 'src/views/components/accordion/LessonsAccordionNewCourse'
+
 // ** Icon Imports
 import Icon from 'src/@core/components/icon'
 import Accordion from '@mui/material/Accordion'
@@ -58,7 +59,7 @@ export default function CardActionAll() {
   };
 
   const CardArray=[
-    <Card sx={{ position: 'relative', marginBottom: '10px', borderStyle: 'groove' }}>
+    <Card key={CardArray.length} sx={{ position: 'relative', marginBottom: '10px', borderStyle: 'groove' }}>
       <CardHeader 
         title='Physics Optics - Class 12'
         action={
@@ -105,6 +106,7 @@ export default function CardActionAll() {
               size='small'
               aria-label='delete'
               sx={{ mr: 2, color: 'text.secondary' }}
+
             // onClick={() => setCollapsed(!collapsed)}
             >
               <Icon icon="material-symbols:delete-sharp" />
@@ -113,6 +115,7 @@ export default function CardActionAll() {
               size='small'
               aria-label='cursor'
               sx={{ mr: 2, color: 'text.secondary' }}
+
             // onClick={() => setCollapsed(!collapsed)}
             >
               <Icon icon="mdi:cursor-move" />
@@ -178,7 +181,7 @@ export default function CardActionAll() {
         </CardContent>
       </Collapse>
     </Card>,
-    <Card sx={{ position: 'relative', marginBottom: '10px', borderStyle: 'groove' }}>
+    <Card key={CardArray.length} sx={{ position: 'relative', marginBottom: '10px', borderStyle: 'groove' }}>
       <CardHeader
         
         title='Physics Semiconductors - Class 12'
@@ -226,6 +229,7 @@ export default function CardActionAll() {
               size='small'
               aria-label='delete'
               sx={{ mr: 2, color: 'text.secondary' }}
+
             // onClick={() => setCollapsed(!collapsed)}
             >
               <Icon icon="material-symbols:delete-sharp" />
@@ -234,6 +238,7 @@ export default function CardActionAll() {
               size='small'
               aria-label='cursor'
               sx={{ mr: 2, color: 'text.secondary' }}
+
             // onClick={() => setCollapsed(!collapsed)}
             >
               <Icon icon="mdi:cursor-move" />
@@ -309,7 +314,7 @@ export default function CardActionAll() {
         </CardContent>
       </Collapse>
     </Card>,
-    <Card sx={{ position: 'relative', marginBottom: '10px', borderStyle: 'groove' }}>
+    <Card key={CardArray.length} sx={{ position: 'relative', marginBottom: '10px', borderStyle: 'groove' }}>
       <CardHeader
         
         title='Physics Electricity - Class 12'
@@ -357,6 +362,7 @@ export default function CardActionAll() {
               size='small'
               aria-label='delete'
               sx={{ mr: 2, color: 'text.secondary' }}
+
             // onClick={() => setCollapsed(!collapsed)}
             >
               <Icon icon="material-symbols:delete-sharp" />
@@ -365,6 +371,7 @@ export default function CardActionAll() {
               size='small'
               aria-label='cursor'
               sx={{ mr: 2, color: 'text.secondary' }}
+
             // onClick={() => setCollapsed(!collapsed)}
             >
               <Icon icon="mdi:cursor-move" />
@@ -448,7 +455,8 @@ export default function CardActionAll() {
   const handleClick = event => {
     setIsShown(current => !current);
   };
-  return (
+  
+return (
     <Fade in={visibility} timeout={300}>
 
       <Card sx={{ position: 'relative' }}>
