@@ -313,8 +313,8 @@ const AddSection = () => {
         <Collapse in={collapsed}>
           <CardContent>
             <div>
-              {sortedList.map((item) => (
-                <div key={sortedList.length}>
+              {sortedList.map((item,index) => (
+                <div key={index}>
                   {item.component}
                 </div>
               ))}
@@ -496,7 +496,6 @@ const NewCourseForm = () => {
                   <MenuItem value={10}>Science</MenuItem>
                   <MenuItem value={20}>Arts</MenuItem>
                   <MenuItem value={30}>Commerce</MenuItem>
-                  {/* <MenuItem value={30}>12th</MenuItem> */}
                 </Select>
               </FormControl>
             </Grid>

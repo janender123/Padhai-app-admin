@@ -243,6 +243,11 @@ const navigation = () => {
         }
       ]
     },
+    {
+      title: 'Badges',
+      icon: 'tabler:trophy',
+      path: '/apps/badges'
+    },
 
     // {
     //   title: 'Pages',

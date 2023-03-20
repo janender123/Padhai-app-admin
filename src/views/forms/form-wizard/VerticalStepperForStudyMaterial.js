@@ -225,8 +225,8 @@ return (<Card sx={{ position: 'relative', marginBottom: '10px', borderStyle: 'gr
       <Collapse in={collapsed}>
         <CardContent>
           <div>
-            {sortedList.map((item) => (
-              <div key={sortedList.length}>
+            {sortedList.map((item,index) => (
+              <div key={index}>
                 {item.component}
               </div>
             ))}

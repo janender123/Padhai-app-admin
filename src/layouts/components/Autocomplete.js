@@ -35,98 +35,88 @@ const defaultSuggestionsData = [
     suggestions: [
       {
         icon: 'mdi:chart-donut',
-        suggestion: 'CRM',
+        suggestion: 'Course',
         link: '/dashboards/crm'
       },
       {
         icon: 'mdi:poll',
-        suggestion: 'Analytics',
+        suggestion: 'Live Class',
         link: '/dashboards/analytics'
       },
       {
         icon: 'mdi:chart-bubble',
-        suggestion: 'eCommerce',
+        suggestion: 'Contests',
         link: '/dashboards/ecommerce'
       },
       {
         icon: 'mdi:account-group',
-        suggestion: 'User List',
+        suggestion: 'Course Bundles',
         link: '/apps/user/list'
       }
     ]
   },
   {
-    category: 'Apps & Pages',
+    category: 'Quiz and Contests',
     suggestions: [
       {
         icon: 'mdi:calendar-blank',
-        suggestion: 'Calendar',
+        suggestion: 'Manage Q&A',
         link: '/apps/calendar'
       },
       {
         icon: 'mdi:format-list-numbered',
-        suggestion: 'Invoice List',
+        suggestion: 'Manage contest',
         link: '/apps/invoice/list'
       },
       {
         icon: 'mdi:currency-usd',
-        suggestion: 'Pricing',
+        suggestion: 'Daily Quiz',
         link: '/pages/pricing'
       },
       {
         icon: 'mdi:account-cog-outline',
-        suggestion: 'Account Settings',
+        suggestion: 'New Question',
         link: '/pages/account-settings/account'
       }
     ]
   },
   {
-    category: 'User Interface',
+    category: 'Categories',
     suggestions: [
       {
         icon: 'mdi:format-text-variant-outline',
-        suggestion: 'Typography',
+        suggestion: 'Boards and Exams',
         link: '/ui/typography'
       },
       {
         icon: 'mdi:tab',
-        suggestion: 'Tabs',
+        suggestion: 'Class',
         link: '/components/tabs'
       },
       {
         icon: 'mdi:gesture-tap-button',
-        suggestion: 'Buttons',
+        suggestion: 'Stream',
         link: '/components/buttons'
       },
       {
         icon: 'mdi:card-bulleted-settings-outline',
-        suggestion: 'Advanced Cards',
+        suggestion: 'Language',
         link: '/ui/cards/advanced'
       }
     ]
   },
   {
-    category: 'Forms & Tables',
+    category: 'Study materials',
     suggestions: [
       {
         icon: 'mdi:format-list-checkbox',
-        suggestion: 'Select',
+        suggestion: 'List of Materials',
         link: '/forms/form-elements/select'
       },
       {
         icon: 'mdi:lastpass',
-        suggestion: 'Autocomplete',
+        suggestion: 'New Materials',
         link: '/forms/form-elements/autocomplete'
-      },
-      {
-        icon: 'mdi:view-grid-outline',
-        suggestion: 'Table',
-        link: '/tables/mui'
-      },
-      {
-        icon: 'mdi:calendar-range',
-        suggestion: 'Date Pickers',
-        link: '/forms/form-elements/pickers'
       }
     ]
   }
