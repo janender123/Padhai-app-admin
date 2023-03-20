@@ -25,7 +25,8 @@ const NewQuizInLiveClasses = () => {
   const [time, setTime] = useState('')
   const [attempts, setAttempts] = useState('')
   const [passMarks, setPassMarks] = useState('')
-  return (
+  
+return (
     <form >
       <CardHeader title='New Quiz Form' />
       <Grid container spacing={6} >

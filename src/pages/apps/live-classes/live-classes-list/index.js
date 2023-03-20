@@ -4,6 +4,7 @@ import { useState, useEffect, forwardRef } from 'react'
 // ** Next Import
 import Link from 'next/link'
 import TableBoards from 'src/views/table/mui/CoursesTABLE'
+
 // ** MUI Imports
 import Box from '@mui/material/Box'
 import Grid from '@mui/material/Grid'

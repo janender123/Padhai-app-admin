@@ -1,5 +1,6 @@
 // ** React Imports
 import { Fragment, useState } from 'react'
+
 // ** MUI Imports
 import Box from '@mui/material/Box'
 import Card from '@mui/material/Card'
@@ -17,11 +18,14 @@ import FormControl from '@mui/material/FormControl'
 import OutlinedInput from '@mui/material/OutlinedInput'
 import Select from '@mui/material/Select'
 import FileUploaderRestrictions from 'src/views/forms/form-elements/file-uploader/NewCourseThumbnail'
+
 // ** Icon Imports
 // ** Custom Components Imports
 import StepperCustomDot from './StepperCustomDot'
+
 // ** Third Party Imports
 import toast from 'react-hot-toast'
+
 // ** Styled Component
 import StepperWrapper from 'src/@core/styles/mui/stepper'
 import Chip from '@mui/material/Chip'
@@ -32,6 +36,7 @@ import AddIconMenu from 'src/views/components/menu/AddIconInCourseMenu'
 import IconButton from '@mui/material/IconButton'
 
 import { courseTags } from 'src/@fake-db/autocomplete'
+
 // ** Source code imports
 import * as source from 'src/views/forms/form-elements/editor/EditorSourceCode'
 import Collapse from '@mui/material/Collapse'
@@ -107,6 +112,7 @@ const AddSection = () => {
     const [QuizList, setQuizList] = useState([]);
     const [AssignmentList, setAssignmentList] = useState([]);
     const [collapsed, setCollapsed] = useState(false)
+
     const handleCloseAddButton = () => {
       setAnchorEl(null)
     }
@@ -122,6 +128,7 @@ const AddSection = () => {
     const handleClickMenuAddButton = event => {
       setAnchorEl(event.currentTarget)
     }
+
     const handleClickNewLesson = () => {
       const newLesson = {
         type: 'Lesson',
@@ -140,6 +147,7 @@ const AddSection = () => {
       if (collapsed === false) setCollapsed(!collapsed)
       setAnchorEl(null)
     };
+
     const handleClickNewText = () => {
       const newText = {
         type: 'Text',
@@ -158,6 +166,7 @@ const AddSection = () => {
       if (collapsed === false) setCollapsed(!collapsed)
       setAnchorEl(null)
     };
+
     const handleClickNewQuiz = () => {
       const newQuiz = {
         type: 'Quiz',
@@ -176,6 +185,7 @@ const AddSection = () => {
       if (collapsed === false) setCollapsed(!collapsed)
       setAnchorEl(null)
     };
+
     const handleClickNewAssignment = () => {
       const newAssignment = {
         type: 'Quiz',
@@ -198,10 +208,12 @@ const AddSection = () => {
     const [EditSection, setEditSection] = useState(false);
     const handleClickEditSection = () => setEditSection(true)
     const handleCloseEditSection = () => setEditSection(false)
+
     const handleSaveEditSection = () => {
       setEditSection(false)
     }
     const [visible, setVisible] = useState(true);
+
     const removeSection = () => {
       setVisible((prev) => !prev);
     };
@@ -306,7 +318,7 @@ const AddSection = () => {
           <CardContent>
             <div>
               {sortedList.map((item) => (
-                <div>
+                <div key={sortedList.length}>
                   {item.component}
                 </div>
               ))}
@@ -391,7 +403,7 @@ const AddSection = () => {
         >
           {
             sectionList.map((section) => (
-              <div>
+              <div key={sectionList.length}>
                 {section}
               </div>
             ))
@@ -420,6 +432,7 @@ const NewLiveClassForm = () => {
   const [startDate, setStartDate] = useState('');
   const [startTime, setStartTime] = useState('');
   const [drip, setDrip] = useState([])
+
   const handleBack = () => {
     setActiveStep(prevActiveStep => prevActiveStep - 1)
   }
@@ -447,6 +460,7 @@ const NewLiveClassForm = () => {
   const handleCloseMenu = () => {
     setAnchorEl(null)
   }
+
   const handleClickMenu = event => {
     setAnchorEl(event.currentTarget)
   }
@@ -467,6 +481,7 @@ const NewLiveClassForm = () => {
   const [open, setOpen] = useState(false)
   const handleClickOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
+
   const Input = () => {
     return <Card sx={{ position: 'relative', marginBottom: '10px', borderStyle: 'groove' }}>
       <CardHeader
@@ -547,6 +562,7 @@ const NewLiveClassForm = () => {
               size='small'
               aria-label='delete'
               sx={{ mr: 2, color: 'text.secondary' }}
+
             // onClick={() => setCollapsed(!collapsed)}
             >
               <Icon icon="material-symbols:delete-sharp" />
@@ -555,6 +571,7 @@ const NewLiveClassForm = () => {
               size='small'
               aria-label='cursor'
               sx={{ mr: 2, color: 'text.secondary' }}
+
             // onClick={() => setCollapsed(!collapsed)}
             >
               <Icon icon="mdi:cursor-move" />
@@ -577,7 +594,8 @@ const NewLiveClassForm = () => {
       </Collapse>
     </Card>
   };
-  const [sectionList, setSectionList] = useState([<Card sx={{ position: 'relative', marginBottom: '10px', borderStyle: 'groove' }}>
+
+  const [sectionList, setSectionList] = useState([<Card key={sectionList.length} sx={{ position: 'relative', marginBottom: '10px', borderStyle: 'groove' }}>
     <CardHeader
       title='sample'
       action={
@@ -624,6 +642,7 @@ const NewLiveClassForm = () => {
             size='small'
             aria-label='delete'
             sx={{ mr: 2, color: 'text.secondary' }}
+
           // onClick={() => setCollapsed(!collapsed)}
           >
             <Icon icon="material-symbols:delete-sharp" />
@@ -632,6 +651,7 @@ const NewLiveClassForm = () => {
             size='small'
             aria-label='cursor'
             sx={{ mr: 2, color: 'text.secondary' }}
+
           // onClick={() => setCollapsed(!collapsed)}
           >
             <Icon icon="mdi:cursor-move" />
@@ -860,6 +880,7 @@ const NewLiveClassForm = () => {
               <TextField
                 fullWidth
                 type='file'
+
                 // label='Assignment'
                 // placeholder='Submit Assignment for the course'
                 value={thumbnail}

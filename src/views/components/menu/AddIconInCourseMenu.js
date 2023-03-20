@@ -35,6 +35,7 @@ const AddIconMenu = () => {
   const handleClose = () => {
     setAnchorEl(null)
   }
+
   const handleClick = event => {
     setAnchorEl(event.currentTarget)
   }
@@ -77,4 +78,5 @@ const AddIconMenu = () => {
     </div>
   )
 }
+
 export default AddIconMenu;

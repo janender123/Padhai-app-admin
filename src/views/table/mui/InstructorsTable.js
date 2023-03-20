@@ -13,6 +13,7 @@ import Typography from '@mui/material/Typography'
 import CardHeader from '@mui/material/CardHeader'
 import { DataGrid } from '@mui/x-data-grid'
 import DialogEditUserInfo from 'src/views/pages/dialog-examples/Add-Board-Dialog'
+
 // ** Custom Components
 import CustomChip from 'src/@core/components/mui/chip'
 import CustomAvatar from 'src/@core/components/mui/avatar'
@@ -42,6 +43,7 @@ import Tab from '@mui/material/Tab'
 import TabList from '@mui/lab/TabList'
 import TabPanel from '@mui/lab/TabPanel'
 import TabContext from '@mui/lab/TabContext'
+
 // ** React Imports
 import { Fragment } from 'react'
 
@@ -105,7 +107,8 @@ const columns = [
     headerName: 'Name',
     renderCell: params => {
       const { row } = params
-      return (
+      
+return (
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
           {renderClient(params)}
           <Box sx={{ display: 'flex', flexDirection: 'column' }}>
@@ -197,7 +200,8 @@ const columns = [
     headerName: 'Status',
     renderCell: params => {
       const status = statusObj[params.row.status]
-      return (
+      
+return (
         <CustomChip
           size='small'
           skin='light'

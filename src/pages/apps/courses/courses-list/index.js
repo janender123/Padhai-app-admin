@@ -4,6 +4,7 @@ import { useState, useEffect, forwardRef } from 'react'
 // ** Next Import
 import Link from 'next/link'
 import TableBoards from 'src/views/table/mui/CoursesTABLE'
+
 // ** MUI Imports
 import Box from '@mui/material/Box'
 import Grid from '@mui/material/Grid'
@@ -88,7 +89,8 @@ const CustomInput = forwardRef((props, ref) => {
   props.start === null && props.dates.length && props.setDates ? props.setDates([]) : null
   const updatedProps = { ...props }
   delete updatedProps.setDates
-  return <TextField fullWidth inputRef={ref} {...updatedProps} label={props.label || ''} value={value} />
+  
+return <TextField fullWidth inputRef={ref} {...updatedProps} label={props.label || ''} value={value} />
 })
 
 /* eslint-enable */
@@ -131,7 +133,8 @@ const CoursesList = () => {
     setStartDateRange(start)
     setEndDateRange(end)
   }
-  return (
+  
+return (
     <DatePickerWrapper>
       <Grid container spacing={6}>
         <Grid item xs={6}>

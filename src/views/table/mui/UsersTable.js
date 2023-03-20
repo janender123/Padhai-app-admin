@@ -4,6 +4,7 @@ import Tooltip from '@mui/material/Tooltip'
 import IconButton from '@mui/material/IconButton'
 import Icon from 'src/@core/components/icon'
 import Link from 'next/link'
+
 // ** MUI Imports
 import Box from '@mui/material/Box'
 import Card from '@mui/material/Card'
@@ -11,6 +12,7 @@ import Typography from '@mui/material/Typography'
 import CardHeader from '@mui/material/CardHeader'
 import { DataGrid } from '@mui/x-data-grid'
 import DialogEditUserInfo from 'src/views/pages/dialog-examples/Add-Board-Dialog'
+
 // ** Custom Components
 import CustomChip from 'src/@core/components/mui/chip'
 import CustomAvatar from 'src/@core/components/mui/avatar'
@@ -65,7 +67,8 @@ const columns = [
     headerName: 'Name',
     renderCell: params => {
       const { row } = params
-      return (
+      
+return (
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
           {renderClient(params)}
           <Box sx={{ display: 'flex', flexDirection: 'column' }}>
@@ -145,7 +148,8 @@ const columns = [
     headerName: 'Status',
     renderCell: params => {
       const status = statusObj[params.row.status]
-      return (
+      
+return (
         <CustomChip
           size='small'
           skin='light'

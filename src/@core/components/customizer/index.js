@@ -97,6 +97,7 @@ const Customizer = () => {
 
   return (
     <></>
+
     // <div className='customizer'>
     //   <Toggler className='customizer-toggler' onClick={() => setOpen(true)}>
     //     <Icon icon='mdi:cog-outline' fontSize={20} />

@@ -13,6 +13,7 @@ import Typography from '@mui/material/Typography'
 import CardHeader from '@mui/material/CardHeader'
 import { DataGrid } from '@mui/x-data-grid'
 import DialogEditUserInfo from 'src/views/pages/dialog-examples/Add-Board-Dialog'
+
 // ** Custom Components
 import CustomChip from 'src/@core/components/mui/chip'
 import CustomAvatar from 'src/@core/components/mui/avatar'
@@ -49,7 +50,8 @@ const columns = [
     headerName: 'Language Name',
     renderCell: params => {
       const { row } = params
-      return (
+      
+return (
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
           {renderClient(params)}
           <Box sx={{ display: 'flex', flexDirection: 'column' }}>

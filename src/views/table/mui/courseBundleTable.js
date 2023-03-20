@@ -4,18 +4,22 @@ import Tooltip from '@mui/material/Tooltip'
 import IconButton from '@mui/material/IconButton'
 import Icon from 'src/@core/components/icon'
 import OptionsMenu from 'src/@core/components/option-menu'
+
 // ** MUI Imports
 import Box from '@mui/material/Box'
 import Card from '@mui/material/Card'
 import Typography from '@mui/material/Typography'
 import { DataGrid } from '@mui/x-data-grid'
 import DialogEditUserInfo from 'src/views/pages/dialog-examples/Add-Class-Dialog'
+
 // ** Custom Components
 import CustomChip from 'src/@core/components/mui/chip'
 import CustomAvatar from 'src/@core/components/mui/avatar'
 import QuickSearchToolbar from 'src/views/table/data-grid/QuickSearchToolbarCourses'
+
 // ** Utils Import
 import { getInitials } from 'src/@core/utils/get-initials'
+
 // ** Data Import
 import { rows } from 'src/@fake-db/table/course-bundle-data'
 
@@ -47,7 +51,8 @@ const columns = [
     headerName: 'ID',
     renderCell: params => {
       const { row } = params
-      return (
+      
+return (
         <Typography noWrap variant='body2' sx={{ color: 'text.primary', fontWeight: 600 }}>
           {row.id}
         </Typography>
@@ -61,7 +66,8 @@ const columns = [
     headerName: 'Course Bundle Name',
     renderCell: params => {
       const { row } = params
-      return (
+      
+return (
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
           {renderClient(params)}
           <Box sx={{ display: 'flex', flexDirection: 'column' }}>
@@ -80,7 +86,8 @@ const columns = [
     headerName: 'Instructor',
     renderCell: params => {
       const { row } = params
-      return (
+      
+return (
         <Typography noWrap variant='body2' sx={{ color: 'text.primary', fontWeight: 600 }}>
           {row.instructor}
         </Typography>
@@ -116,7 +123,8 @@ const columns = [
     headerName: 'created date',
     renderCell: params => {
       const { row } = params
-      return (
+      
+return (
         <Typography noWrap variant='body2' sx={{ color: 'text.primary', fontWeight: 600 }}>
           {row.created_date}
         </Typography>
@@ -178,9 +186,11 @@ const CourseBundleTable = () => {
   const [pageSize, setPageSize] = useState(7)
   const [searchText, setSearchText] = useState('')
   const [filteredData, setFilteredData] = useState([])
+
   const handleSearch = searchValue => {
     setSearchText(searchValue)
     const searchRegex = new RegExp(escapeRegExp(searchValue), 'i')
+
     const filteredRows = data.filter(row => {
       return Object.keys(row).some(field => {
         // @ts-ignore
@@ -193,7 +203,8 @@ const CourseBundleTable = () => {
       setFilteredData([])
     }
   }
-  return (
+  
+return (
     <Card>
       <DataGrid
         autoHeight
@@ -218,4 +229,5 @@ const CourseBundleTable = () => {
     </Card>
   )
 }
+
 export default CourseBundleTable

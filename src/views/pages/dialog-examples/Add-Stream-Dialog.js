@@ -57,12 +57,14 @@ const DialogEditUserInfo = () => {
     } = event
     setLanguages(typeof value === 'string' ? value.split(',') : value)
   }
+
   const ButtonStyled = styled(Button)(({ theme }) => ({
     [theme.breakpoints.down('sm')]: {
       width: '100%',
       textAlign: 'center'
     }
   }))
+
   const handleInputImageReset = () => {
     setInputValue('')
     setImgSrc('/images/avatars/1.png')
@@ -80,7 +82,8 @@ const DialogEditUserInfo = () => {
     }
     setChecked(newChecked)
   }
-  return (
+  
+return (
 
     <Card >
 

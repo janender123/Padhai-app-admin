@@ -30,10 +30,12 @@ import CardActions from '@mui/material/CardActions'
 
 const AnswerOption = () => {
   const [visible, setVisible] = useState(true);
+
   const removeElement = () => {
     setVisible((prev) => !prev);
   };
-  return (<>
+  
+return (<>
     {visible && (
       <Grid item sm={12} xs={12} >
         <CardHeader
@@ -69,6 +71,7 @@ const AddNewMCQInStudyMaterial = () => {
   const handleClose = () => setOpen(false)
   const [language, setLanguage] = useState([])
   const [answerOptionList, setAnswerOptionList] = useState([]);
+
   const onAddBtnClick = () => {
     setAnswerOptionList(answerOptionList.concat(<AnswerOption key={answerOptionList.length} />));
   }

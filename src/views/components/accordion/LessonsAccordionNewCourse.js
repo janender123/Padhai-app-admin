@@ -4,6 +4,7 @@ import Typography from '@mui/material/Typography'
 import AccordionSummary from '@mui/material/AccordionSummary'
 import AccordionDetails from '@mui/material/AccordionDetails'
 import FormLayoutsBasic from 'src/views/forms/form-layouts/NewLessonFormInNewCourseSection'
+
 // ** Icon Imports
 import Icon from 'src/@core/components/icon'
 

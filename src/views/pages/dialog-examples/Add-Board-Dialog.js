@@ -46,6 +46,7 @@ const AddBoardDialog = () => {
     } = event
     setLanguages(typeof value === 'string' ? value.split(',') : value)
   }
+
   const ButtonStyled = styled(Button)(({ theme }) => ({
     [theme.breakpoints.down('sm')]: {
       width: '100%',

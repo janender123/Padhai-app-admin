@@ -13,6 +13,7 @@ import Typography from '@mui/material/Typography'
 import CardHeader from '@mui/material/CardHeader'
 import { DataGrid } from '@mui/x-data-grid'
 import DialogEditUserInfo from 'src/views/pages/dialog-examples/Add-Board-Dialog'
+
 // ** Custom Components
 import CustomChip from 'src/@core/components/mui/chip'
 import CustomAvatar from 'src/@core/components/mui/avatar'
@@ -42,6 +43,7 @@ import Tab from '@mui/material/Tab'
 import TabList from '@mui/lab/TabList'
 import TabPanel from '@mui/lab/TabPanel'
 import TabContext from '@mui/lab/TabContext'
+
 // ** React Imports
 import { Fragment } from 'react'
 
@@ -85,10 +87,12 @@ const escapeRegExp = value => {
 
 const AnswerOption = () => {
   const [visible, setVisible] = useState(true);
+
   const removeElement = () => {
     setVisible((prev) => !prev);
   };
-  return (<>
+  
+return (<>
     {visible && (
       <Grid item sm={12} xs={12} >
         <CardHeader
@@ -124,13 +128,15 @@ const EditQuestion = () => {
   const handleClose = () => setOpen(false)
   const [language, setLanguage] = useState([])
   const [answerOptionList, setAnswerOptionList] = useState([]);
+
   const onAddBtnClick = () => {
     setAnswerOptionList(answerOptionList.concat(<AnswerOption key={answerOptionList.length} />));
   }
   const [childCategory, setChildCategory] = useState('')
   const [category, setCategory] = useState('')
   const [subCategory, setSubCategory] = useState('')
-  return (<>
+  
+return (<>
     <IconButton size='small' sx={{ mr: 0.5 }} onClick={() => ''}>
       <Icon icon='mdi:pencil-outline' fontSize={20} onClick={() => setShow(true)} />
     </IconButton>
@@ -140,6 +146,7 @@ const EditQuestion = () => {
       maxWidth='md'
       scroll='body'
       onClose={() => setShow(false)}
+
       // TransitionComponent={Transition}
       onBackdropClick={() => setShow(false)}
     >
@@ -356,7 +363,8 @@ const columns = [
     headerName: 'Question',
     renderCell: params => {
       const { row } = params
-      return (
+      
+return (
         <Box sx={{ display: 'flex', flexDirection: 'column' }}>
           <Typography noWrap variant='body2' sx={{ fontSize: '12px', color: 'text.primary', fontWeight: 100 }}>
             {row.question}
@@ -372,7 +380,8 @@ const columns = [
     headerName: 'Option A',
     renderCell: params => {
       const { row } = params
-      return (
+      
+return (
         <Box sx={{ display: 'flex', flexDirection: 'column' }}>
           <Typography noWrap variant='body2' sx={{ fontSize: '12px', color: 'text.primary', fontWeight: 600 }}>
             {row.optiona}
@@ -387,7 +396,8 @@ const columns = [
     headerName: 'Option B',
     renderCell: params => {
       const { row } = params
-      return (
+      
+return (
         <Box sx={{ display: 'flex', flexDirection: 'column' }}>
           <Typography noWrap variant='body2' sx={{ fontSize: '12px', color: 'text.primary', fontWeight: 600 }}>
             {row.optionb}
@@ -402,7 +412,8 @@ const columns = [
     headerName: 'Option C',
     renderCell: params => {
       const { row } = params
-      return (
+      
+return (
         <Box sx={{ display: 'flex', flexDirection: 'column' }}>
           <Typography noWrap variant='body2' sx={{ fontSize: '12px', color: 'text.primary', fontWeight: 600 }}>
             {row.optionc}
@@ -417,7 +428,8 @@ const columns = [
     headerName: 'Option D',
     renderCell: params => {
       const { row } = params
-      return (
+      
+return (
         <Box sx={{ display: 'flex', flexDirection: 'column' }}>
           <Typography noWrap variant='body2' sx={{ fontSize: '12px', color: 'text.primary', fontWeight: 600 }}>
             {row.optiond}
@@ -433,7 +445,8 @@ const columns = [
     headerName: 'answer',
     renderCell: params => {
       const { row } = params
-      return (
+      
+return (
         <Box sx={{ display: 'flex', flexDirection: 'column' }}>
           <Typography noWrap variant='body2' sx={{ fontSize: '12px', color: 'text.primary', fontWeight: 100 }}>
             {row.answer}

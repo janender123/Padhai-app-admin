@@ -38,7 +38,8 @@ const NewCourseNotice = () => {
     const handleSubmit = () => {
 
     }
-    return (
+    
+return (
         <Card>
             <Grid container spacing={6}>
                 <form onSubmit={handleSubmit}>
@@ -57,11 +58,13 @@ const NewCourseNotice = () => {
                                 <FormControl fullWidth>
                                     <InputLabel id='demo-simple-select-outlined-label'>Course</InputLabel>
                                     <Select
+
                                         // value={category}
                                         label='Course'
                                         defaultValue=''
                                         id='demo-simple-select-outlined'
                                         labelId='demo-simple-select-outlined-label'
+
                                         // onChange={e => setCategory(e.target.value)}
                                         placeholder='select a course'
                                     >

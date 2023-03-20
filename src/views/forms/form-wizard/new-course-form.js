@@ -1,5 +1,6 @@
 // ** React Imports
 import { Fragment, useState } from 'react'
+
 // ** MUI Imports
 import Card from '@mui/material/Card'
 import Step from '@mui/material/Step'
@@ -15,11 +16,14 @@ import FormControl from '@mui/material/FormControl'
 import OutlinedInput from '@mui/material/OutlinedInput'
 import Select from '@mui/material/Select'
 import FileUploaderRestrictions from 'src/views/forms/form-elements/file-uploader/NewCourseThumbnail'
+
 // ** Icon Imports
 // ** Custom Components Imports
 import StepperCustomDot from './StepperCustomDot'
+
 // ** Third Party Imports
 import toast from 'react-hot-toast'
+
 // ** Styled Component
 import StepperWrapper from 'src/@core/styles/mui/stepper'
 import Chip from '@mui/material/Chip'
@@ -87,6 +91,7 @@ const steps = [
     subtitle: 'Add Quiz for the course'
   }
 ]
+
 const AddSection = () => {
   const handleNewSectionDialog = () => setOpenDialog(true)
   const handleCloseNewSectionDialog = () => setOpenDialog(false)
@@ -103,6 +108,7 @@ const AddSection = () => {
     const [QuizList, setQuizList] = useState([]);
     const [AssignmentList, setAssignmentList] = useState([]);
     const [collapsed, setCollapsed] = useState(false)
+
     const handleCloseAddButton = () => {
       setAnchorEl(null)
     }
@@ -118,6 +124,7 @@ const AddSection = () => {
     const handleClickMenuAddButton = event => {
       setAnchorEl(event.currentTarget)
     }
+
     const handleClickNewLesson = () => {
       const newLesson = {
         type: 'Lesson',
@@ -136,6 +143,7 @@ const AddSection = () => {
       if (collapsed === false) setCollapsed(!collapsed)
       setAnchorEl(null)
     };
+
     const handleClickNewText = () => {
       const newText = {
         type: 'Text',
@@ -154,6 +162,7 @@ const AddSection = () => {
       if (collapsed === false) setCollapsed(!collapsed)
       setAnchorEl(null)
     };
+
     const handleClickNewQuiz = () => {
       const newQuiz = {
         type: 'Quiz',
@@ -172,6 +181,7 @@ const AddSection = () => {
       if (collapsed === false) setCollapsed(!collapsed)
       setAnchorEl(null)
     };
+
     const handleClickNewAssignment = () => {
       const newAssignment = {
         type: 'Quiz',
@@ -194,10 +204,12 @@ const AddSection = () => {
     const [EditSection, setEditSection] = useState(false);
     const handleClickEditSection = () => setEditSection(true)
     const handleCloseEditSection = () => setEditSection(false)
+
     const handleSaveEditSection = () => {
       setEditSection(false)
     }
     const [visible, setVisible] = useState(true);
+
     const removeSection = () => {
       setVisible((prev) => !prev);
     };
@@ -302,7 +314,7 @@ const AddSection = () => {
           <CardContent>
             <div>
               {sortedList.map((item) => (
-                <div>
+                <div key={sortedList.length}>
                   {item.component}
                 </div>
               ))}
@@ -387,7 +399,7 @@ const AddSection = () => {
         >
           {
             sectionList.map((section) => (
-              <div>
+              <div key={sectionList.length}>
                 {section}
               </div>
             ))
@@ -414,15 +426,18 @@ const NewCourseForm = () => {
   const [language, setLanguage] = useState('')
   const [assignment, setAssignment] = useState([])
   const [drip, setDrip] = useState([])
+
   const handleBack = () => {
     setActiveStep(prevActiveStep => prevActiveStep - 1)
   }
+
   const handleNext = () => {
     setActiveStep(prevActiveStep => prevActiveStep + 1)
     if (activeStep === steps.length - 1) {
       toast.success('Form Submitted')
     }
   }
+
   const getStepContent = step => {
     switch (step) {
       case 0:
@@ -591,6 +606,7 @@ const NewCourseForm = () => {
                 fullWidth
                 type='number'
                 label='Duration of the course (in minutes) '
+
                 // placeholder='Duration of the course'
                 value={duration}
                 onChange={e => setDuration(e.target.value)}
@@ -602,6 +618,7 @@ const NewCourseForm = () => {
               <TextField
                 fullWidth
                 type='file'
+
                 // label='Assignment'
                 // placeholder='Submit Assignment for the course'
                 value={thumbnail}

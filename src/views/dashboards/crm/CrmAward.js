@@ -62,7 +62,7 @@ const WelcomeAdmin = () => {
           </Typography>
           </Grid>
           <Grid item xs={6} sx={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'flex-end' }}>
-            <img src='/images/cards/trophy.png' height={134} />
+            <img alt='trophy' src='/images/cards/trophy.png' height={134} />
           </Grid>
         </Grid>
       </CardContent>
@@ -71,4 +71,5 @@ const WelcomeAdmin = () => {
 }
 
 export default CrmAward;
+
 export { WelcomeAdmin }

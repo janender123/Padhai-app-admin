@@ -84,4 +84,5 @@ const CardStatsForAdmin = ({ data }) => {
 }
 
 export default CardStatsForDashboard
+
 export { CardStatsForAdmin };

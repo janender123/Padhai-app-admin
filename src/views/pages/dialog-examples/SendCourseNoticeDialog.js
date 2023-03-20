@@ -50,12 +50,14 @@ const SendCourseNoticeDialog = () => {
     } = event
     setLanguages(typeof value === 'string' ? value.split(',') : value)
   }
+
   const ButtonStyled = styled(Button)(({ theme }) => ({
     [theme.breakpoints.down('sm')]: {
       width: '100%',
       textAlign: 'center'
     }
   }))
+
   const handleInputImageReset = () => {
     setInputValue('')
     setImgSrc('/images/avatars/1.png')
@@ -99,11 +101,13 @@ const SendCourseNoticeDialog = () => {
               <FormControl fullWidth>
                 <InputLabel id='demo-simple-select-outlined-label'>Course</InputLabel>
                 <Select
+
                   // value={category}
                   label='Course'
                   defaultValue=''
                   id='demo-simple-select-outlined'
                   labelId='demo-simple-select-outlined-label'
+
                   // onChange={e => setCategory(e.target.value)}
                   placeholder='select a course'
                 >

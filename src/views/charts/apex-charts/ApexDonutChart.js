@@ -113,6 +113,7 @@ const CourseNoticeChart = () => {
     </Card>
   )
 }
+
 const ApexDonutChart = () => {
   // ** Hook
   const theme = useTheme()
@@ -216,4 +217,5 @@ const ApexDonutChart = () => {
 
 
 export default ApexDonutChart;
+
 export { CourseNoticeChart }

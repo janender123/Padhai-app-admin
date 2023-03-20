@@ -13,6 +13,7 @@ import Typography from '@mui/material/Typography'
 import CardHeader from '@mui/material/CardHeader'
 import { DataGrid } from '@mui/x-data-grid'
 import DialogEditUserInfo from 'src/views/pages/dialog-examples/Add-Class-Dialog'
+
 // ** Custom Components
 import CustomChip from 'src/@core/components/mui/chip'
 import CustomAvatar from 'src/@core/components/mui/avatar'
@@ -50,7 +51,8 @@ const columns = [
     headerName: 'Course ID',
     renderCell: params => {
       const { row } = params
-      return (
+      
+return (
         <Typography noWrap variant='body2' sx={{ color: 'text.primary', fontWeight: 600 }}>
           {row.id}
         </Typography>
@@ -79,7 +81,8 @@ const columns = [
     headerName: 'Instructor',
     renderCell: params => {
       const { row } = params
-      return (
+      
+return (
         <Typography noWrap variant='body2' sx={{ color: 'text.primary', fontWeight: 600 }}>
           {row.instructor}
         </Typography>
@@ -115,7 +118,8 @@ const columns = [
     headerName: 'created date',
     renderCell: params => {
       const { row } = params
-      return (
+      
+return (
         <Typography noWrap variant='body2' sx={{ color: 'text.primary', fontWeight: 600 }}>
           {row.created_date}
         </Typography>

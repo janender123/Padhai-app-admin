@@ -21,7 +21,8 @@ import UsersList from 'src/views/table/mui/UsersTable'
 const BoardsList = () => {
 
   const { settings } = useSettings()
-  return (
+  
+return (
     <DatePickerWrapper>
       <Grid container spacing={6}>
         <Grid item xs={6}>

@@ -673,6 +673,7 @@ const data = {
     }
   ]
 }
+
 const coursesListData = [
   {
     id: 1,

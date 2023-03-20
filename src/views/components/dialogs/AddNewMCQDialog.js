@@ -29,10 +29,12 @@ import Typography from '@mui/material/Typography'
 
 const AnswerOption = () => {
   const [visible, setVisible] = useState(true);
+
   const removeElement = () => {
     setVisible((prev) => !prev);
   };
-  return (<>
+  
+return (<>
     {visible && (
       <Grid item sm={12} xs={12}>
         <CardHeader
@@ -64,8 +66,9 @@ const AnswerOption = () => {
 const Question = () => {
   const [showDialog, setShowDialog] = useState(false);
   const [language, setLanguage] = useState('')
+
   const [answerOptionList, setAnswerOptionList] = useState([
-    <Grid item sm={12} xs={12}>
+    <Grid item key={answerOptionList.length} sm={12} xs={12}>
       <CardSnippet
         title=''
         code={{
@@ -84,7 +87,7 @@ const Question = () => {
         </Grid>
       </CardSnippet>
     </Grid>,
-    <Grid item sm={12} xs={12}>
+    <Grid item key={answerOptionList.length} sm={12} xs={12}>
       <CardSnippet
         title=''
         code={{
@@ -104,10 +107,12 @@ const Question = () => {
       </CardSnippet>
     </Grid>
   ]);
+
   const handleSave = () => {
     // Handle save logic here
     setShowDialog(false);
   };
+
   const handleDiscard = () => {
     // Handle discard logic here
     setShowDialog(false);
@@ -120,7 +125,8 @@ const Question = () => {
       <AnswerOption key={newOptionId} optionId={newOptionId} />
     ]);
   };
-  return (<div style={{ marginTop: '10px' }}>
+  
+return (<div style={{ marginTop: '10px' }}>
     <Card>
       <Grid container spacing={6}>
         <CardHeader title='Add a question' sx={{ margin: '10px' }} />
@@ -174,9 +180,11 @@ const Question = () => {
 
 const AddNewMCQ = () => {
   const [questionList, setQuestionList] = useState([]);
+
   const handleButtonClick = () => {
     window.location.href = '/apps/import-questions/';
   };
+
   const onAddQuestion = () => {
     const newQuestionId = `question-${Date.now()}`;
     setQuestionList((prevQuestionList) => [

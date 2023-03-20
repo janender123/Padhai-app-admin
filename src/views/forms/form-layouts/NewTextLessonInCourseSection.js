@@ -24,7 +24,8 @@ const NewTextLessonInCourseSection = () => {
   const [time, setTime] = useState('')
   const [attachment, setAttachment] = useState('')
   const [Description, setDescription] = useState('')
-  return (
+  
+return (
     <form onSubmit={e => e.preventDefault()}>
       <CardHeader title='New Text Form' />
       <Divider sx={{ m: '0 !important' }} />

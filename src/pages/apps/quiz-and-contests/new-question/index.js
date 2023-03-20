@@ -6,6 +6,7 @@ import TabList from '@mui/lab/TabList'
 import TabPanel from '@mui/lab/TabPanel'
 import TabContext from '@mui/lab/TabContext'
 import Typography from '@mui/material/Typography'
+
 // ** React Imports
 import { Fragment } from 'react'
 
@@ -38,10 +39,12 @@ import { flexbox } from '@mui/system'
 
 const AnswerOption = () => {
   const [visible, setVisible] = useState(true);
+
   const removeElement = () => {
     setVisible((prev) => !prev);
   };
-  return (<>
+  
+return (<>
     {visible && (
       <Grid item sm={12} xs={12} >
         <CardHeader
@@ -77,6 +80,7 @@ const AddNewQuestionInStudyMaterial = () => {
   const handleClose = () => setOpen(false)
   const [language, setLanguage] = useState([])
   const [answerOptionList, setAnswerOptionList] = useState([]);
+
   const onAddBtnClick = () => {
     setAnswerOptionList(answerOptionList.concat(<AnswerOption key={answerOptionList.length} />));
   }
@@ -89,7 +93,8 @@ const AddNewQuestionInStudyMaterial = () => {
   const handleVideoSol = () => {
     setInvisible(!invisible)
   }
-  return (
+  
+return (
 
     <Card sx={{ mt: 4 }}>
       <CardHeader title='Add New Question' />
@@ -182,6 +187,7 @@ const AddNewQuestionInStudyMaterial = () => {
                 <FormControl fullWidth>
                   <InputLabel id='demo-simple-select-outlined-label'>Difficulty</InputLabel>
                   <Select
+
                     // value={language}
                     // onChange={e => setLanguage(e.target.value)}
                     label='Language'

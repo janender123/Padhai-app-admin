@@ -10,7 +10,8 @@ export const fetchData = createAsyncThunk('courses/fetchData', async params => {
   const response = await axios.get('/apps/courses/list', {
     params
   })
-  return response.data
+  
+return response.data
 })
 
 // ** Add User
@@ -19,7 +20,8 @@ export const addCourse = createAsyncThunk('courses/addCourse', async (data, { ge
     data
   })
   dispatch(fetchData(getState().user.params))
-  return response.data
+  
+return response.data
 })
 
 // ** Delete User

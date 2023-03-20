@@ -74,6 +74,7 @@ const CardSnippet = props => {
     >
       <CardHeader
         title={title}
+
         // {...(hidden
         //   ? {}
         //   : {

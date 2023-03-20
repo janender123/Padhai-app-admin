@@ -7,6 +7,7 @@ import TabList from '@mui/lab/TabList'
 import TabPanel from '@mui/lab/TabPanel'
 import TabContext from '@mui/lab/TabContext'
 import Typography from '@mui/material/Typography'
+
 // ** React Imports
 import { Fragment } from 'react'
 
@@ -35,10 +36,12 @@ import SwitchesCustomized from 'src/views/forms/form-elements/switch/CorrectAnsw
 
 const AnswerOption = () => {
   const [visible, setVisible] = useState(true);
+
   const removeElement = () => {
     setVisible((prev) => !prev);
   };
-  return (<>
+  
+return (<>
     {visible && (
       <Grid item sm={12} xs={12} >
         <CardHeader
@@ -74,13 +77,15 @@ const AddNewMCQInStudyMaterial = () => {
   const handleClose = () => setOpen(false)
   const [language, setLanguage] = useState([])
   const [answerOptionList, setAnswerOptionList] = useState([]);
+
   const onAddBtnClick = () => {
     setAnswerOptionList(answerOptionList.concat(<AnswerOption key={answerOptionList.length} />));
   }
   const [childCategory, setChildCategory] = useState('')
   const [category, setCategory] = useState('')
   const [subCategory, setSubCategory] = useState('')
-  return (
+  
+return (
     <Fragment>
 
       <Card>
@@ -224,7 +229,8 @@ const AddNewTFInStudyMaterial = () => {
   const [childCategory, setChildCategory] = useState('')
   const [category, setCategory] = useState('')
   const [subCategory, setSubCategory] = useState('')
-  return (
+  
+return (
     <Fragment>
       <Card>
         <CardHeader title='Add New True & false' />

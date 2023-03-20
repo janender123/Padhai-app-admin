@@ -38,6 +38,7 @@ const CreateContestForm = () => {
   const handleClose = () => setOpen(false)
   const [language, setLanguage] = useState([])
   const [answerOptionList, setAnswerOptionList] = useState([]);
+
   const onAddBtnClick = () => {
     setAnswerOptionList(answerOptionList.concat(<AnswerOption key={answerOptionList.length} />));
   }
@@ -50,7 +51,8 @@ const CreateContestForm = () => {
   for (let i = 1; i <= value; i++) {
     topWinners.push(<TextField sx={{ margin: '5px' }} label={`${i} winner prize`} />)
   }
-  return (
+  
+return (
 
     <Card sx={{ mt: 4 }}>
       <CardHeader title='Create a contest' />

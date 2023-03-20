@@ -6,6 +6,7 @@ import TabList from '@mui/lab/TabList'
 import TabPanel from '@mui/lab/TabPanel'
 import TabContext from '@mui/lab/TabContext'
 import Typography from '@mui/material/Typography'
+
 // ** React Imports
 import { Fragment } from 'react'
 
@@ -37,10 +38,12 @@ import { EditorWrapper } from 'src/@core/styles/libs/react-draft-wysiwyg'
 
 const AnswerOption = () => {
   const [visible, setVisible] = useState(true);
+
   const removeElement = () => {
     setVisible((prev) => !prev);
   };
-  return (<>
+  
+return (<>
     {visible && (
       <Grid item sm={12} xs={12} >
         <CardHeader
@@ -76,6 +79,7 @@ const QuestionForContest = () => {
   const handleClose = () => setOpen(false)
   const [language, setLanguage] = useState([])
   const [answerOptionList, setAnswerOptionList] = useState([]);
+
   const onAddBtnClick = () => {
     setAnswerOptionList(answerOptionList.concat(<AnswerOption key={answerOptionList.length} />));
   }
@@ -84,10 +88,12 @@ const QuestionForContest = () => {
   const [subCategory, setSubCategory] = useState('')
   const [Description, setDescription] = useState('')
   const [Contest, setContest] = useState('')
+
   const handleButtonClick = () => {
     window.location.href = '/apps/import-questions/';
   };
-  return (
+  
+return (
     <Card sx={{ mt: 4 }}>
       <CardHeader title='Create a question for contest' />
       <Divider sx={{ m: '0 !important' }} />

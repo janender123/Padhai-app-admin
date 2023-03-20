@@ -4,6 +4,7 @@ import TextField from '@mui/material/TextField'
 import IconButton from '@mui/material/IconButton'
 import { GridToolbarFilterButton } from '@mui/x-data-grid'
 import DialogEditUserInfo from 'src/views/pages/dialog-examples/Add-Class-Dialog'
+
 // ** Icon Imports
 import Icon from 'src/@core/components/icon'
 import Select from '@mui/material/Select'
@@ -11,11 +12,13 @@ import MenuItem from '@mui/material/MenuItem'
 
 const QuickSearchToolbarCourses = props => {
   const { value, selectedRows, handleFilter } = props
-  return (
+  
+return (
     
     <Box
       sx={{
         gap: 2,
+
         // display: 'flex',
         flexWrap: 'wrap',
         alignItems: 'center',
@@ -57,6 +60,7 @@ const QuickSearchToolbarCourses = props => {
         }}   
         sx={{
           float:'right' ,
+
           // display: 'flex',flexWrap: 'wrap', alignItems: 'center',
           mr:5,
           width: {

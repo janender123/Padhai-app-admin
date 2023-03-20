@@ -6,16 +6,20 @@ import Menu from '@mui/material/Menu'
 import Button from '@mui/material/Button'
 import MenuItem from '@mui/material/MenuItem'
 import AddIconMenu from './AddIconInCourseMenu'
+
 const MenuBasic = () => {
   // ** State
   const [anchorEl, setAnchorEl] = useState(null)
+
   const handleClick = event => {
     setAnchorEl(event.currentTarget)
   }
+
   const handleClose = () => {
     setAnchorEl(null)
   }
-  return (
+  
+return (
     <div>
       <Button variant='outlined' aria-controls='simple-menu' aria-haspopup='true' onClick={handleClick}>
         Open Menu
@@ -28,4 +32,5 @@ const MenuBasic = () => {
     </div>
   )
 }
+
 export default MenuBasic

@@ -13,6 +13,7 @@ import Typography from '@mui/material/Typography'
 import CardHeader from '@mui/material/CardHeader'
 import { DataGrid } from '@mui/x-data-grid'
 import DialogEditUserInfo from 'src/views/pages/dialog-examples/Add-Board-Dialog'
+
 // ** Custom Components
 import CustomChip from 'src/@core/components/mui/chip'
 import CustomAvatar from 'src/@core/components/mui/avatar'
@@ -42,6 +43,7 @@ import Tab from '@mui/material/Tab'
 import TabList from '@mui/lab/TabList'
 import TabPanel from '@mui/lab/TabPanel'
 import TabContext from '@mui/lab/TabContext'
+
 // ** React Imports
 import { Fragment } from 'react'
 
@@ -67,7 +69,7 @@ const renderClient = params => {
   const states = ['success', 'error', 'warning', 'info', 'primary', 'secondary']
   const color = states[stateNum]
   if (row.avatar.length) {
-    return <Image src={`/images/avatars/${row.avatar}`} width={55} height={60} />
+    return <Image alt='avatar' src={`/images/avatars/${row.avatar}`} width={55} height={60} />
 
 
   } else {
@@ -94,10 +96,12 @@ const escapeRegExp = value => {
 
 const AnswerOption = () => {
   const [visible, setVisible] = useState(true);
+
   const removeElement = () => {
     setVisible((prev) => !prev);
   };
-  return (<>
+  
+return (<>
     {visible && (
       <Grid item sm={12} xs={12} >
         <CardHeader
@@ -133,13 +137,15 @@ const EditQuestion = () => {
   const handleClose = () => setOpen(false)
   const [language, setLanguage] = useState([])
   const [answerOptionList, setAnswerOptionList] = useState([]);
+
   const onAddBtnClick = () => {
     setAnswerOptionList(answerOptionList.concat(<AnswerOption key={answerOptionList.length} />));
   }
   const [childCategory, setChildCategory] = useState('')
   const [category, setCategory] = useState('')
   const [subCategory, setSubCategory] = useState('')
-  return (<>
+  
+return (<>
     <IconButton size='small' sx={{ mr: 0.5 }} onClick={() => ''}>
       <Icon icon='mdi:pencil-outline' fontSize={20} onClick={() => setShow(true)} />
     </IconButton>
@@ -149,6 +155,7 @@ const EditQuestion = () => {
       maxWidth='md'
       scroll='body'
       onClose={() => setShow(false)}
+
       // TransitionComponent={Transition}
       onBackdropClick={() => setShow(false)}
     >
@@ -452,7 +459,8 @@ const columns = [
     headerName: 'prize status',
     renderCell: params => {
       const pstatus = prize_status[params.row.prize_status]
-      return (
+      
+return (
         <CustomChip
           size='small'
           skin='light'

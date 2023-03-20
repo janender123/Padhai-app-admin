@@ -4,27 +4,40 @@ import Tooltip from '@mui/material/Tooltip'
 import IconButton from '@mui/material/IconButton'
 import Icon from 'src/@core/components/icon'
 import OptionsMenu from 'src/@core/components/option-menu'
+
 // ** MUI Imports
 import Box from '@mui/material/Box'
 import Card from '@mui/material/Card'
 import Typography from '@mui/material/Typography'
 import { DataGrid } from '@mui/x-data-grid'
 import DialogEditUserInfo from 'src/views/pages/dialog-examples/Add-Class-Dialog'
+
 // ** Custom Components
 import CustomChip from 'src/@core/components/mui/chip'
 import CustomAvatar from 'src/@core/components/mui/avatar'
 import QuickSearchToolbar from 'src/views/table/data-grid/QuickSearchToolbarCourseNotices'
+
 // ** Utils Import
 import { getInitials } from 'src/@core/utils/get-initials'
+
 // ** Data Import
 import { rows } from 'src/@fake-db/table/CourseNoticesListData'
 import { Button } from '@mui/material'
 import Dialog from '@mui/material/Dialog'
 import DialogContent from '@mui/material/DialogContent'
 import DialogActions from '@mui/material/DialogActions'
+import Grid from '@mui/material/Grid'
+import TextField from '@mui/material'
+import SwitchesCustomized from 'src/views/pages/dialog-examples/switch'
 
 
-const [show, setShow] = useState(false)
+const ButtonStyled = styled(Button)(({ theme }) => ({
+  [theme.breakpoints.down('sm')]: {
+    width: '100%',
+    textAlign: 'center'
+  }
+}))
+
 const columns = [
   {
     flex: 0.125,
@@ -105,8 +118,10 @@ const CourseNoticesTable = () => {
   const [pageSize, setPageSize] = useState(7)
   const [searchText, setSearchText] = useState('')
   const [filteredData, setFilteredData] = useState([])
+
   const handleSearch = searchValue => {
     setSearchText(searchValue)
+
     const filteredRows = data.filter(row => {
       return Object.keys(row).some(field => {
         // @ts-ignore
@@ -119,7 +134,8 @@ const CourseNoticesTable = () => {
       setFilteredData([])
     }
   }
-  return (
+  
+return (
     <Card>
       <DataGrid
         autoHeight
@@ -144,4 +160,5 @@ const CourseNoticesTable = () => {
     </Card>
   )
 }
+
 export default CourseNoticesTable

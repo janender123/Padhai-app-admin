@@ -54,6 +54,7 @@ const AddSection = () => {
   const [sectionList, setSectionList] = useState([]);
   const [title, setTitle] = useState('')
   const [language, setLanguage] = useState('')
+
   const Input = () => {
     const [EditedTitle, setEditedTitle] = useState('')
     const [anchorEl, setAnchorEl] = useState('')
@@ -64,10 +65,12 @@ const AddSection = () => {
     const [EditSection, setEditSection] = useState(false);
     const handleClickEditSection = () => setEditSection(true)
     const handleCloseEditSection = () => setEditSection(false)
+
     const handleSaveEditSection = () => {
       setTitle(EditedTitle)
       setEditSection(false)
     }
+
     const handleClickNewQA = () => {
       const newQA = {
         type: 'newQA',
@@ -105,6 +108,7 @@ const AddSection = () => {
       if (collapsed === false) setCollapsed(!collapsed)
       setAnchorEl(null)
     };
+
     const handleClickNewTF = () => {
       const newQA = {
         type: 'newQA',
@@ -134,10 +138,12 @@ const AddSection = () => {
     const handleCloseAddButton = () => {
       setAnchorEl(null)
     }
+
     const handleClickMenuAddButton = event => {
       setAnchorEl(event.currentTarget)
     }
-    return (<Card sx={{ position: 'relative', marginBottom: '10px', borderStyle: 'groove' }}>
+    
+return (<Card sx={{ position: 'relative', marginBottom: '10px', borderStyle: 'groove' }}>
       <CardHeader
         title={EditedTitle === '' ? title : EditedTitle}
         action={
@@ -220,7 +226,7 @@ const AddSection = () => {
         <CardContent>
           <div>
             {sortedList.map((item) => (
-              <div>
+              <div key={sortedList.length}>
                 {item.component}
               </div>
             ))}
@@ -229,6 +235,7 @@ const AddSection = () => {
       </Collapse>
     </Card>)
   };
+
   const onAddSectionClick = () => {
     setSectionList(sectionList.concat(<Input key={sectionList.length} />));
     setOpenDialog(false)
@@ -294,7 +301,8 @@ const BasicInfo = () => {
   const [chapter, setChapter] = useState('')
   const [exercise, setExercise] = useState('')
   const [book, setBook] = useState('')
-  return (<Fragment>
+  
+return (<Fragment>
     <Grid container spacing={5}>
       <Grid item xs={12} sm={6}>
         <FormControl fullWidth>

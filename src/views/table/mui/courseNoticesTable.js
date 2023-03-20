@@ -4,18 +4,22 @@ import Tooltip from '@mui/material/Tooltip'
 import IconButton from '@mui/material/IconButton'
 import Icon from 'src/@core/components/icon'
 import OptionsMenu from 'src/@core/components/option-menu'
+
 // ** MUI Imports
 import Box from '@mui/material/Box'
 import Card from '@mui/material/Card'
 import Typography from '@mui/material/Typography'
 import { DataGrid } from '@mui/x-data-grid'
 import DialogEditUserInfo from 'src/views/pages/dialog-examples/Add-Class-Dialog'
+
 // ** Custom Components
 import CustomChip from 'src/@core/components/mui/chip'
 import CustomAvatar from 'src/@core/components/mui/avatar'
 import QuickSearchToolbar from 'src/views/table/data-grid/QuickSearchToolbarCourseNotices'
+
 // ** Utils Import
 import { getInitials } from 'src/@core/utils/get-initials'
+
 // ** Data Import
 import { Button, Grid, TextField } from '@mui/material'
 import Dialog from '@mui/material/Dialog'
@@ -33,6 +37,7 @@ const renderClient = params => {
   const states = ['success', 'error', 'warning', 'info', 'primary', 'secondary']
   const color = states[stateNum]
 }
+
 const escapeRegExp = value => {
   return value.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&')
 }
@@ -53,7 +58,8 @@ const CourseNoticesTable = () => {
       headerName: 'ID',
       renderCell: params => {
         const { row } = params
-        return (
+        
+return (
           <Typography noWrap variant='body2' sx={{ color: 'text.primary', fontWeight: 600 }}>
             {row.id}
           </Typography>
@@ -67,7 +73,8 @@ const CourseNoticesTable = () => {
       headerName: 'Tite',
       renderCell: params => {
         const { row } = params
-        return (
+        
+return (
           <Box sx={{ display: 'flex', alignItems: 'center' }}>
             {renderClient(params)}
             <Box sx={{ display: 'flex', flexDirection: 'column' }}>
@@ -86,7 +93,8 @@ const CourseNoticesTable = () => {
       headerName: 'course',
       renderCell: params => {
         const { row } = params
-        return (
+        
+return (
           <Typography noWrap variant='body2' sx={{ color: 'text.primary', fontWeight: 600 }}>
             {row.course}
           </Typography>
@@ -110,9 +118,8 @@ const CourseNoticesTable = () => {
       minWidth: 100,
       renderCell: params => {
         const { row } = params
-        const [show, setShow] = useState(false)
-    
-        return (
+        
+return (
           <>
             <Button variant='outlined' onClick={() => setShow(true)}>
               Show
@@ -156,7 +163,8 @@ const CourseNoticesTable = () => {
       headerName: 'created date',
       renderCell: params => {
         const { row } = params
-        return (
+        
+return (
           <Typography noWrap variant='body2' sx={{ color: 'text.primary', fontWeight: 600 }}>
             {row.created_date}
           </Typography>
@@ -215,6 +223,7 @@ const CourseNoticesTable = () => {
   const handleSearch = searchValue => {
     setSearchText(searchValue)
     const searchRegex = new RegExp(escapeRegExp(searchValue), 'i')
+
     const filteredRows = data.filter(row => {
       return Object.keys(row).some(field => {
         // @ts-ignore
@@ -227,7 +236,8 @@ const CourseNoticesTable = () => {
       setFilteredData([])
     }
   }
-  return (
+  
+return (
     <Card>
       <DataGrid
         autoHeight
@@ -252,4 +262,5 @@ const CourseNoticesTable = () => {
     </Card>
   )
 }
+
 export default CourseNoticesTable
