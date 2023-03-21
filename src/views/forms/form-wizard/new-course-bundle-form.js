@@ -795,13 +795,6 @@ const [sectionList, setSectionList] = useState([
               </FormControl>
             </Grid>
             <Grid item xs={12} sm={6}>
-              {/* <TextField
-                fullWidth
-                label='Instructor'
-                value={instructor}
-                placeholder='Instructor'
-                onChange={e => setInstructor(e.target.value)}
-              /> */}
               <FormControl fullWidth>
                 <InputLabel id='demo-simple-select-outlined-label'>Instructor</InputLabel>
                 <Select

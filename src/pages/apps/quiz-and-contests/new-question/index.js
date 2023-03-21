@@ -276,7 +276,6 @@ const AddNewQuestionInStudyMaterial = () => {
             </CardActions>
           </Grid>
         </CardContent>
-        ?
       </Card>
     </EditorWrapper>
   )

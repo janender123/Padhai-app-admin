@@ -13,6 +13,7 @@ export const getStaticPaths = () => {
     paths: [
       { params: { tab: 'overview' } },
       { params: { tab: 'security' } },
+      { params: { tab: 'badges' } },
       { params: { tab: 'billing-plan' } },
       { params: { tab: 'notification' } },
       { params: { tab: 'connection' } }

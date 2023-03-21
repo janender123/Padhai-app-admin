@@ -32,13 +32,6 @@ const notifications = [
     subtitle: 'You have 10 unread messages'
   },
   {
-    meta: '25 May',
-    title: 'Paypal',
-    avatarAlt: 'paypal',
-    subtitle: 'Received Payment',
-    avatarImg: '/images/misc/paypal.png'
-  },
-  {
     meta: '19 Mar',
     avatarAlt: 'order',
     title: 'Received Order 📦',

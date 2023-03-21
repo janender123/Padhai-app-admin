@@ -158,7 +158,7 @@ const CreateContestForm = () => {
               <EditorWrapper>
                 <CardSnippet
                   sx={{ overflow: 'visible' }}
-                  title='Description'
+                  title=''
                   code={{
                     tsx: null,
                     jsx: source.EditorControlledJSXCode

@@ -35,6 +35,7 @@ import EditorControlled from 'src/views/forms/form-elements/editor/EditorControl
 import * as source from 'src/views/forms/form-elements/editor/EditorSourceCode'
 import QuestionsTableForContests from 'src/views/table/mui/QuestionsTableForContests'
 import { EditorWrapper } from 'src/@core/styles/libs/react-draft-wysiwyg'
+import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
 
 const AnswerOption = () => {
   const [visible, setVisible] = useState(true);
@@ -244,12 +245,13 @@ return (
                 <EditorWrapper>
                   <CardSnippet
                     sx={{ overflow: 'visible' }}
-                    title='Solution '
+                    title=''
                     code={{
                       tsx: null,
                       jsx: source.EditorControlledJSXCode
                     }}
                   >
+                    <Typography fontSize='1.25rem' m={2} fontWeight='520'>Solution</Typography>
                     <EditorControlled value={Description} onChange={e => setDescription(e.target.value)} />
                   </CardSnippet>
                 </EditorWrapper>

@@ -1,4 +1,3 @@
-
 // ** React Imports
 import { useState, forwardRef } from 'react'
 
@@ -32,75 +31,71 @@ import Icon from 'src/@core/components/icon'
 import { EditorWrapper } from 'src/@core/styles/libs/react-draft-wysiwyg'
 import CardSnippet from 'src/@core/components/card-snippet'
 import EditorControlled from 'src/views/forms/form-elements/editor/new-course-form-description-editor'
-
+import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
 
 const NewCourseNotice = () => {
-    const handleSubmit = () => {
+  const handleSubmit = () => {}
 
-    }
-    
-return (
-        <Card>
+  return (
+    <Card>
+      <Grid container spacing={6}>
+        <form onSubmit={handleSubmit}>
+          <DialogContent sx={{ pb: 6, px: { xs: 8, sm: 15 }, pt: { xs: 8, sm: 12.5 }, position: 'relative' }}>
+            <Box sx={{ mb: 8, textAlign: 'center' }}>
+              <Typography variant='h5' sx={{ mb: 3, lineHeight: '2rem' }}>
+                Add details of the Notice
+              </Typography>
+            </Box>
             <Grid container spacing={6}>
-                <form onSubmit={handleSubmit}>
-                    <DialogContent sx={{ pb: 6, px: { xs: 8, sm: 15 }, pt: { xs: 8, sm: 12.5 }, position: 'relative' }}>
-                       
-                        <Box sx={{ mb: 8, textAlign: 'center' }}>
-                            <Typography variant='h5' sx={{ mb: 3, lineHeight: '2rem' }}>
-                                Add details of the Notice
-                            </Typography>
-                        </Box>
-                        <Grid container spacing={6}>
-                            <Grid item sm={12} xs={12}>
-                                <TextField fullWidth label='Title' />
-                            </Grid>
-                            <Grid item xs={12} sm={12}>
-                                <FormControl fullWidth>
-                                    <InputLabel id='demo-simple-select-outlined-label'>Course</InputLabel>
-                                    <Select
+              <Grid item sm={12} xs={12}>
+                <TextField fullWidth label='Title' />
+              </Grid>
+              <Grid item xs={12} sm={12}>
+                <FormControl fullWidth>
+                  <InputLabel id='demo-simple-select-outlined-label'>Course</InputLabel>
+                  <Select
+                  
+                    // value={category}
+                    label='Course'
+                    defaultValue=''
+                    id='demo-simple-select-outlined'
+                    labelId='demo-simple-select-outlined-label'
 
-                                        // value={category}
-                                        label='Course'
-                                        defaultValue=''
-                                        id='demo-simple-select-outlined'
-                                        labelId='demo-simple-select-outlined-label'
-
-                                        // onChange={e => setCategory(e.target.value)}
-                                        placeholder='select a course'
-                                    >
-                                        <MenuItem value={10}>PCM Class 12th</MenuItem>
-                                        <MenuItem value={20}>Physics Class 11th</MenuItem>
-                                        <MenuItem value={30}>Science Class 8th</MenuItem>
-                                        <MenuItem value={30}>Maths Class 6th</MenuItem>
-                                    </Select>
-                                </FormControl>
-                            </Grid>
-                            <Grid item xs={12} sm={12}>
-                                <EditorWrapper>
-                                    <CardSnippet
-                                        sx={{ overflow: 'visible' }}
-                                        title='Message'
-                                        code={{
-                                            tsx: null,
-                                            jsx: source.EditorControlledJSXCode
-                                        }}
-                                    >
-                                        <EditorControlled />
-                                    </CardSnippet>
-                                </EditorWrapper>
-                            </Grid>
-                        </Grid>
-                    </DialogContent>
-                    <DialogActions sx={{ pb: { xs: 8, sm: 12.5 } }}>
-                        <Button type="submit" variant='contained' sx={{ mr: 2 }}>
-                            Send the notice
-                        </Button>
-                    </DialogActions>
-                </form>
+                    // onChange={e => setCategory(e.target.value)}
+                    placeholder='select a course'
+                  >
+                    <MenuItem value={10}>PCM Class 12th</MenuItem>
+                    <MenuItem value={20}>Physics Class 11th</MenuItem>
+                    <MenuItem value={30}>Science Class 8th</MenuItem>
+                    <MenuItem value={30}>Maths Class 6th</MenuItem>
+                  </Select>
+                </FormControl>
+              </Grid>
+              <Grid item xs={12} sm={12}>
+                <EditorWrapper>
+                  <CardSnippet
+                    sx={{ overflow: 'visible' }}
+                    title='Message'
+                    code={{
+                      tsx: null,
+                      jsx: source.EditorControlledJSXCode
+                    }}
+                  >
+                    <EditorControlled />
+                  </CardSnippet>
+                </EditorWrapper>
+              </Grid>
             </Grid>
-        </Card>
-
-    )
+          </DialogContent>
+          <DialogActions sx={{ pb: { xs: 8, sm: 12.5 } }}>
+            <Button type='submit' variant='contained' sx={{ mr: 2 }}>
+              Send the notice
+            </Button>
+          </DialogActions>
+        </form>
+      </Grid>
+    </Card>
+  )
 }
 
 export default NewCourseNotice

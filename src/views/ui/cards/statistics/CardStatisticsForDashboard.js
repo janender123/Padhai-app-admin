@@ -10,13 +10,13 @@ const CardStatisticsForDashboard = ({ data }) => {
   if (data) {
     return (
       <Grid container spacing={6}  >
-        <Grid item xs={12} md={7} sm={7}>
+        <Grid item xs={12} md={7} lg={7}>
           <WelcomeAdmin/>
         </Grid>
-        <Grid item xs={12} md={2.5} sm={2.5} >
+        <Grid item xs={12} md={2.5} lg={2.5} >
           <CardStatsForDashboard data={data[0]} />
         </Grid>
-        <Grid item xs={12} md={2.5} sm={2.5}>
+        <Grid item xs={12} md={2.5} lg={2.5}>
           <CardStatsForDashboard data={data[1]} />
         </Grid>
       </Grid>

@@ -36,18 +36,11 @@ const notifications = [
     subtitle: 'You have 10 unread messages'
   },
   {
-    meta: '25 May',
-    title: 'Paypal',
-    avatarAlt: 'paypal',
-    subtitle: 'Received Payment',
-    avatarImg: '/images/misc/paypal.png'
-  },
-  {
     meta: '19 Mar',
     avatarAlt: 'order',
     title: 'Received Order 📦',
     avatarImg: '/images/avatars/3.png',
-    subtitle: 'New order received from John'
+    subtitle: 'New order received from Jatin'
   },
   {
     meta: '27 Dec',
@@ -125,7 +118,7 @@ const AppBarContent = props => {
       </Box>
       <Box className='actions-right' sx={{ display: 'flex', alignItems: 'center' }}>
         <ModeToggler settings={settings} saveSettings={saveSettings} />
-        <ShortcutsDropdown settings={settings} shortcuts={shortcuts} />
+        {/* <ShortcutsDropdown settings={settings} shortcuts={shortcuts} /> */}
         <NotificationDropdown settings={settings} notifications={notifications} />
         <UserDropdown settings={settings} />
       </Box>

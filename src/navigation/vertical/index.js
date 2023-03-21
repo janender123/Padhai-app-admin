@@ -38,9 +38,10 @@ const navigation = () => {
           path: '/apps/categories/language'
         }
       ]
-    }, {
+    },
+    {
       title: 'Courses',
-      icon: "fluent-mdl2:publish-course",
+      icon: 'fluent-mdl2:publish-course',
       children: [
         {
           title: 'Courses List',
@@ -51,7 +52,8 @@ const navigation = () => {
           path: '/apps/courses/new-course'
         }
       ]
-    }, {
+    },
+    {
       title: 'Live Classes',
       icon: 'material-symbols:video-camera-back-outline-sharp',
       children: [
@@ -63,10 +65,10 @@ const navigation = () => {
           title: 'New Live Class',
           path: '/apps/live-classes/new-live-class'
         }
-
       ]
-    }, {
-      title: 'Course Bundle',
+    },
+    {
+      title: 'Course Bundles',
       icon: 'academicons:coursera',
       children: [
         {
@@ -76,6 +78,20 @@ const navigation = () => {
         {
           title: 'New',
           path: '/apps/course-bundle/new'
+        }
+      ]
+    },
+    {
+      title: '1:1 Sessions',
+      icon: 'bi:people',
+      children: [
+        {
+          title: 'List',
+          path: '/apps/sessions/list'
+        },
+        {
+          title: 'New',
+          path: '/apps/sessions/new'
         }
       ]
     },
@@ -161,7 +177,7 @@ const navigation = () => {
         {
           title: 'New',
           path: '/user/new'
-        },
+        }
       ]
     },
 
@@ -248,6 +264,51 @@ const navigation = () => {
       icon: 'tabler:trophy',
       path: '/apps/badges'
     },
+    {
+      sectionTitle: 'Forum'
+    },
+    {
+      title: 'Forums',
+      icon: 'ri:message-2-line',
+      children: [
+        {
+          title: 'List',
+          path: '/apps/forums/list'
+        },
+        {
+          title: 'New',
+          path: '/apps/forums/new'
+        }
+      ]
+    },
+     {
+      title: 'Featured Topics',
+      icon: 'mdi:message-settings-outline',
+      children: [
+        {
+          title: 'List',
+          path: '/apps/featured-topics/list'
+        },
+        {
+          title: 'New',
+          path: '/apps/featured-topics/new'
+        }
+      ]
+    },
+     {
+      title: 'Recommended Topics',
+      icon: 'carbon:thumbs-up',
+      children: [
+        {
+          title: 'List',
+          path: '/apps/recommended-topics/list'
+        },
+        {
+          title: 'New',
+          path: '/apps/recommended-topics/new'
+        }
+      ]
+    }
 
     // {
     //   title: 'Pages',

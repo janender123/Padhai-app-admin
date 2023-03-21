@@ -23,6 +23,7 @@ import UserViewOverview from 'src/views/apps/user/view/UserViewOverview'
 import UserViewSecurity from 'src/views/apps/user/view/UserViewSecurity'
 import UserViewConnection from 'src/views/apps/user/view/UserViewConnection'
 import UserViewNotification from 'src/views/apps/user/view/UserViewNotification'
+import UserViewBadges from 'src/views/apps/user/view/UserViewBadges'
 
 // ** Styled Tab component
 const Tab = styled(MuiTab)(({ theme }) => ({
@@ -74,6 +75,7 @@ const UserViewRight = ({ tab, invoiceData }) => {
       >
         <Tab value='overview' label='Overview' icon={<Icon icon='mdi:account-outline' />} />
         <Tab value='security' label='Security' icon={<Icon icon='mdi:lock-outline' />} />
+        <Tab value='badges' label='Badges' icon={<Icon icon='tabler:trophy' />} />
         <Tab value='billing-plan' label='Billing & Plan' icon={<Icon icon='mdi:bookmark-outline' />} />
         <Tab value='notification' label='Notification' icon={<Icon icon='mdi:bell-outline' />} />
         <Tab value='connection' label='Connection' icon={<Icon icon='mdi:link-variant' />} />
@@ -91,6 +93,9 @@ const UserViewRight = ({ tab, invoiceData }) => {
             </TabPanel>
             <TabPanel sx={{ p: 0 }} value='security'>
               <UserViewSecurity />
+            </TabPanel>
+            <TabPanel sx={{ p: 0 }} value='badges'>
+              <UserViewBadges />
             </TabPanel>
             <TabPanel sx={{ p: 0 }} value='billing-plan'>
               <UserViewBilling />

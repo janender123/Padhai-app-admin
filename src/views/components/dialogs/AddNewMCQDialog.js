@@ -26,56 +26,54 @@ import Fade from '@mui/material/Fade'
 import CardContent from '@mui/material/CardContent'
 import Typography from '@mui/material/Typography'
 
-
 const AnswerOption = () => {
-  const [visible, setVisible] = useState(true);
+  const [visible, setVisible] = useState(true)
 
   const removeElement = () => {
-    setVisible((prev) => !prev);
-  };
-  
-return (<>
-    {visible && (
-      <Grid item sm={12} xs={12}>
-        <CardHeader
-          action={
-            <Icon icon='mdi:close' fontSize={20} onClick={removeElement} />
+    setVisible(prev => !prev)
+  }
 
-          }
-        />
-        <CardSnippet
-          title=''
-          code={{
-            tsx: null,
-          }}>
-          <Grid item sm={12} xs={12}>
-            <TextField id='name' required fullWidth label='Answer Title' />
-          </Grid>
-          <Grid item mt={3} sm={12} xs={12}>
-            Answer Image (optional)
-            <TextField id='name' type='file' fullWidth />
-          </Grid>
-          <Grid item mt={3} sm={12} xs={12}>
-            <SwitchesCustomized />
-          </Grid>
-        </CardSnippet>
-      </Grid>)}
-  </>)
+  return (
+    <>
+      {visible && (
+        <Grid item sm={12} xs={12}>
+          <CardHeader action={<Icon icon='mdi:close' fontSize={20} onClick={removeElement} />} />
+          <CardSnippet
+            title=''
+            code={{
+              tsx: null
+            }}
+          >
+            <Grid item sm={12} xs={12} mt={3}>
+              <TextField id='name' required fullWidth label='Answer Title' />
+            </Grid>
+            <Grid item mt={3} sm={12} xs={12}>
+              Answer Image (optional)
+              <TextField id='name' type='file' fullWidth />
+            </Grid>
+            <Grid item mt={3} sm={12} xs={12}>
+              <SwitchesCustomized />
+            </Grid>
+          </CardSnippet>
+        </Grid>
+      )}
+    </>
+  )
 }
 
 const Question = () => {
-  const [showDialog, setShowDialog] = useState(false);
+  const [showDialog, setShowDialog] = useState(false)
   const [language, setLanguage] = useState('')
 
   const [answerOptionList, setAnswerOptionList] = useState([
-    <Grid item key={answerOptionList.length} sm={12} xs={12}>
+    <Grid item key='1' sm={12} xs={12}>
       <CardSnippet
         title=''
         code={{
-          tsx: null,
+          tsx: null
         }}
       >
-        <Grid item sm={12} xs={12}>
+        <Grid item sm={12} xs={12} mt={3}>
           <TextField id='name' required fullWidth label='Answer Title' />
         </Grid>
         <Grid item mt={3} sm={12} xs={12}>
@@ -87,14 +85,14 @@ const Question = () => {
         </Grid>
       </CardSnippet>
     </Grid>,
-    <Grid item key={answerOptionList.length} sm={12} xs={12}>
+    <Grid item key='2' sm={12} xs={12}>
       <CardSnippet
         title=''
         code={{
-          tsx: null,
+          tsx: null
         }}
       >
-        <Grid item sm={12} xs={12}>
+        <Grid item sm={12} xs={12} mt={3}>
           <TextField id='name' required fullWidth label='Answer Title' />
         </Grid>
         <Grid item mt={3} sm={12} xs={12}>
@@ -106,104 +104,105 @@ const Question = () => {
         </Grid>
       </CardSnippet>
     </Grid>
-  ]);
+  ])
 
   const handleSave = () => {
     // Handle save logic here
-    setShowDialog(false);
-  };
+    setShowDialog(false)
+  }
 
   const handleDiscard = () => {
     // Handle discard logic here
-    setShowDialog(false);
-  };
+    setShowDialog(false)
+  }
 
   const onAddBtnClick = () => {
-    const newOptionId = `option-${Date.now()}`;
-    setAnswerOptionList((prevAnswerOptionList) => [
+    const newOptionId = `option-${Date.now()}`
+    setAnswerOptionList(prevAnswerOptionList => [
       ...prevAnswerOptionList,
       <AnswerOption key={newOptionId} optionId={newOptionId} />
-    ]);
-  };
-  
-return (<div style={{ marginTop: '10px' }}>
-    <Card>
-      <Grid container spacing={6}>
+    ])
+  }
+
+  return (
+    <>
+      <Card sx={{ mt: 4 }}>
         <CardHeader title='Add a question' sx={{ margin: '10px' }} />
-        <Grid item sm={12} xs={12}>
-          <FormControl fullWidth>
-            <InputLabel id='demo-simple-select-outlined-label'>Language</InputLabel>
-            <Select
-              value={language}
-              onChange={(e) => setLanguage(e.target.value)}
-              label='Language'
-              id='demo-simple-select-outlined'
-              labelId='demo-simple-select-outlined-label'
-            >
-              <MenuItem value={10}>English</MenuItem>
-              <MenuItem value={20}>Hindi</MenuItem>
-              <MenuItem value={30}>Gujarati</MenuItem>
-            </Select>
-          </FormControl>
-        </Grid>
-        <Grid item sm={6} xs={6}>
-          <TextField id='name' fullWidth label='Question Title' required />
-        </Grid>
-        <Grid item sm={6} xs={6}>
-          <TextField id='name' fullWidth label='Grade' required />
-        </Grid>
-        <Grid item sm={12} xs={12}>
-          Image (Optional)
-          <TextField type='file' id='image' fullWidth />
-        </Grid>
-        <Grid item sm={12} xs={12}>
-          <Divider textAlign='left'>Answers</Divider>
-        </Grid>
-        <Grid item sm={12} xs={12} m={5}>
-          <Button variant='contained' onClick={onAddBtnClick}>
-            Add Answer
-          </Button>
-        </Grid>
-        {answerOptionList}
-      </Grid>
-    </Card>
-    <div className='dialog-actions-dense'>
-      <Button onClick={handleSave} variant='contained' sx={{ margin: '10px' }}>
-        Save
-      </Button>
-      <Button color='error' variant='contained' onClick={handleDiscard} sx={{ margin: '10px' }}>
-        Discard
-      </Button>
-    </div>
-  </div>)
+        <CardContent>
+          <Grid container spacing={6}>
+            <Grid item sm={12} xs={12}>
+              <FormControl fullWidth>
+                <InputLabel id='demo-simple-select-outlined-label'>Language</InputLabel>
+                <Select
+                  value={language}
+                  onChange={e => setLanguage(e.target.value)}
+                  label='Language'
+                  id='demo-simple-select-outlined'
+                  labelId='demo-simple-select-outlined-label'
+                >
+                  <MenuItem value={10}>English</MenuItem>
+                  <MenuItem value={20}>Hindi</MenuItem>
+                  <MenuItem value={30}>Gujarati</MenuItem>
+                </Select>
+              </FormControl>
+            </Grid>
+            <Grid item sm={6} xs={6}>
+              <TextField id='name' fullWidth label='Question Title' required />
+            </Grid>
+            <Grid item sm={6} xs={6}>
+              <TextField id='name' fullWidth label='Grade' required />
+            </Grid>
+            <Grid item sm={12} xs={12}>
+              Image (Optional)
+              <TextField type='file' id='image' fullWidth />
+            </Grid>
+            <Grid item sm={12} xs={12}>
+              <Divider textAlign='left'>Answers</Divider>
+            </Grid>
+            <Grid item sm={12} xs={12} m={5}>
+              <Button variant='contained' onClick={onAddBtnClick}>
+                Add Answer
+              </Button>
+            </Grid>
+            {answerOptionList}
+          </Grid>
+        </CardContent>
+      </Card>
+      <div className='dialog-actions-dense'>
+        <Button onClick={handleSave} variant='contained' sx={{ margin: '10px' }}>
+          Save
+        </Button>
+        <Button color='error' variant='contained' onClick={handleDiscard} sx={{ margin: '10px' }}>
+          Discard
+        </Button>
+      </div>
+    </>
+  )
 }
 
 const AddNewMCQ = () => {
-  const [questionList, setQuestionList] = useState([]);
+  const [questionList, setQuestionList] = useState([])
 
   const handleButtonClick = () => {
-    window.location.href = '/apps/import-questions/';
-  };
+    window.location.href = '/apps/import-questions/'
+  }
 
   const onAddQuestion = () => {
-    const newQuestionId = `question-${Date.now()}`;
-    setQuestionList((prevQuestionList) => [
-      ...prevQuestionList,
-      { id: newQuestionId, timestamp: Date.now() }
-    ]);
-  };
-  const sortedQuestions = [...questionList].sort((a, b) => b.timestamp - a.timestamp);
+    const newQuestionId = `question-${Date.now()}`
+    setQuestionList(prevQuestionList => [...prevQuestionList, { id: newQuestionId, timestamp: Date.now() }])
+  }
+  const sortedQuestions = [...questionList].sort((a, b) => b.timestamp - a.timestamp)
 
   return (
     <Fragment>
       <Button variant='contained' onClick={handleButtonClick} sx={{ margin: '5px' }}>
         Import questions
       </Button>
-      <Button variant='contained' onClick={onAddQuestion} sx={{ margin: '5px' }} >
+      <Button variant='contained' onClick={onAddQuestion} sx={{ margin: '5px' }}>
         Add New Question
       </Button>
       <div>
-        {sortedQuestions.map((question) => (
+        {sortedQuestions.map(question => (
           <Question key={question.id} questionId={question.id} />
         ))}
       </div>

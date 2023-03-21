@@ -59,8 +59,7 @@ import CardActions from '@mui/material/CardActions'
 import SwitchesCustomizedStatus from 'src/views/forms/form-elements/switch/SwitchesCustomized'
 
 // ** Data Import
-import { rows } from 'src/@fake-db/table/BadgesData'
-import Image from 'next/image'
+import { rows } from 'src/@fake-db/table/CustomBadgesData'
 
 // ** renders client column
 const renderClient = params => {
@@ -406,7 +405,7 @@ const columns = [
   }
 ]
 
-const BadgesTable = () => {
+const CustomBadges = () => {
   // ** States
   const [data] = useState(rows)
   const [pageSize, setPageSize] = useState(7)
@@ -457,4 +456,4 @@ const BadgesTable = () => {
   )
 }
 
-export default BadgesTable
+export default CustomBadges

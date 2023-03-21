@@ -70,7 +70,7 @@ const DatePickerWrapper = styled(Box)(({ theme }) => {
           width: 24,
           height: 24,
           border: 'none',
-          ...(theme.direction === 'ltr' ? { right: 15 } : { left: 15 }),
+          ...(theme.direction === 'ltr' ? { left: 250 } : { left: 15 }),
           backgroundImage: `${"url('data:image/svg+xml,%3Csvg xmlns=\\'http://www.w3.org/2000/svg\\' style=\\'width:24px;height:24px\\' viewBox=\\'0 0 24 24\\'%3E%3Cpath fill=\\'currentColor\\' d=\\'M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z\\' /%3E%3C/svg%3E')"
             .replace('currentColor', theme.palette.text.secondary)
             .replace('#', '%23')}`,
@@ -365,7 +365,7 @@ const DatePickerWrapper = styled(Box)(({ theme }) => {
             width: '5.5rem'
           },
           [theme.breakpoints.up('sm')]: {
-            width: '7rem'
+            width: '15rem'
           }
         },
         '.react-datepicker-time__header': {
