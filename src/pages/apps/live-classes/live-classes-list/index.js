@@ -21,21 +21,21 @@ const LiveClassesList = () => {
   return (
     <DatePickerWrapper>
       <Grid container spacing={6}>
-        <Grid item xs={6}>
+        <Grid item xs={6} lg={4}>
           <CardStatisticsHorizontal
             stats='Total Live Classes'
             title='8'
             icon={<Icon icon="material-symbols:video-camera-front" />}
           />
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={6} lg={4}>
           <CardStatisticsHorizontal
             stats='Pending live classes'
             title='0'
             icon={<Icon icon='ph:eye-bold' />}
           />
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={6} lg={4}>
           <CardStatisticsHorizontal
             stats='Inprogress live classes'
             title='3'

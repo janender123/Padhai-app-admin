@@ -434,6 +434,7 @@ const AutomaticBadges = () => {
     <Card>
       <DataGrid
         autoHeight
+         disableSelectionOnClick
         columns={columns}
         pageSize={pageSize}
         checkboxSelection

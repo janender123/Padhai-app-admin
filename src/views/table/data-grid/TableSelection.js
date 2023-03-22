@@ -129,6 +129,7 @@ const TableSelection = () => {
     <Card>
       <CardHeader title='Selection' />
       <DataGrid
+       disableSelectionOnClick
         autoHeight
         rows={rows}
         columns={columns}

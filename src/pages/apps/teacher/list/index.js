@@ -367,6 +367,7 @@ const UserList = ({ apiData }) => {
           <Divider />
           <TableHeader value={value} handleFilter={handleFilter} toggle={toggleAddUserDrawer} />
           <DataGrid
+          
             autoHeight
             rows={store.data}
             columns={columns}

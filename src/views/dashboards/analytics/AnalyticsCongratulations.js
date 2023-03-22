@@ -1,4 +1,5 @@
 // ** MUI Imports
+import React from 'react'
 import Box from '@mui/material/Box'
 import Card from '@mui/material/Card'
 import Button from '@mui/material/Button'
@@ -27,6 +28,52 @@ const Img = styled('img')(({ theme }) => ({
     position: 'static'
   }
 }))
+
+const WelcomeAdmin = () => {
+  // ** Hook
+  const theme = useTheme()
+  const [showBox, setShowBox] = React.useState(false)
+
+  React.useEffect(() => {
+    function handleResize() {
+      if (window.innerWidth > window.screen.width * 0.4) {
+        setShowBox(true)
+      } else {
+        setShowBox(false)
+      }
+    }
+
+    handleResize()
+    window.addEventListener('resize', handleResize)
+
+    return () => {
+      window.removeEventListener('resize', handleResize)
+    }
+  }, [])
+
+  return (
+    <Card sx={{ position: 'relative', backgroundColor: '#3c65c4' }}>
+      <CardContent sx={{ p: theme => `${theme.spacing(6.75, 7.5)} !important` }}>
+        <Grid container spacing={6}>
+          <Grid item xs={12} sm={6}>
+            <Typography sx={{ mb: 1.5, fontSize: '2.5rem', fontWeight: 600, whiteSpace: 'nowrap', color: 'white' }}>
+              Welcome Admin ! 🎉
+            </Typography>
+
+            <Typography variant='body2'>
+              <Box component='span' sx={{ fontWeight: 600 }}></Box>{' '}
+            </Typography>
+            <Typography sx={{ mb: 4.5 }} variant='body2'></Typography>
+            {showBox && <Box height={60} />}
+          </Grid>
+          <StyledGrid item xs={12} sm={6}>
+            <Img alt='Congratulations John' src={`/images/cards/illustration-john-${theme.palette.mode}.png`} />
+          </StyledGrid>
+        </Grid>
+      </CardContent>
+    </Card>
+  )
+}
 
 const AnalyticsCongratulations = () => {
   // ** Hook
@@ -66,3 +113,5 @@ const AnalyticsCongratulations = () => {
 }
 
 export default AnalyticsCongratulations
+
+export { WelcomeAdmin }

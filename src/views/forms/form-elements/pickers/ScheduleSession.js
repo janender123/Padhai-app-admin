@@ -17,9 +17,10 @@ const ScheduleSession = ({ popperPlacement }) => {
   const [time, setTime] = useState(new Date())
 
   return (
-    <Box sx={{ width:'500px',display: 'flex', flexWrap: 'wrap' }} className='demo-space-x'>
+    <Box sx={{ width: '500px', display: 'flex', flexWrap: 'wrap' }} className='demo-space-x'>
       <div>
         <DatePicker
+          fullWidth
           style={{ width: '500px' }}
           timeIntervals='60'
           showTimeSelect

@@ -15,28 +15,28 @@ const UserList = () => {
   return (
     <DatePickerWrapper>
       <Grid container spacing={6}>
-        <Grid item xs={3}>
+        <Grid item xs={6}  lg={3} sm={6} >
           <CardStatisticsHorizontal
             stats='Total Users'
             title='250'
             icon={<Icon icon="mdi:teacher" />}
           />
         </Grid>
-        <Grid item xs={3}>
+        <Grid item xs={6}  lg={3} sm={6}>
           <CardStatisticsHorizontal
             stats='Inactive Users'
             title='25'
             icon={<Icon icon="carbon:information-disabled" />}
           />
         </Grid>
-        <Grid item xs={3}>
+        <Grid item xs={6}  lg={3} sm={6}>
           <CardStatisticsHorizontal
             stats='Pending Users'
             title='20'
             icon={<Icon icon="mdi:account-pending" />}
           />
         </Grid>
-        <Grid item xs={3}>
+        <Grid item xs={6}  lg={3} sm={6}>
           <CardStatisticsHorizontal
             stats='Banned Users'
             title='0'

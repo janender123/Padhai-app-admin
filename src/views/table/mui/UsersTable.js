@@ -30,9 +30,7 @@ const renderClient = params => {
   if (row.avatar.length) {
     return <CustomAvatar src={`/images/avatars/${row.avatar}`} sx={{ mr: 3, width: '1.875rem', height: '1.875rem' }} />
   } else {
-    return (
-      <Typography sx={{ fontSize: '12px' }}>No Image</Typography>
-    )
+    return <Typography sx={{ fontSize: '12px' }}>No Image</Typography>
   }
 }
 
@@ -48,8 +46,8 @@ const escapeRegExp = value => {
 const columns = [
   {
     flex: 0.275,
-    minWidth: 20,
-    maxWidth: 60,
+    minWidth: 50,
+    maxWidth: 100,
     field: 'id',
     headerName: 'id',
     renderCell: params => {
@@ -67,12 +65,12 @@ const columns = [
     headerName: 'Name',
     renderCell: params => {
       const { row } = params
-      
-return (
+
+      return (
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
           {renderClient(params)}
           <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-          <Typography
+            <Typography
               noWrap
               component={Link}
               variant='subtitle2'
@@ -148,8 +146,8 @@ return (
     headerName: 'Status',
     renderCell: params => {
       const status = statusObj[params.row.status]
-      
-return (
+
+      return (
         <CustomChip
           size='small'
           skin='light'
@@ -213,6 +211,7 @@ const UsersList = () => {
         autoHeight
         columns={columns}
         pageSize={pageSize}
+         disableSelectionOnClick
         checkboxSelection
         rowsPerPageOptions={[7, 10, 25, 50]}
         components={{ Toolbar: QuickSearchToolbar }}

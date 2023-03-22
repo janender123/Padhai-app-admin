@@ -240,6 +240,7 @@ return (
 return (
     <Card>
       <DataGrid
+       disableSelectionOnClick
         autoHeight
         columns={columns}
         pageSize={pageSize}

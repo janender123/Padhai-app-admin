@@ -185,8 +185,8 @@ const AddNewQuestionInStudyMaterial = () => {
                   </Select>
                 </FormControl>
               </Grid>
-              <Grid item xs={12} sm={6}>
-                  <ScheduleSession  popperPlacement={popperPlacement} />
+              <Grid item xs={12} sm={6} >
+                  <ScheduleSession fullWidth popperPlacement={popperPlacement} />
               </Grid>
               <CardActions >
                 <Button size='large' type='submit' sx={{marginTop:'20px'  }} variant='contained'>

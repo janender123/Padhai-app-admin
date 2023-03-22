@@ -525,6 +525,7 @@ const StudyMaterialList = () => {
         autoHeight
         columns={columns}
         pageSize={pageSize}
+         disableSelectionOnClick
         checkboxSelection
         rowsPerPageOptions={[7, 10, 25, 50]}
         components={{ Toolbar: QuickSearchToolbar }}

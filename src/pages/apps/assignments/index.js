@@ -14,14 +14,14 @@ const QuestionsList = () => {
     return (
         <DatePickerWrapper>
             <Grid container spacing={6}>
-                <Grid item xs={6}>
+                <Grid item xs={6} >
                     <CardStatisticsHorizontal
                         stats='Total Assignments'
                         title='250'
                         icon={<Icon icon="mdi:file-document" />}
                     />
                 </Grid>
-                <Grid item xs={6}>
+                <Grid item xs={6} >
                     <CardStatisticsHorizontal
                         stats='Pending Assignments'
                         title='0'

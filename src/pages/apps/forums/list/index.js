@@ -19,6 +19,7 @@ import DatePickerWrapper from 'src/@core/styles/libs/react-datepicker'
 import CardStatisticsHorizontal from 'src/@core/components/card-statistics/card-stats-horizontal'
 import CourseBundleTable from 'src/views/table/mui/courseBundleTable'
 import SessionsTable from 'src/views/table/mui/SessionsTable'
+import ForumsTable from 'src/views/table/mui/ForumsTable'
 
 /* eslint-enable */
 const SessionsList = () => {
@@ -64,32 +65,39 @@ const SessionsList = () => {
     return (
         <DatePickerWrapper>
             <Grid container spacing={6}>
-                <Grid item xs={6}  lg={4} sm={6}>
+                <Grid item xs={6}  lg={3} sm={6}>
                     <CardStatisticsHorizontal
-                        stats='Total 1:1 sessions'
+                        stats='Total Forums'
                         title='8'
-                        icon={<Icon icon="material-symbols:video-camera-front" />}
+                        icon={<Icon icon="ri:message-2-line" />}
                     />
                 </Grid>
-                <Grid item xs={6}  lg={4} sm={6}>
+                <Grid item xs={6}  lg={3} sm={6}>
                     <CardStatisticsHorizontal
-                        stats='Pending 1:1 sessions'
-                        title='0'
-                        icon={<Icon icon='ph:eye-bold' />}
+                        stats='Total Topics'
+                        title='30'
+                        icon={<Icon icon='mdi:message-settings-outline' />}
                     />
                 </Grid>
-                <Grid item xs={6}  lg={4} sm={6}>
+                <Grid item xs={6}  lg={3} sm={6}>
                     <CardStatisticsHorizontal
-                        stats='Total Duration'
-                        title='12:55 hours'
-                        icon={<Icon icon="ic:sharp-access-time" />}
+                        stats='Total Posts'
+                        title='19'
+                        icon={<Icon icon="tabler:message-circle" />}
+                    />
+                </Grid>
+                <Grid item xs={6}  lg={3} sm={6}>
+                    <CardStatisticsHorizontal
+                        stats='Active Members'
+                        title='13'
+                        icon={<Icon icon="uil:message" />}
                     />
                 </Grid>
 
                 <Grid item xs={12} >
                     <Card>
-                        <CardHeader title='List of 1:1 sessions approved' />
-                        <SessionsTable />
+                        <CardHeader title='List of Forums approved' />
+                        <ForumsTable />
                     </Card>
                 </Grid>
             </Grid>

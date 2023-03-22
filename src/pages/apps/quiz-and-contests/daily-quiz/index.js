@@ -83,6 +83,7 @@ const SourceQuestionsTableFordailyQuiz = () => {
     <Card>
       <CardHeader title='Select Questions' />
       <DataGrid
+       disableSelectionOnClick
         autoHeight
         columns={sourceColumns}
         pageSize={pageSize}
@@ -168,6 +169,7 @@ const DestinationTableFordailyQuiz = () => {
     <Card>
       <CardHeader title='Selected Questions' />
       <DataGrid
+       disableSelectionOnClick
         autoHeight
         columns={destinationColumns}
         pageSize={pageSize}

@@ -308,6 +308,37 @@ const navigation = () => {
           path: '/apps/recommended-topics/new'
         }
       ]
+    },
+    {
+      sectionTitle: 'CRM'
+    },
+    {
+      title: 'Support',
+      icon: 'material-symbols:support-agent',
+      children: [
+        {
+          title: 'Tickets',
+          path: '/apps/support/tickets'
+        },
+        {
+          title: 'New Support Ticket',
+          path: '/apps/support/new'
+        }
+      ]
+    },
+     {
+      title: 'Comments',
+      icon: 'tabler:message-circle',
+      children: [
+        {
+          title: 'Course Comments',
+          path: '/apps/comments/course'
+        },
+        {
+          title: 'Bundle Comments',
+          path: '/apps/comments/bundle'
+        }
+      ]
     }
 
     // {

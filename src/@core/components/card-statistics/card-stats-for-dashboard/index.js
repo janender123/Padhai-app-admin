@@ -17,7 +17,7 @@ const CardStatsForDashboard = ({ data }) => {
       <CardContent sx={{ pb: '0 !important' }}>
         <Grid container >
           <Grid item xs={6} >
-            <Typography sx={{ mb: 1.5, fontSize: '1.6rem', fontWeight: 300, whiteSpace: 'nowrap' }}>{title}</Typography>
+            <Typography sx={{ mb: 0, mt: 3, fontSize: '1rem', fontWeight: 250, whiteSpace: 'nowrap' }}>{title}</Typography>
             {chipColor && (
               <CustomChip
                 skin='light'
@@ -28,7 +28,7 @@ const CardStatsForDashboard = ({ data }) => {
               />
             )}
             <Box sx={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center' }}>
-              <Typography variant='h5' sx={{ mr: 1.5 }}>
+              <Typography variant='h6' sx={{ mr: 1.5 }}>
                 {stats}
               </Typography>
               <Typography variant='caption' sx={{ color: trend === 'negative' ? 'error.main' : 'success.main' }}>

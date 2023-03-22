@@ -19,6 +19,9 @@ import DatePickerWrapper from 'src/@core/styles/libs/react-datepicker'
 import CardStatisticsHorizontal from 'src/@core/components/card-statistics/card-stats-horizontal'
 import CourseBundleTable from 'src/views/table/mui/courseBundleTable'
 import SessionsTable from 'src/views/table/mui/SessionsTable'
+import ForumsTable from 'src/views/table/mui/ForumsTable'
+import FeaturedTopicsTable from 'src/views/table/mui/FeaturedTopicsTable'
+import RecommendedTopicsTable from 'src/views/table/mui/RecommendedTopicsTable'
 
 /* eslint-enable */
 const SessionsList = () => {
@@ -64,32 +67,10 @@ const SessionsList = () => {
     return (
         <DatePickerWrapper>
             <Grid container spacing={6}>
-                <Grid item xs={12}  lg={4} sm={12}>
-                    <CardStatisticsHorizontal
-                        stats='Total 1:1 sessions'
-                        title='8'
-                        icon={<Icon icon="material-symbols:video-camera-front" />}
-                    />
-                </Grid>
-                <Grid item xs={12}  lg={4} sm={12}>
-                    <CardStatisticsHorizontal
-                        stats='Pending 1:1 sessions'
-                        title='0'
-                        icon={<Icon icon='ph:eye-bold' />}
-                    />
-                </Grid>
-                <Grid item xs={12}  lg={4} sm={12}>
-                    <CardStatisticsHorizontal
-                        stats='Total Duration'
-                        title='12:55 hours'
-                        icon={<Icon icon="ic:sharp-access-time" />}
-                    />
-                </Grid>
-
                 <Grid item xs={12} >
                     <Card>
-                        <CardHeader title='List of 1:1 sessions approved' />
-                        <SessionsTable />
+                        <CardHeader title='List of Recommended Topics approved' />
+                        <RecommendedTopicsTable />
                     </Card>
                 </Grid>
             </Grid>

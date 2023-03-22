@@ -69,7 +69,7 @@ const NewUser = () => {
                 fullWidth
                 type='email'
                 label='Email'
-                placeholder='carterleonard@gmail.com'
+                placeholder='abhishek12@gmail.com'
               />
             </Grid>
             <Grid item xs={12}>
