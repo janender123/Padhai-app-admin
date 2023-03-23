@@ -13,21 +13,13 @@ import { DataGrid } from '@mui/x-data-grid'
 import DialogEditUserInfo from 'src/views/pages/dialog-examples/Add-Class-Dialog'
 
 // ** Custom Components
-import CustomChip from 'src/@core/components/mui/chip'
-import CustomAvatar from 'src/@core/components/mui/avatar'
-import QuickSearchToolbar from 'src/views/table/data-grid/QuickSearchToolbarCourses'
-
-// ** Utils Import
-import { getInitials } from 'src/@core/utils/get-initials'
+import QuickSearchToolbar from 'src/views/table/data-grid/QuickSearchToolbarNoticeBoard'
 
 // ** Data Import
 import { Button, Grid, TextField } from '@mui/material'
 import Dialog from '@mui/material/Dialog'
 import DialogContent from '@mui/material/DialogContent'
-import DialogActions from '@mui/material/DialogActions'
-
-import SwitchesCustomized from 'src/views/forms/form-elements/switch/SwitchesCustomized'
-import { rows } from 'src/@fake-db/table/CourseCommentsData'
+import { rows } from 'src/@fake-db/table/NoticeBoardListData'
 
 // ** renders client column
 const renderClient = params => {
@@ -41,16 +33,14 @@ const escapeRegExp = value => {
   return value.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&')
 }
 
-const CourseComments = () => {
+const NoticeBoardTable = () => {
   // ** States
   const [dialogStates, setDialogStates] = useState(Array(rows.length).fill(false))
-
   const [data] = useState(rows)
   const [pageSize, setPageSize] = useState(7)
   const [searchText, setSearchText] = useState('')
   const [filteredData, setFilteredData] = useState([])
   const [show, setShow] = useState(false)
- 
 
   const columns = [
     {
@@ -70,37 +60,46 @@ const CourseComments = () => {
     },
     {
       flex: 0.275,
+      minWidth: 400,
+      field: 'title',
+      headerName: 'Title',
+      renderCell: params => {
+        const { row } = params
+
+        return (
+          <Box sx={{ display: 'flex', alignItems: 'center' }}>
+            {renderClient(params)}
+            <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+              <Typography noWrap variant='body2' sx={{ color: 'text.primary', fontWeight: 600 }}>
+                {row.title}
+              </Typography>
+            </Box>
+          </Box>
+        )
+      }
+    },
+    {
+      flex: 0.275,
       minWidth: 200,
-      field: 'course',
-      headerName: 'course',
+      field: 'sender',
+      headerName: 'Sender',
       renderCell: params => {
         const { row } = params
 
         return (
           <Typography noWrap variant='body2' sx={{ color: 'text.primary', fontWeight: 600 }}>
-            {row.course}
+            {row.sender}
           </Typography>
         )
       }
     },
     {
       flex: 0.125,
-      field: 'user',
-      minWidth: 150,
-      headerName: 'User',
-      renderCell: params => (
-        <Typography variant='body2' sx={{ color: 'text.primary' }}>
-          {params.row.sender}
-        </Typography>
-      )
-    },
-    {
-      flex: 0.125,
-      field: 'Comment',
+      field: 'message',
       minWidth: 100,
       renderCell: params => {
-         const { row } = params
-  const rowIndex = row.id // Assuming row id is unique and starts from 0
+        const { row } = params
+        const rowIndex = row.id
 
         return (
           <>
@@ -116,6 +115,7 @@ const CourseComments = () => {
               Show
             </Button>
             <Dialog
+              f
               fullWidth
               open={show && dialogStates[rowIndex]}
               maxWidth='md'
@@ -136,7 +136,7 @@ const CourseComments = () => {
                 </IconButton>
                 <Box sx={{ mb: 8, textAlign: 'center' }}>
                   <Typography variant='h5' sx={{ mb: 3, lineHeight: '2rem' }}>
-                    Comment
+                    Message
                   </Typography>
                 </Box>
                 <Grid container spacing={6}>
@@ -148,7 +148,21 @@ const CourseComments = () => {
         )
       }
     },
+    {
+      flex: 0.275,
+      minWidth: 200,
+      field: 'type',
+      headerName: 'Type',
+      renderCell: params => {
+        const { row } = params
 
+        return (
+          <Typography noWrap variant='body2' sx={{ color: 'text.primary', fontWeight: 600 }}>
+            {row.type}
+          </Typography>
+        )
+      }
+    },
     {
       flex: 0.275,
       minWidth: 150,
@@ -165,21 +179,6 @@ const CourseComments = () => {
       }
     },
     {
-      flex: 0.175,
-      minWidth: 140,
-      field: 'status',
-      headerName: 'Status',
-      renderCell: params => {
-        const { row } = params
-
-        return (
-          <Typography noWrap variant='body2' color={row.status_color} sx={{ fontWeight: 600 }}>
-            {row.status}
-          </Typography>
-        )
-      }
-    },
-    {
       flex: 0.1,
       minWidth: 130,
       sortable: false,
@@ -187,7 +186,7 @@ const CourseComments = () => {
       headerName: 'Actions',
       renderCell: ({ row }) => (
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
-          <Tooltip title='Delete '>
+          <Tooltip title='Delete Invoice'>
             <IconButton size='small' sx={{ mr: 0.5 }}>
               <Icon icon='mdi:delete-outline' />
             </IconButton>
@@ -257,4 +256,4 @@ const CourseComments = () => {
   )
 }
 
-export default CourseComments
+export default NoticeBoardTable

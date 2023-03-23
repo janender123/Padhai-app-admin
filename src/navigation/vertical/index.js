@@ -281,7 +281,7 @@ const navigation = () => {
         }
       ]
     },
-     {
+    {
       title: 'Featured Topics',
       icon: 'mdi:message-settings-outline',
       children: [
@@ -295,7 +295,7 @@ const navigation = () => {
         }
       ]
     },
-     {
+    {
       title: 'Recommended Topics',
       icon: 'carbon:thumbs-up',
       children: [
@@ -326,7 +326,7 @@ const navigation = () => {
         }
       ]
     },
-     {
+    {
       title: 'Comments',
       icon: 'tabler:message-circle',
       children: [
@@ -339,7 +339,131 @@ const navigation = () => {
           path: '/apps/comments/bundle'
         }
       ]
-    }
+    },
+    {
+      title: 'Reports',
+      icon: 'octicon:report-24',
+      children: [
+        {
+          title: 'Course',
+          path: '/apps/reports/course'
+        },
+        {
+          title: 'Course Bundle',
+          path: '/apps/reports/bundle'
+        },
+        {
+          title: 'Comments',
+          path: '/apps/reports/comments'
+        },
+        {
+          title: 'Live Classes',
+          path: '/apps/reports/live-classes'
+        },
+        {
+          title: 'Forum Topics',
+          path: '/apps/reports/forum-topics'
+        }
+      ]
+    },
+    {
+      title: 'Noticeboard',
+      icon: 'mdi:notice-board',
+      children: [
+        {
+          title: 'List',
+          path: '/apps/noticeboard/list'
+        },
+        {
+          title: 'New',
+          path: '/apps/noticeboard/new'
+        }
+      ]
+    },
+    {
+      sectionTitle: 'Financial'
+    },
+    {
+      title: 'Subscribe',
+      icon: 'eos-icons:product-subscriptions-outlined',
+      children: [
+        {
+          title: 'Packages',
+          path: '/apps/subscribe/packages'
+        },
+        {
+          title: 'New Package',
+          path: '/apps/subscribe/new'
+        }
+      ]
+    },
+    {
+      title: 'Reward Points',
+      icon: 'carbon:gift',
+      children: [
+        {
+          title: 'History',
+          path: '/apps/reward-points/history'
+        },
+        {
+          title: 'Conditions',
+          path: '/apps/reward-points/conditions'
+        },
+        {
+          title: 'settings',
+          path: '/apps/reward-points/settings'
+        }
+      ]
+    },
+    {
+      sectionTitle: 'Marketing'
+    },
+    {
+      title: 'Coupons',
+      icon: 'mdi:coupon-outline',
+      children: [
+        {
+          title: 'List',
+          path: '/apps/coupons/list'
+        },
+        {
+          title: 'New',
+          path: '/apps/coupons/new'
+        }
+      ]
+    },
+    {
+      title: 'Email Newsletter',
+      icon: 'ic:twotone-attach-email',
+      children: [
+        {
+          title: 'List',
+          path: '/apps/email-newsletter/list'
+        },
+        {
+          title: 'Send',
+          path: '/apps/email-newsletter/send'
+        },
+        {
+          title: 'History',
+          path: '/apps/email-newsletter/history'
+        }
+      ]
+    },
+     {
+      title: 'Affiliate',
+      icon: 'ph:speaker-high',
+      children: [
+        {
+          title: 'History',
+          path: '/apps/affiliate/history'
+        },
+        {
+          title: 'Affiliate Users',
+          path: '/apps/affiliate/users'
+        }
+      ]
+    },
 
     // {
     //   title: 'Pages',

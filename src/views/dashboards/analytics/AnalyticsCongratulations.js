@@ -67,7 +67,7 @@ const WelcomeAdmin = () => {
             {showBox && <Box height={60} />}
           </Grid>
           <StyledGrid item xs={12} sm={6}>
-            <Img alt='Congratulations John' src={`/images/cards/illustration-john-${theme.palette.mode}.png`} />
+            <Img alt='Welcome Admin' src={`/images/cards/illustration-john-${theme.palette.mode}.png`} />
           </StyledGrid>
         </Grid>
       </CardContent>

@@ -20,6 +20,7 @@ import DatePickerWrapper from 'src/@core/styles/libs/react-datepicker'
 import CardStatisticsHorizontal from 'src/@core/components/card-statistics/card-stats-horizontal'
 import CourseBundleTable from 'src/views/table/mui/courseBundleTable'
 import CourseNoticesTable from 'src/views/table/mui/courseNoticesTable'
+import NoticeBoardTable from 'src/views/table/mui/NoticeBoardTable'
 
 /* eslint-enable */
 const CourseNoticesList = () => {
@@ -67,14 +68,14 @@ const CourseNoticesList = () => {
             <Grid container spacing={6}>
                 <Grid item xs={6}>
                     <CardStatisticsHorizontal
-                        stats='Course Notices'
+                        stats=' Notices'
                         icon={<Icon icon="mdi:notice-board" />}
                     />
                 </Grid>
                 <Grid item xs={12}>
                     <Card>
-                        <CardHeader title='List of course notices approved' />
-                        <CourseNoticesTable/>
+                        <CardHeader title='List of Notices Approved' />
+                        <NoticeBoardTable />
                     </Card>
                 </Grid>
             </Grid>

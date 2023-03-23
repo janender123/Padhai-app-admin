@@ -70,7 +70,7 @@ return (
       flex: 0.275,
       minWidth: 200,
       field: 'title',
-      headerName: 'Tite',
+      headerName: 'Title',
       renderCell: params => {
         const { row } = params
         

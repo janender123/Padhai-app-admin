@@ -10,38 +10,21 @@ import Box from '@mui/material/Box'
 import Card from '@mui/material/Card'
 import Typography from '@mui/material/Typography'
 import { DataGrid } from '@mui/x-data-grid'
-import DialogEditUserInfo from 'src/views/pages/dialog-examples/Add-Class-Dialog'
 
 // ** Custom Components
-import CustomChip from 'src/@core/components/mui/chip'
-import CustomAvatar from 'src/@core/components/mui/avatar'
 import QuickSearchToolbar from 'src/views/table/data-grid/QuickSearchToolbarCourses'
-
-// ** Utils Import
-import { getInitials } from 'src/@core/utils/get-initials'
 
 // ** Data Import
 import { Button, Grid, TextField } from '@mui/material'
 import Dialog from '@mui/material/Dialog'
 import DialogContent from '@mui/material/DialogContent'
-import DialogActions from '@mui/material/DialogActions'
-
-import SwitchesCustomized from 'src/views/forms/form-elements/switch/SwitchesCustomized'
-import { rows } from 'src/@fake-db/table/CourseCommentsData'
-
-// ** renders client column
-const renderClient = params => {
-  const { row } = params
-  const stateNum = Math.floor(Math.random() * 6)
-  const states = ['success', 'error', 'warning', 'info', 'primary', 'secondary']
-  const color = states[stateNum]
-}
+import { rows } from 'src/@fake-db/table/CommentReportsData'
 
 const escapeRegExp = value => {
   return value.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&')
 }
 
-const CourseComments = () => {
+const CommentReports = () => {
   // ** States
   const [dialogStates, setDialogStates] = useState(Array(rows.length).fill(false))
 
@@ -50,12 +33,12 @@ const CourseComments = () => {
   const [searchText, setSearchText] = useState('')
   const [filteredData, setFilteredData] = useState([])
   const [show, setShow] = useState(false)
- 
 
   const columns = [
     {
       flex: 0.275,
       minWidth: 60,
+      maxWidth: 100,
       field: 'id',
       headerName: 'ID',
       renderCell: params => {
@@ -67,6 +50,17 @@ const CourseComments = () => {
           </Typography>
         )
       }
+    },
+    {
+      flex: 0.125,
+      field: 'user',
+      minWidth: 150,
+      headerName: 'User',
+      renderCell: params => (
+        <Typography variant='body2' sx={{ color: 'text.primary' }}>
+          {params.row.sender}
+        </Typography>
+      )
     },
     {
       flex: 0.275,
@@ -84,23 +78,27 @@ const CourseComments = () => {
       }
     },
     {
-      flex: 0.125,
-      field: 'user',
-      minWidth: 150,
-      headerName: 'User',
-      renderCell: params => (
-        <Typography variant='body2' sx={{ color: 'text.primary' }}>
-          {params.row.sender}
-        </Typography>
-      )
+      flex: 0.275,
+      minWidth: 200,
+      field: 'Message',
+      headerName: 'Message',
+      renderCell: params => {
+        const { row } = params
+
+        return (
+          <Typography noWrap variant='body2' sx={{ color: 'text.primary', fontWeight: 600 }}>
+            {row.message}
+          </Typography>
+        )
+      }
     },
     {
       flex: 0.125,
       field: 'Comment',
       minWidth: 100,
       renderCell: params => {
-         const { row } = params
-  const rowIndex = row.id // Assuming row id is unique and starts from 0
+        const { row } = params
+        const rowIndex = row.id
 
         return (
           <>
@@ -140,7 +138,12 @@ const CourseComments = () => {
                   </Typography>
                 </Box>
                 <Grid container spacing={6}>
-                  <Typography sx={{ mb: 3, lineHeight: '2rem' }}>{row.message}</Typography>
+                  <Typography sx={{ mb: 3, lineHeight: '2rem' }}>
+                    <Box component='span' sx={{ mb: 3, lineHeight: '2rem', fontWeight: 'bold' }}>
+                      <br /> Original Comment :
+                    </Box>
+                    &nbsp;{row.comment}
+                  </Typography>
                 </Grid>
               </DialogContent>
             </Dialog>
@@ -160,21 +163,6 @@ const CourseComments = () => {
         return (
           <Typography noWrap variant='body2' sx={{ color: 'text.primary', fontWeight: 600 }}>
             {row.created_date}
-          </Typography>
-        )
-      }
-    },
-    {
-      flex: 0.175,
-      minWidth: 140,
-      field: 'status',
-      headerName: 'Status',
-      renderCell: params => {
-        const { row } = params
-
-        return (
-          <Typography noWrap variant='body2' color={row.status_color} sx={{ fontWeight: 600 }}>
-            {row.status}
           </Typography>
         )
       }
@@ -257,4 +245,4 @@ const CourseComments = () => {
   )
 }
 
-export default CourseComments
+export default CommentReports

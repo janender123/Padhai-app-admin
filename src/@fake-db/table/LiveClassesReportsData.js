@@ -4,10 +4,11 @@ export const rows = [
     status: 'Replied',
     status_color: 'Green',
     title: 'Quiz date changed',
-    course: 'Physics Class 12th',
-    sender: 'Mr. Deepak',
+    live_class: 'Chemistry Class 12th',
+    sender: 'Deepak',
     created_date: '',
-    message: <div>We are very happy that you are satisfied with this course.</div>,
+    reason: 'Against Rules',
+    message: <span>live class files are not complete.</span>,
     class: '6th',
     board: 'CBSE'
   },
@@ -16,10 +17,11 @@ export const rows = [
     status: 'Replied',
     status_color: 'green',
     title: 'Top Students',
-    course: 'Chemistry Class 12th',
+    live_class: 'Physics Class 12th',
     sender: 'Pradeep',
     created_date: '',
-    message: <div>Great course that gives you the basic knowledge needed to become a product manager.</div>,
+    reason: 'Not Related',
+    message: <span>I think the right category has not been chosen for this live class.</span>,
     class: '8th',
     board: 'ICSE'
   },
@@ -28,35 +30,17 @@ export const rows = [
     status: 'Pending',
     status_color: 'Red',
     title: 'Important notice',
-    course: 'Physics Class 11th',
+    live_class: 'Physics Class 11th',
     sender: 'Yogesh',
     created_date: '',
+    reason: 'Incomplete',
     message: (
-      <div>
-        As i already new a lot on this matter i was surprised that i actually find out that there are more ways to tweak
-        your time management
-      </div>
+      <span>
+        All parts of the live class not covered.
+      </span>
     ),
     class: '10th',
     board: 'ICSE'
-  },
-  {
-    id: 3,
-    status: 'Pending',
-    status_color: 'Red',
-    title: 'Important notice',
-    course: 'Chemistry Class 10th',
-    sender: 'Deepak',
-    created_date: '',
-    message: (
-      <div>
-        Hi kate.
-        <br />
-        No, but it may change in the future. Thank you
-      </div>
-    ),
-    class: '9th',
-    board: 'CBSE'
   }
 ]
 

@@ -14,8 +14,8 @@ import { Button } from '@mui/material'
 
 const QuickSearchToolbarCourseNotices = props => {
   const { value, selectedRows, handleFilter } = props
-  
-return (
+
+  return (
     <>
       <Box
         sx={{
@@ -27,7 +27,6 @@ return (
           p: theme => theme.spacing(2, 5, 4, 5)
         }}
       >
-
         <Select
           size='small'
           displayEmpty
@@ -41,13 +40,11 @@ return (
           <MenuItem value='Edit'>Edit</MenuItem>
         </Select>
 
-
         <TextField
           size='small'
           value={props.value}
           onChange={props.onChange}
           placeholder='Search…'
-
           InputProps={{
             startAdornment: (
               <Box sx={{ mr: 2, display: 'flex' }}>
@@ -75,7 +72,7 @@ return (
           }}
         />
         <GridToolbarFilterButton placement='top-start' sx={{ float: 'right', mt: '3px' }} />
-        <Button variant='contained' onClick={() => (window.location.href = '/apps/course-notices/new')}>
+        <Button variant='contained' onClick={() => (window.location.href = '/apps/noticeboard/new')}>
          Send a Notice
         </Button>
       </Box>

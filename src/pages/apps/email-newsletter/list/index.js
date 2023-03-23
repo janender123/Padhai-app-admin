@@ -1,8 +1,7 @@
 // ** React Imports
-import { useState, useEffect } from 'react'
+import { useState, useEffect, forwardRef } from 'react'
 
 // ** MUI Imports
-import Box from '@mui/material/Box'
 import Grid from '@mui/material/Grid'
 import Card from '@mui/material/Card'
 import CardHeader from '@mui/material/CardHeader'
@@ -19,10 +18,10 @@ import DatePickerWrapper from 'src/@core/styles/libs/react-datepicker'
 
 import CardStatisticsHorizontal from 'src/@core/components/card-statistics/card-stats-horizontal'
 import CourseBundleTable from 'src/views/table/mui/courseBundleTable'
-import CourseNoticesTable from 'src/views/table/mui/courseNoticesTable'
+import SessionsTable from 'src/views/table/mui/SessionsTable'
 
 /* eslint-enable */
-const CourseNoticesList = () => {
+const SessionsList = () => {
     // ** State
     const [dates, setDates] = useState([])
     const [value, setValue] = useState('')
@@ -65,16 +64,32 @@ const CourseNoticesList = () => {
     return (
         <DatePickerWrapper>
             <Grid container spacing={6}>
-                <Grid item xs={6}>
+                <Grid item xs={6}  lg={4} sm={6}>
                     <CardStatisticsHorizontal
-                        stats='Course Notices'
-                        icon={<Icon icon="mdi:notice-board" />}
+                        stats='Total 1:1 sessions'
+                        title='8'
+                        icon={<Icon icon="material-symbols:video-camera-front" />}
                     />
                 </Grid>
-                <Grid item xs={12}>
+                <Grid item xs={6}  lg={4} sm={6}>
+                    <CardStatisticsHorizontal
+                        stats='Pending 1:1 sessions'
+                        title='0'
+                        icon={<Icon icon='ph:eye-bold' />}
+                    />
+                </Grid>
+                <Grid item xs={6}  lg={4} sm={6}>
+                    <CardStatisticsHorizontal
+                        stats='Total Duration'
+                        title='12:55 hours'
+                        icon={<Icon icon="ic:sharp-access-time" />}
+                    />
+                </Grid>
+
+                <Grid item xs={12} >
                     <Card>
-                        <CardHeader title='List of course notices approved' />
-                        <CourseNoticesTable/>
+                        <CardHeader title='List of 1:1 sessions approved' />
+                        <SessionsTable />
                     </Card>
                 </Grid>
             </Grid>
@@ -82,4 +97,4 @@ const CourseNoticesList = () => {
     )
 }
 
-export default CourseNoticesList
+export default SessionsList

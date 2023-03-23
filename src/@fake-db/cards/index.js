@@ -94,7 +94,7 @@ const cardStatsData = {
     {
       stats: '116',
       title: 'Teachers',
-      src: '/images/cards/card-stats-img-1.png'
+      src: '/images/cards/card-stats-img-3.png'
     },
     {
       stats: '56',
