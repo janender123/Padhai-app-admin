@@ -1,100 +1,103 @@
-// ** React Imports
-import { useState, useEffect, forwardRef } from 'react'
-
-// ** MUI Imports
-import Grid from '@mui/material/Grid'
-import Card from '@mui/material/Card'
+import Button from '@mui/material/Button'
+import TextField from '@mui/material/TextField'
+import FormControl from '@mui/material/FormControl'
+import InputLabel from '@mui/material/InputLabel'
+import Select from '@mui/material/Select'
+import MenuItem from '@mui/material/MenuItem'
 import CardHeader from '@mui/material/CardHeader'
+import Grid from '@mui/material/Grid'
+import { Card, Divider, FormControlLabel, Switch } from '@mui/material'
+import CardSnippet from 'src/@core/components/card-snippet'
+import CardContent from '@mui/material/CardContent'
+import CardActions from '@mui/material/CardActions'
+import EditorControlled from 'src/views/forms/form-elements/editor/EditorControlled'
+import * as source from 'src/views/forms/form-elements/editor/EditorSourceCode'
+import { EditorWrapper } from 'src/@core/styles/libs/react-draft-wysiwyg'
+import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
+import { styled } from '@mui/material/styles'
 
-// ** Icon Imports
-import Icon from 'src/@core/components/icon'
-
-// ** Store & Actions Imports
-import { useDispatch, useSelector } from 'react-redux'
-import { fetchData, deleteInvoice } from 'src/store/apps/invoice'
-
-// ** Styled Components
+// ** Source code imports
 import DatePickerWrapper from 'src/@core/styles/libs/react-datepicker'
 
-import CardStatisticsHorizontal from 'src/@core/components/card-statistics/card-stats-horizontal'
-import CourseBundleTable from 'src/views/table/mui/courseBundleTable'
-import SessionsTable from 'src/views/table/mui/SessionsTable'
+const ButtonStyled = styled(Button)(({ theme }) => ({
+  [theme.breakpoints.down('sm')]: {
+    width: '100%',
+    textAlign: 'center'
+  }
+}))
 
-/* eslint-enable */
-const SessionsList = () => {
-    // ** State
-    const [dates, setDates] = useState([])
-    const [value, setValue] = useState('')
-    const [pageSize, setPageSize] = useState(10)
-    const [statusValue, setStatusValue] = useState('')
-    const [endDateRange, setEndDateRange] = useState(null)
-    const [selectedRows, setSelectedRows] = useState([])
-    const [startDateRange, setStartDateRange] = useState(null)
-
-    // ** Hooks
-    const dispatch = useDispatch()
-    const store = useSelector(state => state.invoice)
-    useEffect(() => {
-        dispatch(
-            fetchData({
-                dates,
-                q: value,
-                status: statusValue
-            })
-        )
-    }, [dispatch, statusValue, value, dates])
-
-    const handleFilter = val => {
-        setValue(val)
-    }
-
-    const handleStatusValue = e => {
-        setStatusValue(e.target.value)
-    }
-
-    const handleOnChangeRange = dates => {
-        const [start, end] = dates
-        if (start !== null && end !== null) {
-            setDates(dates)
-        }
-        setStartDateRange(start)
-        setEndDateRange(end)
-    }
-
-    return (
-        <DatePickerWrapper>
+const index = () => {
+  return (
+    <DatePickerWrapper>
+      <EditorWrapper>
+        <Card sx={{ mt: 4 }}>
+          <CardHeader title='New Subscription Package' />
+          <Divider sx={{ m: '0 !important' }} />
+          <CardContent>
             <Grid container spacing={6}>
-                <Grid item xs={6}  lg={4} sm={6}>
-                    <CardStatisticsHorizontal
-                        stats='Total 1:1 sessions'
-                        title='8'
-                        icon={<Icon icon="material-symbols:video-camera-front" />}
-                    />
-                </Grid>
-                <Grid item xs={6}  lg={4} sm={6}>
-                    <CardStatisticsHorizontal
-                        stats='Pending 1:1 sessions'
-                        title='0'
-                        icon={<Icon icon='ph:eye-bold' />}
-                    />
-                </Grid>
-                <Grid item xs={6}  lg={4} sm={6}>
-                    <CardStatisticsHorizontal
-                        stats='Total Duration'
-                        title='12:55 hours'
-                        icon={<Icon icon="ic:sharp-access-time" />}
-                    />
-                </Grid>
-
-                <Grid item xs={12} >
-                    <Card>
-                        <CardHeader title='List of 1:1 sessions approved' />
-                        <SessionsTable />
-                    </Card>
-                </Grid>
+              <Grid item sm={12} xs={6} mt={3}>
+                <FormControl fullWidth>
+                  <InputLabel id='demo-simple-select-outlined-label'>Language</InputLabel>
+                  <Select label='Language' id='demo-simple-select-outlined' labelId='demo-simple-select-outlined-label'>
+                    <MenuItem value={10}>English</MenuItem>
+                    <MenuItem value={20}>Hindi</MenuItem>
+                    <MenuItem value={30}>Gujarati</MenuItem>
+                  </Select>
+                </FormControl>
+              </Grid>
+              <Grid item xs={12}>
+                <TextField type='text' label='Title' placeholder='Title' fullWidth />
+              </Grid>
+              <Grid item sm={12}>
+                <EditorWrapper>
+                  <CardSnippet
+                    sx={{ overflow: 'visible' }}
+                    title='Description (optional)'
+                    code={{
+                      tsx: null,
+                      jsx: source.EditorControlledJSXCode
+                    }}
+                  >
+                    <EditorControlled />
+                  </CardSnippet>
+                </EditorWrapper>
+              </Grid>
+              <Grid item xs={12}>
+                <TextField type='number' label='Users' placeholder='Users' fullWidth />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField type='number' label='Days' placeholder='Days' fullWidth />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField type='number' label='Price(in ₹)' placeholder='Price' fullWidth />
+              </Grid>
+              <Grid item sm={12} xs={12}>
+                Upload Icon
+                <TextField
+                  type='file'
+                  fullWidth
+                  InputProps={{
+                    inputProps: { accept: 'image/png, image/jpeg' },
+                  }}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <FormControlLabel control={<Switch defaultUnChecked />} label='Popular Badge' />
+              </Grid>
+              <Grid item xs={12}>
+                <FormControlLabel control={<Switch defaultUnChecked />} label='Unlimited use' />
+              </Grid>
+              <CardActions>
+                <Button size='large' type='submit' sx={{ marginTop: '20px' }} variant='contained'>
+                  Save
+                </Button>
+              </CardActions>
             </Grid>
-        </DatePickerWrapper>
-    )
+          </CardContent>
+        </Card>
+      </EditorWrapper>
+    </DatePickerWrapper>
+  )
 }
 
-export default SessionsList
+export default index

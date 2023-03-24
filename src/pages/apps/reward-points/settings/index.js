@@ -1,100 +1,84 @@
-// ** React Imports
-import { useState, useEffect, forwardRef } from 'react'
-
-// ** MUI Imports
-import Grid from '@mui/material/Grid'
-import Card from '@mui/material/Card'
+import Button from '@mui/material/Button'
+import TextField from '@mui/material/TextField'
+import FormControl from '@mui/material/FormControl'
+import InputLabel from '@mui/material/InputLabel'
+import Select from '@mui/material/Select'
+import MenuItem from '@mui/material/MenuItem'
 import CardHeader from '@mui/material/CardHeader'
+import Grid from '@mui/material/Grid'
+import { Card, Divider, FormControlLabel, Switch, Typography } from '@mui/material'
+import CardSnippet from 'src/@core/components/card-snippet'
+import CardContent from '@mui/material/CardContent'
+import CardActions from '@mui/material/CardActions'
+import EditorControlled from 'src/views/forms/form-elements/editor/EditorControlled'
+import * as source from 'src/views/forms/form-elements/editor/EditorSourceCode'
+import { EditorWrapper } from 'src/@core/styles/libs/react-draft-wysiwyg'
+import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
+import { styled } from '@mui/material/styles'
+import { useState } from 'react'
 
-// ** Icon Imports
-import Icon from 'src/@core/components/icon'
-
-// ** Store & Actions Imports
-import { useDispatch, useSelector } from 'react-redux'
-import { fetchData, deleteInvoice } from 'src/store/apps/invoice'
-
-// ** Styled Components
+// ** Source code imports
 import DatePickerWrapper from 'src/@core/styles/libs/react-datepicker'
 
-import CardStatisticsHorizontal from 'src/@core/components/card-statistics/card-stats-horizontal'
-import CourseBundleTable from 'src/views/table/mui/courseBundleTable'
-import SessionsTable from 'src/views/table/mui/SessionsTable'
+const ButtonStyled = styled(Button)(({ theme }) => ({
+  [theme.breakpoints.down('sm')]: {
+    width: '100%',
+    textAlign: 'center'
+  }
+}))
 
-/* eslint-enable */
-const SessionsList = () => {
-    // ** State
-    const [dates, setDates] = useState([])
-    const [value, setValue] = useState('')
-    const [pageSize, setPageSize] = useState(10)
-    const [statusValue, setStatusValue] = useState('')
-    const [endDateRange, setEndDateRange] = useState(null)
-    const [selectedRows, setSelectedRows] = useState([])
-    const [startDateRange, setStartDateRange] = useState(null)
+const Index = () => {
+    
+  const [invisible, setInvisible] = useState(false)
 
-    // ** Hooks
-    const dispatch = useDispatch()
-    const store = useSelector(state => state.invoice)
-    useEffect(() => {
-        dispatch(
-            fetchData({
-                dates,
-                q: value,
-                status: statusValue
-            })
-        )
-    }, [dispatch, statusValue, value, dates])
+  const handlePointsConversion = () => {
+    setInvisible(!invisible)
+  }
 
-    const handleFilter = val => {
-        setValue(val)
-    }
-
-    const handleStatusValue = e => {
-        setStatusValue(e.target.value)
-    }
-
-    const handleOnChangeRange = dates => {
-        const [start, end] = dates
-        if (start !== null && end !== null) {
-            setDates(dates)
-        }
-        setStartDateRange(start)
-        setEndDateRange(end)
-    }
-
-    return (
-        <DatePickerWrapper>
+  return (
+    <DatePickerWrapper>
+      <EditorWrapper>
+        <Card sx={{ mt: 4 }}>
+          <CardHeader title='Reward Points Settings' />
+          <Divider sx={{ m: '0 !important' }} />
+          <CardContent>
             <Grid container spacing={6}>
-                <Grid item xs={6}  lg={4} sm={6}>
-                    <CardStatisticsHorizontal
-                        stats='Total 1:1 sessions'
-                        title='8'
-                        icon={<Icon icon="material-symbols:video-camera-front" />}
-                    />
+              <Grid item xs={12}>
+                <FormControlLabel control={<Switch defaultChecked />} label='Active' />
+                <Typography variant='body2'>
+                  By activating this feature, the system will calculate point rewards based on user actions
+                </Typography>
+              </Grid>
+              <Grid item xs={12}>
+                <FormControlLabel
+                  control={<Switch defaultChecked />}
+                  label='Points conversion'
+                  onChange={handlePointsConversion}
+                />
+                <Typography variant='body2'>
+                  Enable this feature to allow users to convert their point rewards to the wallet charge
+                </Typography>
+              </Grid>
+              {!invisible && (
+                <Grid item mt={3} sm={12} xs={12}>
+                  <TextField id='points' type='number' label='Points Conversion' fullWidth />
+                  <Typography variant='body2'>
+                    The user will get 1 currency unit for this amount of points. e.g. if you enter 5, the user will get
+                    Rs. 1 for each 5 points
+                  </Typography>
                 </Grid>
-                <Grid item xs={6}  lg={4} sm={6}>
-                    <CardStatisticsHorizontal
-                        stats='Pending 1:1 sessions'
-                        title='0'
-                        icon={<Icon icon='ph:eye-bold' />}
-                    />
-                </Grid>
-                <Grid item xs={6}  lg={4} sm={6}>
-                    <CardStatisticsHorizontal
-                        stats='Total Duration'
-                        title='12:55 hours'
-                        icon={<Icon icon="ic:sharp-access-time" />}
-                    />
-                </Grid>
-
-                <Grid item xs={12} >
-                    <Card>
-                        <CardHeader title='List of 1:1 sessions approved' />
-                        <SessionsTable />
-                    </Card>
-                </Grid>
+              )}
+              <CardActions>
+                <Button size='large' type='submit' sx={{ marginTop: '20px' }} variant='contained'>
+                  Save
+                </Button>
+              </CardActions>
             </Grid>
-        </DatePickerWrapper>
-    )
+          </CardContent>
+        </Card>
+      </EditorWrapper>
+    </DatePickerWrapper>
+  )
 }
 
-export default SessionsList
+export default Index
