@@ -43,7 +43,7 @@ const NewCourseNotice = () => {
           <DialogContent sx={{ pb: 6, px: { xs: 8, sm: 15 }, pt: { xs: 8, sm: 12.5 }, position: 'relative' }}>
             <Box sx={{ mb: 8, textAlign: 'center' }}>
               <Typography variant='h5' sx={{ mb: 3, lineHeight: '2rem' }}>
-                Add details of the Notice
+                Add Details Of The Notice
               </Typography>
             </Box>
             <Grid container spacing={6}>

@@ -1,100 +1,100 @@
 // ** React Imports
-import { useState, useEffect, forwardRef } from 'react'
+import { useState, forwardRef } from 'react'
+
+import SwitchesCustomized from 'src/views/forms/form-elements/switch/SwitchesCustomized'
 
 // ** MUI Imports
+import * as source from 'src/views/forms/form-elements/editor/EditorSourceCode'
+import Box from '@mui/material/Box'
+import Chip from '@mui/material/Chip'
 import Grid from '@mui/material/Grid'
 import Card from '@mui/material/Card'
-import CardHeader from '@mui/material/CardHeader'
+import Switch from '@mui/material/Switch'
+import Dialog from '@mui/material/Dialog'
+import Button from '@mui/material/Button'
+import MenuItem from '@mui/material/MenuItem'
+import TextField from '@mui/material/TextField'
+import IconButton from '@mui/material/IconButton'
+import Typography from '@mui/material/Typography'
+import InputLabel from '@mui/material/InputLabel'
+import FormControl from '@mui/material/FormControl'
+import CardContent from '@mui/material/CardContent'
+import Fade from '@mui/material/Fade'
+import DialogContent from '@mui/material/DialogContent'
+import DialogActions from '@mui/material/DialogActions'
+import FormControlLabel from '@mui/material/FormControlLabel'
+import Select from '@mui/material/Select'
+import { styled } from '@mui/material/styles'
 
 // ** Icon Imports
 import Icon from 'src/@core/components/icon'
+import { EditorWrapper } from 'src/@core/styles/libs/react-draft-wysiwyg'
+import CardSnippet from 'src/@core/components/card-snippet'
+import EditorControlled from 'src/views/forms/form-elements/editor/new-course-form-description-editor'
+import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
 
-// ** Store & Actions Imports
-import { useDispatch, useSelector } from 'react-redux'
-import { fetchData, deleteInvoice } from 'src/store/apps/invoice'
+const NewCourseNotice = () => {
+  const handleSubmit = () => {}
 
-// ** Styled Components
-import DatePickerWrapper from 'src/@core/styles/libs/react-datepicker'
-
-import CardStatisticsHorizontal from 'src/@core/components/card-statistics/card-stats-horizontal'
-import CourseBundleTable from 'src/views/table/mui/courseBundleTable'
-import SessionsTable from 'src/views/table/mui/SessionsTable'
-
-/* eslint-enable */
-const SessionsList = () => {
-    // ** State
-    const [dates, setDates] = useState([])
-    const [value, setValue] = useState('')
-    const [pageSize, setPageSize] = useState(10)
-    const [statusValue, setStatusValue] = useState('')
-    const [endDateRange, setEndDateRange] = useState(null)
-    const [selectedRows, setSelectedRows] = useState([])
-    const [startDateRange, setStartDateRange] = useState(null)
-
-    // ** Hooks
-    const dispatch = useDispatch()
-    const store = useSelector(state => state.invoice)
-    useEffect(() => {
-        dispatch(
-            fetchData({
-                dates,
-                q: value,
-                status: statusValue
-            })
-        )
-    }, [dispatch, statusValue, value, dates])
-
-    const handleFilter = val => {
-        setValue(val)
-    }
-
-    const handleStatusValue = e => {
-        setStatusValue(e.target.value)
-    }
-
-    const handleOnChangeRange = dates => {
-        const [start, end] = dates
-        if (start !== null && end !== null) {
-            setDates(dates)
-        }
-        setStartDateRange(start)
-        setEndDateRange(end)
-    }
-
-    return (
-        <DatePickerWrapper>
+  return (
+    <Card>
+      <Grid container spacing={6}>
+        <form onSubmit={handleSubmit}>
+          <DialogContent sx={{ pb: 6, px: { xs: 8, sm: 15 }, pt: { xs: 8, sm: 12.5 }, position: 'relative' }}>
+            <Box sx={{ mb: 8, textAlign: 'center' }}>
+              <Typography variant='h5' sx={{ mb: 3, lineHeight: '2rem' }}>
+                Send Newsletter
+              </Typography>
+            </Box>
             <Grid container spacing={6}>
-                <Grid item xs={6}  lg={4} sm={6}>
-                    <CardStatisticsHorizontal
-                        stats='Total 1:1 sessions'
-                        title='8'
-                        icon={<Icon icon="material-symbols:video-camera-front" />}
-                    />
-                </Grid>
-                <Grid item xs={6}  lg={4} sm={6}>
-                    <CardStatisticsHorizontal
-                        stats='Pending 1:1 sessions'
-                        title='0'
-                        icon={<Icon icon='ph:eye-bold' />}
-                    />
-                </Grid>
-                <Grid item xs={6}  lg={4} sm={6}>
-                    <CardStatisticsHorizontal
-                        stats='Total Duration'
-                        title='12:55 hours'
-                        icon={<Icon icon="ic:sharp-access-time" />}
-                    />
-                </Grid>
+              <Grid item sm={12} xs={12}>
+                <TextField fullWidth label='Title' />
+              </Grid>
+              <Grid item xs={12} sm={12}>
+                <FormControl fullWidth>
+                  <InputLabel id='demo-simple-select-outlined-label'>Sending Method</InputLabel>
+                  <Select
+                  
+                    // value={category}
+                    label='Sending Method'
+                    defaultValue=''
+                    id='demo-simple-select-outlined'
+                    labelId='demo-simple-select-outlined-label'
 
-                <Grid item xs={12} >
-                    <Card>
-                        <CardHeader title='List of 1:1 sessions approved' />
-                        <SessionsTable />
-                    </Card>
-                </Grid>
+                    // onChange={e => setCategory(e.target.value)}
+                    placeholder='Sending Method'
+                  >
+                    <MenuItem value={10}>Send to all Newsletter Members</MenuItem>
+                    <MenuItem value={20}>Send to BCC email</MenuItem>
+                    <MenuItem value={30}>Send to an Excel list</MenuItem>
+                  </Select>
+                </FormControl>
+              </Grid>
+              <Grid item xs={12} sm={12}>
+                <EditorWrapper>
+                  <CardSnippet
+                    sx={{ overflow: 'visible' }}
+                    title='Description'
+                    code={{
+                      tsx: null,
+                      jsx: source.EditorControlledJSXCode
+                    }}
+                  >
+                    <EditorControlled />
+                  </CardSnippet>
+                </EditorWrapper>
+              </Grid>
             </Grid>
-        </DatePickerWrapper>
-    )
+          </DialogContent>
+          <DialogActions sx={{ pb: { xs: 8, sm: 12.5 } }}>
+            <Button type='submit' variant='contained' sx={{ mr: 2 }}>
+              Send the notice
+            </Button>
+          </DialogActions>
+        </form>
+      </Grid>
+    </Card>
+  )
 }
 
-export default SessionsList
+export default NewCourseNotice
