@@ -26,11 +26,11 @@ const navigation = () => {
           path: '/apps/categories/boards-and-exam'
         },
         {
-          title: 'Class',
+          title: 'Classes',
           path: '/apps/categories/class'
         },
         {
-          title: 'Stream',
+          title: 'Streams',
           path: '/apps/categories/stream'
         },
         {

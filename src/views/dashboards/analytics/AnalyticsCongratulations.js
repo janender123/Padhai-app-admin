@@ -56,15 +56,18 @@ const WelcomeAdmin = () => {
       <CardContent sx={{ p: theme => `${theme.spacing(6.75, 7.5)} !important` }}>
         <Grid container spacing={6}>
           <Grid item xs={12} sm={6}>
-            <Typography sx={{ mb: 1.5, fontSize: '2.5rem', fontWeight: 600, whiteSpace: 'nowrap', color: 'white' }}>
-              Welcome Admin ! 🎉
+            <Typography variant='h5' sx={{ mb: 4.5, color: 'white', fontSize: '2.4rem !important' }}>
+              Welcome{' '}
+              <Box component='span' sx={{ fontWeight: 'bold' }}>
+                Admin
+              </Box>
+              ! 🎉
             </Typography>
-
             <Typography variant='body2'>
               <Box component='span' sx={{ fontWeight: 600 }}></Box>{' '}
             </Typography>
             <Typography sx={{ mb: 4.5 }} variant='body2'></Typography>
-            {showBox && <Box height={60} />}
+            {showBox && <Box height={90} />}
           </Grid>
           <StyledGrid item xs={12} sm={6}>
             <Img alt='Welcome Admin' src={`/images/cards/illustration-john-${theme.palette.mode}.png`} />

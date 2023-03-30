@@ -17,11 +17,10 @@ const ScheduleSession = ({ popperPlacement }) => {
   const [time, setTime] = useState(new Date())
 
   return (
-    <Box sx={{ width: '500px', display: 'flex', flexWrap: 'wrap' }} className='demo-space-x'>
-      <div>
+    <div style={{ display: 'flex' }}>
+      <Box sx={{ width: '100% !important', display: 'flex', flexWrap: 'wrap' }} className='demo-space-x'>
         <DatePicker
-          fullWidth
-          style={{ width: '500px' }}
+          style={{ width: '100% !important' }}
           timeIntervals='60'
           showTimeSelect
           selected={time}
@@ -31,10 +30,11 @@ const ScheduleSession = ({ popperPlacement }) => {
           onChange={date => setTime(date)}
           minTime={setHours(setMinutes(new Date(), 0), 10)}
           maxTime={setHours(setMinutes(new Date(), 0), 21)}
+          minDate={new Date()}
           customInput={<CustomInput label='Schedule a 1 hour session' />}
         />
-      </div>
-    </Box>
+      </Box>
+    </div>
   )
 }
 

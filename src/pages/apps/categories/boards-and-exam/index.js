@@ -19,9 +19,9 @@ const BoardsList = () => {
       <Grid container spacing={6}>
         <Grid item xs={6}>
           <CardStatisticsHorizontal
-            stats='No. of Boards'
-            title='8'
-            icon={<Icon icon='mdi:account-outline' />}
+            stats='Boards'
+            title='78'
+            icon={<Icon icon='mdi:human-male-board-poll' />}
 
           />
         </Grid>
@@ -29,7 +29,7 @@ const BoardsList = () => {
           <CardStatisticsHorizontal
             stats='Total Exams'
             title='4'
-            icon={<Icon icon='mdi:account-outline' />}
+            icon={<Icon icon='healthicons:i-exam-multiple-choice-outline' />}
 
           />
         </Grid>

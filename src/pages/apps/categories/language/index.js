@@ -14,9 +14,9 @@ const LanguageList = () => {
       <Grid container spacing={6}>
         <Grid item xs={6}>
           <CardStatisticsHorizontal
-            stats='No. of Languages'
+            stats='Languages'
             title='8'
-            icon={<Icon icon='mdi:account-outline' />}
+            icon={<Icon icon='ic:outline-translate' />}
           />
         </Grid>
         <Grid item xs={12}>

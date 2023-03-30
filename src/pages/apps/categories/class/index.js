@@ -182,9 +182,9 @@ const InvoiceList = () => {
       <Grid container spacing={6}>
         <Grid item xs={6}>
           <CardStatisticsHorizontal
-            stats='No. of Classes'
+            stats='Classes'
             title='8'
-            icon={<Icon icon='mdi:account-outline' />}
+            icon={<Icon icon='mdi:tab' />}
 
           />
         </Grid>

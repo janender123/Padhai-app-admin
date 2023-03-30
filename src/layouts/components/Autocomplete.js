@@ -34,24 +34,24 @@ const defaultSuggestionsData = [
     category: 'Popular Searches',
     suggestions: [
       {
-        icon: 'mdi:chart-donut',
+        icon: 'fluent-mdl2:publish-course',
         suggestion: 'Course',
-        link: '/dashboards/crm'
+        link: '/apps/courses/courses-list/'
       },
       {
-        icon: 'mdi:poll',
+        icon: 'material-symbols:video-camera-back-outline-sharp',
         suggestion: 'Live Class',
-        link: '/dashboards/analytics'
+        link: '/apps/live-classes/live-classes-list/'
       },
       {
-        icon: 'mdi:chart-bubble',
+        icon: 'material-symbols:quiz-outline-rounded',
         suggestion: 'Contests',
-        link: '/dashboards/ecommerce'
+        link: '/apps/quiz-and-contests/contests/manage-contest/'
       },
       {
-        icon: 'mdi:account-group',
+        icon: 'academicons:coursera',
         suggestion: 'Course Bundles',
-        link: '/apps/user/list'
+        link: '/apps/course-bundle/list'
       }
     ]
   },
@@ -59,24 +59,24 @@ const defaultSuggestionsData = [
     category: 'Quiz and Contests',
     suggestions: [
       {
-        icon: 'mdi:calendar-blank',
+        icon: 'material-symbols:quiz-outline-rounded',
         suggestion: 'Manage Q&A',
-        link: '/apps/calendar'
+        link: '/apps/quiz-and-contests/contests/manage-questions/'
       },
       {
-        icon: 'mdi:format-list-numbered',
+        icon: 'material-symbols:flight-class-outline-rounded',
         suggestion: 'Manage contest',
-        link: '/apps/invoice/list'
+        link: '/apps/quiz-and-contests/contests/manage-contest/'
       },
       {
-        icon: 'mdi:currency-usd',
+        icon: 'mdi:calendar',
         suggestion: 'Daily Quiz',
-        link: '/pages/pricing'
+        link: '/apps/quiz-and-contests/daily-quiz/'
       },
       {
-        icon: 'mdi:account-cog-outline',
+        icon: 'material-symbols:new-label-outline',
         suggestion: 'New Question',
-        link: '/pages/account-settings/account'
+        link: '/apps/quiz-and-contests/new-question/'
       }
     ]
   },
@@ -84,24 +84,24 @@ const defaultSuggestionsData = [
     category: 'Categories',
     suggestions: [
       {
-        icon: 'mdi:format-text-variant-outline',
+        icon: 'mdi:human-male-board-poll',
         suggestion: 'Boards and Exams',
-        link: '/ui/typography'
+        link: '/apps/categories/boards-and-exam/'
       },
       {
         icon: 'mdi:tab',
         suggestion: 'Class',
-        link: '/components/tabs'
+        link: '/apps/categories/class/'
       },
       {
-        icon: 'mdi:gesture-tap-button',
+        icon: 'material-symbols:view-stream-rounded',
         suggestion: 'Stream',
-        link: '/components/buttons'
+        link: '/apps/categories/stream/'
       },
       {
-        icon: 'mdi:card-bulleted-settings-outline',
+        icon: 'ic:outline-translate',
         suggestion: 'Language',
-        link: '/ui/cards/advanced'
+        link: '/apps/categories/language/'
       }
     ]
   },
@@ -111,12 +111,12 @@ const defaultSuggestionsData = [
       {
         icon: 'mdi:format-list-checkbox',
         suggestion: 'List of Materials',
-        link: '/forms/form-elements/select'
+        link: '/apps/study-material/list/'
       },
       {
         icon: 'mdi:lastpass',
         suggestion: 'New Materials',
-        link: '/forms/form-elements/autocomplete'
+        link: '/apps/study-material/new/'
       }
     ]
   }

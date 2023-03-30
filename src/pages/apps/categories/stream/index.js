@@ -179,9 +179,9 @@ const InvoiceList = () => {
       <Grid container spacing={6}>
         <Grid item xs={6}>
           <CardStatisticsHorizontal
-            stats='No. of Streams'
+            stats='Streams'
             title='3'
-            icon={<Icon icon='mdi:account-outline' />}
+            icon={<Icon icon='material-symbols:view-stream-rounded' />}
 
           />
         </Grid>
