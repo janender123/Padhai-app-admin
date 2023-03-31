@@ -49,7 +49,13 @@ const AnswerOption = () => {
             </Grid>
             <Grid item mt={3} sm={12} xs={12}>
               Answer Image (optional)
-              <TextField id='name' type='file' fullWidth />
+              <TextField
+                type='file'
+                fullWidth
+                InputProps={{
+                  inputProps: { accept: 'image/png, image/jpeg' }
+                }}
+              />
             </Grid>
             <Grid item mt={3} sm={12} xs={12}>
               <SwitchesCustomized />
@@ -162,7 +168,13 @@ const AddNewQuestionInStudyMaterial = () => {
             </Grid>
             <Grid item sm={6} xs={12}>
               Image (Optional)
-              <TextField type='file' id='image' fullWidth />
+              <TextField
+                type='file'
+                fullWidth
+                InputProps={{
+                  inputProps: { accept: 'image/png, image/jpeg' }
+                }}
+              />
             </Grid>
             <Grid item sm={6} xs={12} mt={5.5}>
               <FormControl fullWidth>
@@ -194,7 +206,13 @@ const AddNewQuestionInStudyMaterial = () => {
               </Grid>
               <Grid item mt={3} sm={12} xs={12}>
                 Answer Image (optional)
-                <TextField id='name' type='file' fullWidth />
+                <TextField
+                  type='file'
+                  fullWidth
+                  InputProps={{
+                    inputProps: { accept: 'image/png, image/jpeg' }
+                  }}
+                />
               </Grid>
               <Grid item mt={3} sm={12} xs={12}>
                 <SwitchesCustomized />
@@ -206,7 +224,13 @@ const AddNewQuestionInStudyMaterial = () => {
               </Grid>
               <Grid item mt={3} sm={12} xs={12}>
                 Answer Image (optional)
-                <TextField id='name' type='file' fullWidth />
+                <TextField
+                  type='file'
+                  fullWidth
+                  InputProps={{
+                    inputProps: { accept: 'image/png, image/jpeg' }
+                  }}
+                />
               </Grid>
               <Grid item mt={3} sm={12} xs={12}>
                 <SwitchesCustomized />
@@ -246,7 +270,13 @@ const AddNewQuestionInStudyMaterial = () => {
             {!invisible && (
               <Grid item mt={3} sm={12} xs={12}>
                 Upload Video
-                <TextField id='video' type='file' fullWidth />
+                <TextField
+                  type='file'
+                  fullWidth
+                  InputProps={{
+                    inputProps: { accept: 'video/mp4, video/mkv, video/webm' }
+                  }}
+                />
               </Grid>
             )}
             <Grid item sm={12} xs={12}>

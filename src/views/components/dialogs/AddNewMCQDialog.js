@@ -36,26 +36,29 @@ const AnswerOption = () => {
   return (
     <>
       {visible && (
-        <Grid item sm={12} xs={12}>
+        <Card>
           <CardHeader action={<Icon icon='mdi:close' fontSize={20} onClick={removeElement} />} />
-          <CardSnippet
-            title=''
-            code={{
-              tsx: null
-            }}
-          >
-            <Grid item sm={12} xs={12} mt={3}>
-              <TextField id='name' required fullWidth label='Answer Title' />
+          <CardContent>
+            <Grid container spacing={6}>
+              <Grid item sm={12} xs={12} mt={3}>
+                <TextField id='name' required fullWidth label='Answer Title' />
+              </Grid>
+              <Grid item mt={3} sm={12} xs={12}>
+                Answer Image (optional)
+                <TextField
+                  type='file'
+                  fullWidth
+                  InputProps={{
+                    inputProps: { accept: 'image/png, image/jpeg' }
+                  }}
+                />
+              </Grid>
+              <Grid item mt={3} sm={12} xs={12}>
+                <SwitchesCustomized />
+              </Grid>
             </Grid>
-            <Grid item mt={3} sm={12} xs={12}>
-              Answer Image (optional)
-              <TextField id='name' type='file' fullWidth />
-            </Grid>
-            <Grid item mt={3} sm={12} xs={12}>
-              <SwitchesCustomized />
-            </Grid>
-          </CardSnippet>
-        </Grid>
+          </CardContent>
+        </Card>
       )}
     </>
   )
@@ -66,44 +69,50 @@ const Question = () => {
   const [language, setLanguage] = useState('')
 
   const [answerOptionList, setAnswerOptionList] = useState([
-    <Grid item key='1' sm={12} xs={12}>
-      <CardSnippet
-        title=''
-        code={{
-          tsx: null
-        }}
-      >
-        <Grid item sm={12} xs={12} mt={3}>
-          <TextField id='name' required fullWidth label='Answer Title' />
+    <Card key={1}>
+      <CardContent>
+        <Grid container spacing={6}>
+          <Grid item sm={12} xs={12} mt={3}>
+            <TextField id='name' required fullWidth label='Answer Title' />
+          </Grid>
+          <Grid item mt={3} sm={12} xs={12}>
+            Answer Image (optional)
+            <TextField
+              type='file'
+              fullWidth
+              InputProps={{
+                inputProps: { accept: 'image/png, image/jpeg' }
+              }}
+            />
+          </Grid>
+          <Grid item mt={3} sm={12} xs={12}>
+            <SwitchesCustomized />
+          </Grid>
         </Grid>
-        <Grid item mt={3} sm={12} xs={12}>
-          Answer Image (optional)
-          <TextField id='name' type='file' fullWidth />
+      </CardContent>
+    </Card>,
+    <Card key={2}>
+      <CardContent>
+        <Grid container spacing={6}>
+          <Grid item sm={12} xs={12} mt={3}>
+            <TextField id='name' required fullWidth label='Answer Title' />
+          </Grid>
+          <Grid item mt={3} sm={12} xs={12}>
+            Answer Image (optional)
+            <TextField
+              type='file'
+              fullWidth
+              InputProps={{
+                inputProps: { accept: 'image/png, image/jpeg' }
+              }}
+            />
+          </Grid>
+          <Grid item mt={3} sm={12} xs={12}>
+            <SwitchesCustomized />
+          </Grid>
         </Grid>
-        <Grid item mt={3} sm={12} xs={12}>
-          <SwitchesCustomized />
-        </Grid>
-      </CardSnippet>
-    </Grid>,
-    <Grid item key='2' sm={12} xs={12}>
-      <CardSnippet
-        title=''
-        code={{
-          tsx: null
-        }}
-      >
-        <Grid item sm={12} xs={12} mt={3}>
-          <TextField id='name' required fullWidth label='Answer Title' />
-        </Grid>
-        <Grid item mt={3} sm={12} xs={12}>
-          Answer Image (optional)
-          <TextField id='name' type='file' fullWidth />
-        </Grid>
-        <Grid item mt={3} sm={12} xs={12}>
-          <SwitchesCustomized />
-        </Grid>
-      </CardSnippet>
-    </Grid>
+      </CardContent>
+    </Card>
   ])
 
   const handleSave = () => {
@@ -154,7 +163,13 @@ const Question = () => {
             </Grid>
             <Grid item sm={12} xs={12}>
               Image (Optional)
-              <TextField type='file' id='image' fullWidth />
+              <TextField
+                type='file'
+                fullWidth
+                InputProps={{
+                  inputProps: { accept: 'image/png, image/jpeg' }
+                }}
+              />
             </Grid>
             <Grid item sm={12} xs={12}>
               <Divider textAlign='left'>Answers</Divider>
@@ -164,7 +179,9 @@ const Question = () => {
                 Add Answer
               </Button>
             </Grid>
-            {answerOptionList}
+            <Grid item sm={12} xs={12}>
+              {answerOptionList}
+            </Grid>
           </Grid>
         </CardContent>
       </Card>

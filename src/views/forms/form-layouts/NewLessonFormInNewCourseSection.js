@@ -29,19 +29,18 @@ import * as source from 'src/views/forms/form-elements/editor/EditorSourceCode'
 import Divider from '@mui/material/Divider'
 import { EditorWrapper } from 'src/@core/styles/libs/react-draft-wysiwyg'
 
-
 const NewLesson = () => {
   const [language, setLanguage] = useState('')
   const [Description, setDescription] = useState('')
   const [title, setTitle] = useState('')
   const [video, setVideo] = useState('')
-  
-return (
+
+  return (
     <form onSubmit={e => e.preventDefault()}>
       <CardHeader title='New Lesson Form' />
       <Divider sx={{ m: '0 !important' }} />
       <Grid container spacing={5}>
-        <Grid item xs={12} >
+        <Grid item xs={12}>
           <FormControl fullWidth>
             <InputLabel id='demo-simple-select-outlined-label'>Language</InputLabel>
             <Select
@@ -69,11 +68,11 @@ return (
         <Grid item xs={12}>
           Upload Video File
           <TextField
-            fullWidth
             type='file'
-            value={video}
-            placeholder='Add title of the lesson'
-            onChange={e => setVideo(e.target.value)}
+            fullWidth
+            InputProps={{
+              inputProps: { accept: 'video/mp4, video/mkv, video/webm' }
+            }}
           />
         </Grid>
         <Grid item xs={12}>
@@ -126,8 +125,6 @@ return (
       </Grid>
     </form>
   )
-
 }
 
-
-export default NewLesson;
+export default NewLesson

@@ -56,12 +56,16 @@ const AddNewTFInStudyMaterial = () => {
           </Grid>
           <Grid item sm={12} xs={12}>
             Image (Optional)
-            <TextField type='file' id='image' autoFocus fullWidth />
+            <TextField
+              type='file'
+              fullWidth
+              InputProps={{
+                inputProps: { accept: 'image/png, image/jpeg' }
+              }}
+            />
           </Grid>
           <Grid item sm={12} xs={12}>
-            <Divider textAlign='left'>
-              Answers
-            </Divider>
+            <Divider textAlign='left'>Answers</Divider>
           </Grid>
           <Grid item sm={12} xs={12}>
             <FormControl fullWidth>
@@ -82,16 +86,16 @@ const AddNewTFInStudyMaterial = () => {
             <SwitchesCustomizedStatus />
           </Grid>
         </Grid>
-      <CardActions>
-        <Button size='large' type='submit' sx={{ mr: 2 }} variant='contained'>
-          Save
-        </Button>
-        <Button type='reset' size='large' color='secondary' variant='outlined'>
-          Discard
-        </Button>
-      </CardActions>
-    </form >
-    </Fragment >
+        <CardActions>
+          <Button size='large' type='submit' sx={{ mr: 2 }} variant='contained'>
+            Save
+          </Button>
+          <Button type='reset' size='large' color='secondary' variant='outlined'>
+            Discard
+          </Button>
+        </CardActions>
+      </form>
+    </Fragment>
   )
 }
 

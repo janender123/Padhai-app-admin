@@ -70,15 +70,10 @@ const renderClient = params => {
   const color = states[stateNum]
   if (row.avatar.length) {
     return <Avatar alt='avatar' src={`/images/avatars/${row.avatar}`} width={55} height={60} />
-
-
   } else {
-    return (
-      <Typography sx={{ fontSize: '12px' }}>No Image</Typography>
-    )
+    return <Typography sx={{ fontSize: '12px' }}>No Image</Typography>
   }
 }
-
 
 const prize_status = {
   1: { title: 'Distributed', color: 'primary' },
@@ -95,39 +90,44 @@ const escapeRegExp = value => {
 }
 
 const AnswerOption = () => {
-  const [visible, setVisible] = useState(true);
+  const [visible, setVisible] = useState(true)
 
   const removeElement = () => {
-    setVisible((prev) => !prev);
-  };
-  
-return (<>
-    {visible && (
-      <Grid item sm={12} xs={12} >
-        <CardHeader
-          action={
-            <Icon icon='mdi:close' fontSize={20} onClick={removeElement} />
+    setVisible(prev => !prev)
+  }
 
-          }
-        />
-        <CardSnippet
-          title=''
-          code={{
-            tsx: null,
-          }}>
-          <Grid item sm={12} xs={12} mt={3}>
-            <TextField id='name' required fullWidth label='Write your answer here...' />
-          </Grid>
-          <Grid item mt={3} sm={12} xs={12}>
-            Answer Image (optional)
-            <TextField id='name' type='file' fullWidth />
-          </Grid>
-          <Grid item mt={3} sm={12} xs={12}>
-            <SwitchesCustomized />
-          </Grid>
-        </CardSnippet>
-      </Grid>)}
-  </>)
+  return (
+    <>
+      {visible && (
+        <Grid item sm={12} xs={12}>
+          <CardHeader action={<Icon icon='mdi:close' fontSize={20} onClick={removeElement} />} />
+          <CardSnippet
+            title=''
+            code={{
+              tsx: null
+            }}
+          >
+            <Grid item sm={12} xs={12} mt={3}>
+              <TextField id='name' required fullWidth label='Write your answer here...' />
+            </Grid>
+            <Grid item mt={3} sm={12} xs={12}>
+              Answer Image (optional)
+              <TextField
+                type='file'
+                fullWidth
+                InputProps={{
+                  inputProps: { accept: 'image/png, image/jpeg' }
+                }}
+              />
+            </Grid>
+            <Grid item mt={3} sm={12} xs={12}>
+              <SwitchesCustomized />
+            </Grid>
+          </CardSnippet>
+        </Grid>
+      )}
+    </>
+  )
 }
 
 const EditQuestion = () => {
@@ -136,159 +136,165 @@ const EditQuestion = () => {
   const handleClickOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
   const [language, setLanguage] = useState([])
-  const [answerOptionList, setAnswerOptionList] = useState([]);
+  const [answerOptionList, setAnswerOptionList] = useState([])
 
   const onAddBtnClick = () => {
-    setAnswerOptionList(answerOptionList.concat(<AnswerOption key={answerOptionList.length} />));
+    setAnswerOptionList(answerOptionList.concat(<AnswerOption key={answerOptionList.length} />))
   }
   const [childCategory, setChildCategory] = useState('')
   const [category, setCategory] = useState('')
   const [subCategory, setSubCategory] = useState('')
-  
-return (<>
-    <IconButton size='small' sx={{ mr: 0.5 }} onClick={() => ''}>
-      <Icon icon='mdi:pencil-outline' fontSize={20} onClick={() => setShow(true)} />
-    </IconButton>
-    <Dialog
-      fullWidth
-      open={show}
-      maxWidth='md'
-      scroll='body'
-      onClose={() => setShow(false)}
 
-      // TransitionComponent={Transition}
-      onBackdropClick={() => setShow(false)}
-    >
-      <DialogContent sx={{ pb: 6, px: { xs: 8, sm: 15 }, pt: { xs: 8, sm: 12.5 }, position: 'relative' }}>
-        <CardHeader title='Edit Question' />
-        <Divider sx={{ m: '0 !important' }} />
-        <form onSubmit={e => e.preventDefault()}>
-          <Grid container spacing={6}>
-            <Grid item sm={6} xs={12} mt={3}>
-              <FormControl fullWidth>
-                <InputLabel id='demo-simple-select-outlined-label'>Language</InputLabel>
-                <Select
-                  value={language}
-                  onChange={e => setLanguage(e.target.value)}
-                  label='Language'
-                  id='demo-simple-select-outlined'
-                  labelId='demo-simple-select-outlined-label'
+  return (
+    <>
+      <IconButton size='small' sx={{ mr: 0.5 }} onClick={() => ''}>
+        <Icon icon='mdi:pencil-outline' fontSize={20} onClick={() => setShow(true)} />
+      </IconButton>
+      <Dialog
+        fullWidth
+        open={show}
+        maxWidth='md'
+        scroll='body'
+        onClose={() => setShow(false)}
+
+        // TransitionComponent={Transition}
+        onBackdropClick={() => setShow(false)}
+      >
+        <DialogContent sx={{ pb: 6, px: { xs: 8, sm: 15 }, pt: { xs: 8, sm: 12.5 }, position: 'relative' }}>
+          <CardHeader title='Edit Question' />
+          <Divider sx={{ m: '0 !important' }} />
+          <form onSubmit={e => e.preventDefault()}>
+            <Grid container spacing={6}>
+              <Grid item sm={6} xs={12} mt={3}>
+                <FormControl fullWidth>
+                  <InputLabel id='demo-simple-select-outlined-label'>Language</InputLabel>
+                  <Select
+                    value={language}
+                    onChange={e => setLanguage(e.target.value)}
+                    label='Language'
+                    id='demo-simple-select-outlined'
+                    labelId='demo-simple-select-outlined-label'
+                  >
+                    <MenuItem value={10}>English</MenuItem>
+                    <MenuItem value={20}>Hindi</MenuItem>
+                    <MenuItem value={30}>Gujarati</MenuItem>
+                    {/* <MenuItem value={30}>12th</MenuItem> */}
+                  </Select>
+                </FormControl>
+              </Grid>
+              <Grid item xs={12} sm={6} mt={3}>
+                <FormControl fullWidth>
+                  <InputLabel id='demo-simple-select-outlined-label'>Board</InputLabel>
+                  <Select
+                    value={category}
+                    label='Board'
+                    defaultValue=''
+                    id='demo-simple-select-outlined'
+                    labelId='demo-simple-select-outlined-label'
+                    onChange={e => setCategory(e.target.value)}
+                  >
+                    <MenuItem value={10}>CBSE</MenuItem>
+                    <MenuItem value={20}>ICSE</MenuItem>
+                    <MenuItem value={30}>UP Board</MenuItem>
+                    <MenuItem value={30}>MP Board</MenuItem>
+                  </Select>
+                </FormControl>
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <FormControl fullWidth>
+                  <InputLabel id='demo-simple-select-outlined-label'>Class</InputLabel>
+                  <Select
+                    value={subCategory}
+                    label='Class'
+                    defaultValue=''
+                    id='demo-simple-select-outlined'
+                    labelId='demo-simple-select-outlined-label'
+                    onChange={e => setSubCategory(e.target.value)}
+                  >
+                    <MenuItem value={10}>6th</MenuItem>
+                    <MenuItem value={20}>7th</MenuItem>
+                    <MenuItem value={30}>8th</MenuItem>
+                    <MenuItem value={30}>12th</MenuItem>
+                  </Select>
+                </FormControl>
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <FormControl fullWidth>
+                  <InputLabel id='demo-simple-select-outlined-label'>Stream</InputLabel>
+                  <Select
+                    value={childCategory}
+                    label='Stream'
+                    id='demo-simple-select-outlined'
+                    labelId='demo-simple-select-outlined-label'
+                    onChange={e => setChildCategory(e.target.value)}
+                  >
+                    <MenuItem value={10}>Science</MenuItem>
+                    <MenuItem value={20}>Arts</MenuItem>
+                    <MenuItem value={30}>Commerce</MenuItem>
+                    {/* <MenuItem value={30}>12th</MenuItem> */}
+                  </Select>
+                </FormControl>
+              </Grid>
+              <Grid item sm={12} xs={6} mt={3}>
+                <TextField id='name' fullWidth label='Write your question here...' required />
+              </Grid>
+              <Grid item sm={12} xs={12}>
+                Image (Optional)
+                <TextField
+                  type='file'
+                  fullWidth
+                  InputProps={{
+                    inputProps: { accept: 'image/png, image/jpeg' }
+                  }}
+                />
+              </Grid>
+              <Grid item sm={12} xs={12}>
+                <Divider textAlign='left'>Answers</Divider>
+              </Grid>
+              <Grid item sm={12} xs={12}>
+                <Button variant='contained' onClick={onAddBtnClick}>
+                  Add Answer
+                </Button>
+              </Grid>
+              <Grid item sm={12} xs={12}>
+                <CardSnippet
+                  title=''
+                  code={{
+                    tsx: null
+                  }}
                 >
-                  <MenuItem value={10}>English</MenuItem>
-                  <MenuItem value={20}>Hindi</MenuItem>
-                  <MenuItem value={30}>Gujarati</MenuItem>
-                  {/* <MenuItem value={30}>12th</MenuItem> */}
-                </Select>
-              </FormControl>
+                  <Grid item sm={12} xs={12} mt={3}>
+                    <TextField id='name' required fullWidth label='Write your answer here...' />
+                  </Grid>
+                  <Grid item mt={3} sm={12} xs={12}>
+                    Answer Image (optional)
+                    <TextField
+                      type='file'
+                      fullWidth
+                      InputProps={{
+                        inputProps: { accept: 'image/png, image/jpeg' }
+                      }}
+                    />
+                  </Grid>
+                  <Grid item mt={3} sm={12} xs={12}>
+                    <SwitchesCustomized />
+                  </Grid>
+                </CardSnippet>
+              </Grid>
+              {answerOptionList}
             </Grid>
-            <Grid item xs={12} sm={6} mt={3}>
-              <FormControl fullWidth>
-                <InputLabel id='demo-simple-select-outlined-label'>Board</InputLabel>
-                <Select
-                  value={category}
-                  label='Board'
-                  defaultValue=''
-                  id='demo-simple-select-outlined'
-                  labelId='demo-simple-select-outlined-label'
-                  onChange={e => setCategory(e.target.value)}
-                >
-
-                  <MenuItem value={10}>CBSE</MenuItem>
-                  <MenuItem value={20}>ICSE</MenuItem>
-                  <MenuItem value={30}>UP Board</MenuItem>
-                  <MenuItem value={30}>MP Board</MenuItem>
-                </Select>
-              </FormControl>
-            </Grid>
-            <Grid item xs={12} sm={6}>
-
-              <FormControl fullWidth>
-                <InputLabel id='demo-simple-select-outlined-label'>Class</InputLabel>
-                <Select
-                  value={subCategory}
-                  label='Class'
-                  defaultValue=''
-                  id='demo-simple-select-outlined'
-                  labelId='demo-simple-select-outlined-label'
-                  onChange={e => setSubCategory(e.target.value)}
-                >
-
-                  <MenuItem value={10}>6th</MenuItem>
-                  <MenuItem value={20}>7th</MenuItem>
-                  <MenuItem value={30}>8th</MenuItem>
-                  <MenuItem value={30}>12th</MenuItem>
-                </Select>
-              </FormControl>
-            </Grid>
-            <Grid item xs={12} sm={6}>
-
-              <FormControl fullWidth>
-                <InputLabel id='demo-simple-select-outlined-label'>Stream</InputLabel>
-                <Select
-                  value={childCategory}
-                  label='Stream'
-                  id='demo-simple-select-outlined'
-                  labelId='demo-simple-select-outlined-label'
-                  onChange={e => setChildCategory(e.target.value)}
-                >
-
-                  <MenuItem value={10}>Science</MenuItem>
-                  <MenuItem value={20}>Arts</MenuItem>
-                  <MenuItem value={30}>Commerce</MenuItem>
-                  {/* <MenuItem value={30}>12th</MenuItem> */}
-                </Select>
-              </FormControl>
-            </Grid>
-            <Grid item sm={12} xs={6} mt={3}>
-              <TextField id='name' fullWidth label='Write your question here...' required />
-            </Grid>
-            <Grid item sm={12} xs={12}>
-              Image (Optional)
-              <TextField type='file' id='image' fullWidth />
-            </Grid>
-            <Grid item sm={12} xs={12}>
-              <Divider textAlign='left'>
-                Answers
-              </Divider>
-            </Grid>
-            <Grid item sm={12} xs={12}>
-              <Button variant='contained' onClick={onAddBtnClick}>
-                Add Answer
-              </Button>
-            </Grid>
-            <Grid item sm={12} xs={12}>
-              <CardSnippet
-                title=''
-                code={{
-                  tsx: null,
-                }}>
-                <Grid item sm={12} xs={12} mt={3}>
-                  <TextField id='name' required fullWidth label='Write your answer here...' />
-                </Grid>
-                <Grid item mt={3} sm={12} xs={12}>
-                  Answer Image (optional)
-                  <TextField id='name' type='file' fullWidth />
-                </Grid>
-                <Grid item mt={3} sm={12} xs={12}>
-                  <SwitchesCustomized />
-                </Grid>
-              </CardSnippet>
-            </Grid>
-            {answerOptionList}
-          </Grid>
-
-        </form >
-      </DialogContent>
-      <DialogActions sx={{ pb: { xs: 8, sm: 12.5 }, justifyContent: 'center' }}>
-        <Button variant='contained' sx={{ mr: 2 }} onClick={() => setShow(false)}>
-          Submit
-        </Button>
-        <Button variant='outlined' color='secondary' onClick={() => setShow(false)}>
-          Discard
-        </Button>
-      </DialogActions>
-    </Dialog>
-  </>
+          </form>
+        </DialogContent>
+        <DialogActions sx={{ pb: { xs: 8, sm: 12.5 }, justifyContent: 'center' }}>
+          <Button variant='contained' sx={{ mr: 2 }} onClick={() => setShow(false)}>
+            Submit
+          </Button>
+          <Button variant='outlined' color='secondary' onClick={() => setShow(false)}>
+            Discard
+          </Button>
+        </DialogActions>
+      </Dialog>
+    </>
   )
 }
 
@@ -319,17 +325,13 @@ const columns = [
       )
     }
   },
-   {
+  {
     flex: 0.275,
     minWidth: 100,
     field: 'image',
     headerName: 'Image',
     renderCell: params => {
-      return (
-        <Box sx={{ display: 'flex', alignItems: 'center' }}>
-          {renderClient(params)}
-        </Box>
-      )
+      return <Box sx={{ display: 'flex', alignItems: 'center' }}>{renderClient(params)}</Box>
     }
   },
   {
@@ -356,7 +358,7 @@ const columns = [
       </Typography>
     )
   },
- 
+
   {
     flex: 0.275,
     minWidth: 300,
@@ -453,7 +455,6 @@ const BadgesTable = () => {
           }
         }}
       />
-
     </Card>
   )
 }

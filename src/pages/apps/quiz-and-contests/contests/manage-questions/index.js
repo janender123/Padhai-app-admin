@@ -38,39 +38,44 @@ import { EditorWrapper } from 'src/@core/styles/libs/react-draft-wysiwyg'
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
 
 const AnswerOption = () => {
-  const [visible, setVisible] = useState(true);
+  const [visible, setVisible] = useState(true)
 
   const removeElement = () => {
-    setVisible((prev) => !prev);
-  };
-  
-return (<>
-    {visible && (
-      <Grid item sm={12} xs={12} >
-        <CardHeader
-          action={
-            <Icon icon='mdi:close' fontSize={20} onClick={removeElement} />
+    setVisible(prev => !prev)
+  }
 
-          }
-        />
-        <CardSnippet
-          title=''
-          code={{
-            tsx: null,
-          }}>
-          <Grid item sm={12} xs={12} mt={3}>
-            <TextField id='name' required fullWidth label='Write your answer here...' />
-          </Grid>
-          <Grid item mt={3} sm={12} xs={12}>
-            Answer Image (optional)
-            <TextField id='name' type='file' fullWidth />
-          </Grid>
-          <Grid item mt={3} sm={12} xs={12}>
-            <SwitchesCustomized />
-          </Grid>
-        </CardSnippet>
-      </Grid>)}
-  </>)
+  return (
+    <>
+      {visible && (
+        <Grid item sm={12} xs={12}>
+          <CardHeader action={<Icon icon='mdi:close' fontSize={20} onClick={removeElement} />} />
+          <CardSnippet
+            title=''
+            code={{
+              tsx: null
+            }}
+          >
+            <Grid item sm={12} xs={12} mt={3}>
+              <TextField id='name' required fullWidth label='Write your answer here...' />
+            </Grid>
+            <Grid item mt={3} sm={12} xs={12}>
+              Answer Image (optional)
+              <TextField
+                type='file'
+                fullWidth
+                InputProps={{
+                  inputProps: { accept: 'image/png, image/jpeg' }
+                }}
+              />
+            </Grid>
+            <Grid item mt={3} sm={12} xs={12}>
+              <SwitchesCustomized />
+            </Grid>
+          </CardSnippet>
+        </Grid>
+      )}
+    </>
+  )
 }
 
 const QuestionForContest = () => {
@@ -79,10 +84,10 @@ const QuestionForContest = () => {
   const handleClickOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
   const [language, setLanguage] = useState([])
-  const [answerOptionList, setAnswerOptionList] = useState([]);
+  const [answerOptionList, setAnswerOptionList] = useState([])
 
   const onAddBtnClick = () => {
-    setAnswerOptionList(answerOptionList.concat(<AnswerOption key={answerOptionList.length} />));
+    setAnswerOptionList(answerOptionList.concat(<AnswerOption key={answerOptionList.length} />))
   }
   const [childCategory, setChildCategory] = useState('')
   const [category, setCategory] = useState('')
@@ -91,10 +96,10 @@ const QuestionForContest = () => {
   const [Contest, setContest] = useState('')
 
   const handleButtonClick = () => {
-    window.location.href = '/apps/import-questions/';
-  };
-  
-return (
+    window.location.href = '/apps/import-questions/'
+  }
+
+  return (
     <Card sx={{ mt: 4 }}>
       <CardHeader title='Create a question for contest' />
       <Divider sx={{ m: '0 !important' }} />
@@ -136,7 +141,7 @@ return (
                   </Select>
                 </FormControl>
               </Grid>
-              <Grid item xs={12} sm={6} >
+              <Grid item xs={12} sm={6}>
                 <FormControl fullWidth>
                   <InputLabel id='demo-simple-select-outlined-label'>Board</InputLabel>
                   <Select
@@ -147,7 +152,6 @@ return (
                     labelId='demo-simple-select-outlined-label'
                     onChange={e => setCategory(e.target.value)}
                   >
-
                     <MenuItem value={10}>CBSE</MenuItem>
                     <MenuItem value={20}>ICSE</MenuItem>
                     <MenuItem value={30}>UP Board</MenuItem>
@@ -166,7 +170,6 @@ return (
                     labelId='demo-simple-select-outlined-label'
                     onChange={e => setSubCategory(e.target.value)}
                   >
-
                     <MenuItem value={10}>6th</MenuItem>
                     <MenuItem value={20}>7th</MenuItem>
                     <MenuItem value={30}>8th</MenuItem>
@@ -184,7 +187,6 @@ return (
                     labelId='demo-simple-select-outlined-label'
                     onChange={e => setChildCategory(e.target.value)}
                   >
-
                     <MenuItem value={10}>Science</MenuItem>
                     <MenuItem value={20}>Arts</MenuItem>
                     <MenuItem value={30}>Commerce</MenuItem>
@@ -197,12 +199,16 @@ return (
               </Grid>
               <Grid item sm={12} xs={12}>
                 Image (Optional)
-                <TextField type='file' id='image' fullWidth />
+                <TextField
+                  type='file'
+                  fullWidth
+                  InputProps={{
+                    inputProps: { accept: 'image/png, image/jpeg' }
+                  }}
+                />
               </Grid>
               <Grid item sm={12} xs={12}>
-                <Divider textAlign='left'>
-                  Answers
-                </Divider>
+                <Divider textAlign='left'>Answers</Divider>
               </Grid>
               <Grid item sm={12} xs={12}>
                 <Button variant='contained' onClick={onAddBtnClick}>
@@ -215,7 +221,13 @@ return (
                 </Grid>
                 <Grid item mt={3} sm={12} xs={12}>
                   Answer Image (optional)
-                  <TextField id='name' type='file' fullWidth />
+                  <TextField
+                    type='file'
+                    fullWidth
+                    InputProps={{
+                      inputProps: { accept: 'image/png, image/jpeg' }
+                    }}
+                  />
                 </Grid>
                 <Grid item mt={3} sm={12} xs={12}>
                   <SwitchesCustomized />
@@ -227,7 +239,13 @@ return (
                 </Grid>
                 <Grid item mt={3} sm={12} xs={12}>
                   Answer Image (optional)
-                  <TextField id='name' type='file' fullWidth />
+                  <TextField
+                    type='file'
+                    fullWidth
+                    InputProps={{
+                      inputProps: { accept: 'image/png, image/jpeg' }
+                    }}
+                  />
                 </Grid>
                 <Grid item mt={3} sm={12} xs={12}>
                   <SwitchesCustomized />
@@ -237,9 +255,7 @@ return (
                 {answerOptionList}
               </Grid>
               <Grid item sm={12} xs={12}>
-                <Divider textAlign='left'>
-                  Solution
-                </Divider>
+                <Divider textAlign='left'>Solution</Divider>
               </Grid>
               <Grid item xs={12} sm={12}>
                 <EditorWrapper>
@@ -251,7 +267,9 @@ return (
                       jsx: source.EditorControlledJSXCode
                     }}
                   >
-                    <Typography fontSize='1.25rem' m={2} fontWeight='520'>Solution</Typography>
+                    <Typography fontSize='1.25rem' m={2} fontWeight='520'>
+                      Solution
+                    </Typography>
                     <EditorControlled value={Description} onChange={e => setDescription(e.target.value)} />
                   </CardSnippet>
                 </EditorWrapper>
@@ -264,18 +282,15 @@ return (
                   Discard
                 </Button>
               </CardActions>
-
             </Grid>
-            <Divider textAlign='left'>
-              Or
-            </Divider>
+            <Divider textAlign='left'>Or</Divider>
             <Grid item xs={12} sm={12}>
               <Button variant='contained' onClick={handleButtonClick} sx={{ margin: '5px' }}>
                 Import questions
               </Button>
             </Grid>
-          </form >
-          <Card sx={{m: '5px'}}>
+          </form>
+          <Card sx={{ m: '5px' }}>
             <CardHeader title='List of Questions approved' />
             <QuestionsTableForContests />
           </Card>
@@ -284,7 +299,6 @@ return (
     </Card>
   )
 }
-
 
 const index = () => {
   return (

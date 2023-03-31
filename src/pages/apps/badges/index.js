@@ -91,7 +91,13 @@ const CreateContestForm = () => {
               </Grid>
               <Grid item sm={12} xs={12}>
                 Image
-                <TextField type='file' id='image' fullWidth />
+                <TextField
+                type='file'
+                fullWidth
+                InputProps={{
+                  inputProps: { accept: 'image/png, image/jpeg' }
+                }}
+              />
               </Grid>
               <Grid item sm={2.5} xs={2.5}>
                 <ConditionForBadges popperPlacement={popperPlacement} />

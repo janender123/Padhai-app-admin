@@ -50,10 +50,13 @@ const NewQandA = () => {
           <Grid item xs={12}>
             Upload image/video File for the question (optional)
             <TextField
-              fullWidth
               type='file'
-              value={FileForQuestion}
-              onChange={e => setFileForQuestion(e.target.value)}
+              fullWidth
+              InputProps={{
+                inputProps: { accept: 'image/png, image/jpeg, video/mp4, video/mkv, video/webm '}
+              }}
+               value={FileForQuestion} 
+               onChange={e => setFileForQuestion(e.target.value)}
             />
           </Grid>
           <Grid item xs={12}>
@@ -68,10 +71,13 @@ const NewQandA = () => {
           <Grid item xs={12}>
             Upload image/video File for the answer  (optional)
             <TextField
-              fullWidth
               type='file'
-              value={FileForAnswer}
-              onChange={e => setFileForAnswer(e.target.value)}
+              fullWidth
+              InputProps={{
+                inputProps: { accept: 'image/png, image/jpeg, video/mp4, video/mkv, video/webm '}
+              }}
+               value={FileForAnswer} 
+               onChange={e => setFileForAnswer(e.target.value)}
             />
           </Grid>
           <Grid item sm={12} xs={12}>

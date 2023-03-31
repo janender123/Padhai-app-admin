@@ -134,7 +134,13 @@ const CreateContestForm = () => {
             </Grid>
             <Grid item sm={6} xs={6}>
               Image
-              <TextField type='file' id='image' fullWidth />
+              <TextField
+                type='file'
+                fullWidth
+                InputProps={{
+                  inputProps: { accept: 'image/png, image/jpeg' }
+                }}
+              />
             </Grid>
             <Grid item sm={6} xs={6} mt={3}>
               Contest start date

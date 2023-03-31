@@ -35,39 +35,44 @@ import SwitchesCustomizedStatus from 'src/views/forms/form-elements/switch/Switc
 import SwitchesCustomized from 'src/views/forms/form-elements/switch/CorrectAnswer'
 
 const AnswerOption = () => {
-  const [visible, setVisible] = useState(true);
+  const [visible, setVisible] = useState(true)
 
   const removeElement = () => {
-    setVisible((prev) => !prev);
-  };
-  
-return (<>
-    {visible && (
-      <Grid item sm={12} xs={12} >
-        <CardHeader
-          action={
-            <Icon icon='mdi:close' fontSize={20} onClick={removeElement} />
+    setVisible(prev => !prev)
+  }
 
-          }
-        />
-        <CardSnippet
-          title=''
-          code={{
-            tsx: null,
-          }}>
-          <Grid item sm={12} xs={12} mt={3}>
-            <TextField id='name' required fullWidth label='Write your answer here...' />
-          </Grid>
-          <Grid item mt={3} sm={12} xs={12}>
-            Answer Image (optional)
-            <TextField id='name' type='file' fullWidth />
-          </Grid>
-          <Grid item mt={3} sm={12} xs={12}>
-            <SwitchesCustomized />
-          </Grid>
-        </CardSnippet>
-      </Grid>)}
-  </>)
+  return (
+    <>
+      {visible && (
+        <Grid item sm={12} xs={12}>
+          <CardHeader action={<Icon icon='mdi:close' fontSize={20} onClick={removeElement} />} />
+          <CardSnippet
+            title=''
+            code={{
+              tsx: null
+            }}
+          >
+            <Grid item sm={12} xs={12} mt={3}>
+              <TextField id='name' required fullWidth label='Write your answer here...' />
+            </Grid>
+            <Grid item mt={3} sm={12} xs={12}>
+              Answer Image (optional)
+              <TextField
+                type='file'
+                fullWidth
+                InputProps={{
+                  inputProps: { accept: 'image/png, image/jpeg' }
+                }}
+              />
+            </Grid>
+            <Grid item mt={3} sm={12} xs={12}>
+              <SwitchesCustomized />
+            </Grid>
+          </CardSnippet>
+        </Grid>
+      )}
+    </>
+  )
 }
 
 const AddNewMCQInStudyMaterial = () => {
@@ -76,18 +81,17 @@ const AddNewMCQInStudyMaterial = () => {
   const handleClickOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
   const [language, setLanguage] = useState([])
-  const [answerOptionList, setAnswerOptionList] = useState([]);
+  const [answerOptionList, setAnswerOptionList] = useState([])
 
   const onAddBtnClick = () => {
-    setAnswerOptionList(answerOptionList.concat(<AnswerOption key={answerOptionList.length} />));
+    setAnswerOptionList(answerOptionList.concat(<AnswerOption key={answerOptionList.length} />))
   }
   const [childCategory, setChildCategory] = useState('')
   const [category, setCategory] = useState('')
   const [subCategory, setSubCategory] = useState('')
-  
-return (
-    <Fragment>
 
+  return (
+    <Fragment>
       <Card>
         <CardHeader title='Add New MCQ' />
         <Divider sx={{ m: '0 !important' }} />
@@ -122,7 +126,6 @@ return (
                     labelId='demo-simple-select-outlined-label'
                     onChange={e => setCategory(e.target.value)}
                   >
-
                     <MenuItem value={10}>CBSE</MenuItem>
                     <MenuItem value={20}>ICSE</MenuItem>
                     <MenuItem value={30}>UP Board</MenuItem>
@@ -131,7 +134,6 @@ return (
                 </FormControl>
               </Grid>
               <Grid item xs={12} sm={6}>
-
                 <FormControl fullWidth>
                   <InputLabel id='demo-simple-select-outlined-label'>Class</InputLabel>
                   <Select
@@ -142,7 +144,6 @@ return (
                     labelId='demo-simple-select-outlined-label'
                     onChange={e => setSubCategory(e.target.value)}
                   >
-
                     <MenuItem value={10}>6th</MenuItem>
                     <MenuItem value={20}>7th</MenuItem>
                     <MenuItem value={30}>8th</MenuItem>
@@ -151,7 +152,6 @@ return (
                 </FormControl>
               </Grid>
               <Grid item xs={12} sm={6}>
-
                 <FormControl fullWidth>
                   <InputLabel id='demo-simple-select-outlined-label'>Stream</InputLabel>
                   <Select
@@ -161,7 +161,6 @@ return (
                     labelId='demo-simple-select-outlined-label'
                     onChange={e => setChildCategory(e.target.value)}
                   >
-
                     <MenuItem value={10}>Science</MenuItem>
                     <MenuItem value={20}>Arts</MenuItem>
                     <MenuItem value={30}>Commerce</MenuItem>
@@ -170,16 +169,20 @@ return (
                 </FormControl>
               </Grid>
               <Grid item sm={12} xs={6} mt={3}>
-                <TextField id='name'  fullWidth label='Write your question here...' required />
+                <TextField id='name' fullWidth label='Write your question here...' required />
               </Grid>
               <Grid item sm={12} xs={12}>
                 Image (Optional)
-                <TextField type='file' id='image'  fullWidth />
+                <TextField
+                  type='file'
+                  fullWidth
+                  InputProps={{
+                    inputProps: { accept: 'image/png, image/jpeg' }
+                  }}
+                />
               </Grid>
               <Grid item sm={12} xs={12}>
-                <Divider textAlign='left'>
-                  Answers
-                </Divider>
+                <Divider textAlign='left'>Answers</Divider>
               </Grid>
               <Grid item sm={12} xs={12}>
                 <Button variant='contained' onClick={onAddBtnClick}>
@@ -190,14 +193,21 @@ return (
                 <CardSnippet
                   title=''
                   code={{
-                    tsx: null,
-                  }}>
+                    tsx: null
+                  }}
+                >
                   <Grid item sm={12} xs={12} mt={3}>
                     <TextField id='name' required fullWidth label='Write your answer here...' />
                   </Grid>
                   <Grid item mt={3} sm={12} xs={12}>
                     Answer Image (optional)
-                    <TextField id='name' type='file' fullWidth />
+                    <TextField
+                      type='file'
+                      fullWidth
+                      InputProps={{
+                        inputProps: { accept: 'image/png, image/jpeg' }
+                      }}
+                    />
                   </Grid>
                   <Grid item mt={3} sm={12} xs={12}>
                     <SwitchesCustomized />
@@ -214,8 +224,7 @@ return (
                 Discard
               </Button>
             </CardActions>
-
-          </form >
+          </form>
         </CardContent>
       </Card>
     </Fragment>
@@ -229,8 +238,8 @@ const AddNewTFInStudyMaterial = () => {
   const [childCategory, setChildCategory] = useState('')
   const [category, setCategory] = useState('')
   const [subCategory, setSubCategory] = useState('')
-  
-return (
+
+  return (
     <Fragment>
       <Card>
         <CardHeader title='Add New True & false' />
@@ -238,7 +247,7 @@ return (
         <CardContent>
           <form onSubmit={e => e.preventDefault()}>
             <Grid container spacing={6}>
-            <Grid item sm={6} xs={12} mt={3}>
+              <Grid item sm={6} xs={12} mt={3}>
                 <FormControl fullWidth>
                   <InputLabel id='demo-simple-select-outlined-label'>Language</InputLabel>
                   <Select
@@ -266,7 +275,6 @@ return (
                     labelId='demo-simple-select-outlined-label'
                     onChange={e => setCategory(e.target.value)}
                   >
-
                     <MenuItem value={10}>CBSE</MenuItem>
                     <MenuItem value={20}>ICSE</MenuItem>
                     <MenuItem value={30}>UP Board</MenuItem>
@@ -275,7 +283,6 @@ return (
                 </FormControl>
               </Grid>
               <Grid item xs={12} sm={6}>
-
                 <FormControl fullWidth>
                   <InputLabel id='demo-simple-select-outlined-label'>Class</InputLabel>
                   <Select
@@ -286,7 +293,6 @@ return (
                     labelId='demo-simple-select-outlined-label'
                     onChange={e => setSubCategory(e.target.value)}
                   >
-
                     <MenuItem value={10}>6th</MenuItem>
                     <MenuItem value={20}>7th</MenuItem>
                     <MenuItem value={30}>8th</MenuItem>
@@ -295,7 +301,6 @@ return (
                 </FormControl>
               </Grid>
               <Grid item xs={12} sm={6}>
-
                 <FormControl fullWidth>
                   <InputLabel id='demo-simple-select-outlined-label'>Stream</InputLabel>
                   <Select
@@ -305,7 +310,6 @@ return (
                     labelId='demo-simple-select-outlined-label'
                     onChange={e => setChildCategory(e.target.value)}
                   >
-
                     <MenuItem value={10}>Science</MenuItem>
                     <MenuItem value={20}>Arts</MenuItem>
                     <MenuItem value={30}>Commerce</MenuItem>
@@ -314,16 +318,20 @@ return (
                 </FormControl>
               </Grid>
               <Grid item sm={12} xs={6} mt={3}>
-                <TextField id='name'  fullWidth label='Write your question here...' required />
+                <TextField id='name' fullWidth label='Write your question here...' required />
               </Grid>
               <Grid item sm={12} xs={12}>
                 Image (Optional)
-                <TextField type='file' id='image'  fullWidth />
+                <TextField
+                  type='file'
+                  fullWidth
+                  InputProps={{
+                    inputProps: { accept: 'image/png, image/jpeg' }
+                  }}
+                />
               </Grid>
               <Grid item sm={12} xs={12}>
-                <Divider textAlign='left'>
-                  Answers
-                </Divider>
+                <Divider textAlign='left'>Answers</Divider>
               </Grid>
               <Grid item sm={12} xs={12}>
                 <FormControl fullWidth>
@@ -352,10 +360,10 @@ return (
                 Discard
               </Button>
             </CardActions>
-          </form >
+          </form>
         </CardContent>
       </Card>
-    </Fragment >
+    </Fragment>
   )
 }
 

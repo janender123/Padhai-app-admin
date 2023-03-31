@@ -111,7 +111,13 @@ return (<>
           </Grid>
           <Grid item mt={3} sm={12} xs={12}>
             Answer Image (optional)
-            <TextField id='name' type='file' fullWidth />
+            <TextField
+                type='file'
+                fullWidth
+                InputProps={{
+                  inputProps: { accept: 'image/png, image/jpeg' }
+                }}
+              />
           </Grid>
           <Grid item mt={3} sm={12} xs={12}>
             <SwitchesCustomized />
@@ -235,7 +241,13 @@ return (<>
             </Grid>
             <Grid item sm={12} xs={12}>
               Image (Optional)
-              <TextField type='file' id='image' fullWidth />
+              <TextField
+                type='file'
+                fullWidth
+                InputProps={{
+                  inputProps: { accept: 'image/png, image/jpeg' }
+                }}
+              />
             </Grid>
             <Grid item sm={12} xs={12}>
               <Divider textAlign='left'>
@@ -258,7 +270,13 @@ return (<>
                 </Grid>
                 <Grid item mt={3} sm={12} xs={12}>
                   Answer Image (optional)
-                  <TextField id='name' type='file' fullWidth />
+                  <TextField
+                type='file'
+                fullWidth
+                InputProps={{
+                  inputProps: { accept: 'image/png, image/jpeg' }
+                }}
+              />
                 </Grid>
                 <Grid item mt={3} sm={12} xs={12}>
                   <SwitchesCustomized />

@@ -62,10 +62,8 @@ import NewLesson from 'src/views/forms/form-layouts/NewLessonFormInNewCourseSect
 import NewText from 'src/views/forms/form-layouts/NewTextLessonInCourseSection'
 import NewQuiz from 'src/views/forms/form-layouts/NewQuizInCourseSection'
 import NewAssignment from 'src/views/forms/form-layouts/NewAssignmentInCourseSection'
-import { LessonList } from 'src/views/forms/form-layouts/NewLessonFormInNewCourseSection'
 import { EditorWrapper } from 'src/@core/styles/libs/react-draft-wysiwyg'
-import Reorder, { reorder, reorderImmutable, reorderFromTo, reorderFromToImmutable } from 'react-reorder'
-import move from 'lodash-move'
+import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 import { Autocomplete } from '@mui/material'
 import NewLessonFormInLiveClass from '../form-layouts/NewLessonFormInLiveClass'
 import NewQuizInLiveClasses from '../form-layouts/NewQuizInLiveClasses'
@@ -344,14 +342,24 @@ const AddSection = () => {
     )
   }
 
-  const onReorder = (e, from, to) => {
-    setSectionList(move(sectionList, from, to))
-  }
-
   const onAddSectionClick = () => {
     setSectionList(sectionList.concat(<Input key={sectionList.length} />))
     setOpenDialog(false)
   }
+
+  
+  const handleDragEnd = result => {
+    if (!result.destination) {
+      return
+    }
+
+    const items = Array.from(sectionList)
+    const [reorderedItem] = items.splice(result.source.index, 1)
+    items.splice(result.destination.index, 0, reorderedItem)
+
+    setSectionList(items)
+  }
+
 
   return (
     <Grid container spacing={5}>
@@ -405,31 +413,27 @@ const AddSection = () => {
         </Fragment>
       </Grid>
 
-      <Grid item xs={12}>
-        <Reorder
-          reorderId='my-list' // Unique ID that is used internally to track this list (required)
-          reorderGroup='reorder-group' // A group ID that allows items to be dragged between lists of the same group (optional)
-          // getRef={this.storeRef.bind(this)} // Function that is passed a reference to the root node when mounted (optional)
-          component='div' // Tag name or Component to be used for the wrapping element (optional), defaults to 'div'
-          placeholderClassName='placeholder' // Class name to be applied to placeholder elements (optional), defaults to 'placeholder'
-          draggedClassName='dragged' // Class name to be applied to dragged elements (optional), defaults to 'dragged'
-          lock='horizontal' // Lock the dragging direction (optional): vertical, horizontal (do not use with groups)
-          holdTime={500} // Default hold time before dragging begins (mouse & touch) (optional), defaults to 0
-          touchHoldTime={500} // Hold time before dragging begins on touch devices (optional), defaults to holdTime
-          mouseHoldTime={200} // Hold time before dragging begins with mouse (optional), defaults to holdTime
-          onReorder={onReorder} // Callback when an item is dropped (you will need this to update your state)
-          autoScroll={true} // Enable auto-scrolling when the pointer is close to the edge of the Reorder component (optional), defaults to true
-          disabled={false} // Disable reordering (optional), defaults to false
-          disableContextMenus={true} // Disable context menus when holding on touch devices (optional), defaults to true
-          placeholder={
-            <div className='custom-placeholder' /> // Custom placeholder element (optional), defaults to clone of dragged element
-          }
-        >
-          {sectionList.map(section => (
-            <div key={sectionList.length}>{section}</div>
-          ))}
-        </Reorder>
-      </Grid>
+      
+      <DragDropContext onDragEnd={handleDragEnd}>
+        <Grid item xs={12}>
+          <Droppable droppableId='sections'>
+            {provided => (
+              <div {...provided.droppableProps} ref={provided.innerRef}>
+                {sectionList.map((section, index) => (
+                  <Draggable key={index} draggableId={`section-${index}`} index={index}>
+                    {provided => (
+                      <div {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
+                        {section}
+                      </div>
+                    )}
+                  </Draggable>
+                ))}
+                {provided.placeholder}
+              </div>
+            )}
+          </Droppable>
+        </Grid>
+      </DragDropContext>
     </Grid>
   )
 }
@@ -894,11 +898,11 @@ const [sectionList, setSectionList] = useState([
             <Grid item xs={12} sm={6}>
               Image/Thumbnail for the live class
               <TextField
-                fullWidth
                 type='file'
-
-                // label='Assignment'
-                // placeholder='Submit Assignment for the course'
+                fullWidth
+                InputProps={{
+                  inputProps: { accept: 'image/png, image/jpeg' }
+                }}
                 value={thumbnail}
                 onChange={e => setThumbnail(e.target.value)}
               />

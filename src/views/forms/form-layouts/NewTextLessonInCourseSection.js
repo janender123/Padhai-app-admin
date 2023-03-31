@@ -17,6 +17,7 @@ import * as source from 'src/views/forms/form-elements/editor/EditorSourceCode'
 import CardHeader from '@mui/material/CardHeader'
 import Divider from '@mui/material/Divider'
 import { EditorWrapper } from 'src/@core/styles/libs/react-draft-wysiwyg'
+import { Typography } from '@mui/material'
 
 const NewTextLessonInCourseSection = () => {
   const [language, setLanguage] = useState('')
@@ -24,13 +25,13 @@ const NewTextLessonInCourseSection = () => {
   const [time, setTime] = useState('')
   const [attachment, setAttachment] = useState('')
   const [Description, setDescription] = useState('')
-  
-return (
+
+  return (
     <form onSubmit={e => e.preventDefault()}>
       <CardHeader title='New Text Form' />
       <Divider sx={{ m: '0 !important' }} />
       <Grid container spacing={5}>
-        <Grid item xs={12} >
+        <Grid item xs={12}>
           <FormControl fullWidth>
             <InputLabel id='demo-simple-select-outlined-label'>Language</InputLabel>
             <Select
@@ -69,12 +70,13 @@ return (
         <Grid item xs={12}>
           Attachments
           <TextField
-            fullWidth
             type='file'
-            value={attachment}
-            placeholder='Choose related files as lesson attachments'
-            onChange={e => setAttachment(e.target.value)}
+            fullWidth
+            InputProps={{
+              inputProps: { accept: '.pdf,.doc,.html,.txt,.xls,.xlsx,.docx' }
+            }}
           />
+          <Typography variant='body2'>Accepted file formats - pdf,doc,html,text,excel</Typography>
         </Grid>
         <Grid item xs={12}>
           <EditorWrapper>

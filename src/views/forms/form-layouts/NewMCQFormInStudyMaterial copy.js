@@ -42,10 +42,11 @@ const NewMCQ = () => {
           <Grid item xs={12}>
             Upload image/video File for the question (optional)
             <TextField
-              fullWidth
               type='file'
-              value={FileForQuestion}
-              onChange={e => setFileForQuestion(e.target.value)}
+              fullWidth
+              InputProps={{
+                inputProps: { accept: 'image/png, image/jpeg, video/mp4, video/mkv, video/webm ' }
+              }}
             />
           </Grid>
           <Grid item xs={12}>
@@ -58,10 +59,13 @@ const NewMCQ = () => {
             />
           </Grid>
           <Grid item xs={12}>
-            Upload image/video File for the answer  (optional)
+            Upload image/video File for the answer (optional)
             <TextField
-              fullWidth
               type='file'
+              fullWidth
+              InputProps={{
+                inputProps: { accept: 'image/png, image/jpeg, video/mp4, video/mkv, video/webm ' }
+              }}
               value={FileForAnswer}
               onChange={e => setFileForAnswer(e.target.value)}
             />
@@ -78,12 +82,10 @@ const NewMCQ = () => {
               Discard
             </Button>
           </CardActions>
-
         </Grid>
-      </form >
+      </form>
     </>
   )
 }
 
-
-export default NewMCQ;
+export default NewMCQ

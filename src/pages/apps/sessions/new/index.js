@@ -56,7 +56,13 @@ const AnswerOption = () => {
             </Grid>
             <Grid item mt={3} sm={12} xs={12}>
               Answer Image (optional)
-              <TextField id='name' type='file' fullWidth />
+              <TextField
+                type='file'
+                fullWidth
+                InputProps={{
+                  inputProps: { accept: 'image/png, image/jpeg' }
+                }}
+              />
             </Grid>
             <Grid item mt={3} sm={12} xs={12}>
               <SwitchesCustomized />

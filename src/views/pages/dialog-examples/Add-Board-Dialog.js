@@ -28,9 +28,6 @@ import { styled } from '@mui/material/styles'
 // ** Icon Imports
 import Icon from 'src/@core/components/icon'
 
-
-
-
 const Transition = forwardRef(function Transition(props, ref) {
   return <Fade ref={ref} {...props} />
 })
@@ -53,10 +50,9 @@ const AddBoardDialog = () => {
       textAlign: 'center'
     }
   }))
-  
-  return (
 
-    <Card >
+  return (
+    <Card>
       <Button variant='contained' onClick={() => setShow(true)}>
         Create a Board
       </Button>
@@ -82,7 +78,6 @@ const AddBoardDialog = () => {
             <Typography variant='h5' sx={{ mb: 3, lineHeight: '2rem' }}>
               Add details of the Board
             </Typography>
-
           </Box>
           <Grid container spacing={6}>
             <Grid item sm={12} xs={12}>
@@ -97,14 +92,14 @@ const AddBoardDialog = () => {
             </Grid>
 
             <Grid item sm={12} xs={12}>
-              <ButtonStyled component='label' variant='contained' >
-                Upload Icon
-                <input
-                  hidden
-                  type='file'
-                  accept='image/png, image/jpeg'
-                />
-              </ButtonStyled>
+              Upload Icon
+              <TextField
+                type='file'
+                fullWidth
+                InputProps={{
+                  inputProps: { accept: 'image/png, image/jpeg' }
+                }}
+              />
             </Grid>
           </Grid>
         </DialogContent>

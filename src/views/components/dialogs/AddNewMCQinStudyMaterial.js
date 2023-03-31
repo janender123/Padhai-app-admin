@@ -27,41 +27,45 @@ import CardContent from '@mui/material/CardContent'
 import Typography from '@mui/material/Typography'
 import CardActions from '@mui/material/CardActions'
 
-
 const AnswerOption = () => {
-  const [visible, setVisible] = useState(true);
+  const [visible, setVisible] = useState(true)
 
   const removeElement = () => {
-    setVisible((prev) => !prev);
-  };
-  
-return (<>
-    {visible && (
-      <Grid item sm={12} xs={12} >
-        <CardHeader
-          action={
-            <Icon icon='mdi:close' fontSize={20} onClick={removeElement} />
+    setVisible(prev => !prev)
+  }
 
-          }
-        />
-        <CardSnippet
-          title=''
-          code={{
-            tsx: null,
-          }}>
-          <Grid item sm={12} xs={12}  mt={3}>
-            <TextField id='name' autoFocus required fullWidth label='Write your answer here...' />
-          </Grid>
-          <Grid item mt={3} sm={12} xs={12}>
-            Answer Image (optional)
-            <TextField id='name' type='file' autoFocus fullWidth />
-          </Grid>
-          <Grid item mt={3} sm={12} xs={12}>
-            <SwitchesCustomized />
-          </Grid>
-        </CardSnippet>
-      </Grid>)}
-  </>)
+  return (
+    <>
+      {visible && (
+        <Grid item sm={12} xs={12}>
+          <CardHeader action={<Icon icon='mdi:close' fontSize={20} onClick={removeElement} />} />
+          <CardSnippet
+            title=''
+            code={{
+              tsx: null
+            }}
+          >
+            <Grid item sm={12} xs={12} mt={3}>
+              <TextField id='name' autoFocus required fullWidth label='Write your answer here...' />
+            </Grid>
+            <Grid item mt={3} sm={12} xs={12}>
+              Answer Image (optional)
+              <TextField
+                type='file'
+                fullWidth
+                InputProps={{
+                  inputProps: { accept: 'image/png, image/jpeg' }
+                }}
+              />
+            </Grid>
+            <Grid item mt={3} sm={12} xs={12}>
+              <SwitchesCustomized />
+            </Grid>
+          </CardSnippet>
+        </Grid>
+      )}
+    </>
+  )
 }
 
 const AddNewMCQInStudyMaterial = () => {
@@ -70,10 +74,10 @@ const AddNewMCQInStudyMaterial = () => {
   const handleClickOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
   const [language, setLanguage] = useState([])
-  const [answerOptionList, setAnswerOptionList] = useState([]);
+  const [answerOptionList, setAnswerOptionList] = useState([])
 
   const onAddBtnClick = () => {
-    setAnswerOptionList(answerOptionList.concat(<AnswerOption key={answerOptionList.length} />));
+    setAnswerOptionList(answerOptionList.concat(<AnswerOption key={answerOptionList.length} />))
   }
 
   return (
@@ -99,17 +103,21 @@ const AddNewMCQInStudyMaterial = () => {
               </Select>
             </FormControl>
           </Grid>
-          <Grid item sm={12} xs={6}  mt={3}>
+          <Grid item sm={12} xs={6} mt={3}>
             <TextField id='name' autoFocus fullWidth label='Write your question here...' required />
           </Grid>
           <Grid item sm={12} xs={12}>
             Image (Optional)
-            <TextField type='file' id='image' autoFocus fullWidth />
+            <TextField
+              type='file'
+              fullWidth
+              InputProps={{
+                inputProps: { accept: 'image/png, image/jpeg' }
+              }}
+            />
           </Grid>
           <Grid item sm={12} xs={12}>
-            <Divider textAlign='left'>
-              Answers
-            </Divider>
+            <Divider textAlign='left'>Answers</Divider>
           </Grid>
           <Grid item sm={12} xs={12}>
             <Button variant='contained' onClick={onAddBtnClick}>
@@ -120,14 +128,21 @@ const AddNewMCQInStudyMaterial = () => {
             <CardSnippet
               title=''
               code={{
-                tsx: null,
-              }}>
-              <Grid item sm={12} xs={12}  mt={3}>
+                tsx: null
+              }}
+            >
+              <Grid item sm={12} xs={12} mt={3}>
                 <TextField id='name' autoFocus required fullWidth label='Write your answer here...' />
               </Grid>
               <Grid item mt={3} sm={12} xs={12}>
                 Answer Image (optional)
-                <TextField id='name' type='file' autoFocus fullWidth />
+                <TextField
+                  type='file'
+                  fullWidth
+                  InputProps={{
+                    inputProps: { accept: 'image/png, image/jpeg' }
+                  }}
+                />
               </Grid>
               <Grid item mt={3} sm={12} xs={12}>
                 <SwitchesCustomized />
@@ -144,8 +159,7 @@ const AddNewMCQInStudyMaterial = () => {
             Discard
           </Button>
         </CardActions>
-
-      </form >
+      </form>
     </Fragment>
   )
 }
