@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Grid from '@mui/material/Grid'
 import Card from '@mui/material/Card'
 import CardHeader from '@mui/material/CardHeader'
@@ -7,7 +7,7 @@ import DatePickerWrapper from 'src/@core/styles/libs/react-datepicker'
 import CardStatisticsHorizontal from 'src/@core/components/card-statistics/card-stats-horizontal'
 import LanguageTable from 'src/views/table/mui/LanguageTable'
 import QuestionsTable from 'src/views/table/mui/QuestionsTable'
-import CardContent from '@mui/material/CardContent';
+import CardContent from '@mui/material/CardContent'
 import FormControl from '@mui/material/FormControl'
 import Select from '@mui/material/Select'
 import MenuItem from '@mui/material/MenuItem'
@@ -20,7 +20,6 @@ import QuickSearchToolbarDestinationDailyQuiz from 'src/views/table/data-grid/Qu
 
 import Typography from '@mui/material/Typography'
 import Box from '@mui/material/Box'
-
 
 const sourceColumns = [
   {
@@ -43,8 +42,8 @@ const sourceColumns = [
     headerName: 'Question',
     renderCell: params => {
       const { row } = params
-      
-return (
+
+      return (
         <Box sx={{ display: 'flex', flexDirection: 'column' }}>
           <Typography noWrap variant='body2' sx={{ fontSize: '12px', color: 'text.primary', fontWeight: 100 }}>
             {row.question}
@@ -55,7 +54,7 @@ return (
   }
 ]
 
-const SourceQuestionsTableFordailyQuiz = () => {
+const SourceQuestionsTableFordailyQuiz = ({ setSelectedRows }) => {
   // ** States
   const [data] = useState(rows)
   const [pageSize, setPageSize] = useState(7)
@@ -79,18 +78,26 @@ const SourceQuestionsTableFordailyQuiz = () => {
     }
   }
 
+  const getRowId = row => {   
+    return row.id || row.index
+  }
+
   return (
     <Card>
       <CardHeader title='Select Questions' />
       <DataGrid
-       disableSelectionOnClick
+        disableSelectionOnClick
         autoHeight
         columns={sourceColumns}
         pageSize={pageSize}
+        onSelectionModelChange={newSelection => {
+          setSelectedRows(newSelection)
+        }}
         checkboxSelection
         rowsPerPageOptions={[7, 10, 25, 50]}
         components={{ Toolbar: QuickSearchToolbar }}
         rows={filteredData.length ? filteredData : data}
+        getRowId={getRowId}
         onPageSizeChange={newPageSize => setPageSize(newPageSize)}
         componentsProps={{
           baseButton: {
@@ -103,7 +110,6 @@ const SourceQuestionsTableFordailyQuiz = () => {
           }
         }}
       />
-
     </Card>
   )
 }
@@ -129,8 +135,8 @@ const destinationColumns = [
     headerName: 'Question',
     renderCell: params => {
       const { row } = params
-      
-return (
+
+      return (
         <Box sx={{ display: 'flex', flexDirection: 'column' }}>
           <Typography noWrap variant='body2' sx={{ fontSize: '12px', color: 'text.primary', fontWeight: 100 }}>
             {/* {row.question} */}
@@ -141,12 +147,18 @@ return (
   }
 ]
 
-const DestinationTableFordailyQuiz = () => {
+const DestinationTableFordailyQuiz = ({ selectedRows }) => {
   // ** States
-  const [data] = useState(rows)
+  const [data, setData] = useState(selectedRows)
   const [pageSize, setPageSize] = useState(7)
   const [searchText, setSearchText] = useState('')
   const [filteredData, setFilteredData] = useState([])
+
+  useEffect(() => {
+    setData(selectedRows)
+    setFilteredData(selectedRows)
+  }, [selectedRows])
+
 
   const handleSearch = searchValue => {
     setSearchText(searchValue)
@@ -161,21 +173,26 @@ const DestinationTableFordailyQuiz = () => {
     if (searchValue.length) {
       setFilteredData(filteredRows)
     } else {
-      setFilteredData([])
+      setFilteredData(data)
     }
+  }
+
+  const getRowId = row => {
+    return row.id || row.index
   }
 
   return (
     <Card>
       <CardHeader title='Selected Questions' />
       <DataGrid
-       disableSelectionOnClick
+        disableSelectionOnClick
         autoHeight
         columns={destinationColumns}
         pageSize={pageSize}
         rowsPerPageOptions={[7, 10, 25, 50]}
         components={{ Toolbar: QuickSearchToolbarDestinationDailyQuiz }}
-        rows={filteredData.length ? filteredData : data}
+       rows={selectedRows.map((row, index) => ({ ...row, id: index + 1 }))}
+      getRowId={data => data.id}
         onPageSizeChange={newPageSize => setPageSize(newPageSize)}
         componentsProps={{
           baseButton: {
@@ -188,7 +205,6 @@ const DestinationTableFordailyQuiz = () => {
           }
         }}
       />
-
     </Card>
   )
 }
@@ -199,17 +215,22 @@ const DailyQuiz = () => {
   const [childCategory, setChildCategory] = useState('')
   const [category, setCategory] = useState('')
   const [subCategory, setSubCategory] = useState('')
-  
-return (
+  const [selectedRows, setSelectedRows] = useState([])
+  const [selectionModel, setSelectionModel] = useState([])
+
+  const handleAddSelectedRows = () => {
+    setSelectedRows([...selectedRows, ...rows.filter(row => selectionModel.includes(row.id))])
+  }
+
+  return (
     <DatePickerWrapper>
       <Grid container spacing={6}>
-
         <Grid item xs={12}>
           <Card>
             <CardHeader title='Apply Filter for Daily Quiz Questions' />
             <CardContent>
               <Grid container spacing={5}>
-                <Grid item sm={2.4} xs={12} mt={3} >
+                <Grid item sm={2.4} xs={12} mt={3}>
                   <FormControl fullWidth>
                     <InputLabel id='demo-simple-select-outlined-label'>Language</InputLabel>
                     <Select
@@ -237,7 +258,6 @@ return (
                       labelId='demo-simple-select-outlined-label'
                       onChange={e => setCategory(e.target.value)}
                     >
-
                       <MenuItem value={10}>CBSE</MenuItem>
                       <MenuItem value={20}>ICSE</MenuItem>
                       <MenuItem value={30}>UP Board</MenuItem>
@@ -246,7 +266,6 @@ return (
                   </FormControl>
                 </Grid>
                 <Grid item xs={12} sm={2.4} mt={3}>
-
                   <FormControl fullWidth>
                     <InputLabel id='demo-simple-select-outlined-label'>Class</InputLabel>
                     <Select
@@ -257,7 +276,6 @@ return (
                       labelId='demo-simple-select-outlined-label'
                       onChange={e => setSubCategory(e.target.value)}
                     >
-
                       <MenuItem value={10}>6th</MenuItem>
                       <MenuItem value={20}>7th</MenuItem>
                       <MenuItem value={30}>8th</MenuItem>
@@ -266,7 +284,6 @@ return (
                   </FormControl>
                 </Grid>
                 <Grid item xs={12} sm={2.4} mt={3}>
-
                   <FormControl fullWidth>
                     <InputLabel id='demo-simple-select-outlined-label'>Stream</InputLabel>
                     <Select
@@ -276,7 +293,6 @@ return (
                       labelId='demo-simple-select-outlined-label'
                       onChange={e => setChildCategory(e.target.value)}
                     >
-
                       <MenuItem value={10}>Science</MenuItem>
                       <MenuItem value={20}>Arts</MenuItem>
                       <MenuItem value={30}>Commerce</MenuItem>
@@ -284,30 +300,29 @@ return (
                     </Select>
                   </FormControl>
                 </Grid>
-                <Grid item sm={2.4} xs={12} mt={3} >
+                <Grid item sm={2.4} xs={12} mt={3}>
                   <Button variant='contained' sx={{ mr: 2, mt: 2 }}>
                     Filter Questions
                   </Button>
                 </Grid>
               </Grid>
-
             </CardContent>
           </Card>
         </Grid>
         <Grid item sm={5.5}>
-          <SourceQuestionsTableFordailyQuiz />
+          <SourceQuestionsTableFordailyQuiz setSelectedRows={setSelectedRows} />
         </Grid>
-        <Grid item sm={1}>
-          <Button variant='contained' sx={{ mr: 2, mt: 2 }}>
+        <Grid item sm={1} height={80} display='flex'>
+          <Button variant='contained' sx={{ mr: 2, mt: 2 }} onClick={handleAddSelectedRows}>
             Add
-            <Icon icon="material-symbols:chevron-right-sharp" />
+            <Icon icon='material-symbols:chevron-right-sharp' />
           </Button>
         </Grid>
         <Grid item sm={5.5}>
-          <DestinationTableFordailyQuiz />
+          <DestinationTableFordailyQuiz selectedRows={selectedRows} />
         </Grid>
       </Grid>
-    </DatePickerWrapper >
+    </DatePickerWrapper>
   )
 }
 

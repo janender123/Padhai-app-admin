@@ -36,8 +36,8 @@ const destinationColumns = [
     headerName: 'Question',
     renderCell: params => {
       const { row } = params
-      
-return (
+
+      return (
         <Box sx={{ display: 'flex', flexDirection: 'column' }}>
           <Typography noWrap variant='body2' sx={{ fontSize: '12px', color: 'text.primary', fontWeight: 100 }}>
             {row.question}
@@ -76,7 +76,7 @@ const DestinationTableFordailyQuiz = () => {
     <Card>
       <CardHeader title='Selected Questions' />
       <DataGrid
-       disableSelectionOnClick
+        disableSelectionOnClick
         autoHeight
         columns={destinationColumns}
         pageSize={pageSize}
@@ -96,7 +96,6 @@ const DestinationTableFordailyQuiz = () => {
           }
         }}
       />
-
     </Card>
   )
 }

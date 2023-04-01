@@ -139,7 +139,7 @@ const InvoiceList = () => {
       headerName: 'Actions',
       renderCell: ({ row }) => (
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
-          <Tooltip title='Delete Invoice'>
+          <Tooltip title='delete'>
             <IconButton size='small' sx={{ mr: 0.5 }} onClick={() => dispatch(deleteInvoice(row.id))}>
               <Icon icon='mdi:delete-outline' />
             </IconButton>

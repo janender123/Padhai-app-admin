@@ -194,7 +194,7 @@ return (
       headerName: 'Actions',
       renderCell: ({ row }) => (
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
-          <Tooltip title='Delete Invoice'>
+          <Tooltip title='delete'>
             <IconButton size='small' sx={{ mr: 0.5 }} >
               <Icon icon='mdi:delete-outline' />
             </IconButton>

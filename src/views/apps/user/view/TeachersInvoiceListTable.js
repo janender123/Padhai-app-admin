@@ -105,7 +105,7 @@ const columns = [
     headerName: 'Actions',
     renderCell: ({ row }) => (
       <Box sx={{ display: 'flex', alignItems: 'center' }}>
-        <Tooltip title='Delete Invoice'>
+        <Tooltip title='delete'>
           <IconButton size='small'>
             <Icon icon='mdi:delete-outline' fontSize={20} />
           </IconButton>

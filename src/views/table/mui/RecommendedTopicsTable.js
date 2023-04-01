@@ -136,7 +136,7 @@ const columns = [
     headerName: 'Actions',
     renderCell: ({ row }) => (
       <Box sx={{ display: 'flex', alignItems: 'center' }}>
-        <Tooltip title='Delete Forum'>
+        <Tooltip title='Delete '>
           <IconButton size='small' sx={{ mr: 0.5 }}>
             <Icon icon='mdi:delete-outline' />
           </IconButton>

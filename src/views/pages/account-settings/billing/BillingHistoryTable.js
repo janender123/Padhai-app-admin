@@ -218,7 +218,7 @@ const BillingHistoryTable = () => {
       headerName: 'Actions',
       renderCell: ({ row }) => (
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
-          <Tooltip title='Delete Invoice'>
+          <Tooltip title='delete'>
             <IconButton size='small' onClick={() => dispatch(deleteInvoice(row.id))}>
               <Icon icon='mdi:delete-outline' fontSize={20} />
             </IconButton>

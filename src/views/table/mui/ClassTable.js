@@ -36,9 +36,7 @@ const renderClient = params => {
 const statusObj = {
   1: { title: 'Active', color: 'primary' },
   2: { title: 'In Progress', color: 'success' },
-  3: { title: 'rejected', color: 'error' },
-  4: { title: 'resigned', color: 'warning' },
-  5: { title: 'applied', color: 'info' }
+  3: { title: 'rejected', color: 'warning' }
 }
 
 const escapeRegExp = value => {
@@ -105,7 +103,7 @@ const columns = [
     headerName: 'Actions',
     renderCell: ({ row }) => (
       <Box sx={{ display: 'flex', alignItems: 'center' }}>
-        <Tooltip title='Delete Invoice'>
+        <Tooltip title='delete'>
           <IconButton size='small' sx={{ mr: 0.5 }} onClick={() => dispatch(deleteInvoice(row.id))}>
             <Icon icon='mdi:delete-outline' />
           </IconButton>
